@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Management - Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <nav class="admin-nav">
+    <div class="logo">💬 Test Chat Admin</div>
+    <div class="links">
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="users.html" class="active">👥 Users</a>
+      <a href="statuses.html">📝 Statuses</a>
+      <button onclick="adminLogout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="header-row">
+      <h2>User Management</h2>
+      <input type="text" id="user-search" placeholder="Search username/email..." oninput="filterUsers()">
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Joined</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="user-table-body"></tbody>
+    </table>
+  </div>
+
+  <script src="admin.js"></script>
+  <script>
+    if (!sessionStorage.getItem('admin_session')) window.location.href = 'index.html';
+    loadUsersTable();
+  </script>
+</body>
+</html>

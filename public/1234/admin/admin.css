@@ -1,0 +1,25 @@
+body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e2e8f0; margin: 0; }
+.admin-nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #1e293b; border-bottom: 1px solid #334155; }
+.admin-nav .links { display: flex; gap: 1rem; align-items: center; }
+.admin-nav .links a { color: #94a3b8; text-decoration: none; font-size: 14px; padding: 5px 10px; border-radius: 5px; }
+.admin-nav .links a.active { color: #0ea5e9; background: rgba(14,165,233,0.1); }
+.container { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+.login-bg { display: flex; align-items: center; justify-content: center; height: 100vh; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+.login-card { background: #1e293b; padding: 3rem; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 350px; }
+.login-card input { width: 100%; padding: 12px; margin: 10px 0; background: #0f172a; border: 1px solid #334155; border-radius: 10px; color: white; }
+.login-card button, .btn-delete { background: #0ea5e9; color: white; border: none; padding: 12px; width: 100%; border-radius: 10px; cursor: pointer; font-weight: 600; }
+.btn-delete { background: #ef4444; width: auto; padding: 5px 10px; font-size: 12px; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+.stat-card { background: #1e293b; padding: 2rem; border-radius: 15px; text-align: center; border: 1px solid #334155; }
+.stat-card h3 { color: #94a3b8; font-size: 14px; margin-bottom: 10px; }
+.stat-card span { font-size: 32px; font-weight: 700; color: #0ea5e9; }
+table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 10px; overflow: hidden; }
+th { background: #334155; text-align: left; padding: 15px; color: #94a3b8; font-size: 13px; }
+td { padding: 15px; border-bottom: 1px solid #334155; font-size: 14px; }
+.status-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.status-card { background: #1e293b; padding: 1.5rem; border-radius: 12px; border: 1px solid #334155; }
+.status-card .author { color: #0ea5e9; font-weight: 600; margin-bottom: 5px; }
+.status-card .content { margin-bottom: 1rem; font-size: 14px; }
+.header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+#user-search { background: #1e293b; border: 1px solid #334155; color: white; padding: 10px; border-radius: 8px; width: 250px; }
+.error { color: #ef4444; font-size: 12px; margin-top: 10px; }

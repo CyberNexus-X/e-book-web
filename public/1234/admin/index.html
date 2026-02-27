@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Test Chat</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="login-bg">
+  <div class="login-card">
+    <h1>🔐 Admin Login</h1>
+    <p id="setup-text">Enter credentials to access dashboard</p>
+    <div id="setup-form" style="display:none;">
+      <p style="color:#f59e0b;margin-bottom:12px;">⚡ First time setup — Create admin account</p>
+    </div>
+    <form id="admin-login-form">
+      <input type="email" id="admin-email" placeholder="Admin Email" required>
+      <input type="password" id="admin-password" placeholder="Password" required>
+      <input type="password" id="admin-confirm" placeholder="Confirm Password" style="display:none;">
+      <button type="submit" id="login-btn">Login</button>
+    </form>
+    <p id="error-msg" class="error"></p>
+  </div>
+  <script src="admin.js"></script>
+  <script>
+    // Specific logic for index.html (Login)
+    if (sessionStorage.getItem('admin_session')) window.location.href = 'dashboard.html';
+    
+    document.getElementById('admin-login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('admin-email').value;
+      const pass = document.getElementById('admin-password').value;
+      const conf = document.getElementById('admin-confirm').value;
+      
+      const exists = await checkAdminSetup(); // from admin.js
+      if (!exists) {
+        if (pass !== conf) { alert('Passwords match fail'); return; }
+        await createAdmin(email, pass);
+        window.location.href = 'dashboard.html';
+      } else {
+        const success = await loginAdmin(email, pass);
+        if (success) window.location.href = 'dashboard.html';
+        else document.getElementById('error-msg').textContent = 'Invalid credentials';
+      }
+    });
+
+    (async () => {
+      const exists = await checkAdminSetup();
+      if (!exists) {
+        document.getElementById('setup-form').style.display = 'block';
+        document.getElementById('admin-confirm').style.display = 'block';
+        document.getElementById('login-btn').textContent = 'Setup Admin';
+      }
+    })();
+  </script>
+</body>
+</html>

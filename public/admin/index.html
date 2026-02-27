@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Chat Admin</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div id="login-page" class="page active">
+    <div class="login-card">
+      <h1>🔐 Admin Panel</h1>
+      <p id="setup-text">Login to manage Test Chat</p>
+      <div id="setup-form" style="display:none;">
+        <p style="color:#f59e0b;margin-bottom:12px;">⚡ First time setup — Create admin account</p>
+      </div>
+      <form id="admin-form">
+        <input type="email" id="admin-email" placeholder="Admin Email" required>
+        <input type="password" id="admin-password" placeholder="Password" required>
+        <input type="password" id="admin-confirm" placeholder="Confirm Password" style="display:none;">
+        <button type="submit" id="admin-submit-btn">Login</button>
+      </form>
+      <p id="admin-error" class="error"></p>
+    </div>
+  </div>
+
+  <div id="dashboard-page" class="page">
+    <nav id="admin-nav">
+      <span class="admin-logo">💬 Test Chat Admin</span>
+      <div class="nav-links">
+        <a href="#" data-page="dashboard" class="active">📊 Dashboard</a>
+        <a href="#" data-page="users">👥 Users</a>
+        <a href="#" data-page="statuses">📝 Statuses</a>
+        <a href="#" onclick="adminLogout()">🚪 Logout</a>
+      </div>
+    </nav>
+    <div class="admin-content">
+      <!-- Dashboard -->
+      <div id="dash-section" class="section active">
+        <h2>Dashboard</h2>
+        <div class="metrics-grid">
+          <div class="metric-card"><span id="total-users">0</span><p>Total Users</p></div>
+          <div class="metric-card"><span id="new-today">0</span><p>New Today</p></div>
+          <div class="metric-card"><span id="total-messages">0</span><p>Total Messages</p></div>
+          <div class="metric-card"><span id="active-random">0</span><p>Active Random Chats</p></div>
+          <div class="metric-card"><span id="total-statuses">0</span><p>Active Statuses</p></div>
+          <div class="metric-card"><span id="online-users">0</span><p>Online Now</p></div>
+        </div>
+        <div class="charts-row">
+          <div class="chart-box"><h3>User Registrations (30 days)</h3><canvas id="users-chart"></canvas></div>
+          <div class="chart-box"><h3>Messages per Day (7 days)</h3><canvas id="messages-chart"></canvas></div>
+        </div>
+      </div>
+      <!-- Users -->
+      <div id="users-section" class="section">
+        <h2>User Management</h2>
+        <div class="toolbar">
+          <input type="text" id="user-search" placeholder="Search by username or email…">
+          <select id="user-filter"><option value="all">All</option><option value="online">Online</option><option value="offline">Offline</option></select>
+        </div>
+        <table id="users-table">
+          <thead><tr><th>Name</th><th>Username</th><th>Email</th><th>Gender</th><th>Joined</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="users-tbody"></tbody>
+        </table>
+        <div id="users-pagination" class="pagination"></div>
+      </div>
+      <!-- Statuses -->
+      <div id="statuses-section" class="section">
+        <h2>Status Management</h2>
+        <div class="toolbar">
+          <input type="text" id="status-search" placeholder="Search by username…">
+          <select id="status-filter"><option value="all">All</option><option value="active">Active</option><option value="expired">Expired</option></select>
+        </div>
+        <table id="statuses-table">
+          <thead><tr><th>Author</th><th>Content</th><th>Visibility</th><th>Posted</th><th>Expires</th><th>Actions</th></tr></thead>
+          <tbody id="statuses-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit User Modal -->
+  <div id="edit-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <h3>Edit User</h3>
+      <form id="edit-user-form">
+        <input type="hidden" id="edit-user-id">
+        <label>Full Name<input type="text" id="edit-name"></label>
+        <label>Username<input type="text" id="edit-username"></label>
+        <label>Email<input type="email" id="edit-email"></label>
+        <label>Public Profile<select id="edit-public"><option value="true">Yes</option><option value="false">No</option></select></label>
+        <div class="modal-actions">
+          <button type="button" onclick="closeEditModal()">Cancel</button>
+          <button type="submit" class="btn-save">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

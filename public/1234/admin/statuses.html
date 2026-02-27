@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Status Moderation - Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <nav class="admin-nav">
+    <div class="logo">💬 Test Chat Admin</div>
+    <div class="links">
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="users.html">👥 Users</a>
+      <a href="statuses.html" class="active">📝 Statuses</a>
+      <button onclick="adminLogout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Recent Statuses</h2>
+    <div id="status-grid" class="status-grid"></div>
+  </div>
+
+  <script src="admin.js"></script>
+  <script>
+    if (!sessionStorage.getItem('admin_session')) window.location.href = 'index.html';
+    loadAdminStatuses();
+  </script>
+</body>
+</html>

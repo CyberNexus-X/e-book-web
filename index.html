@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voxra</title>
+    <meta name="application-name" content="Voxra" />
+    <meta name="apple-mobile-web-app-title" content="Voxra" />
+    <meta property="og:title" content="Voxra — Chat that has Zing" />
+    <meta property="og:description" content="Connect instantly with Voxra" />
+    <meta name="description" content="Voxra — Fast, beautiful messaging app" />
+    <!-- Prevent theme flash - must run BEFORE React loads -->
+    <script>
+      (function() {
+        try {
+          var storedTheme = localStorage.getItem('user-theme-storage');
+          if (storedTheme) {
+            var parsed = JSON.parse(storedTheme);
+            if (parsed.state && parsed.state.theme === 'dark') {
+              document.documentElement.classList.add('dark');
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
