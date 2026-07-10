@@ -2,6 +2,20 @@
    Skill Library - Premium Dark Theme CSS
    ========================================================================== */
 
+/* =====================================================
+   MOBILE-ONLY ELEMENTS  (hidden on desktop by default)
+   ===================================================== */
+.hero-mobile-image,
+.hero-mobile-cta,
+.hero-mobile-price {
+  display: none;
+}
+
+/* Desktop CTA always visible on ≥769px */
+.hero-desktop-ctas {
+  display: flex;
+}
+
 :root {
   /* Color Palette - Obsidian Slate base with Emerald & Gold Accents */
   --bg-darker: #07090e;
@@ -741,18 +755,18 @@ body::before {
 .category-blocks {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 64px;
 }
 
 .category-block {
   display: grid;
-  grid-template-columns: 0.72fr 1.28fr;
-  gap: 50px;
+  grid-template-columns: 0.66fr 1.34fr;
+  gap: 56px;
   align-items: center;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 44px;
+  padding: 48px;
   transition: var(--transition);
 }
 
@@ -762,34 +776,45 @@ body::before {
 }
 
 .category-block.reverse {
-  grid-template-columns: 1.28fr 0.72fr;
+  grid-template-columns: 1.34fr 0.66fr;
 }
 
 .category-block.reverse .category-img-wrapper {
   order: 2;
 }
 
+/* Unified poster sizing — identical across every shelf */
 .category-img-wrapper {
   position: relative;
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  background: var(--bg-darker);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
   aspect-ratio: 2 / 3;
-  max-width: 320px;
+  max-width: 350px;
   width: 100%;
   margin: 0 auto;
+}
+
+/* Shelves 01–04 source posters are 3:4 (1086×1448), not 2:3 like 05+.
+   Match the frame to the image ratio so the poster fills it with only a
+   thin border (removes the black top/bottom margins). */
+.category-block:nth-of-type(-n+4) .category-img-wrapper {
+  aspect-ratio: 3 / 4;
 }
 
 .category-img-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border-radius: 20px;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.6s ease;
 }
 
 .category-block:hover .category-img-wrapper img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .category-content {
@@ -819,6 +844,7 @@ body::before {
   font-size: 15px;
   line-height: 1.6;
   margin-bottom: 24px;
+  max-width: 620px;
 }
 
 .category-tags {
@@ -1499,6 +1525,11 @@ footer {
   opacity: 1;
 }
 
+/* Screenshot helper: hide the floating purchase toast for clean captures */
+body.no-toast .toast-container {
+  display: none;
+}
+
 .toast-icon {
   background: rgba(16, 185, 129, 0.15);
   color: var(--accent-emerald);
@@ -1553,12 +1584,26 @@ footer {
   
   .category-block, .category-block.reverse {
     grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 30px;
+    gap: 40px;
+    padding: 40px;
+    text-align: center;
   }
   
   .category-block.reverse .category-img-wrapper {
     order: 0;
+  }
+
+  .category-content {
+    align-items: center;
+  }
+
+  .category-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .category-tags {
+    justify-content: center;
   }
   
   .features-grid {
@@ -1581,50 +1626,516 @@ footer {
   }
 }
 
+/* ==========================================================================
+   MOBILE BREAKPOINTS — Complete Rewrite
+   Optimized for: 320px / 360px / 375px / 390px / 414px / 430px / 480px
+   Desktop layout (≥769px) is NEVER touched.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------
+   768px and below: Show mobile hero elements, hide desktop equivalents
+   ------------------------------------------------------------------- */
 @media (max-width: 768px) {
+
+  /* ── Container & Section spacing ── */
+  .container {
+    padding: 0 20px;
+  }
+
   .section {
-    padding: 60px 0;
+    padding: 56px 0;
   }
-  
+
+  .section-head {
+    margin-bottom: 36px;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .header-inner {
+    height: 60px;
+  }
+
+  .header-meta-item {
+    display: none;
+  }
+
   .header-cta {
-    display: none; /* Hide top CTA on small screens since sticky bar takes over */
+    gap: 10px;
   }
-  
+
+  .header-cta .btn {
+    padding: 9px 16px !important;
+    font-size: 13px !important;
+  }
+
+  /* ── Hero Section ── */
+  /* Tighten top padding so content starts close to navbar */
+  .hero {
+    padding: 20px 0 48px;
+  }
+
+  /* Stack everything vertically, no side-by-side grid */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    text-align: center;
+  }
+
+  /* Hide the desktop stacked image visual */
+  .hero-visual {
+    display: none;
+  }
+
+  /* Hide the desktop CTA row */
+  .hero-desktop-ctas {
+    display: none;
+  }
+
+  /* ── Eyebrow ── */
+  .hero-eyebrow {
+    margin-bottom: 16px;
+  }
+
+  /* ── Heading ── */
+  .hero-content h1 {
+    font-size: clamp(30px, 8.5vw, 42px);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  /* ── MOBILE: main image.png ── */
+  .hero-mobile-image {
+    display: block;
+    width: 100%;
+    margin: 0 auto 20px;
+  }
+
+  .hero-mobile-image img {
+    display: block;
+    width: 95%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 30px rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* ── MOBILE: CTA button (right after image) ── */
+  .hero-mobile-cta {
+    display: block;
+    width: 100%;
+    margin: 0 auto 24px;
+  }
+
+  .hero-mobile-cta .btn {
+    width: 100%;
+    height: 58px;
+    font-size: 16px;
+    border-radius: 14px;
+    justify-content: center;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Description (below CTA) ── */
+  .hero-content p.lede {
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+    color: var(--text-muted);
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* ── MOBILE: Price mini card (below description) ── */
+  .hero-mobile-price {
+    display: block;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(16, 185, 129, 0.05));
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 0 auto 24px;
+    text-align: center;
+  }
+
+  .hero-price-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .hero-price-value {
+    font-family: var(--font-title);
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--accent-gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .hero-price-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── Trust badges ── */
+  .hero-trust {
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  .trust-item {
+    font-size: 13px;
+  }
+
+  /* ── Global button touch targets ── */
+  .btn {
+    min-height: 48px;
+  }
+
+  /* ── Buttons full-width on mobile ── */
+  .hero-ctas .btn,
+  .price-checkout-btn {
+    width: 100%;
+  }
+
+  /* ── Stats band ── */
+  .stats-band {
+    padding: 32px 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .stat-item:nth-child(2)::after {
+    display: none;
+  }
+
+  .stat-value {
+    font-size: 28px;
+  }
+
+  /* ── Category blocks ── */
+  .category-block,
+  .category-block.reverse {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px 20px;
+  }
+
+  .category-block.reverse .category-img-wrapper {
+    order: 0;
+  }
+
+  .category-content {
+    align-items: center;
+  }
+
+  .category-content h3 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .category-content p {
+    font-size: 14.5px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .category-tags {
+    justify-content: center;
+  }
+
+  .category-img-wrapper {
+    max-width: 240px;
+  }
+
+  /* ── Features grid ── */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .feature-card {
+    padding: 28px 22px;
+  }
+
+  /* ── Reviews grid ── */
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  /* ── Pricing ── */
+  .pricing-wrapper {
+    padding: 28px 18px;
+  }
+
+  .price-now {
+    font-size: 56px;
+  }
+
+  /* ── Search box ── */
+  .search-box-container {
+    padding: 22px 18px;
+  }
+
+  /* ── Sticky bottom bar ── */
   .sticky-bar {
     display: block;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
   }
-  
+
+  /* ── Toast ── */
   .toast-container {
-    bottom: 96px; /* Raise toast above sticky mobile bottom bar */
+    bottom: 92px;
     left: 16px;
     right: 16px;
   }
-  
+
   .toast {
     max-width: none;
-    width: calc(100% - 32px);
+    width: 100%;
   }
-  
-  .pricing-wrapper {
-    padding: 30px 20px;
+
+  /* ── Bookshelf ── */
+  .shelf-wrapper {
+    padding: 28px 16px 0;
   }
 }
 
+/* -------------------------------------------------------------------
+   576px and below
+   ------------------------------------------------------------------- */
 @media (max-width: 576px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .container {
+    padding: 0 16px;
   }
-  
+
+  .section {
+    padding: 48px 0;
+  }
+
+  .section-head {
+    margin-bottom: 32px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .section-head p {
+    font-size: 14.5px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 16px 0 40px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(26px, 7.5vw, 34px);
+    margin-bottom: 20px;
+  }
+
+  .hero-mobile-image img {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .hero-mobile-cta .btn {
+    height: 56px;
+    font-size: 15.5px;
+  }
+
+  .hero-price-value {
+    font-size: 46px;
+  }
+
+  /* Stats */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat-item {
+    padding: 14px 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+
   .stat-item::after {
     display: none !important;
   }
-  
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  /* Category */
+  .category-block,
+  .category-block.reverse {
+    padding: 22px 16px;
+    gap: 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .category-content h3 {
+    font-size: 20px;
+  }
+
+  .category-img-wrapper {
+    max-width: 200px;
+  }
+
+  /* Shelf */
+  .spine {
+    width: 56px;
+    height: 190px;
+    font-size: 11px;
+  }
+}
+
+/* -------------------------------------------------------------------
+   480px and below
+   ------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  .header-inner {
+    height: 56px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .logo svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .header-cta .btn {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+  }
+
   .hero-content h1 {
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .hero-mobile-image img {
+    border-radius: 18px;
+  }
+
+  .hero-mobile-cta .btn {
+    height: 54px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+
+  .hero-price-value {
+    font-size: 42px;
+  }
+
+  .hero-mobile-price {
+    padding: 16px 18px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(22px, 6.5vw, 26px);
+  }
+
+  .category-block,
+  .category-block.reverse {
+    padding: 18px 14px;
+  }
+
+  .feature-card {
+    padding: 22px 18px;
+  }
+
+  .sticky-bar {
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .sticky-bar-price .value {
+    font-size: 20px;
+  }
+
+  .sticky-bar .btn {
+    padding: 11px 16px;
+    font-size: 13px;
+  }
+
+  .price-now {
+    font-size: 50px;
+  }
+
+  .faq-header {
+    padding: 18px 18px;
+    font-size: 15px;
+  }
+
+  .faq-body p {
+    padding: 0 18px 18px;
+    font-size: 14px;
+  }
+}
+
+/* -------------------------------------------------------------------
+   360px and below (small Androids)
+   ------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .hero-content h1 {
+    font-size: 22px;
+  }
+
+  .hero-mobile-cta .btn {
+    height: 52px;
+    font-size: 14px;
+  }
+
+  .hero-price-value {
     font-size: 38px;
   }
-  
-  .search-box-container {
-    padding: 20px;
+
+  .section-head h2 {
+    font-size: 20px;
+  }
+
+  .sticky-bar-price .value {
+    font-size: 18px;
+  }
+
+  .spine {
+    width: 48px;
+    height: 170px;
+    font-size: 10px;
   }
 }

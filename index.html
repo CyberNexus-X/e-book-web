@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   
   <!-- SEO Meta Tags -->
   <title>Skill Library — 12,000+ eBook Bundle, ₹149 One-Time</title>
@@ -65,9 +65,33 @@
             ⚡ The Ultimate Value Pack
           </div>
           <h1>12,000+ Books.<br><span class="highlight-green">9 Curated Shelves.</span><br><em>One Price.</em></h1>
+
+          <!-- MOBILE ONLY: Main hero image shown right after heading -->
+          <div class="hero-mobile-image">
+            <img src="./main image.png" alt="12,000+ eBooks — अमीरों की किताबें जिन्होंने जिंदगी बदल दी" loading="eager">
+          </div>
+
+          <!-- MOBILE ONLY: CTA immediately after image -->
+          <div class="hero-mobile-cta">
+            <button onclick="goToCheckout(event)" class="btn btn-primary btn-gold">
+              Unlock Library — ₹149
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </button>
+          </div>
+
           <p class="lede">Build your ultimate self-education platform. Get lifetime access to best-selling books on Business, Personal Finance, Habits, Mindset, and the best Hindi collections — all organized into a single Google Drive folder you keep forever.</p>
+
+          <!-- MOBILE ONLY: Mini price card below description -->
+          <div class="hero-mobile-price">
+            <div class="hero-price-label">One-Time Payment</div>
+            <div class="hero-price-value">₹149</div>
+            <div class="hero-price-sub">No subscription · Instant delivery · Lifetime access</div>
+          </div>
           
-          <div class="hero-ctas">
+          <!-- DESKTOP: CTA buttons (hidden on mobile) -->
+          <div class="hero-ctas hero-desktop-ctas">
             <a href="#pricing" class="btn btn-primary btn-gold">
               Get Instant Access — ₹149
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -93,7 +117,7 @@
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
-              <span>Readable on Mobile & Kindle</span>
+              <span>Readable on Mobile &amp; Kindle</span>
             </div>
             <div class="trust-item">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -104,7 +128,7 @@
           </div>
         </div>
         
-        <!-- Hero Visual Stack -->
+        <!-- Hero Visual Stack (DESKTOP only) -->
         <div class="hero-visual">
           <div class="visual-container">
             <div class="visual-badge">₹149 Only</div>
@@ -140,40 +164,6 @@
         <div class="stat-item">
           <div class="stat-value">~2 Mins</div>
           <div class="stat-label">Delivery to your Inbox</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Simulated Live Search Section -->
-    <section class="section search-section" id="search-demo">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Search the library</div>
-          <h2>Search <span>Your Favorite Titles</span></h2>
-          <p>Want to check if your favorite book is included? Use our interactive shelf catalog database below to search our popular list instantly.</p>
-        </div>
-        
-        <div class="search-box-container">
-          <div class="search-input-wrapper">
-            <input type="text" id="bookSearchInput" class="search-input" placeholder="Type a book name, author or topic (e.g. 'Atomic', 'Tata', 'Money')...">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </div>
-          
-          <div class="search-tags">
-            <span class="search-tags-label">Try searching:</span>
-            <button class="search-tag-btn" data-search="Atomic Habits">Atomic Habits</button>
-            <button class="search-tag-btn" data-search="Ratan Tata">Ratan Tata</button>
-            <button class="search-tag-btn" data-search="Chanakya">Chanakya Niti</button>
-            <button class="search-tag-btn" data-search="Money">Psychology of Money</button>
-            <button class="search-tag-btn" data-search="Self Help">Hindi Self Help</button>
-          </div>
-          
-          <!-- Results list -->
-          <div class="search-results" id="searchResults">
-            <!-- Rendered by JS -->
-          </div>
         </div>
       </div>
     </section>
@@ -414,25 +404,6 @@
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive virtual shelf section -->
-    <section class="section bookshelf-section" id="interactive-shelf">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Virtual Shelf</div>
-          <h2>Interact With <span>Our Bookshelf</span></h2>
-          <p>Hover over the book spines below to slide them out, and click on any spine to load it into the search box above to verify its contents!</p>
-        </div>
-        
-        <div class="shelf-wrapper">
-          <div class="shelf-books" id="shelfBooks">
-            <!-- Populated by JS -->
-          </div>
-          <div class="shelf-plank"></div>
-          <div class="shelf-footer-text">👈 Drag/scroll horizontally to explore all book titles on the shelf 👉</div>
         </div>
       </div>
     </section>
