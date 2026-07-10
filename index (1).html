@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The 12,000+ eBook Library — ₹149, Yours For Life</title>
+<meta name="description" content="One shelf. Twelve thousand books. Business, Money, Mindset, Leadership, Hindi collections and more — one payment of ₹149, lifetime access." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C2230;
+    --ink-soft:#333c4d;
+    --parchment:#F6F0E4;
+    --parchment-2:#EFE6D3;
+    --gold:#B8923D;
+    --gold-bright:#D4AF5A;
+    --clay:#A9503F;
+    --moss:#5C7A5E;
+    --line: rgba(28,34,48,0.14);
+    --shadow: 0 18px 40px rgba(28,34,48,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{ font-family:'Fraunces', serif; }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{ outline:3px solid var(--gold); outline-offset:3px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,240,228,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; max-width:1180px; margin:0 auto;
+  }
+  .brand{ font-family:'Fraunces', serif; font-weight:600; font-size:20px; letter-spacing:0.2px; }
+  .brand span{ color:var(--gold);}
+  .nav-cta{
+    background:var(--ink); color:var(--parchment); border:none;
+    padding:10px 20px; border-radius:3px; font-weight:600; font-size:14px;
+    cursor:pointer; font-family:'Inter',sans-serif;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .nav-cta:hover{ background:var(--clay); transform:translateY(-1px); }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:64px 0 20px; }
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:2.2px; font-size:12px;
+    font-weight:700; color:var(--clay); margin-bottom:18px;
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; }
+  .hero h1{
+    font-size:clamp(36px, 5vw, 58px); font-weight:600; line-height:1.05;
+    margin:0 0 20px; letter-spacing:-0.5px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--clay); }
+  .hero p.lede{ font-size:18px; color:var(--ink-soft); max-width:46ch; margin:0 0 32px;}
+  .price-row{ display:flex; align-items:baseline; gap:14px; margin-bottom:28px; flex-wrap:wrap;}
+  .price-now{ font-family:'Fraunces', serif; font-size:44px; font-weight:600; color:var(--ink);}
+  .price-was{ font-size:20px; color:var(--ink-soft); text-decoration:line-through; opacity:0.6;}
+  .price-tag{ font-size:13px; background:var(--moss); color:#fff; padding:5px 10px; border-radius:3px; font-weight:600;}
+
+  .cta-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--clay); color:#fff; border:none;
+    padding:18px 32px; font-size:17px; font-weight:700;
+    border-radius:3px; cursor:pointer; font-family:'Inter',sans-serif;
+    box-shadow: var(--shadow);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .cta-primary:hover{ background:#8f3f31; transform:translateY(-2px); }
+  .cta-primary svg{ width:18px; height:18px; }
+  .cta-sub{ margin-top:14px; font-size:13px; color:var(--ink-soft); }
+
+  /* Bookshelf signature element */
+  .shelf{
+    position:relative;
+    background:linear-gradient(180deg, var(--parchment-2), var(--parchment));
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px 22px 0;
+    box-shadow: var(--shadow);
+  }
+  .shelf-books{
+    display:flex; gap:10px; align-items:flex-end;
+    overflow-x:auto; padding-bottom:22px;
+    scrollbar-width:thin;
+  }
+  .shelf-books::-webkit-scrollbar{ height:6px; }
+  .shelf-books::-webkit-scrollbar-thumb{ background:var(--gold); border-radius:3px; }
+  .spine{
+    flex:0 0 auto; width:64px; height:190px; border-radius:2px 5px 5px 2px;
+    display:flex; align-items:flex-end; justify-content:center;
+    padding-bottom:10px; color:#fff; font-size:10px; font-weight:700;
+    letter-spacing:0.5px; text-align:center; writing-mode:vertical-rl; text-orientation:mixed;
+    box-shadow: inset -6px 0 10px rgba(0,0,0,0.18);
+    cursor:default;
+    transition:transform .2s ease;
+  }
+  .spine:hover{ transform:translateY(-10px) rotate(-1deg); }
+  .shelf-plank{
+    height:16px; background:linear-gradient(180deg, #C9A876, #a9803f);
+    border-radius:0 0 6px 6px; margin:0 -22px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  }
+  .shelf-cap{ text-align:center; font-size:13px; color:var(--ink-soft); padding:12px 0 20px; }
+
+  /* ---------- STATS BAND ---------- */
+  .stats{
+    background:var(--ink); color:var(--parchment);
+    padding:44px 0; margin-top:70px;
+  }
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;
+  }
+  .stat-num{ font-family:'Fraunces', serif; font-size:36px; font-weight:600; color:var(--gold-bright); }
+  .stat-label{ font-size:13px; opacity:0.8; margin-top:4px; letter-spacing:0.3px;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{ padding:88px 0; }
+  .section-head{ max-width:640px; margin:0 auto 48px; text-align:center; }
+  .section-head .eyebrow{ justify-content:center; display:flex; }
+  .section h2{ font-size:clamp(28px,3.6vw,40px); font-weight:600; margin:0 0 14px; }
+  .section-head p{ color:var(--ink-soft); font-size:16px; }
+
+  /* ---------- CATEGORY SHOWCASE ---------- */
+  .cat-block{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px;
+    align-items:center; padding:46px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .cat-block:last-child{ border-bottom:none; }
+  .cat-block.reverse{ direction:rtl; }
+  .cat-block.reverse > *{ direction:ltr; }
+  .cat-image{
+    border-radius:6px; overflow:hidden; box-shadow:var(--shadow);
+    border:1px solid var(--line);
+  }
+  .cat-index{ font-family:'Fraunces', serif; font-style:italic; color:var(--gold); font-size:15px; margin-bottom:10px; display:block;}
+  .cat-block h3{ font-size:26px; margin:0 0 12px; font-weight:600; }
+  .cat-block p{ color:var(--ink-soft); font-size:15.5px; max-width:46ch; }
+  .cat-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .cat-tags span{
+    font-size:12px; border:1px solid var(--line); padding:5px 11px; border-radius:20px; color:var(--ink-soft);
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .step{
+    background:#fff; border:1px solid var(--line); border-radius:6px; padding:32px 26px;
+  }
+  .step-num{
+    font-family:'Fraunces', serif; font-size:34px; color:var(--gold); font-weight:600; margin-bottom:14px; display:block;
+  }
+  .step h3{ font-size:19px; margin:0 0 8px; font-weight:600; }
+  .step p{ font-size:14.5px; color:var(--ink-soft); margin:0; }
+
+  /* ---------- MID CTA ---------- */
+  .mid-cta{
+    background:var(--parchment-2); border:1px solid var(--line);
+    border-radius:8px; padding:56px 40px; text-align:center;
+  }
+  .mid-cta h2{ margin:0 0 10px; }
+  .mid-cta p{ color:var(--ink-soft); margin:0 0 28px; }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-bottom:1px solid var(--line); padding:22px 0;
+  }
+  .faq-q{
+    display:flex; justify-content:space-between; align-items:center;
+    cursor:pointer; font-weight:600; font-size:16.5px; gap:20px;
+  }
+  .faq-q .plus{ font-size:22px; color:var(--gold); transition:transform .2s ease; flex:0 0 auto;}
+  .faq-item.open .plus{ transform:rotate(45deg); }
+  .faq-a{
+    max-height:0; overflow:hidden; transition:max-height .25s ease;
+    color:var(--ink-soft); font-size:15px;
+  }
+  .faq-item.open .faq-a{ max-height:200px; padding-top:12px; }
+
+  /* ---------- FOOTER CTA ---------- */
+  .footer-cta{
+    background:var(--ink); color:var(--parchment); padding:80px 0 50px; text-align:center;
+  }
+  .footer-cta h2{ color:#fff; margin:0 0 12px; }
+  .footer-cta p{ opacity:0.75; margin:0 0 32px; }
+  .footer-cta .cta-primary{ background:var(--gold-bright); color:var(--ink); }
+  .footer-cta .cta-primary:hover{ background:#e8c479; }
+
+  .foot-links{
+    border-top:1px solid rgba(255,255,255,0.12); margin-top:60px; padding-top:26px;
+    display:flex; flex-wrap:wrap; gap:18px; justify-content:center; font-size:13px; opacity:0.65;
+  }
+  .foot-links a{ text-decoration:none; }
+  .foot-links a:hover{ text-decoration:underline; }
+  .copyright{ text-align:center; font-size:12px; opacity:0.45; margin-top:22px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns:1fr; gap:40px; }
+    .stats-grid{ grid-template-columns:repeat(2,1fr); }
+    .cat-block, .cat-block.reverse{ grid-template-columns:1fr; direction:ltr; }
+    .steps{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">The Reading <span>Room</span></div>
+      <button class="nav-cta" onclick="goToCheckout()">Get the bundle — ₹149</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">12,000+ eBooks · One shelf</div>
+        <h1>Every book you meant<br/>to read, <em>finally</em> in one place.</h1>
+        <p class="lede">Business, money, mindset, leadership, and Hindi collections on self-help, business and biography — curated into one library you keep forever.</p>
+        <div class="price-row">
+          <span class="price-now">₹149</span>
+          <span class="price-was">₹999</span>
+          <span class="price-tag">One-time payment</span>
+        </div>
+        <button class="cta-primary" onclick="goToCheckout()">
+          Get instant access
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="cta-sub">Delivered to your email in minutes · Lifetime access · No subscription, ever.</p>
+      </div>
+
+      <div class="shelf">
+        <div class="shelf-books" id="shelfBooks"></div>
+        <div class="shelf-plank"></div>
+        <div class="shelf-cap">9 categories · scroll the shelf to peek inside</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="wrap stats-grid">
+      <div>
+        <div class="stat-num">12,000+</div>
+        <div class="stat-label">Books &amp; guides</div>
+      </div>
+      <div>
+        <div class="stat-num">9</div>
+        <div class="stat-label">Curated categories</div>
+      </div>
+      <div>
+        <div class="stat-num">₹149</div>
+        <div class="stat-label">Pay once, own forever</div>
+      </div>
+      <div>
+        <div class="stat-num">~2 min</div>
+        <div class="stat-label">To get your download link</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">What's on the shelf</div>
+        <h2>Nine collections, one price.</h2>
+        <p>Every category below is included in the ₹149 bundle — mix and match as your goals change.</p>
+      </div>
+
+      <div id="catBlocks"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">How it works</div>
+        <h2>Three steps. No waiting.</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Buy once</h3>
+          <p>Pay ₹149 through a secure checkout. No account, no subscription.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>Get your link</h3>
+          <p>Your download link lands in your inbox within minutes of payment.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Read anywhere</h3>
+          <p>All files are PDF — open them on your phone, tablet, or laptop, forever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="mid-cta">
+        <h2>12,000+ books. One payment. Yours for life.</h2>
+        <p>Everything above, delivered the moment you pay.</p>
+        <button class="cta-primary" onclick="goToCheckout()">
+          Get the bundle — ₹149
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap" style="max-width:760px;">
+      <div class="section-head">
+        <div class="eyebrow">Questions</div>
+        <h2>Before you buy</h2>
+      </div>
+      <div id="faqList"></div>
+    </div>
+  </section>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2 class="serif">Start reading tonight.</h2>
+      <p>₹149, one time. No renewals, no hidden charges.</p>
+      <button class="cta-primary" onclick="goToCheckout()">
+        Get instant access
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+
+      <div class="foot-links">
+        <a href="#">About</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="copyright">© 2026 The Reading Room. All rights reserved.</div>
+    </div>
+  </section>
+
+<script>
+  function goToCheckout(){
+    window.location.href = "https://superprofile.bio/vp/10000-e-book-bundle";
+  }
+
+  const categories = [
+    {
+      img: "images/Business-_-sales-book.png",
+      title: "Business & Sales",
+      desc: "Zero to One, The Sales Bible, Blue Ocean Strategy and more — for building, pitching, and closing.",
+      tags: ["Startups", "Sales technique", "Strategy"],
+      color: "#8a3b2e"
+    },
+    {
+      img: "images/Hindi-Biography-book.png",
+      title: "हिंदी बायोग्राफी संग्रह",
+      desc: "APJ Abdul Kalam, Steve Jobs, Ratan Tata, Dhirubhai Ambani — lives worth learning from, in Hindi.",
+      tags: ["जीवनी", "प्रेरणा", "इतिहास"],
+      color: "#2f3b2f"
+    },
+    {
+      img: "images/Hindi-Business-book.png",
+      title: "हिंदी बिजनेस संग्रह",
+      desc: "Rich Dad Poor Dad, चाणक्य नेतृत्व के रहस्य, शेयर मार्केट गाइड — व्यापार और निवेश की समझ हिंदी में।",
+      tags: ["निवेश", "व्यापार", "नेतृत्व"],
+      color: "#1f2a3d"
+    },
+    {
+      img: "images/Hindi-Self-Help-book.png",
+      title: "हिंदी सेल्फ हेल्प",
+      desc: "बॉडी लैंग्वेज, माइंडसेट, एटॉमिक हैबिट्स जैसी किताबों का हिंदी संस्करण — रोज़ की आदतें बदलने के लिए।",
+      tags: ["आदतें", "मानसिकता", "उत्पादकता"],
+      color: "#7a4a1e"
+    },
+    {
+      img: "images/Leadership-_-Communication-book.png",
+      title: "Leadership & Communication",
+      desc: "How to Win Friends & Influence People, 7 Habits, Leadership Secrets of Chanakya, and biographies of builders.",
+      tags: ["Public speaking", "Influence", "Team building"],
+      color: "#3a2f1a"
+    },
+    {
+      img: "images/Mindset-_-Psychology-book.png",
+      title: "Mindset & Psychology",
+      desc: "The Secret, Mindset, Man's Search for Meaning, The Psychology of Money — how top performers think.",
+      tags: ["Discipline", "Resilience", "Behaviour"],
+      color: "#3f2f2b"
+    },
+    {
+      img: "images/Money-_-Investing-book.png",
+      title: "Money & Investing",
+      desc: "Rich Dad Poor Dad, The Intelligent Investor, The Compound Effect — building wealth from first principles.",
+      tags: ["Investing", "Wealth building", "Compounding"],
+      color: "#2b3a2e"
+    },
+    {
+      img: "images/Philosophy-_-Spiritual-book.png",
+      title: "Philosophy & Spiritual",
+      desc: "Ikigai, The Power of Now, Sadhguru, चाणक्य नीति — for the questions productivity books don't answer.",
+      tags: ["Meaning", "Stillness", "Ancient wisdom"],
+      color: "#4a3b1e"
+    },
+    {
+      img: "images/productivity-_-habits-book.png",
+      title: "Productivity & Habits",
+      desc: "Atomic Habits, Deep Work, The Power of Habit, The 5AM Club — systems for actually finishing things.",
+      tags: ["Focus", "Routines", "Discipline"],
+      color: "#1e2a1e"
+    }
+  ];
+
+  const faqs = [
+    { q: "How will I get the books after paying?", a: "You'll receive a download link by email within minutes of completing payment. No waiting, no manual approval." },
+    { q: "Is ₹149 really a one-time payment?", a: "Yes. No subscription, no renewal, no hidden fees. Pay once and the bundle is yours." },
+    { q: "What format are the books in?", a: "All books are PDF files, readable on any phone, tablet, or laptop — no special app required." },
+    { q: "Do I get lifetime access?", a: "Yes. Once downloaded, the files are yours to keep permanently." },
+    { q: "What if I have a problem with my order?", a: "Reach out through the contact link in the footer and we'll help sort it out." }
+  ];
+
+  // Render shelf spines
+  const shelf = document.getElementById('shelfBooks');
+  categories.forEach((c, i) => {
+    const spine = document.createElement('div');
+    spine.className = 'spine';
+    spine.style.background = c.color;
+    spine.textContent = c.title;
+    shelf.appendChild(spine);
+  });
+
+  // Render category blocks
+  const catWrap = document.getElementById('catBlocks');
+  categories.forEach((c, i) => {
+    const block = document.createElement('div');
+    block.className = 'cat-block' + (i % 2 === 1 ? ' reverse' : '');
+    block.innerHTML = `
+      <div class="cat-image"><img src="${c.img}" alt="${c.title} book covers" loading="lazy"></div>
+      <div>
+        <span class="cat-index">${String(i+1).padStart(2,'0')} / 09</span>
+        <h3>${c.title}</h3>
+        <p>${c.desc}</p>
+        <div class="cat-tags">${c.tags.map(t => `<span>${t}</span>`).join('')}</div>
+      </div>
+    `;
+    catWrap.appendChild(block);
+  });
+
+  // Render FAQ
+  const faqList = document.getElementById('faqList');
+  faqs.forEach(f => {
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = `
+      <div class="faq-q"><span>${f.q}</span><span class="plus">+</span></div>
+      <div class="faq-a">${f.a}</div>
+    `;
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+    faqList.appendChild(item);
+  });
+</script>
+
+</body>
+</html>

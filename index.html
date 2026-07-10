@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ShelfMint — 12,000+ eBook Library, ₹149 One-Time</title>
+<meta name="description" content="One payment. A lifetime library. 12,000+ eBooks across business, mindset, finance, fiction and more — yours to keep, forever." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink: #241812;
+    --ink-soft: #3b2b20;
+    --gold: #b8862e;
+    --gold-light: #d9ab52;
+    --teal: #2f4b44;
+    --teal-light: #4a6d63;
+    --parchment: #f3ecdc;
+    --paper: #fbf8f1;
+    --line: rgba(36,24,18,0.12);
+    --shadow: 0 20px 50px -20px rgba(36,24,18,0.35);
+    --radius: 14px;
+    --serif: "Fraunces", serif;
+    --sans: "Inter", sans-serif;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+  .wrap{ max-width: 1120px; margin:0 auto; padding: 0 24px; }
+
+  /* ---------- Header ---------- */
+  header.site{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(251,248,241,0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-inner{
+    display:flex; align-items:center; justify-content: space-between;
+    padding: 14px 24px; max-width:1120px; margin:0 auto;
+  }
+  .brand{
+    font-family: var(--serif); font-weight: 600; font-size: 22px;
+    letter-spacing: 0.2px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{ width:8px; height:8px; border-radius:50%; background: var(--gold); display:inline-block; }
+  .nav-cta{
+    background: var(--ink); color: var(--paper);
+    padding: 10px 20px; border-radius: 999px;
+    font-weight:600; font-size: 14px;
+    text-decoration:none;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .nav-cta:hover{ background: var(--teal); transform: translateY(-1px); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 72px 0 56px;
+    background:
+      radial-gradient(1100px 400px at 85% -10%, rgba(184,134,46,0.14), transparent 60%),
+      var(--paper);
+  }
+  .hero-inner{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items:center;
+  }
+  .eyebrow{
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--teal); font-weight:700; margin-bottom: 18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:""; width:28px; height:1px; background: var(--gold); display:inline-block; }
+  h1{
+    font-family: var(--serif); font-weight:600; font-size: clamp(34px, 4.4vw, 54px);
+    line-height: 1.06; margin: 0 0 20px; letter-spacing: -0.01em;
+  }
+  h1 em{ font-style: italic; color: var(--gold); font-weight:500; }
+  .hero p.lede{
+    font-size: 17px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 28px;
+  }
+  .hero-ctas{ display:flex; gap: 14px; align-items:center; flex-wrap: wrap; margin-bottom: 20px;}
+  .btn-primary{
+    background: var(--ink); color: var(--paper);
+    padding: 15px 28px; border-radius: 999px; font-weight:700; font-size:15px;
+    text-decoration:none; box-shadow: var(--shadow);
+    transition: transform .15s ease, background .15s ease;
+    border: none; cursor:pointer;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-primary:hover{ background: var(--teal); transform: translateY(-2px); }
+  .btn-primary .price{ color: var(--gold-light); }
+  .btn-ghost{
+    font-weight:600; font-size:14px; color: var(--ink-soft);
+    text-decoration: underline; text-underline-offset: 4px;
+  }
+  .hero-meta{
+    display:flex; gap:22px; font-size: 13px; color: var(--ink-soft); flex-wrap:wrap;
+  }
+  .hero-meta span{ display:flex; align-items:center; gap:6px; }
+  .hero-meta b{ color: var(--ink); }
+
+  /* shelf visual */
+  .shelf{
+    position: relative;
+    background: linear-gradient(180deg, var(--teal) 0%, var(--teal-light) 100%);
+    border-radius: 20px;
+    padding: 26px 22px 34px;
+    box-shadow: var(--shadow);
+  }
+  .shelf-label{
+    font-family: var(--serif); color: var(--parchment); font-size: 13px;
+    letter-spacing: 0.08em; text-transform: uppercase; opacity:0.85; margin-bottom: 14px;
+  }
+  .shelf-hero-img{
+    border-radius: 12px; overflow:hidden;
+    box-shadow: 0 16px 32px -12px rgba(0,0,0,0.5);
+    border: 3px solid rgba(251,248,241,0.9);
+  }
+  .shelf-hero-img img{ width:100%; height:auto; display:block; object-fit: cover; }
+  .shelf-badge{
+    position:absolute; top:-16px; right:24px;
+    background: var(--gold); color: var(--ink);
+    font-family: var(--serif); font-weight:700; font-size: 14px;
+    padding: 10px 16px; border-radius: 999px;
+    box-shadow: 0 10px 20px -8px rgba(184,134,46,0.6);
+    transform: rotate(4deg);
+  }
+
+  /* ---------- Ticker ---------- */
+  .ticker{
+    background: var(--ink); color: var(--parchment);
+    padding: 12px 0; overflow:hidden; white-space: nowrap;
+    font-family: var(--serif); font-style: italic; font-size: 15px;
+  }
+  .ticker-track{ display:inline-block; animation: scroll 26s linear infinite; }
+  .ticker-track span{ margin: 0 28px; opacity: 0.9; }
+  @keyframes scroll{ from{ transform: translateX(0);} to{ transform: translateX(-50%);} }
+
+  /* ---------- Section shared ---------- */
+  section{ padding: 78px 0; }
+  .section-head{ max-width: 640px; margin: 0 auto 48px; text-align:center; }
+  .section-head .eyebrow{ justify-content:center; }
+  .section-head::before{ display:none; }
+  .section-head h2{
+    font-family: var(--serif); font-weight:600; font-size: clamp(28px, 3.4vw, 38px);
+    margin: 0 0 12px; line-height:1.15;
+  }
+  .section-head p{ color: var(--ink-soft); font-size: 16px; margin:0; }
+
+  /* ---------- Card catalog (categories) ---------- */
+  .catalog{ background: var(--parchment); }
+  .catalog-grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow:hidden;
+  }
+  .catalog-card{
+    background: var(--paper); padding: 26px 22px; position:relative;
+  }
+  .catalog-card .num{
+    font-family: var(--serif); font-style: italic; color: var(--gold); font-size: 13px; margin-bottom:10px; display:block;
+  }
+  .catalog-card h3{ font-family: var(--serif); font-weight:600; font-size:18px; margin: 0 0 8px; }
+  .catalog-card p{ font-size: 13.5px; color: var(--ink-soft); margin:0; }
+
+  /* ---------- Gallery ---------- */
+  .gallery{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  }
+  .gallery figure{
+    margin:0; border-radius: 12px; overflow:hidden; box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+  }
+  .gallery img{ width:100%; height: 100%; object-fit: cover; aspect-ratio: 1/1; }
+
+  /* ---------- Why / benefits ---------- */
+  .benefits{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .benefit{
+    padding: 30px 26px; border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--paper);
+  }
+  .benefit .mark{
+    width: 38px; height:38px; border-radius: 10px; background: var(--teal);
+    color: var(--parchment); display:flex; align-items:center; justify-content:center;
+    font-family: var(--serif); font-weight:700; margin-bottom: 16px; font-size: 16px;
+  }
+  .benefit h3{ font-family: var(--serif); font-size: 18px; margin: 0 0 8px; font-weight:600; }
+  .benefit p{ font-size: 14.5px; color: var(--ink-soft); margin:0; }
+
+  /* ---------- Pricing ---------- */
+  .pricing{ background: var(--ink); color: var(--paper); }
+  .pricing .section-head p{ color: rgba(251,248,241,0.7); }
+  .pricing .section-head h2{ color: var(--paper); }
+  .price-card{
+    max-width: 460px; margin: 0 auto; background: var(--ink-soft);
+    border: 1px solid rgba(251,248,241,0.14); border-radius: 20px;
+    padding: 40px 36px; text-align:center; box-shadow: 0 30px 70px -30px rgba(0,0,0,0.6);
+  }
+  .price-card .was{
+    text-decoration: line-through; color: rgba(251,248,241,0.45); font-size: 15px;
+  }
+  .price-card .now{
+    font-family: var(--serif); font-weight:700; font-size: 56px; color: var(--gold-light);
+    margin: 6px 0 4px;
+  }
+  .price-card .now sup{ font-size: 22px; top:-0.5em; }
+  .price-card .sub{ font-size: 13px; color: rgba(251,248,241,0.6); margin-bottom: 26px; }
+  .price-list{ text-align:left; list-style:none; padding:0; margin: 0 0 28px; }
+  .price-list li{
+    display:flex; gap: 10px; align-items:flex-start; font-size: 14.5px; padding: 8px 0;
+    border-bottom: 1px solid rgba(251,248,241,0.08);
+  }
+  .price-list li:last-child{ border-bottom:none; }
+  .price-list .check{ color: var(--gold-light); font-weight:700; }
+  .price-card .btn-primary{ width:100%; justify-content:center; background: var(--gold); color: var(--ink); }
+  .price-card .btn-primary:hover{ background: var(--gold-light); }
+  .price-card .fine{ font-size: 12px; color: rgba(251,248,241,0.5); margin-top: 16px; }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{ background: var(--parchment); }
+  .t-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .t-card{
+    background: var(--paper); border-radius: var(--radius); padding: 28px;
+    border: 1px solid var(--line);
+  }
+  .t-card p{ font-size: 14.5px; color: var(--ink-soft); margin: 0 0 18px; }
+  .t-who{ display:flex; align-items:center; gap: 12px; }
+  .t-who .avatar{
+    width: 38px; height:38px; border-radius:50%; background: var(--teal); color: var(--parchment);
+    display:flex; align-items:center; justify-content:center; font-family: var(--serif); font-weight:700;
+  }
+  .t-who .name{ font-weight:700; font-size: 14px; }
+  .t-who .loc{ font-size: 12.5px; color: var(--ink-soft); }
+
+  /* ---------- FAQ ---------- */
+  .faq{ max-width: 720px; margin: 0 auto; }
+  .faq-item{ border-bottom: 1px solid var(--line); }
+  .faq-item button{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding: 22px 4px; display:flex; justify-content:space-between; align-items:center;
+    font-family: var(--serif); font-size: 17px; font-weight:600; color: var(--ink);
+  }
+  .faq-item .plus{ font-size: 20px; color: var(--gold); transition: transform .2s ease; }
+  .faq-item.open .plus{ transform: rotate(45deg); }
+  .faq-answer{
+    max-height:0; overflow:hidden; transition: max-height .25s ease;
+    font-size: 14.5px; color: var(--ink-soft);
+  }
+  .faq-answer p{ padding: 0 4px 22px; margin:0; }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    text-align:center; background:
+      radial-gradient(800px 300px at 50% 0%, rgba(184,134,46,0.16), transparent 60%),
+      var(--paper);
+  }
+  .final-cta h2{ font-family: var(--serif); font-size: clamp(28px,3.6vw,42px); margin: 0 0 14px; font-weight:600; }
+  .final-cta p{ color: var(--ink-soft); margin: 0 0 30px; }
+
+  footer{
+    padding: 32px 0; text-align:center; font-size: 13px; color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+  }
+  footer a{ text-decoration:none; }
+  footer .links{ display:flex; gap: 18px; justify-content:center; flex-wrap:wrap; margin-bottom: 10px; }
+
+  /* sticky mobile bar */
+  .sticky-bar{
+    position: fixed; bottom:0; left:0; right:0; z-index: 60;
+    background: var(--ink); color: var(--paper);
+    padding: 14px 20px; display:none;
+    align-items:center; justify-content:space-between;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.2);
+  }
+  .sticky-bar .price{ font-family: var(--serif); font-weight:700; color: var(--gold-light); font-size: 18px; }
+  .sticky-bar .btn-primary{ padding: 10px 20px; font-size: 13px; box-shadow:none; }
+
+  @media (max-width: 860px){
+    .hero-inner{ grid-template-columns: 1fr; }
+    .benefits{ grid-template-columns: 1fr; }
+    .t-grid{ grid-template-columns: 1fr; }
+    .gallery{ grid-template-columns: repeat(2, 1fr); }
+    .catalog-grid{ grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); }
+    .sticky-bar{ display:flex; }
+    section{ padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="site-inner">
+    <div class="brand"><span class="dot"></span>ShelfMint</div>
+    <a class="nav-cta" href="#pricing">Get the library — ₹149</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">The one-time library</div>
+      <h1>Stop bookmarking.<br>Start <em>owning</em> your library.</h1>
+      <p class="lede">12,000+ eBooks — business, money, mindset, biographies, fiction and more — organised into one shelf you'll actually open. One payment. No renewals, ever.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#pricing">Unlock the shelf — <span class="price">₹149 once</span></a>
+        <a class="btn-ghost" href="#catalog">See what's inside</a>
+      </div>
+      <div class="hero-meta">
+        <span>📚 <b>12,000+</b> titles</span>
+        <span>🗂️ <b>16+</b> categories</span>
+        <span>♾️ <b>Lifetime</b> access</span>
+      </div>
+    </div>
+    <div class="shelf">
+      <div class="shelf-badge">₹149 only</div>
+      <div class="shelf-label">On the shelf today</div>
+      <div class="shelf-hero-img">
+        <img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783332282/8020872b-e9be-4d43-8e90-f440c5ebd552_vivzud.png" alt="ShelfMint eBook bundle cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>★ Instant delivery to your inbox</span>
+    <span>★ Read on phone, tablet or laptop</span>
+    <span>★ Pay once, keep forever</span>
+    <span>★ 12,000+ titles, 16+ categories</span>
+    <span>★ Instant delivery to your inbox</span>
+    <span>★ Read on phone, tablet or laptop</span>
+    <span>★ Pay once, keep forever</span>
+    <span>★ 12,000+ titles, 16+ categories</span>
+  </div>
+</div>
+
+<section class="catalog" id="catalog">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The card catalog</div>
+      <h2>Sixteen shelves. Every mood.</h2>
+      <p>Whatever you're in the mood to learn tonight, it's already on the shelf.</p>
+    </div>
+    <div class="catalog-grid">
+      <div class="catalog-card"><span class="num">01</span><h3>Business &amp; Motivation</h3><p>Founders, operators and the habits behind them.</p></div>
+      <div class="catalog-card"><span class="num">02</span><h3>Sales &amp; Marketing</h3><p>The playbooks behind brands that actually sell.</p></div>
+      <div class="catalog-card"><span class="num">03</span><h3>Money &amp; Investing</h3><p>Personal finance, markets and building wealth.</p></div>
+      <div class="catalog-card"><span class="num">04</span><h3>Self-Development</h3><p>Habits, focus and getting out of your own way.</p></div>
+      <div class="catalog-card"><span class="num">05</span><h3>Biographies</h3><p>Lives worth studying, told in full.</p></div>
+      <div class="catalog-card"><span class="num">06</span><h3>Psychology &amp; Philosophy</h3><p>How the mind works, and how to work with it.</p></div>
+      <div class="catalog-card"><span class="num">07</span><h3>Career &amp; Income</h3><p>Skills, side income and getting paid for both.</p></div>
+      <div class="catalog-card"><span class="num">08</span><h3>Fiction &amp; Classics</h3><p>The novels people keep recommending.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">A peek at the shelf</div>
+      <h2>Real covers. Real titles. Zero filler.</h2>
+    </div>
+    <div class="gallery">
+      <figure><img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783274944/books-hindi-1-CTvy42eW_lgsrxz.jpg" alt="Hindi collection 1"></figure>
+      <figure><img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783274944/books-hindi-2-DcJwjdss_czjqpi.jpg" alt="Hindi collection 2"></figure>
+      <figure><img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783274944/books-english-1-Den3nPfc_uithbp.jpg" alt="English collection 1"></figure>
+      <figure><img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783274944/books-english-2-HbvLuiZa_ugrv8q.jpg" alt="English collection 2"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why a bundle</div>
+      <h2>One shelf beats a hundred tabs</h2>
+      <p>You've saved articles you'll never reopen. This is built to actually get read.</p>
+    </div>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="mark">01</div>
+        <h3>Delivered in minutes</h3>
+        <p>Pay once and your access link lands straight in your inbox — no waiting, no shipping.</p>
+      </div>
+      <div class="benefit">
+        <div class="mark">02</div>
+        <h3>Read anywhere</h3>
+        <p>Every title is a clean PDF that opens on your phone, tablet or laptop without fuss.</p>
+      </div>
+      <div class="benefit">
+        <div class="mark">03</div>
+        <h3>Yours, permanently</h3>
+        <p>No subscription, no renewal date. Download once and the shelf is yours for good.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Today's price</div>
+      <h2>Less than a coffee run, once</h2>
+      <p>No subscription. No renewal. No surprise charge next month.</p>
+    </div>
+    <div class="price-card">
+      <div class="was">Regular price ₹999</div>
+      <div class="now"><sup>₹</sup>149</div>
+      <div class="sub">one-time payment · lifetime access</div>
+      <ul class="price-list">
+        <li><span class="check">✓</span> 12,000+ eBooks across 16+ categories</li>
+        <li><span class="check">✓</span> Instant delivery link by email</li>
+        <li><span class="check">✓</span> Works on any phone, tablet or laptop</li>
+        <li><span class="check">✓</span> Lifetime access, download and keep</li>
+        <li><span class="check">✓</span> Secure one-time checkout</li>
+      </ul>
+      <a href="#" class="btn-primary">Get instant access — ₹149</a>
+      <div class="fine">Secure checkout. No recurring charges, ever.</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">From the shelf</div>
+      <h2>What early readers are saying</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <p>"I've finished more books in six weeks than I did all last year. Having them all in one folder actually made the difference."</p>
+        <div class="t-who"><div class="avatar">R</div><div><div class="name">Riya M.</div><div class="loc">Pune</div></div></div>
+      </div>
+      <div class="t-card">
+        <p>"Was skeptical about the price honestly, but the collection is genuinely well organised. Found three books I'd been meaning to buy separately."</p>
+        <div class="t-who"><div class="avatar">A</div><div><div class="name">Arjun K.</div><div class="loc">Bengaluru</div></div></div>
+      </div>
+      <div class="t-card">
+        <p>"Read a chapter on my commute every morning now. No app, no login — just open the PDF and go."</p>
+        <div class="t-who"><div class="avatar">S</div><div><div class="name">Sana P.</div><div class="loc">Ahmedabad</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Before you buy</div>
+      <h2>Questions, answered</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item open">
+        <button>How do I get the books after paying? <span class="plus">+</span></button>
+        <div class="faq-answer" style="max-height:200px;"><p>You'll get an access link by email within minutes of completing payment — no waiting on approvals.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>Is ₹149 really a one-time payment? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>Yes. There's no subscription and nothing renews. You pay once and the collection is yours to keep.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>What format are the books in? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>Every title is a PDF, readable on any phone, tablet or laptop without needing a special app.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>Can I use this on my phone? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>Yes — the whole collection is built to be comfortable to read on a phone screen, tablet or laptop alike.</p></div>
+      </div>
+      <div class="faq-item">
+        <button>Is my payment secure? <span class="plus">+</span></button>
+        <div class="faq-answer"><p>Checkout runs through a standard secure payment gateway, so your card and payment details stay protected.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap" style="text-align:center;">
+    <h2>Your shelf is one payment away.</h2>
+    <p>12,000+ books, organised and ready. ₹149, once.</p>
+    <a class="btn-primary" href="#pricing">Get instant access — ₹149</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="#">About</a><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Refund Policy</a><a href="#">Contact</a>
+    </div>
+    <div>© 2026 ShelfMint. All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="sticky-bar" id="stickyBar">
+  <div><div class="price">₹149 <span style="font-size:12px;color:rgba(251,248,241,0.6);font-family:var(--sans);">one-time</span></div></div>
+  <a class="btn-primary" href="#pricing">Get access</a>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-item button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{
+        i.classList.remove('open');
+        i.querySelector('.faq-answer').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
