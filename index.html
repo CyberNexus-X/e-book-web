@@ -1,534 +1,761 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ShelfMint — 12,000+ eBook Library, ₹149 One-Time</title>
-<meta name="description" content="One payment. A lifetime library. 12,000+ eBooks across business, mindset, finance, fiction and more — yours to keep, forever." />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --ink: #241812;
-    --ink-soft: #3b2b20;
-    --gold: #b8862e;
-    --gold-light: #d9ab52;
-    --teal: #2f4b44;
-    --teal-light: #4a6d63;
-    --parchment: #f3ecdc;
-    --paper: #fbf8f1;
-    --line: rgba(36,24,18,0.12);
-    --shadow: 0 20px 50px -20px rgba(36,24,18,0.35);
-    --radius: 14px;
-    --serif: "Fraunces", serif;
-    --sans: "Inter", sans-serif;
-  }
-
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-  body{
-    margin:0;
-    font-family: var(--sans);
-    background: var(--paper);
-    color: var(--ink);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  img{ max-width:100%; display:block; }
-  a{ color:inherit; }
-  .wrap{ max-width: 1120px; margin:0 auto; padding: 0 24px; }
-
-  /* ---------- Header ---------- */
-  header.site{
-    position: sticky; top:0; z-index: 50;
-    background: rgba(251,248,241,0.9);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-  }
-  .site-inner{
-    display:flex; align-items:center; justify-content: space-between;
-    padding: 14px 24px; max-width:1120px; margin:0 auto;
-  }
-  .brand{
-    font-family: var(--serif); font-weight: 600; font-size: 22px;
-    letter-spacing: 0.2px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .brand .dot{ width:8px; height:8px; border-radius:50%; background: var(--gold); display:inline-block; }
-  .nav-cta{
-    background: var(--ink); color: var(--paper);
-    padding: 10px 20px; border-radius: 999px;
-    font-weight:600; font-size: 14px;
-    text-decoration:none;
-    transition: transform .15s ease, background .15s ease;
-  }
-  .nav-cta:hover{ background: var(--teal); transform: translateY(-1px); }
-
-  /* ---------- Hero ---------- */
-  .hero{
-    padding: 72px 0 56px;
-    background:
-      radial-gradient(1100px 400px at 85% -10%, rgba(184,134,46,0.14), transparent 60%),
-      var(--paper);
-  }
-  .hero-inner{
-    display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items:center;
-  }
-  .eyebrow{
-    font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em;
-    color: var(--teal); font-weight:700; margin-bottom: 18px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .eyebrow::before{ content:""; width:28px; height:1px; background: var(--gold); display:inline-block; }
-  h1{
-    font-family: var(--serif); font-weight:600; font-size: clamp(34px, 4.4vw, 54px);
-    line-height: 1.06; margin: 0 0 20px; letter-spacing: -0.01em;
-  }
-  h1 em{ font-style: italic; color: var(--gold); font-weight:500; }
-  .hero p.lede{
-    font-size: 17px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 28px;
-  }
-  .hero-ctas{ display:flex; gap: 14px; align-items:center; flex-wrap: wrap; margin-bottom: 20px;}
-  .btn-primary{
-    background: var(--ink); color: var(--paper);
-    padding: 15px 28px; border-radius: 999px; font-weight:700; font-size:15px;
-    text-decoration:none; box-shadow: var(--shadow);
-    transition: transform .15s ease, background .15s ease;
-    border: none; cursor:pointer;
-    display:inline-flex; align-items:center; gap:10px;
-  }
-  .btn-primary:hover{ background: var(--teal); transform: translateY(-2px); }
-  .btn-primary .price{ color: var(--gold-light); }
-  .btn-ghost{
-    font-weight:600; font-size:14px; color: var(--ink-soft);
-    text-decoration: underline; text-underline-offset: 4px;
-  }
-  .hero-meta{
-    display:flex; gap:22px; font-size: 13px; color: var(--ink-soft); flex-wrap:wrap;
-  }
-  .hero-meta span{ display:flex; align-items:center; gap:6px; }
-  .hero-meta b{ color: var(--ink); }
-
-  /* shelf visual */
-  .shelf{
-    position: relative;
-    background: linear-gradient(180deg, var(--teal) 0%, var(--teal-light) 100%);
-    border-radius: 20px;
-    padding: 26px 22px 34px;
-    box-shadow: var(--shadow);
-  }
-  .shelf-label{
-    font-family: var(--serif); color: var(--parchment); font-size: 13px;
-    letter-spacing: 0.08em; text-transform: uppercase; opacity:0.85; margin-bottom: 14px;
-  }
-  .shelf-hero-img{
-    border-radius: 12px; overflow:hidden;
-    box-shadow: 0 16px 32px -12px rgba(0,0,0,0.5);
-    border: 3px solid rgba(251,248,241,0.9);
-  }
-  .shelf-hero-img img{ width:100%; height:auto; display:block; object-fit: cover; }
-  .shelf-badge{
-    position:absolute; top:-16px; right:24px;
-    background: var(--gold); color: var(--ink);
-    font-family: var(--serif); font-weight:700; font-size: 14px;
-    padding: 10px 16px; border-radius: 999px;
-    box-shadow: 0 10px 20px -8px rgba(184,134,46,0.6);
-    transform: rotate(4deg);
-  }
-
-  /* ---------- Ticker ---------- */
-  .ticker{
-    background: var(--ink); color: var(--parchment);
-    padding: 12px 0; overflow:hidden; white-space: nowrap;
-    font-family: var(--serif); font-style: italic; font-size: 15px;
-  }
-  .ticker-track{ display:inline-block; animation: scroll 26s linear infinite; }
-  .ticker-track span{ margin: 0 28px; opacity: 0.9; }
-  @keyframes scroll{ from{ transform: translateX(0);} to{ transform: translateX(-50%);} }
-
-  /* ---------- Section shared ---------- */
-  section{ padding: 78px 0; }
-  .section-head{ max-width: 640px; margin: 0 auto 48px; text-align:center; }
-  .section-head .eyebrow{ justify-content:center; }
-  .section-head::before{ display:none; }
-  .section-head h2{
-    font-family: var(--serif); font-weight:600; font-size: clamp(28px, 3.4vw, 38px);
-    margin: 0 0 12px; line-height:1.15;
-  }
-  .section-head p{ color: var(--ink-soft); font-size: 16px; margin:0; }
-
-  /* ---------- Card catalog (categories) ---------- */
-  .catalog{ background: var(--parchment); }
-  .catalog-grid{
-    display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow:hidden;
-  }
-  .catalog-card{
-    background: var(--paper); padding: 26px 22px; position:relative;
-  }
-  .catalog-card .num{
-    font-family: var(--serif); font-style: italic; color: var(--gold); font-size: 13px; margin-bottom:10px; display:block;
-  }
-  .catalog-card h3{ font-family: var(--serif); font-weight:600; font-size:18px; margin: 0 0 8px; }
-  .catalog-card p{ font-size: 13.5px; color: var(--ink-soft); margin:0; }
-
-  /* ---------- Gallery ---------- */
-  .gallery{
-    display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
-  }
-  .gallery figure{
-    margin:0; border-radius: 12px; overflow:hidden; box-shadow: var(--shadow);
-    border: 1px solid var(--line);
-  }
-  .gallery img{ width:100%; height: 100%; object-fit: cover; aspect-ratio: 1/1; }
-
-  /* ---------- Why / benefits ---------- */
-  .benefits{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
-  }
-  .benefit{
-    padding: 30px 26px; border: 1px solid var(--line); border-radius: var(--radius);
-    background: var(--paper);
-  }
-  .benefit .mark{
-    width: 38px; height:38px; border-radius: 10px; background: var(--teal);
-    color: var(--parchment); display:flex; align-items:center; justify-content:center;
-    font-family: var(--serif); font-weight:700; margin-bottom: 16px; font-size: 16px;
-  }
-  .benefit h3{ font-family: var(--serif); font-size: 18px; margin: 0 0 8px; font-weight:600; }
-  .benefit p{ font-size: 14.5px; color: var(--ink-soft); margin:0; }
-
-  /* ---------- Pricing ---------- */
-  .pricing{ background: var(--ink); color: var(--paper); }
-  .pricing .section-head p{ color: rgba(251,248,241,0.7); }
-  .pricing .section-head h2{ color: var(--paper); }
-  .price-card{
-    max-width: 460px; margin: 0 auto; background: var(--ink-soft);
-    border: 1px solid rgba(251,248,241,0.14); border-radius: 20px;
-    padding: 40px 36px; text-align:center; box-shadow: 0 30px 70px -30px rgba(0,0,0,0.6);
-  }
-  .price-card .was{
-    text-decoration: line-through; color: rgba(251,248,241,0.45); font-size: 15px;
-  }
-  .price-card .now{
-    font-family: var(--serif); font-weight:700; font-size: 56px; color: var(--gold-light);
-    margin: 6px 0 4px;
-  }
-  .price-card .now sup{ font-size: 22px; top:-0.5em; }
-  .price-card .sub{ font-size: 13px; color: rgba(251,248,241,0.6); margin-bottom: 26px; }
-  .price-list{ text-align:left; list-style:none; padding:0; margin: 0 0 28px; }
-  .price-list li{
-    display:flex; gap: 10px; align-items:flex-start; font-size: 14.5px; padding: 8px 0;
-    border-bottom: 1px solid rgba(251,248,241,0.08);
-  }
-  .price-list li:last-child{ border-bottom:none; }
-  .price-list .check{ color: var(--gold-light); font-weight:700; }
-  .price-card .btn-primary{ width:100%; justify-content:center; background: var(--gold); color: var(--ink); }
-  .price-card .btn-primary:hover{ background: var(--gold-light); }
-  .price-card .fine{ font-size: 12px; color: rgba(251,248,241,0.5); margin-top: 16px; }
-
-  /* ---------- Testimonials ---------- */
-  .testimonials{ background: var(--parchment); }
-  .t-grid{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
-  }
-  .t-card{
-    background: var(--paper); border-radius: var(--radius); padding: 28px;
-    border: 1px solid var(--line);
-  }
-  .t-card p{ font-size: 14.5px; color: var(--ink-soft); margin: 0 0 18px; }
-  .t-who{ display:flex; align-items:center; gap: 12px; }
-  .t-who .avatar{
-    width: 38px; height:38px; border-radius:50%; background: var(--teal); color: var(--parchment);
-    display:flex; align-items:center; justify-content:center; font-family: var(--serif); font-weight:700;
-  }
-  .t-who .name{ font-weight:700; font-size: 14px; }
-  .t-who .loc{ font-size: 12.5px; color: var(--ink-soft); }
-
-  /* ---------- FAQ ---------- */
-  .faq{ max-width: 720px; margin: 0 auto; }
-  .faq-item{ border-bottom: 1px solid var(--line); }
-  .faq-item button{
-    width:100%; text-align:left; background:none; border:none; cursor:pointer;
-    padding: 22px 4px; display:flex; justify-content:space-between; align-items:center;
-    font-family: var(--serif); font-size: 17px; font-weight:600; color: var(--ink);
-  }
-  .faq-item .plus{ font-size: 20px; color: var(--gold); transition: transform .2s ease; }
-  .faq-item.open .plus{ transform: rotate(45deg); }
-  .faq-answer{
-    max-height:0; overflow:hidden; transition: max-height .25s ease;
-    font-size: 14.5px; color: var(--ink-soft);
-  }
-  .faq-answer p{ padding: 0 4px 22px; margin:0; }
-
-  /* ---------- Final CTA ---------- */
-  .final-cta{
-    text-align:center; background:
-      radial-gradient(800px 300px at 50% 0%, rgba(184,134,46,0.16), transparent 60%),
-      var(--paper);
-  }
-  .final-cta h2{ font-family: var(--serif); font-size: clamp(28px,3.6vw,42px); margin: 0 0 14px; font-weight:600; }
-  .final-cta p{ color: var(--ink-soft); margin: 0 0 30px; }
-
-  footer{
-    padding: 32px 0; text-align:center; font-size: 13px; color: var(--ink-soft);
-    border-top: 1px solid var(--line);
-  }
-  footer a{ text-decoration:none; }
-  footer .links{ display:flex; gap: 18px; justify-content:center; flex-wrap:wrap; margin-bottom: 10px; }
-
-  /* sticky mobile bar */
-  .sticky-bar{
-    position: fixed; bottom:0; left:0; right:0; z-index: 60;
-    background: var(--ink); color: var(--paper);
-    padding: 14px 20px; display:none;
-    align-items:center; justify-content:space-between;
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.2);
-  }
-  .sticky-bar .price{ font-family: var(--serif); font-weight:700; color: var(--gold-light); font-size: 18px; }
-  .sticky-bar .btn-primary{ padding: 10px 20px; font-size: 13px; box-shadow:none; }
-
-  @media (max-width: 860px){
-    .hero-inner{ grid-template-columns: 1fr; }
-    .benefits{ grid-template-columns: 1fr; }
-    .t-grid{ grid-template-columns: 1fr; }
-    .gallery{ grid-template-columns: repeat(2, 1fr); }
-    .catalog-grid{ grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); }
-    .sticky-bar{ display:flex; }
-    section{ padding: 56px 0; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Skill Library — 12,000+ eBook Bundle, ₹149 One-Time</title>
+  <meta name="description" content="Get lifetime access to 12,000+ eBooks across Business, Marketing, Personal Finance, Mindset, and Hindi Self-Help & Biographies. Download PDFs instantly.">
+  <meta name="keywords" content="eBook bundle, self help books, business books, personal finance, Hindi biographies, atomic habits, rich dad poor dad, skill library">
+  <meta name="author" content="Skill Library">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Skill Library — 12,000+ eBook Bundle, ₹149 One-Time">
+  <meta property="og:description" content="One-time payment. Lifetime library. 12,000+ premium eBooks in English and Hindi. Download instantly.">
+  
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
-<header class="site">
-  <div class="site-inner">
-    <div class="brand"><span class="dot"></span>ShelfMint</div>
-    <a class="nav-cta" href="#pricing">Get the library — ₹149</a>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10M6 10h10M6 14h10"/>
+        </svg>
+        Skill<span>Library</span>
+      </a>
+      
+      <div class="header-cta">
+        <div class="header-meta-item">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+          </svg>
+          <span><strong>12,000+</strong> eBooks</span>
+        </div>
+        <div class="header-meta-item">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>One-time ₹149</span>
+        </div>
+        <a href="#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Unlock Library</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="glow-bg"></div>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            ⚡ The Ultimate Value Pack
+          </div>
+          <h1>12,000+ Books.<br><span class="highlight-green">9 Curated Shelves.</span><br><em>One Price.</em></h1>
+          <p class="lede">Build your ultimate self-education platform. Get lifetime access to best-selling books on Business, Personal Finance, Habits, Mindset, and the best Hindi collections — all organized into a single Google Drive folder you keep forever.</p>
+          
+          <div class="hero-ctas">
+            <a href="#pricing" class="btn btn-primary btn-gold">
+              Get Instant Access — ₹149
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+            <a href="#search-demo" class="btn btn-secondary">
+              Search Titles
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="hero-trust">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Instant Download Links</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Readable on Mobile & Kindle</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Pay Once, Own Forever</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hero Visual Stack -->
+        <div class="hero-visual">
+          <div class="visual-container">
+            <div class="visual-badge">₹149 Only</div>
+            <div class="image-card image-card-1">
+              <img src="./Hindi-Self-Help-book.png" alt="Hindi Self Help Books Bundle Cover">
+            </div>
+            <div class="image-card image-card-2">
+              <img src="./Money-&-Investing-book.png" alt="Money and Investing Books Bundle Cover">
+            </div>
+            <div class="image-card image-card-3">
+              <img src="./productivity-&-habits-book.png" alt="Productivity and Habits Books Bundle Cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Band -->
+    <section class="stats-band">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">12,000+</div>
+          <div class="stat-label">eBooks & Guides</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">9</div>
+          <div class="stat-label">Curated Categories</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value gold">₹149</div>
+          <div class="stat-label">One-Time Payment</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">~2 Mins</div>
+          <div class="stat-label">Delivery to your Inbox</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simulated Live Search Section -->
+    <section class="section search-section" id="search-demo">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Search the library</div>
+          <h2>Search <span>Your Favorite Titles</span></h2>
+          <p>Want to check if your favorite book is included? Use our interactive shelf catalog database below to search our popular list instantly.</p>
+        </div>
+        
+        <div class="search-box-container">
+          <div class="search-input-wrapper">
+            <input type="text" id="bookSearchInput" class="search-input" placeholder="Type a book name, author or topic (e.g. 'Atomic', 'Tata', 'Money')...">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          
+          <div class="search-tags">
+            <span class="search-tags-label">Try searching:</span>
+            <button class="search-tag-btn" data-search="Atomic Habits">Atomic Habits</button>
+            <button class="search-tag-btn" data-search="Ratan Tata">Ratan Tata</button>
+            <button class="search-tag-btn" data-search="Chanakya">Chanakya Niti</button>
+            <button class="search-tag-btn" data-search="Money">Psychology of Money</button>
+            <button class="search-tag-btn" data-search="Self Help">Hindi Self Help</button>
+          </div>
+          
+          <!-- Results list -->
+          <div class="search-results" id="searchResults">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curated Categories Section -->
+    <section class="section categories-section" id="categories">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">The Catalog</div>
+          <h2>9 Curated <span>Shelves of Knowledge</span></h2>
+          <p>All nine sub-bundles are included in your single ₹149 purchase. No locked files, no extra costs.</p>
+        </div>
+        
+        <div class="category-blocks">
+          
+          <!-- Category 1 -->
+          <div class="category-block">
+            <div class="category-img-wrapper">
+              <img src="./Business-&-sales-book.png" alt="Business & Sales eBooks Collection" loading="lazy">
+            </div>
+            <div class="category-content">
+              <span class="category-index">SHELF 01</span>
+              <h3>Business &amp; Sales</h3>
+              <p>Master the principles of starting, running, and scaling a business. Includes practical sales playbooks, negotiations frameworks, and marketing strategies from industry giants.</p>
+              <div class="category-tags">
+                <span class="category-tag">Startups</span>
+                <span class="category-tag">Marketing</span>
+                <span class="category-tag">Sales Funnels</span>
+              </div>
+              <div class="category-popular">
+                <div class="category-popular-title">Popular books included:</div>
+                <ul class="category-popular-list">
+                  <li>Zero to One (Peter Thiel)</li>
+                  <li>The 10X Rule (Grant Cardone)</li>
+                  <li>Blue Ocean Strategy (W. Chan Kim)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="category-block reverse">
+            <div class="category-img-wrapper">
+              <img src="./Hindi-Biography-book.png" alt="Hindi Biographies Collection" loading="lazy">
+            </div>
+            <div class="category-content">
+              <span class="category-index">SHELF 02</span>
+              <h3>हिंदी बायोग्राफी संग्रह</h3>
+              <p>महान नेताओं, विचारकों और उद्यमियों की प्रेरणादायक जीवन गाथाएँ। डॉ. कलाम, रतन टाटा, और भगत सिंह जैसे व्यक्तित्वों के जीवन से सीखें, पूर्णतः हिंदी भाषा में।</p>
+              <div class="category-tags">
+                <span class="category-tag">जीवनी</span>
+                <span class="category-tag">भारतीय इतिहास</span>
+                <span class="category-tag">प्रेरणा</span>
+              </div>
+              <div class="category-popular">
+                <div class="category-popular-title">मशहूर पुस्तकें शामिल हैं:</div>
+                <ul class="category-popular-list">
+                  <li>एपीजे अब्दुल कलाम (अग्नि की उड़ान)</li>
+                  <li>रतन टाटा - एक प्रेरक व्यक्तित्व (थॉमस मैथ्यू)</li>
+                  <li>स्टीव जॉब्स (वॉल्टर आइजैकसन)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="category-block">
+            <div class="category-img-wrapper">
+              <img src="./Hindi-Business-book.png" alt="Hindi Business Collection" loading="lazy">
+            </div>
+            <div class="category-content">
+              <span class="category-index">SHELF 03</span>
+              <h3>हिंदी बिजनेस संग्रह</h3>
+              <p>व्यापार शुरू करने, निवेश करने और वित्तीय स्वतंत्रता प्राप्त करने की समझ अब हिंदी में। जटिल वित्तीय नियमों को सरल भाषा में समझें।</p>
+              <div class="category-tags">
+                <span class="category-tag">व्यापार</span>
+                <span class="category-tag">शेयर मार्केट</span>
+                <span class="category-tag">निवेश</span>
+              </div>
+              <div class="category-popular">
+                <div class="category-popular-title">मशहूर पुस्तकें शामिल हैं:</div>
+                <ul class="category-popular-list">
+                  <li>रिच डैड पुअर डैड (रॉबर्ट टी. कियोसाकी)</li>
+                  <li>शेयर मार्केट गाइड (सुधांशु गुप्ता)</li>
+                  <li>चाणक्य नेतृत्व के रहस्य (राधाकृष्णन पिल्लई)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="category-block reverse">
+            <div class="category-img-wrapper">
+              <img src="./Hindi-Self-Help-book.png" alt="Hindi Self Help Collection" loading="lazy">
+            </div>
+            <div class="category-content">
+              <span class="category-index">SHELF 04</span>
+              <h3>हिंदी सेल्फ हेल्प</h3>
+              <p>अपने व्यक्तित्व को निखारें, आत्मविश्वास बढ़ाएं और दैनिक जीवन में सकारात्मक आदतें अपनाएं। दुनिया के सर्वश्रेष्ठ सेल्फ-हेल्प लेखकों की पुस्तकों का हिंदी अनुवाद।</p>
+              <div class="category-tags">
+                <span class="category-tag">मानसिकता</span>
+                <span class="category-tag">दैनिक आदतें</span>
+                <span class="category-tag">सफलता</span>
+              </div>
+              <div class="category-popular">
+                <div class="category-popular-title">मशहूर पुस्तकें शामिल हैं:</div>
+                <ul class="category-popular-list">
+                  <li>आपके अवचेतन मन की शक्ति (डॉ. जोसेफ मर्फी)</li>
+                  <li>बॉडी लैंग्वेज (एलन पीज)</li>
+                  <li>जीत आपकी (शिव खेड़ा)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 5 -->
+          <div class="category-block">
+            <div class="category-img-wrapper">
+              <img src="./Leadership-&-Communication-book.png" alt="Leadership & Communication Collection" loading="lazy">
+            </div>
+            <div class="category-content">
+              <span class="category-index">SHELF 05</span>
+              <h3>Leadership &amp; Communication</h3>
+              <p>Learn how to connect with people, lead high-performing teams, build influence, and speak with absolute confidence in any personal or professional setting.</p>
+              <div class="category-tags">
+                <span class="category-tag">Public Speaking</span>
+                <span class="category-tag">Influence</span>
+                <span class="category-tag">Team Building</span>
+              </div>
+              <div class="category-popular">
+                <div class="category-popular-title">Popular books included:</div>
+                <ul class="category-popular-list">
+                  <li>How to Win Friends &amp; Influence People</li>
+                  <li>The 7 Habits of Highly Effective People</li>
+                  <li>Leadership Secrets of Chanakya</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 6 -->
+          <div class="category-block reverse">
+            <div class="category-img-wrapper">
+              <img src="./Mindset-&-Psychology-book.png" alt="Mindset & Psychology Collection" loading="lazy">
+            </div>
+            <div class="category-content">
+              <span class="category-index">SHELF 06</span>
+              <h3>Mindset &amp; Psychology</h3>
+              <p>Explore the inner workings of human behavior, emotional intelligence, resilience, and the psychology behind building wealth and making critical life choices.</p>
+              <div class="category-tags">
+                <span class="category-tag">Mental Grit</span>
+                <span class="category-tag">Human Behavior</span>
+                <span class="category-tag">Emotional EQ</span>
+              </div>
+              <div class="category-popular">
+                <div class="category-popular-title">Popular books included:</div>
+                <ul class="category-popular-list">
+                  <li>The Psychology of Money (Morgan Housel)</li>
+                  <li>Mindset: The New Psychology of Success</li>
+                  <li>Man's Search for Meaning (Viktor Frankl)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 7 -->
+          <div class="category-block">
+            <div class="category-img-wrapper">
+              <img src="./Money-&-Investing-book.png" alt="Money & Investing Collection" loading="lazy">
+            </div>
+            <div class="category-content">
+              <span class="category-index">SHELF 07</span>
+              <h3>Money &amp; Investing</h3>
+              <p>Demystify markets, stock investing, budget management, and wealth compounding. Learn from the classic texts that have shaped the world's most successful investors.</p>
+              <div class="category-tags">
+                <span class="category-tag">Stock Markets</span>
+                <span class="category-tag">Wealth Growth</span>
+                <span class="category-tag">Personal Finance</span>
+              </div>
+              <div class="category-popular">
+                <div class="category-popular-title">Popular books included:</div>
+                <ul class="category-popular-list">
+                  <li>The Intelligent Investor (Benjamin Graham)</li>
+                  <li>Rich Dad Poor Dad (Robert Kiyosaki)</li>
+                  <li>The Compound Effect (Darren Hardy)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 8 -->
+          <div class="category-block reverse">
+            <div class="category-img-wrapper">
+              <img src="./Philosophy-&-Spiritual-book.png" alt="Philosophy & Spiritual Collection" loading="lazy">
+            </div>
+            <div class="category-content">
+              <span class="category-index">SHELF 08</span>
+              <h3>Philosophy &amp; Spiritual</h3>
+              <p>Answers to life's deeper questions. Includes timeless classics on finding purpose, inner calm, mindfulness, and ancient eastern and western philosophical wisdom.</p>
+              <div class="category-tags">
+                <span class="category-tag">Inner Peace</span>
+                <span class="category-tag">Mindfulness</span>
+                <span class="category-tag">Stoicism</span>
+              </div>
+              <div class="category-popular">
+                <div class="category-popular-title">Popular books included:</div>
+                <ul class="category-popular-list">
+                  <li>Ikigai: The Japanese Secret to a Long Life</li>
+                  <li>The Power of Now (Eckhart Tolle)</li>
+                  <li>Sadhguru: More Than A Life</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 9 -->
+          <div class="category-block">
+            <div class="category-img-wrapper">
+              <img src="./productivity-&-habits-book.png" alt="Productivity & Habits Collection" loading="lazy">
+            </div>
+            <div class="category-content">
+              <span class="category-index">SHELF 09</span>
+              <h3>Productivity &amp; Habits</h3>
+              <p>Build bulletproof systems to fight procrastination, manage time, optimize your morning routines, and execute deep work sessions without distractions.</p>
+              <div class="category-tags">
+                <span class="category-tag">Time Block</span>
+                <span class="category-tag">Morning Routine</span>
+                <span class="category-tag">Focus Block</span>
+              </div>
+              <div class="category-popular">
+                <div class="category-popular-title">Popular books included:</div>
+                <ul class="category-popular-list">
+                  <li>Atomic Habits (James Clear)</li>
+                  <li>Deep Work (Cal Newport)</li>
+                  <li>The 5 AM Club (Robin Sharma)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive virtual shelf section -->
+    <section class="section bookshelf-section" id="interactive-shelf">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Virtual Shelf</div>
+          <h2>Interact With <span>Our Bookshelf</span></h2>
+          <p>Hover over the book spines below to slide them out, and click on any spine to load it into the search box above to verify its contents!</p>
+        </div>
+        
+        <div class="shelf-wrapper">
+          <div class="shelf-books" id="shelfBooks">
+            <!-- Populated by JS -->
+          </div>
+          <div class="shelf-plank"></div>
+          <div class="shelf-footer-text">👈 Drag/scroll horizontally to explore all book titles on the shelf 👉</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Stack Benefits Section -->
+    <section class="section features-section" id="benefits">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Why Skill Library</div>
+          <h2>A Smart Investment <span>in Yourself</span></h2>
+          <p>We've cut down the friction. No physical shipping, no subscription models, no hidden app login.</p>
+        </div>
+        
+        <div class="features-grid">
+          <!-- Benefit 1 -->
+          <div class="feature-card green-icon">
+            <div class="feature-icon-box">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+            </div>
+            <h3>Instant Digital Delivery</h3>
+            <p>Directly after payment, the secure Google Drive link is sent straight to your email. You can begin downloading or reading within 2 minutes.</p>
+          </div>
+          
+          <!-- Benefit 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+            </div>
+            <h3>Universal File Formats</h3>
+            <p>Every book is available in clean, readable PDF/EPUB formats. Open files directly on your smartphone, tablet, computer, or Kindle reader without extra apps.</p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="feature-card green-icon">
+            <div class="feature-icon-box">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><path d="m14 16-2-4V6"/>
+              </svg>
+            </div>
+            <h3>Lifetime Access</h3>
+            <p>This is a one-time purchase. No renewals, no memberships, and no surprise charges next month. The library is yours to keep permanently.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section / Checkout -->
+    <section class="section pricing-section" id="pricing">
+      <div class="glow-bg"></div>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Price Offer</div>
+          <h2>Unlock Your <span>Lifetime Library Today</span></h2>
+          <p>Get all 12,000+ eBooks across all 9 categories for less than the price of a single physical book.</p>
+        </div>
+        
+        <div class="pricing-wrapper">
+          <div class="pricing-popular-badge">Best Value</div>
+          
+          <div class="price-box">
+            <span class="price-was">Regular Price: ₹999</span>
+            <div class="price-now">
+              <span class="currency">₹</span>149
+            </div>
+            <div class="price-term">One-Time Payment • Lifetime Drive Access</div>
+          </div>
+          
+          <!-- Countdown Timer -->
+          <div class="timer-container">
+            <div class="timer-label">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              Flash sale ends soon:
+            </div>
+            <div class="timer-countdown">02h : 14m : 00s</div>
+          </div>
+          
+          <ul class="price-features">
+            <li class="price-feature-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span><strong>12,000+</strong> curated eBooks (PDF &amp; EPUB formats)</span>
+            </li>
+            <li class="price-feature-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span><strong>9 Curated Shelves</strong> (English &amp; Hindi collections)</span>
+            </li>
+            <li class="price-feature-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Instant direct link delivery to your email inbox</span>
+            </li>
+            <li class="price-feature-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Permanent cloud access + offline downloads</span>
+            </li>
+            <li class="price-feature-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>100% secure checkout via Superprofile (UPI, Card, Netbanking)</span>
+            </li>
+          </ul>
+          
+          <button onclick="goToCheckout(event)" class="btn btn-primary btn-gold price-checkout-btn">
+            Get Instant Access — ₹149
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+          
+          <div class="price-checkout-footer">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span>Secure 256-bit encrypted checkout. No recurring fees.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Reviews</div>
+          <h2>What Our <span>Readers Say</span></h2>
+          <p>Read opinions of self-learners, students, and professionals who purchased the library.</p>
+        </div>
+        
+        <div class="reviews-grid">
+          <!-- Review 1 -->
+          <div class="review-card">
+            <div class="review-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p>"I was highly skeptical about the collection because of the price. But the layout is extremely organized. I found three specific books on Ratan Tata and investing that I was planning to buy separately anyway."</p>
+            <div class="review-user">
+              <div class="review-avatar">AK</div>
+              <div class="review-user-info">
+                <h4>Arjun Kumar</h4>
+                <span>Verified Buyer • Bangalore</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Review 2 -->
+          <div class="review-card">
+            <div class="review-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p>"Having the books stored directly on Google Drive makes a huge difference. I just search for any topic on my phone, double click the PDF, and start reading on my daily metro commute. Excellent Hindi self-help collection!"</p>
+            <div class="review-user">
+              <div class="review-avatar">SM</div>
+              <div class="review-user-info">
+                <h4>Sneha Mehta</h4>
+                <span>Verified Buyer • Pune</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="review-card">
+            <div class="review-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p>"Absolutely massive value. The download link landed in my inbox 1 minute after paying with UPI. It has everything from business advice like Zero to One to classic philosophies. Highly recommended!"</p>
+            <div class="review-user">
+              <div class="review-avatar">VP</div>
+              <div class="review-user-info">
+                <h4>Vikram Patel</h4>
+                <span>Verified Buyer • Ahmedabad</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">FAQs</div>
+          <h2>Frequently <span>Asked Questions</span></h2>
+          <p>Got questions before you buy? We've got answers.</p>
+        </div>
+        
+        <div class="faq-list">
+          
+          <!-- FAQ 1 -->
+          <div class="faq-item active">
+            <button class="faq-header">
+              How do I get the eBooks after paying?
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-body" style="max-height: 100px;">
+              <p>You will receive an automated email within 2 minutes of payment with a secure Google Drive folder link. You can open, read, and download all files immediately from there.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-header">
+              Is ₹149 really a one-time payment?
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-body">
+              <p>Yes. There are no monthly charges, no recurring fees, and no subscriptions. You pay ₹149 once, and the library link is yours to keep permanently.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-header">
+              What format are the books in?
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-body">
+              <p>The files are in standard PDF and EPUB formats. They are fully compatible with Android phones, iPhones, iPads, Laptops, Computers, and Kindle readers.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-header">
+              Can I download the books offline?
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-body">
+              <p>Yes! You can read them directly in the cloud or download the files/folders offline to your devices to read whenever you want, even without internet access.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-header">
+              Is my checkout safe?
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <div class="faq-body">
+              <p>Absolutely. The checkout is processed via Superprofile which uses a highly secure, PCI-compliant payment gateway. Your payment information is 100% encrypted and safe.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="glow-bg-footer"></div>
+    <div class="container footer-inner">
+      <a href="#" class="footer-logo">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+        </svg>
+        Skill<span>Library</span>
+      </a>
+      
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+      
+      <div class="footer-copyright">
+        © 2026 Skill Library. All rights reserved. Managed by CyberNexus-X.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Bottom Mobile Bar -->
+  <div class="sticky-bar">
+    <div class="sticky-bar-inner">
+      <div class="sticky-bar-price">
+        <span class="label">Lifetime Access</span>
+        <span class="value">₹149</span>
+      </div>
+      <button onclick="goToCheckout(event)" class="btn btn-primary btn-gold">Get Access</button>
+    </div>
   </div>
-</header>
 
-<section class="hero">
-  <div class="wrap hero-inner">
-    <div>
-      <div class="eyebrow">The one-time library</div>
-      <h1>Stop bookmarking.<br>Start <em>owning</em> your library.</h1>
-      <p class="lede">12,000+ eBooks — business, money, mindset, biographies, fiction and more — organised into one shelf you'll actually open. One payment. No renewals, ever.</p>
-      <div class="hero-ctas">
-        <a class="btn-primary" href="#pricing">Unlock the shelf — <span class="price">₹149 once</span></a>
-        <a class="btn-ghost" href="#catalog">See what's inside</a>
+  <!-- Simulated live purchase toast element -->
+  <div class="toast-container">
+    <div class="toast" id="purchaseToast">
+      <div class="toast-icon">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
       </div>
-      <div class="hero-meta">
-        <span>📚 <b>12,000+</b> titles</span>
-        <span>🗂️ <b>16+</b> categories</span>
-        <span>♾️ <b>Lifetime</b> access</span>
-      </div>
-    </div>
-    <div class="shelf">
-      <div class="shelf-badge">₹149 only</div>
-      <div class="shelf-label">On the shelf today</div>
-      <div class="shelf-hero-img">
-        <img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783332282/8020872b-e9be-4d43-8e90-f440c5ebd552_vivzud.png" alt="ShelfMint eBook bundle cover">
+      <div class="toast-content">
+        <strong id="toastName">Rahul</strong> from <span id="toastCity">Delhi</span> bought the library! ⚡
       </div>
     </div>
   </div>
-</section>
 
-<div class="ticker">
-  <div class="ticker-track">
-    <span>★ Instant delivery to your inbox</span>
-    <span>★ Read on phone, tablet or laptop</span>
-    <span>★ Pay once, keep forever</span>
-    <span>★ 12,000+ titles, 16+ categories</span>
-    <span>★ Instant delivery to your inbox</span>
-    <span>★ Read on phone, tablet or laptop</span>
-    <span>★ Pay once, keep forever</span>
-    <span>★ 12,000+ titles, 16+ categories</span>
-  </div>
-</div>
-
-<section class="catalog" id="catalog">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">The card catalog</div>
-      <h2>Sixteen shelves. Every mood.</h2>
-      <p>Whatever you're in the mood to learn tonight, it's already on the shelf.</p>
-    </div>
-    <div class="catalog-grid">
-      <div class="catalog-card"><span class="num">01</span><h3>Business &amp; Motivation</h3><p>Founders, operators and the habits behind them.</p></div>
-      <div class="catalog-card"><span class="num">02</span><h3>Sales &amp; Marketing</h3><p>The playbooks behind brands that actually sell.</p></div>
-      <div class="catalog-card"><span class="num">03</span><h3>Money &amp; Investing</h3><p>Personal finance, markets and building wealth.</p></div>
-      <div class="catalog-card"><span class="num">04</span><h3>Self-Development</h3><p>Habits, focus and getting out of your own way.</p></div>
-      <div class="catalog-card"><span class="num">05</span><h3>Biographies</h3><p>Lives worth studying, told in full.</p></div>
-      <div class="catalog-card"><span class="num">06</span><h3>Psychology &amp; Philosophy</h3><p>How the mind works, and how to work with it.</p></div>
-      <div class="catalog-card"><span class="num">07</span><h3>Career &amp; Income</h3><p>Skills, side income and getting paid for both.</p></div>
-      <div class="catalog-card"><span class="num">08</span><h3>Fiction &amp; Classics</h3><p>The novels people keep recommending.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">A peek at the shelf</div>
-      <h2>Real covers. Real titles. Zero filler.</h2>
-    </div>
-    <div class="gallery">
-      <figure><img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783274944/books-hindi-1-CTvy42eW_lgsrxz.jpg" alt="Hindi collection 1"></figure>
-      <figure><img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783274944/books-hindi-2-DcJwjdss_czjqpi.jpg" alt="Hindi collection 2"></figure>
-      <figure><img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783274944/books-english-1-Den3nPfc_uithbp.jpg" alt="English collection 1"></figure>
-      <figure><img src="https://res.cloudinary.com/dwysgg2k7/image/upload/v1783274944/books-english-2-HbvLuiZa_ugrv8q.jpg" alt="English collection 2"></figure>
-    </div>
-  </div>
-</section>
-
-<section id="why">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Why a bundle</div>
-      <h2>One shelf beats a hundred tabs</h2>
-      <p>You've saved articles you'll never reopen. This is built to actually get read.</p>
-    </div>
-    <div class="benefits">
-      <div class="benefit">
-        <div class="mark">01</div>
-        <h3>Delivered in minutes</h3>
-        <p>Pay once and your access link lands straight in your inbox — no waiting, no shipping.</p>
-      </div>
-      <div class="benefit">
-        <div class="mark">02</div>
-        <h3>Read anywhere</h3>
-        <p>Every title is a clean PDF that opens on your phone, tablet or laptop without fuss.</p>
-      </div>
-      <div class="benefit">
-        <div class="mark">03</div>
-        <h3>Yours, permanently</h3>
-        <p>No subscription, no renewal date. Download once and the shelf is yours for good.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="pricing" id="pricing">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Today's price</div>
-      <h2>Less than a coffee run, once</h2>
-      <p>No subscription. No renewal. No surprise charge next month.</p>
-    </div>
-    <div class="price-card">
-      <div class="was">Regular price ₹999</div>
-      <div class="now"><sup>₹</sup>149</div>
-      <div class="sub">one-time payment · lifetime access</div>
-      <ul class="price-list">
-        <li><span class="check">✓</span> 12,000+ eBooks across 16+ categories</li>
-        <li><span class="check">✓</span> Instant delivery link by email</li>
-        <li><span class="check">✓</span> Works on any phone, tablet or laptop</li>
-        <li><span class="check">✓</span> Lifetime access, download and keep</li>
-        <li><span class="check">✓</span> Secure one-time checkout</li>
-      </ul>
-      <a href="#" class="btn-primary">Get instant access — ₹149</a>
-      <div class="fine">Secure checkout. No recurring charges, ever.</div>
-    </div>
-  </div>
-</section>
-
-<section class="testimonials">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">From the shelf</div>
-      <h2>What early readers are saying</h2>
-    </div>
-    <div class="t-grid">
-      <div class="t-card">
-        <p>"I've finished more books in six weeks than I did all last year. Having them all in one folder actually made the difference."</p>
-        <div class="t-who"><div class="avatar">R</div><div><div class="name">Riya M.</div><div class="loc">Pune</div></div></div>
-      </div>
-      <div class="t-card">
-        <p>"Was skeptical about the price honestly, but the collection is genuinely well organised. Found three books I'd been meaning to buy separately."</p>
-        <div class="t-who"><div class="avatar">A</div><div><div class="name">Arjun K.</div><div class="loc">Bengaluru</div></div></div>
-      </div>
-      <div class="t-card">
-        <p>"Read a chapter on my commute every morning now. No app, no login — just open the PDF and go."</p>
-        <div class="t-who"><div class="avatar">S</div><div><div class="name">Sana P.</div><div class="loc">Ahmedabad</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Before you buy</div>
-      <h2>Questions, answered</h2>
-    </div>
-    <div class="faq">
-      <div class="faq-item open">
-        <button>How do I get the books after paying? <span class="plus">+</span></button>
-        <div class="faq-answer" style="max-height:200px;"><p>You'll get an access link by email within minutes of completing payment — no waiting on approvals.</p></div>
-      </div>
-      <div class="faq-item">
-        <button>Is ₹149 really a one-time payment? <span class="plus">+</span></button>
-        <div class="faq-answer"><p>Yes. There's no subscription and nothing renews. You pay once and the collection is yours to keep.</p></div>
-      </div>
-      <div class="faq-item">
-        <button>What format are the books in? <span class="plus">+</span></button>
-        <div class="faq-answer"><p>Every title is a PDF, readable on any phone, tablet or laptop without needing a special app.</p></div>
-      </div>
-      <div class="faq-item">
-        <button>Can I use this on my phone? <span class="plus">+</span></button>
-        <div class="faq-answer"><p>Yes — the whole collection is built to be comfortable to read on a phone screen, tablet or laptop alike.</p></div>
-      </div>
-      <div class="faq-item">
-        <button>Is my payment secure? <span class="plus">+</span></button>
-        <div class="faq-answer"><p>Checkout runs through a standard secure payment gateway, so your card and payment details stay protected.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="final-cta">
-  <div class="wrap" style="text-align:center;">
-    <h2>Your shelf is one payment away.</h2>
-    <p>12,000+ books, organised and ready. ₹149, once.</p>
-    <a class="btn-primary" href="#pricing">Get instant access — ₹149</a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="links">
-      <a href="#">About</a><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Refund Policy</a><a href="#">Contact</a>
-    </div>
-    <div>© 2026 ShelfMint. All rights reserved.</div>
-  </div>
-</footer>
-
-<div class="sticky-bar" id="stickyBar">
-  <div><div class="price">₹149 <span style="font-size:12px;color:rgba(251,248,241,0.6);font-family:var(--sans);">one-time</span></div></div>
-  <a class="btn-primary" href="#pricing">Get access</a>
-</div>
-
-<script>
-  document.querySelectorAll('.faq-item button').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const item = btn.parentElement;
-      const answer = item.querySelector('.faq-answer');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i=>{
-        i.classList.remove('open');
-        i.querySelector('.faq-answer').style.maxHeight = null;
-      });
-      if(!isOpen){
-        item.classList.add('open');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      }
-    });
-  });
-</script>
-
+  <!-- JavaScript file -->
+  <script src="./script.js"></script>
 </body>
 </html>
