@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   startPurchaseToasts();
 });
 
-// 2. Smooth FAQ Accordion
+// 2. Smooth FAQ Accordion (with Accessibility updates)
 function setupFAQAccordion() {
   const faqItems = document.querySelectorAll(".faq-item");
 
@@ -17,19 +17,27 @@ function setupFAQAccordion() {
     const header = item.querySelector(".faq-header");
     const body = item.querySelector(".faq-body");
 
+    if (!header || !body) return;
+
     header.addEventListener("click", () => {
       const isActive = item.classList.contains("active");
 
       // Close all other FAQ items
       faqItems.forEach((otherItem) => {
         otherItem.classList.remove("active");
-        otherItem.querySelector(".faq-body").style.maxHeight = null;
+        const otherBody = otherItem.querySelector(".faq-body");
+        const otherHeader = otherItem.querySelector(".faq-header");
+        if (otherBody) otherBody.style.maxHeight = null;
+        if (otherHeader) otherHeader.setAttribute("aria-expanded", "false");
       });
 
       // Toggle current item
       if (!isActive) {
         item.classList.add("active");
         body.style.maxHeight = body.scrollHeight + "px";
+        header.setAttribute("aria-expanded", "true");
+      } else {
+        header.setAttribute("aria-expanded", "false");
       }
     });
   });

@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="manifest" href="./site.webmanifest">
   <meta name="google-site-verification" content="G1lKXmK8ZBXkw23wFiuqWm_fcFkddpMHaAHkLFie0NY" />
 
   <!-- SEO Meta Tags -->
@@ -11,19 +14,22 @@
   <meta name="keywords" content="Contact Skill Library, Customer Support, Digital Library Support, eBook Support, Help Center, Lifetime Access Support, Google Drive Books">
   <meta name="author" content="Skill Library">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yourdomain.com/contact.html">
+  <link rel="canonical" href="https://skilllibrary.shop/contact.html">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourdomain.com/contact.html">
+  <meta property="og:url" content="https://skilllibrary.shop/contact.html">
   <meta property="og:title" content="Contact Us | Skill Library — eBook & Digital Library Support">
   <meta property="og:description" content="Reach Skill Library for purchase, payment, delivery, and Google Drive access help. Daily support with a response within 24 hours.">
   <meta property="og:site_name" content="Skill Library">
+  <meta property="og:image" content="https://skilllibrary.shop/main%20image.webp">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact Us | Skill Library — eBook & Digital Library Support">
   <meta name="twitter:description" content="Talk to Skill Library support about purchases, payments, delivery, and Google Drive access. We reply within 24 hours.">
+  <meta name="twitter:url" content="https://skilllibrary.shop/contact.html">
+  <meta name="twitter:image" content="https://skilllibrary.shop/main%20image.webp">
 
   <!-- Preconnect and Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +38,49 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Skill Library",
+        "url": "https://skilllibrary.shop/",
+        "email": "support@skilllibrary.shop",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Support",
+          "email": "support@skilllibrary.shop"
+        },
+        "sameAs": ["https://instagram.com/skill_library.in"]
+      },
+      {
+        "@type": "ContactPage",
+        "name": "Contact Us — Skill Library",
+        "url": "https://skilllibrary.shop/contact.html",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "Skill Library",
+          "url": "https://skilllibrary.shop/",
+          "email": "support@skilllibrary.shop",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Support",
+            "email": "support@skilllibrary.shop"
+          },
+          "sameAs": ["https://instagram.com/skill_library.in"]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://skilllibrary.shop/" },
+          { "@type": "ListItem", "position": 2, "name": "Contact Us", "item": "https://skilllibrary.shop/contact.html" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -98,7 +147,15 @@
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
               Email
             </span>
-            <span class="value"><a href="mailto:support@yourdomain.com">support@yourdomain.com</a></span>
+            <span class="value"><a href="mailto:support@skilllibrary.shop">support@skilllibrary.shop</a></span>
+          </div>
+
+          <div class="contact-card">
+            <span class="label">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Website
+            </span>
+            <span class="value"><a href="https://skilllibrary.shop">https://skilllibrary.shop</a></span>
           </div>
 
           <div class="contact-card">
@@ -114,7 +171,7 @@
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               Telegram
             </span>
-            <span class="value"><a href="#">Your Telegram Link</a></span>
+            <span class="value"><a href="https://t.me/Skill_library" target="_blank" rel="noopener">@Skill_library</a></span>
           </div>
 
           <div class="contact-card">
@@ -172,7 +229,7 @@
 
         <div class="faq-item">
           <h3>How do I reach customer support?</h3>
-          <p>Email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>, message us on Instagram <a href="https://instagram.com/skill_library.in" target="_blank" rel="noopener">@skill_library.in</a>, or use the Telegram link above. We reply within 24 hours.</p>
+          <p>Email <a href="mailto:support@skilllibrary.shop">support@skilllibrary.shop</a>, message us on Instagram <a href="https://instagram.com/skill_library.in" target="_blank" rel="noopener">@skill_library.in</a>, or use the Telegram link above. We reply within 24 hours.</p>
         </div>
 
         <div class="faq-item">
@@ -188,7 +245,7 @@
         <div class="contact-cta">
           <h2>Need help?</h2>
           <p>We're always here to assist you. Contact us today and we'll respond as soon as possible.</p>
-          <a href="mailto:support@yourdomain.com" class="btn btn-primary btn-gold">Email Support</a>
+          <a href="mailto:support@skilllibrary.shop" class="btn btn-primary btn-gold">Email Support</a>
         </div>
 
       </article>
@@ -204,9 +261,10 @@
   <footer>
     <div class="glow-bg-footer"></div>
     <div class="container footer-inner">
-      <a href="index.html" class="footer-logo">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <a href="index.html" class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10M6 10h10M6 14h10"/>
         </svg>
         Skill<span>Library</span>
       </a>
@@ -220,7 +278,7 @@
       </div>
 
       <div class="footer-copyright">
-        © 2026 Skill Library. All rights reserved. Managed by CyberNexus-X.
+        © 2026 Skill Library. All rights reserved. <a href="mailto:support@skilllibrary.shop">support@skilllibrary.shop</a> · Managed by CyberNexus-X.
       </div>
     </div>
   </footer>

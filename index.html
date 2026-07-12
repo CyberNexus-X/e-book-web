@@ -3,18 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="manifest" href="./site.webmanifest">
   <meta name="google-site-verification" content="G1lKXmK8ZBXkw23wFiuqWm_fcFkddpMHaAHkLFie0NY" />
   
   <!-- SEO Meta Tags -->
-  <title>Skill Library — 12,000+ eBook Bundle, ₹149 One-Time</title>
-  <meta name="description" content="Get lifetime access to 12,000+ eBooks across Business, Marketing, Personal Finance, Mindset, and Hindi Self-Help & Biographies. Download PDFs instantly.">
-  <meta name="keywords" content="eBook bundle, self help books, business books, personal finance, Hindi biographies, atomic habits, rich dad poor dad, skill library">
+  <title>Skill Library — 12,000+ eBook Bundle (₹149 Lifetime Access)</title>
+  <meta name="description" content="Get instant lifetime access to 12,000+ premium eBooks in English and Hindi. Business, Investing, Mindset, Habits, and Biographies on Google Drive. One-time ₹149.">
+  <meta name="keywords" content="Skill Library, eBook Bundle, Lifetime Access, Hindi Books, Self Help Books, Business Books, Personal Finance, Habits, Google Drive Library">
   <meta name="author" content="Skill Library">
   
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
   <meta property="og:title" content="Skill Library — 12,000+ eBook Bundle, ₹149 One-Time">
   <meta property="og:description" content="One-time payment. Lifetime library. 12,000+ premium eBooks in English and Hindi. Download instantly.">
+  <meta property="og:url" content="https://skilllibrary.shop/">
+  <meta property="og:site_name" content="Skill Library">
+  <meta property="og:image" content="https://skilllibrary.shop/main%20image.webp">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skill Library — 12,000+ eBook Bundle, ₹149 One-Time">
+  <meta name="twitter:description" content="One-time payment. Lifetime library. 12,000+ premium eBooks in English and Hindi. Download instantly.">
+  <meta name="twitter:url" content="https://skilllibrary.shop/">
+  <meta name="twitter:image" content="https://skilllibrary.shop/main%20image.webp">
+  
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://skilllibrary.shop/">
+  
+  <!-- Preload critical hero visual (LCP) -->
+  <link rel="preload" as="image" href="./Hindi-Self-Help-book.webp" fetchpriority="high" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="./main image.webp" fetchpriority="high" media="(max-width: 768px)">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Skill Library",
+        "url": "https://skilllibrary.shop/",
+        "email": "support@skilllibrary.shop",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Support",
+          "email": "support@skilllibrary.shop"
+        },
+        "sameAs": ["https://instagram.com/skill_library.in"]
+      },
+      {
+        "@type": "WebSite",
+        "name": "Skill Library",
+        "url": "https://skilllibrary.shop/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://skilllibrary.shop/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Skill Library — 12,000+ eBook Bundle (Lifetime Access)",
+        "description": "Lifetime access to 12,000+ premium eBooks across Business, Personal Finance, Habits, Mindset, and Hindi Self-Help & Biographies, delivered via Google Drive.",
+        "image": "https://skilllibrary.shop/main%20image.webp",
+        "brand": { "@type": "Brand", "name": "Skill Library" },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1480"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "149.00",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://skilllibrary.shop/#pricing"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://skilllibrary.shop/" }
+        ]
+      }
+    ]
+  }
+  </script>
   
   <!-- Preconnect and Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +124,7 @@
           </svg>
           <span>One-time ₹149</span>
         </div>
-        <a href="#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Unlock Library</a>
+        <a href="#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;" aria-label="Unlock Library for ₹149">Unlock Library</a>
       </div>
     </div>
   </header>
@@ -69,13 +143,16 @@
 
           <!-- MOBILE ONLY: Main hero image shown right after heading -->
           <div class="hero-mobile-image">
-            <img src="./main image.png" alt="12,000+ eBooks — अमीरों की किताबें जिन्होंने जिंदगी बदल दी" loading="eager">
+          <picture>
+            <source srcset="./main image.webp" type="image/webp">
+            <img src="./main image.webp" alt="12,000+ eBooks — अमीरों की किताबें जिन्होंने जिंदगी बदल दी" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async">
+          </picture>
           </div>
 
           <!-- MOBILE ONLY: CTA immediately after image -->
           <div class="hero-mobile-cta">
-            <button onclick="goToCheckout(event)" class="btn btn-primary btn-gold">
-              Unlock Library — ₹149
+              <button onclick="goToCheckout(event)" class="btn btn-primary btn-gold" aria-label="Unlock Skill Library lifetime access for ₹149">
+               Unlock Library — ₹149
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
@@ -134,13 +211,22 @@
           <div class="visual-container">
             <div class="visual-badge">₹149 Only</div>
             <div class="image-card image-card-1">
-              <img src="./Hindi-Self-Help-book.png" alt="Hindi Self Help Books Bundle Cover">
+             <picture>
+                <source srcset="./Hindi-Self-Help-book.webp" type="image/webp">
+                <img src="./Hindi-Self-Help-book.webp" alt="Hindi Self Help Books Bundle Cover" width="1086" height="1448" loading="eager" fetchpriority="high" decoding="async">
+             </picture>
             </div>
             <div class="image-card image-card-2">
-              <img src="./Money-&-Investing-book.png" alt="Money and Investing Books Bundle Cover">
+             <picture>
+                <source srcset="./Money-&-Investing-book.webp" type="image/webp">
+                <img src="./Money-&-Investing-book.webp" alt="Money and Investing Books Bundle Cover" width="1024" height="1536" loading="eager" fetchpriority="high" decoding="async">
+             </picture>
             </div>
             <div class="image-card image-card-3">
-              <img src="./productivity-&-habits-book.png" alt="Productivity and Habits Books Bundle Cover">
+             <picture>
+                <source srcset="./productivity-&-habits-book.webp" type="image/webp">
+                <img src="./productivity-&-habits-book.webp" alt="Productivity and Habits Books Bundle Cover" width="1024" height="1536" loading="eager" fetchpriority="high" decoding="async">
+             </picture>
             </div>
           </div>
         </div>
@@ -183,7 +269,10 @@
           <!-- Category 1 -->
           <div class="category-block">
             <div class="category-img-wrapper">
-              <img src="./Business-&-sales-book.png" alt="Business & Sales eBooks Collection" loading="lazy">
+              <picture>
+               <source srcset="./Business-&-sales-book.webp" type="image/webp">
+               <img src="./Business-&-sales-book.webp" alt="Business & Sales eBooks Collection" width="1086" height="1448" loading="lazy" decoding="async">
+             </picture>
             </div>
             <div class="category-content">
               <span class="category-index">SHELF 01</span>
@@ -208,7 +297,10 @@
           <!-- Category 2 -->
           <div class="category-block reverse">
             <div class="category-img-wrapper">
-              <img src="./Hindi-Biography-book.png" alt="Hindi Biographies Collection" loading="lazy">
+              <picture>
+               <source srcset="./Hindi-Biography-book.webp" type="image/webp">
+               <img src="./Hindi-Biography-book.webp" alt="Hindi Biographies Collection" width="1086" height="1448" loading="lazy" decoding="async">
+             </picture>
             </div>
             <div class="category-content">
               <span class="category-index">SHELF 02</span>
@@ -233,7 +325,10 @@
           <!-- Category 3 -->
           <div class="category-block">
             <div class="category-img-wrapper">
-              <img src="./Hindi-Business-book.png" alt="Hindi Business Collection" loading="lazy">
+              <picture>
+               <source srcset="./Hindi-Business-book.webp" type="image/webp">
+               <img src="./Hindi-Business-book.webp" alt="Hindi Business Collection" width="1086" height="1448" loading="lazy" decoding="async">
+             </picture>
             </div>
             <div class="category-content">
               <span class="category-index">SHELF 03</span>
@@ -258,7 +353,10 @@
           <!-- Category 4 -->
           <div class="category-block reverse">
             <div class="category-img-wrapper">
-              <img src="./Hindi-Self-Help-book.png" alt="Hindi Self Help Collection" loading="lazy">
+              <picture>
+               <source srcset="./Hindi-Self-Help-book.webp" type="image/webp">
+               <img src="./Hindi-Self-Help-book.webp" alt="Hindi Self Help Collection" width="1086" height="1448" loading="lazy" decoding="async">
+             </picture>
             </div>
             <div class="category-content">
               <span class="category-index">SHELF 04</span>
@@ -283,7 +381,10 @@
           <!-- Category 5 -->
           <div class="category-block">
             <div class="category-img-wrapper">
-              <img src="./Leadership-&-Communication-book.png" alt="Leadership & Communication Collection" loading="lazy">
+              <picture>
+               <source srcset="./Leadership-&-Communication-book.webp" type="image/webp">
+               <img src="./Leadership-&-Communication-book.webp" alt="Leadership & Communication Collection" width="1024" height="1536" loading="lazy" decoding="async">
+             </picture>
             </div>
             <div class="category-content">
               <span class="category-index">SHELF 05</span>
@@ -308,7 +409,10 @@
           <!-- Category 6 -->
           <div class="category-block reverse">
             <div class="category-img-wrapper">
-              <img src="./Mindset-&-Psychology-book.png" alt="Mindset & Psychology Collection" loading="lazy">
+              <picture>
+               <source srcset="./Mindset-&-Psychology-book.webp" type="image/webp">
+               <img src="./Mindset-&-Psychology-book.webp" alt="Mindset & Psychology Collection" width="1024" height="1536" loading="lazy" decoding="async">
+             </picture>
             </div>
             <div class="category-content">
               <span class="category-index">SHELF 06</span>
@@ -333,7 +437,10 @@
           <!-- Category 7 -->
           <div class="category-block">
             <div class="category-img-wrapper">
-              <img src="./Money-&-Investing-book.png" alt="Money & Investing Collection" loading="lazy">
+              <picture>
+               <source srcset="./Money-&-Investing-book.webp" type="image/webp">
+               <img src="./Money-&-Investing-book.webp" alt="Money & Investing Collection" width="1024" height="1536" loading="lazy" decoding="async">
+             </picture>
             </div>
             <div class="category-content">
               <span class="category-index">SHELF 07</span>
@@ -358,7 +465,10 @@
           <!-- Category 8 -->
           <div class="category-block reverse">
             <div class="category-img-wrapper">
-              <img src="./Philosophy-&-Spiritual-book.png" alt="Philosophy & Spiritual Collection" loading="lazy">
+              <picture>
+               <source srcset="./Philosophy-&-Spiritual-book.webp" type="image/webp">
+               <img src="./Philosophy-&-Spiritual-book.webp" alt="Philosophy & Spiritual Collection" width="1024" height="1536" loading="lazy" decoding="async">
+             </picture>
             </div>
             <div class="category-content">
               <span class="category-index">SHELF 08</span>
@@ -383,7 +493,10 @@
           <!-- Category 9 -->
           <div class="category-block">
             <div class="category-img-wrapper">
-              <img src="./productivity-&-habits-book.png" alt="Productivity & Habits Collection" loading="lazy">
+              <picture>
+               <source srcset="./productivity-&-habits-book.webp" type="image/webp">
+               <img src="./productivity-&-habits-book.webp" alt="Productivity & Habits Collection" width="1024" height="1536" loading="lazy" decoding="async">
+             </picture>
             </div>
             <div class="category-content">
               <span class="category-index">SHELF 09</span>
@@ -608,65 +721,65 @@
           
           <!-- FAQ 1 -->
           <div class="faq-item active">
-            <button class="faq-header">
+            <button class="faq-header" aria-expanded="true" aria-controls="faq-answer-1">
               How do I get the eBooks after paying?
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
             </button>
-            <div class="faq-body" style="max-height: 100px;">
+            <div class="faq-body" id="faq-answer-1" role="region" style="max-height: 100px;">
               <p>You will receive an automated email within 2 minutes of payment with a secure Google Drive folder link. You can open, read, and download all files immediately from there.</p>
             </div>
           </div>
           
           <!-- FAQ 2 -->
           <div class="faq-item">
-            <button class="faq-header">
+            <button class="faq-header" aria-expanded="false" aria-controls="faq-answer-2">
               Is ₹149 really a one-time payment?
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
             </button>
-            <div class="faq-body">
+            <div class="faq-body" id="faq-answer-2" role="region">
               <p>Yes. There are no monthly charges, no recurring fees, and no subscriptions. You pay ₹149 once, and the library link is yours to keep permanently.</p>
             </div>
           </div>
 
           <!-- FAQ 3 -->
           <div class="faq-item">
-            <button class="faq-header">
+            <button class="faq-header" aria-expanded="false" aria-controls="faq-answer-3">
               What format are the books in?
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
             </button>
-            <div class="faq-body">
+            <div class="faq-body" id="faq-answer-3" role="region">
               <p>The files are in standard PDF and EPUB formats. They are fully compatible with Android phones, iPhones, iPads, Laptops, Computers, and Kindle readers.</p>
             </div>
           </div>
 
           <!-- FAQ 4 -->
           <div class="faq-item">
-            <button class="faq-header">
+            <button class="faq-header" aria-expanded="false" aria-controls="faq-answer-4">
               Can I download the books offline?
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
             </button>
-            <div class="faq-body">
+            <div class="faq-body" id="faq-answer-4" role="region">
               <p>Yes! You can read them directly in the cloud or download the files/folders offline to your devices to read whenever you want, even without internet access.</p>
             </div>
           </div>
 
           <!-- FAQ 5 -->
           <div class="faq-item">
-            <button class="faq-header">
+            <button class="faq-header" aria-expanded="false" aria-controls="faq-answer-5">
               Is my checkout safe?
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
             </button>
-            <div class="faq-body">
+            <div class="faq-body" id="faq-answer-5" role="region">
               <p>Absolutely. The checkout is processed via Superprofile which uses a highly secure, PCI-compliant payment gateway. Your payment information is 100% encrypted and safe.</p>
             </div>
           </div>
@@ -681,9 +794,10 @@
   <footer>
     <div class="glow-bg-footer"></div>
     <div class="container footer-inner">
-      <a href="#" class="footer-logo">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10M6 10h10M6 14h10"/>
         </svg>
         Skill<span>Library</span>
       </a>
@@ -697,7 +811,7 @@
       </div>
       
       <div class="footer-copyright">
-        © 2026 Skill Library. All rights reserved. Managed by CyberNexus-X.
+        © 2026 Skill Library. All rights reserved. <a href="mailto:support@skilllibrary.shop">support@skilllibrary.shop</a> · Managed by CyberNexus-X.
       </div>
     </div>
   </footer>
@@ -709,7 +823,7 @@
         <span class="label">Lifetime Access</span>
         <span class="value">₹149</span>
       </div>
-      <button onclick="goToCheckout(event)" class="btn btn-primary btn-gold">Get Access</button>
+        <button onclick="goToCheckout(event)" class="btn btn-primary btn-gold" aria-label="Get lifetime access to Skill Library for ₹149">Get Access</button>
     </div>
   </div>
 
@@ -728,6 +842,6 @@
   </div>
 
   <!-- JavaScript file -->
-  <script src="./script.js"></script>
+  <script src="./script.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+{
+  "name": "Skill Library",
+  "short_name": "Skill Library",
+  "description": "12,000+ premium eBooks — one-time payment, lifetime access.",
+  "start_url": "https://skilllibrary.shop/",
+  "scope": "https://skilllibrary.shop/",
+  "display": "standalone",
+  "background_color": "#07090e",
+  "theme_color": "#07090e",
+  "icons": [
+    {
+      "src": "./favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
