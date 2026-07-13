@@ -44,6 +44,7 @@ function setupFAQAccordion() {
 }
 
 // 6. Urgency Countdown Timer (Ends in 2 Hours 14 Minutes, resets on finish)
+// Optimized: Pauses when tab is hidden to reduce CPU usage
 function setupCountdownTimer() {
   const timerElements = document.querySelectorAll(".timer-countdown");
   if (timerElements.length === 0) return;
@@ -61,6 +62,8 @@ function setupCountdownTimer() {
   } else {
     targetTime = parseInt(targetTime);
   }
+
+  let timerInterval = null;
 
   const updateTimer = () => {
     const currentTime = new Date().getTime();
@@ -84,8 +87,31 @@ function setupCountdownTimer() {
     });
   };
 
-  updateTimer();
-  setInterval(updateTimer, 1000);
+  const startTimer = () => {
+    if (!timerInterval) {
+      updateTimer();
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+  };
+
+  const stopTimer = () => {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+  };
+
+  // Start immediately
+  startTimer();
+
+  // Pause timer when tab is hidden, resume when visible (reduces CPU on mobile)
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopTimer();
+    } else {
+      startTimer();
+    }
+  });
 }
 
 // 7. Simulated Live Purchase Toast Notifications (Social Proof)
@@ -115,6 +141,9 @@ function startPurchaseToasts() {
   ];
 
   const showToast = () => {
+    // Don't show toasts when tab is hidden
+    if (document.hidden) return;
+
     // Pick a random buyer
     const buyer = buyers[Math.floor(Math.random() * buyers.length)];
     

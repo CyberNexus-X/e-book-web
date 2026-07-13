@@ -31,13 +31,19 @@
   <meta name="twitter:url" content="https://skilllibrary.shop/contact.html">
   <meta name="twitter:image" content="https://skilllibrary.shop/main%20image.webp">
 
-  <!-- Preconnect and Google Fonts -->
+  <!-- Preconnect and Google Fonts (non-render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="dns-prefetch" href="https://superprofile.bio">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet"></noscript>
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="./styles.css">
+  <!-- Stylesheets (non-render-blocking) -->
+  <link rel="stylesheet" href="./styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="./styles.css"></noscript>
+  <link rel="stylesheet" href="./legal.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="./legal.css"></noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
