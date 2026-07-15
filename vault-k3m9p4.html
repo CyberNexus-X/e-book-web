@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="manifest" href="./site.webmanifest">
+  
+  <!-- Strict SEO Protection: block all indexing and search engines -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+  <title>Your Digital Library — Skill Library</title>
+  
+  <!-- Preconnect: Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Fonts matching index.html -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Link to the main style system -->
+  <link rel="stylesheet" href="./styles.css">
+  
+  <!-- Page-specific Premium Styles -->
+  <style>
+    /* ── Main Layout & Hero ── */
+    .library-main {
+      padding-bottom: 100px;
+    }
+    
+    .library-hero {
+      text-align: center;
+      padding: 60px 0 40px;
+      position: relative;
+    }
+    
+    .library-hero h1 {
+      font-family: var(--font-title);
+      font-size: clamp(36px, 5vw, 54px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .library-subtitle {
+      color: var(--text-muted);
+      font-size: clamp(15px, 2vw, 18px);
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    /* ── Success Card (Top Banner) ── */
+    .success-banner {
+      background: rgba(16, 185, 129, 0.07);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: var(--radius-md);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 30px auto 40px;
+      max-width: 750px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(16, 185, 129, 0.05);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .success-banner::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-emerald);
+    }
+    
+    .success-icon-box {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+    }
+    
+    .success-content {
+      flex: 1;
+    }
+    
+    .success-title {
+      font-family: var(--font-title);
+      font-size: clamp(16px, 2.2vw, 19px);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .success-description {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+    
+    /* ── Sections ── */
+    .library-section {
+      padding: 40px 0;
+      position: relative;
+    }
+    
+    .library-section-head {
+      border-left: 3px solid var(--accent-emerald);
+      padding-left: 16px;
+      margin-bottom: 28px;
+    }
+    
+    .library-section.gold-accent .library-section-head {
+      border-left-color: var(--accent-gold);
+    }
+    
+    .library-section-title {
+      font-family: var(--font-title);
+      font-size: clamp(24px, 3.5vw, 30px);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    
+    .library-section-desc {
+      color: var(--text-muted);
+      font-size: 14.5px;
+    }
+    
+    /* ── Grid Layouts ── */
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    
+    .library-grid.single-card {
+      grid-template-columns: 1fr;
+      max-width: 620px;
+    }
+    
+    .library-grid.three-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* ── Glassmorphic Cards ── */
+    .resource-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Subtle background glow effect */
+    .resource-card::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -30%;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      transition: var(--transition);
+    }
+    
+    .resource-card.gold-card::after {
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
+    }
+    
+    /* Hover animations */
+    .resource-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(16, 185, 129, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(16, 185, 129, 0.08);
+      background: var(--bg-card-hover);
+    }
+    
+    .resource-card.gold-card:hover {
+      border-color: rgba(245, 158, 11, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(245, 158, 11, 0.08);
+    }
+    
+    .resource-card:hover::after {
+      transform: scale(1.3);
+    }
+    
+    .card-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .card-icon-box {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-emerald);
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    
+    .resource-card.gold-card .card-icon-box {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--accent-gold);
+    }
+    
+    .resource-card:hover .card-icon-box {
+      transform: scale(1.08);
+    }
+    
+    .card-title {
+      font-family: var(--font-title);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    
+    .card-description {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    
+    .card-bottom {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Buttons styles */
+    .resource-btn {
+      width: 100%;
+      height: 52px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .resource-btn-green {
+      background: linear-gradient(135deg, var(--accent-emerald) 0%, var(--accent-emerald-hover) 100%);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    }
+    
+    .resource-btn-green:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+    }
+    
+    .resource-btn-gold {
+      background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-hover) 100%);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+    }
+    
+    .resource-btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+    }
+    
+    /* ── Footer Overrides ── */
+    .simple-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 60px 0 80px;
+      position: relative;
+      z-index: 10;
+      background-color: var(--bg-darker);
+      text-align: center;
+    }
+    
+    .simple-footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .simple-footer-help {
+      font-size: 15px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    
+    .simple-footer-email {
+      font-family: var(--font-title);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+    
+    .simple-footer-email:hover {
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+    
+    /* ── Keyframes ── */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* ── Responsiveness ── */
+    @media (max-width: 992px) {
+      .library-grid {
+        gap: 20px;
+      }
+      .library-grid.three-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .resource-card {
+        padding: 28px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .library-grid,
+      .library-grid.three-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .success-banner {
+        padding: 20px 24px;
+        margin: 20px auto 30px;
+      }
+      .library-hero {
+        padding: 40px 0 20px;
+      }
+      .library-section {
+        padding: 28px 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .success-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 14px;
+        padding: 20px 16px;
+      }
+      .success-banner::after {
+        width: 100%;
+        height: 4px;
+        top: 0;
+        left: 0;
+      }
+      .resource-card {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10M6 10h10M6 14h10"/>
+        </svg>
+        Skill<span>Library</span>
+      </div>
+      
+      <div class="header-cta">
+        <div class="header-meta-item">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-emerald);">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6 2v15H20V2H6z"/>
+          </svg>
+          <span style="font-family: var(--font-title); font-weight: 700; color: var(--text-primary);">Your Digital Library</span>
+        </div>
+        <div class="header-meta-item">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-gold);">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span style="font-weight: 600;">Lifetime Access</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="library-main">
+    <div class="container">
+      
+      <!-- Success Message Banner -->
+      <div class="success-banner">
+        <div class="success-icon-box">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <div class="success-content">
+          <h4 class="success-title">✅ Payment Successful</h4>
+          <p class="success-description">Thank you for purchasing Skill Library. Your lifetime resources are now unlocked.</p>
+        </div>
+      </div>
+      
+      <!-- Hero Header -->
+      <section class="library-hero">
+        <h1>Your Digital Library</h1>
+        <p class="library-subtitle">Welcome! Your purchase is confirmed. Below are all your digital resources. Enjoy lifetime access.</p>
+      </section>
+
+      <!-- SECTION 1: eBooks -->
+      <section class="library-section">
+        <div class="library-section-head">
+          <h2 class="library-section-title">📚 eBooks</h2>
+          <p class="library-section-desc">Access thousands of premium eBooks organized into categories.</p>
+        </div>
+        
+        <div class="library-grid">
+          
+          <!-- eBooks Bundle -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+              </div>
+              <h3 class="card-title">📦 eBooks Bundle</h3>
+              <p class="card-description">Access the primary Master library with thousands of premium eBooks neatly organized by genres and categories.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/1Vmcus8HNM7aohN4bUv3eCycKS2dj5wdl" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open eBooks Bundle</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Hindi eBooks -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                  <path d="M9 6h6M9 10h6M9 14h6"/>
+                </svg>
+              </div>
+              <h3 class="card-title">📖 Hindi eBooks</h3>
+              <p class="card-description">A curated selection of best-selling self-help, business, personal finance, and biographies fully translated in Hindi.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/15DMP5Gy0_r0E4WtCK7IS9Yrm5ktTe99n?usp=sharing" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open Hindi eBooks</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- English eBooks -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              </div>
+              <h3 class="card-title">📘 English eBooks</h3>
+              <p class="card-description">Access the core English collection covering business strategy, mindset, investing, systems, and global bestsellers.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/1qyUzh2oXrp3QGVejrsSsXyYtEFCpoqpc?usp=sharing" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open English eBooks</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Digital Marketing eBooks -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"/>
+                  <line x1="12" y1="20" x2="12" y2="4"/>
+                  <line x1="6" y1="20" x2="6" y2="14"/>
+                  <path d="M3 20h18"/>
+                </svg>
+              </div>
+              <h3 class="card-title">📈 Digital Marketing eBooks</h3>
+              <p class="card-description">Learn to generate traffic, build sales funnels, optimize SEO, run ads, and scale online businesses with expert marketing guides.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/1UqH16emX3GVqDD0xxqo82WipxgaUM2Px?usp=sharing" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open Marketing eBooks</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- SECTION 2: Fitness Bundle -->
+      <section class="library-section gold-accent">
+        <div class="library-section-head">
+          <h2 class="library-section-title">🏋️ Fitness Bundle</h2>
+          <p class="library-section-desc">Access the complete fitness resource collection.</p>
+        </div>
+        
+        <div class="library-grid single-card">
+          <!-- Fitness Bundle Card -->
+          <div class="resource-card gold-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 12H18M4 7h4v10H4zM16 7h4v10h-4zM2 10h2v4H2zM20 10h2v4h-2z"/>
+                </svg>
+              </div>
+              <h3 class="card-title">🏋️ Fitness Bundle</h3>
+              <p class="card-description">Your all-in-one workout planning and fitness tracking guides. Includes diet blueprints, training templates, and workout split guides to kickstart your physical health journey.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://docs.google.com/document/d/1Dh0wssc6CZC4XhCmEG1UYepDly2oqx8hYAGd6nxBSeo/edit" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-gold">
+                <span>Open Fitness Bundle</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Audio Books -->
+      <section class="library-section">
+        <div class="library-section-head">
+          <h2 class="library-section-title">🎧 Audio Books</h2>
+          <p class="library-section-desc">Listen to premium audiobooks anytime.</p>
+        </div>
+        
+        <div class="library-grid">
+          
+          <!-- Audio Books Bundle 1 -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                </svg>
+              </div>
+              <h3 class="card-title">🎧 Audio Books Bundle 1</h3>
+              <p class="card-description">Volume 1: Listen to curated high-impact business and marketing audiobooks designed for active listeners.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/1QO_ejGHeOv5CoyYxlwrfK4TW8odff8y2?usp=sharing" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open Audio Bundle 1</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Audio Books Bundle 2 -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                </svg>
+              </div>
+              <h3 class="card-title">🎧 Audio Books Bundle 2</h3>
+              <p class="card-description">Volume 2: Personal finance, investing theories, and wealth management audiobooks to digest during commutes.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/1MbWASXaLh0eRC1Q03VMfBCI_pKAcI21-?usp=sharing" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open Audio Bundle 2</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Audio Books Bundle 3 -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                </svg>
+              </div>
+              <h3 class="card-title">🎧 Audio Books Bundle 3</h3>
+              <p class="card-description">Volume 3: Self-improvement, daily routines, habit-building, and psychological systems in high-quality audio formats.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/1FGcZabBORtx9mgsV5XAAIoexse6jIP44?usp=sharing" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open Audio Bundle 3</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Audio Books Bundle 4 -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                </svg>
+              </div>
+              <h3 class="card-title">🎧 Audio Books Bundle 4</h3>
+              <p class="card-description">Volume 4: Philosophy, mindfulness, stoicism, and deep conceptual thinking guides in immersive audio editions.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/14sb0zjTNAJJ5j9d_XA1wwVfTJA9tBCg-?usp=sharing" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open Audio Bundle 4</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- SECTION 4: Zipped Files -->
+      <section class="library-section">
+        <div class="library-section-head">
+          <h2 class="library-section-title">🗂️ Zipped Files</h2>
+          <p class="library-section-desc">Download compressed archives for faster access and offline storage.</p>
+        </div>
+        
+        <div class="library-grid three-cards">
+          
+          <!-- Google Drive -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="21 8 21 21 3 21 3 8"/>
+                  <rect x="1" y="3" width="22" height="5"/>
+                  <line x1="10" y1="12" x2="14" y2="12"/>
+                </svg>
+              </div>
+              <h3 class="card-title">📦 Google Drive</h3>
+              <p class="card-description">Download the complete library compiled into high-speed zip archives directly from Google Drive.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/mobile/folders/15a7-RWVQ23uE6Hr0bvZkuJiuYrrusGNd" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open Google Drive</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- MEGA Mirror 1 -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                </svg>
+              </div>
+              <h3 class="card-title">☁️ MEGA Mirror 1</h3>
+              <p class="card-description">Fast alternative cloud mirror hosted on MEGA.nz for high-bandwidth zip package downloads.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://mega.nz/folder/MFAyUlpA#tFHf6mRRjrT_XqhNtonWKA" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open MEGA Mirror 1</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- MEGA Mirror 2 -->
+          <div class="resource-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                </svg>
+              </div>
+              <h3 class="card-title">☁️ MEGA Mirror 2</h3>
+              <p class="card-description">Secondary backup mirror hosted on MEGA.nz to ensure maximum download speeds and 100% uptime.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://mega.nz/folder/EAQy3aSY#LRtSSu9CIxCAqaL_ZZLojw" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-green">
+                <span>Open MEGA Mirror 2</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- SECTION 5: Bonus Resources -->
+      <section class="library-section gold-accent">
+        <div class="library-section-head">
+          <h2 class="library-section-title">🎁 Bonus Resources</h2>
+          <p class="library-section-desc">Enjoy exclusive bonus resources included with your purchase.</p>
+        </div>
+        
+        <div class="library-grid">
+          
+          <!-- 9 Million PLR Articles -->
+          <div class="resource-card gold-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </div>
+              <h3 class="card-title">📚 9 Million PLR Articles</h3>
+              <p class="card-description">A massive, searchable collection of 9 Million PLR (Private Label Rights) articles covering dozens of niches, hosted on Google Drive.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/mobile/folders/1A60G3psVBUTxwgKACPvsNSjCn0XS6ROm" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-gold">
+                <span>Open PLR Articles</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Bonus 2,000+ eBooks -->
+          <div class="resource-card gold-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+              </div>
+              <h3 class="card-title">📖 Bonus 2,000+ eBooks</h3>
+              <p class="card-description">An additional curation of 2,000+ premium ebooks. Read online or download direct files for your personal growth.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/file/d/1PNp-Gbt-b35wRrFzLBXjzH5gBx2RTsj8/view" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-gold">
+                <span>Open Bonus eBooks (2K)</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Royalty-Free Music, Videos & Images -->
+          <div class="resource-card gold-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </div>
+              <h3 class="card-title">🎵 Royalty-Free Media</h3>
+              <p class="card-description">Download royalty-free background music, sound effects, loop videos, and stock images for creators and marketers.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/1aoKJDK_9C2JSnCp3SzYrQwoFsixXtN-H" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-gold">
+                <span>Open Media Drive</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Bonus 50,000+ eBooks -->
+          <div class="resource-card gold-card">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <h3 class="card-title">📚 Bonus 50,000+ eBooks</h3>
+              <p class="card-description">A mega bonus drive folder containing an extra 50,000+ ebooks across genres including technology, arts, history, and fiction.</p>
+            </div>
+            <div class="card-bottom">
+              <a href="https://drive.google.com/drive/folders/1uiogEtfoXRXy2I8SfruxRZm8T1jWY04" target="_blank" rel="noopener noreferrer" class="resource-btn resource-btn-gold">
+                <span>Open Bonus eBooks (50K)</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Simple Footer -->
+  <footer class="simple-footer">
+    <div class="container simple-footer-inner">
+      <div class="simple-footer-help">Need help?</div>
+      <a href="mailto:support@skilllibrary.shop" class="simple-footer-email">support@skilllibrary.shop</a>
+    </div>
+  </footer>
+
+</body>
+</html>
