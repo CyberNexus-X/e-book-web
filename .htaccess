@@ -7,6 +7,11 @@
   RewriteEngine On
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Clean URL: /ebook-bundle -> ebook-bundle.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ebook-bundle/?$ /ebook-bundle.html [L]
 </IfModule>
 
 # --- Security headers ---
