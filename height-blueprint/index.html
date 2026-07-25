@@ -127,6 +127,27 @@
 
   <!-- Scoped Styles for Height Blueprint Module -->
   <style>
+    /* Hero Layout Fixes - Uncropped Full Image Display */
+    .hero {
+      padding: 120px 0 60px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-header-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     .blueprint-badge {
       background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.3);
@@ -140,6 +161,63 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 20px;
+    }
+
+    /* Uncropped Hero Visual Display */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .visual-container {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .visual-badge {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background: var(--accent-gold);
+      color: var(--bg-darker);
+      font-family: var(--font-title);
+      font-weight: 900;
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+      transform: rotate(4deg);
+      z-index: 10;
+    }
+
+    .visual-container .image-card {
+      position: relative;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-container .image-card img {
+      width: 100%;
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      display: block;
     }
 
     /* Trust Grid */
@@ -276,6 +354,7 @@
       border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
       box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      object-fit: contain;
     }
 
     /* Transformation Gallery Grid - 4 Columns */
@@ -298,7 +377,8 @@
     .transform-card img {
       width: 100%;
       height: 320px;
-      object-fit: cover;
+      object-fit: contain;
+      background: var(--bg-darker);
       display: block;
     }
     .transform-info {
@@ -341,6 +421,7 @@
     .proof-banner-card img {
       width: 100%;
       height: auto;
+      object-fit: contain;
       display: block;
     }
 
@@ -485,23 +566,124 @@
       margin-bottom: 24px;
     }
 
-    /* Responsive Adjustments */
-    @media (max-width: 1100px) {
-      .transform-gallery { grid-template-columns: repeat(2, 1fr); }
-    }
+    /* ==========================================================================
+       MOBILE HERO LAYOUT REORDERING (STRICT MOBILE SEQUENCE FIX)
+       Order: Headline -> Hero Image -> CTA Button -> Description -> Trust Badges -> Success Stories
+       ========================================================================== */
     @media (max-width: 992px) {
-      .trust-badges-grid { grid-template-columns: repeat(3, 1fr); }
-      .problem-grid { grid-template-columns: repeat(2, 1fr); }
-      .science-split { grid-template-columns: 1fr; }
-      .proof-banner { grid-template-columns: 1fr; }
+      .hero {
+        padding: 90px 0 32px;
+      }
+      
+      .hero-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 18px;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      /* 1. Main Heading & Badge */
+      .hero-header-block {
+        order: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(28px, 7vw, 40px);
+        margin-bottom: 12px;
+      }
+
+      /* 2. Hero Image (Full Width, Fully Visible, Uncropped) */
+      .hero-visual {
+        order: 2;
+        width: 100%;
+        margin: 12px 0 20px;
+      }
+
+      .visual-container {
+        max-width: 100%;
+      }
+
+      .visual-badge {
+        top: -10px;
+        right: 0px;
+        font-size: 12px;
+        padding: 6px 14px;
+      }
+
+      .visual-container .image-card img {
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+      }
+
+      /* 3. Primary CTA & Secondary CTA */
+      .hero-ctas {
+        order: 3;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .hero-ctas .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 20px;
+        font-size: 16px;
+      }
+
+      /* 4. Short Description */
+      .hero-content p.lede {
+        order: 4;
+        font-size: 15px;
+        line-height: 1.55;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+        text-align: center;
+        max-width: 100%;
+      }
+
+      /* 5. Trust Badges */
+      .hero-trust {
+        order: 5;
+        justify-content: center;
+        gap: 12px 18px;
+        margin-bottom: 8px;
+      }
+
+      .trust-item {
+        font-size: 13px;
+      }
+
+      /* Responsiveness fixes for 360px, 390px, 414px, 768px */
+      .transform-gallery { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .transform-card img { height: 240px; }
     }
+
     @media (max-width: 640px) {
-      .trust-badges-grid { grid-template-columns: repeat(2, 1fr); }
+      .container { padding: 0 16px; }
+      .trust-badges-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .problem-grid { grid-template-columns: 1fr; }
       .transform-gallery { grid-template-columns: 1fr; }
-      .comparison-table th, .comparison-table td { padding: 14px 16px; font-size: 13.5px; }
-      .timeline-container::before { left: 20px; }
-      .step-number { width: 42px; height: 42px; font-size: 16px; }
+      .transform-card img { height: 280px; }
+      .comparison-table th, .comparison-table td { padding: 12px 14px; font-size: 13px; }
+      .timeline-container::before { left: 18px; }
+      .step-number { width: 38px; height: 38px; font-size: 15px; }
       .step-content { padding: 16px; }
     }
   </style>
@@ -579,15 +761,27 @@
       <div class="glow-bg"></div>
       <div class="container hero-grid">
         <div class="hero-content">
-          <div class="blueprint-badge">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            Science-Backed Natural Potential System
+          <!-- 1. Headline & Badge -->
+          <div class="hero-header-block">
+            <div class="blueprint-badge">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Science-Backed Natural Potential System
+            </div>
+            <h1>Unlock Your Natural Height Potential With a <span class="highlight-green">Proven Blueprint</span></h1>
           </div>
-          <h1>Unlock Your Natural Height Potential With a <span class="highlight-green">Proven Blueprint</span></h1>
-          
-          <p class="lede">A step-by-step digital guide designed around proven scientific principles: optimized nutrition, deep sleep cycles, posture alignment, spinal decompression, daily exercise, and sustainable habits.</p>
 
-          <div class="hero-ctas hero-desktop-ctas">
+          <!-- 2. Hero Visual Showcase on Mobile / Right Column on Desktop -->
+          <div class="hero-visual">
+            <div class="visual-container">
+              <div class="visual-badge">₹199 Offer</div>
+              <div class="image-card">
+                <img src="./images/hero-height-blueprint.webp" alt="Height Blueprint Guide Showcase" width="800" height="1000" loading="eager" fetchpriority="high" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Primary & Secondary CTA Buttons -->
+          <div class="hero-ctas">
             <button onclick="redirectToSuperProfile(event)" class="btn btn-primary btn-gold" aria-label="Get Height Blueprint for ₹199">
               Get Height Blueprint – ₹199
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -602,6 +796,10 @@
             </a>
           </div>
 
+          <!-- 4. Short Description -->
+          <p class="lede">A step-by-step digital guide designed around proven scientific principles: optimized nutrition, deep sleep cycles, posture alignment, spinal decompression, daily exercise, and sustainable habits.</p>
+
+          <!-- 5. Trust Badges -->
           <div class="hero-trust">
             <div class="trust-item">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -617,20 +815,59 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- HERO VISUAL SHOWCASE USING WEBP IMAGE -->
-        <div class="hero-visual">
-          <div class="visual-container">
-            <div class="visual-badge">₹199 Offer</div>
-            <div class="image-card image-card-3" style="top:0; left:0; width:100%; transform:none; opacity:1;">
-              <img src="./images/hero-height-blueprint.webp" alt="Height Blueprint Guide Showcase" width="800" height="1000" loading="eager" fetchpriority="high" decoding="async">
+    <!-- REAL POSTURE & CONFIDENCE RESULTS SECTION (DIRECTLY AFTER HERO) -->
+    <section class="section" id="success-stories">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Social Proof</div>
+          <h2>Real Posture &amp; <span>Confidence Results</span></h2>
+          <p>See how posture realignment, spinal decompression, and daily routines transform overall presence.</p>
+        </div>
+
+        <div class="transform-gallery">
+          <div class="transform-card">
+            <img src="./images/posture-transformation-alignment.webp" alt="Spinal Posture Alignment Transformation" width="400" height="500" loading="lazy" decoding="async">
+            <div class="transform-info">
+              <h4>Spinal Alignment &amp; Core Stance</h4>
+              <p>Reclaimed full standing height potential by correcting forward head posture and pelvic tilt.</p>
             </div>
           </div>
+
+          <div class="transform-card">
+            <img src="./images/posture-transformation-shoulder-decompression.webp" alt="Shoulder and Neck Decompression Transformation" width="400" height="500" loading="lazy" decoding="async">
+            <div class="transform-info">
+              <h4>Shoulder &amp; Neck Decompression</h4>
+              <p>Eliminated rounded shoulders from long desk hours, standing noticeably taller and stronger.</p>
+            </div>
+          </div>
+
+          <div class="transform-card">
+            <img src="./images/posture-transformation-flexibility.webp" alt="Daily Stretching and Flexibility Improvement" width="400" height="500" loading="lazy" decoding="async">
+            <div class="transform-info">
+              <h4>Daily Stretching &amp; Flexibility</h4>
+              <p>Improved overall spinal flexibility, posture alignment, and natural confidence in 6 weeks.</p>
+            </div>
+          </div>
+
+          <div class="transform-card">
+            <img src="./images/posture-transformation-habit-stance.webp" alt="Habit and Standing Stance Transformation" width="400" height="500" loading="lazy" decoding="async">
+            <div class="transform-info">
+              <h4>Habit &amp; Stance Transformation</h4>
+              <p>Visible reduction in slouching, healthier spinal curve, and enhanced everyday standing height.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="disclaimer-note">
+          * Individual results vary depending on consistency and personal biological factors.
         </div>
       </div>
     </section>
 
-    <!-- TRUST SECTION -->
+    <!-- TRUST BADGES GRID SECTION -->
     <section class="section" style="padding: 40px 0; background: var(--bg-dark); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
       <div class="container">
         <div class="trust-badges-grid">
@@ -790,57 +1027,8 @@
       </div>
     </section>
 
-    <!-- SUCCESS STORIES SECTION USING DESCRIPTIVE WEBP IMAGES -->
-    <section class="section" id="success-stories">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Social Proof</div>
-          <h2>Real Posture &amp; <span>Confidence Results</span></h2>
-          <p>See how posture realignment, spinal decompression, and daily routines transform overall presence.</p>
-        </div>
-
-        <div class="transform-gallery">
-          <div class="transform-card">
-            <img src="./images/posture-transformation-alignment.webp" alt="Spinal Posture Alignment Transformation" width="400" height="500" loading="lazy" decoding="async">
-            <div class="transform-info">
-              <h4>Spinal Alignment &amp; Core Stance</h4>
-              <p>Reclaimed full standing height potential by correcting forward head posture and pelvic tilt.</p>
-            </div>
-          </div>
-
-          <div class="transform-card">
-            <img src="./images/posture-transformation-shoulder-decompression.webp" alt="Shoulder and Neck Decompression Transformation" width="400" height="500" loading="lazy" decoding="async">
-            <div class="transform-info">
-              <h4>Shoulder &amp; Neck Decompression</h4>
-              <p>Eliminated rounded shoulders from long desk hours, standing noticeably taller and stronger.</p>
-            </div>
-          </div>
-
-          <div class="transform-card">
-            <img src="./images/posture-transformation-flexibility.webp" alt="Daily Stretching and Flexibility Improvement" width="400" height="500" loading="lazy" decoding="async">
-            <div class="transform-info">
-              <h4>Daily Stretching &amp; Flexibility</h4>
-              <p>Improved overall spinal flexibility, posture alignment, and natural confidence in 6 weeks.</p>
-            </div>
-          </div>
-
-          <div class="transform-card">
-            <img src="./images/posture-transformation-habit-stance.webp" alt="Habit and Standing Stance Transformation" width="400" height="500" loading="lazy" decoding="async">
-            <div class="transform-info">
-              <h4>Habit &amp; Stance Transformation</h4>
-              <p>Visible reduction in slouching, healthier spinal curve, and enhanced everyday standing height.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="disclaimer-note">
-          * Individual results vary depending on consistency and personal biological factors.
-        </div>
-      </div>
-    </section>
-
     <!-- WHAT'S INCLUDED SECTION SHOWCASING DESCRIPTIVE WEBP IMAGES -->
-    <section class="section" style="background: var(--bg-dark);" id="included">
+    <section class="section" id="included">
       <div class="container">
         <div class="section-head">
           <div class="eyebrow">Inside The Guide</div>
