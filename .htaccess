@@ -12,6 +12,11 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ebook-bundle/?$ /ebook-bundle.html [L]
+
+  # Clean URL: /height-blueprint -> /height-blueprint/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^height-blueprint/?$ /height-blueprint/ [L]
 </IfModule>
 
 # --- Security headers ---

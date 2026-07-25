@@ -178,5 +178,12 @@ function startPurchaseToasts() {
 // 8. Dynamic Checkout Redirection Handler
 function goToCheckout(event) {
   if (event) event.preventDefault();
+  if (typeof fbq === "function") {
+    fbq("track", "InitiateCheckout", {
+      content_name: "Skill Library 12000+ eBook Bundle",
+      value: 149,
+      currency: "INR"
+    });
+  }
   window.location.href = "https://superprofile.bio/vp/6a4bfe807b38a6001304753d";
 }
