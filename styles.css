@@ -24,7 +24,7 @@
   --bg-card-hover: #1c2742;
   --text-primary: #f8fafc;
   --text-muted: #94a3b8;
-  --text-dark: #64748b;
+  --text-dark: #8b95a6;
   
   --accent-emerald: #10b981;
   --accent-emerald-hover: #059669;
@@ -162,6 +162,7 @@ body::before {
 
 .section-head h2 span {
   background: linear-gradient(135deg, var(--accent-emerald), var(--accent-gold));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -221,7 +222,8 @@ body::before {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--accent-emerald) 0%, var(--accent-emerald-hover) 100%);
-  color: #fff;
+  color: #07090e;
+  font-weight: 700;
   box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
 }
 
@@ -248,7 +250,8 @@ body::before {
 
 .btn-gold {
   background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-hover) 100%);
-  color: #fff;
+  color: #07090e;
+  font-weight: 700;
   box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
 }
 
@@ -363,6 +366,7 @@ body::before {
 
 .hero-content h1 span.highlight-green {
   background: linear-gradient(135deg, #10B981, #059669);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -803,9 +807,9 @@ body::before {
   top: 24px;
   right: -32px;
   background: var(--accent-emerald);
-  color: #fff;
+  color: #07090e;
   font-family: var(--font-title);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 11px;
   text-transform: uppercase;
   padding: 6px 36px;
@@ -1084,7 +1088,7 @@ body::before {
 footer {
   background-color: var(--bg-darker);
   border-top: 1px solid var(--border-color);
-  padding: 60px 0 120px; /* space for mobile bar */
+  padding: 60px 0 40px; /* base: desktop has no sticky bar */
   position: relative;
   z-index: 10;
 }
@@ -1138,6 +1142,13 @@ footer {
   font-size: 12.5px;
   color: var(--text-dark);
   text-align: center;
+}
+
+.footer-owner {
+  display: block;
+  font-size: 12px;
+  color: var(--text-dark);
+  margin-top: 6px;
 }
 
 /* ==========================================================================
@@ -1326,7 +1337,7 @@ body.no-toast .toast-container {
     gap: 20px;
   }
   
-  .stat-item:nth-child(2)::after {
+  .stat-item::after {
     display: none;
   }
 }
@@ -1570,19 +1581,8 @@ body.no-toast .toast-container {
   }
 
   /* ── Features grid ── */
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
   .feature-card {
     padding: 28px 22px;
-  }
-
-  /* ── Reviews grid ── */
-  .reviews-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
   }
 
   /* ── Pricing ── */
@@ -1599,6 +1599,11 @@ body.no-toast .toast-container {
   .sticky-bar {
     display: block;
     padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  }
+
+  /* ── Footer: add clearance above sticky bar on mobile ── */
+  footer {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
   }
 
   /* ── Toast ── */

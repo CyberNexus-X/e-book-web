@@ -41,6 +41,18 @@ function setupFAQAccordion() {
       }
     });
   });
+
+  // Recalculate heights on window resize if an item is active
+  window.addEventListener("resize", () => {
+    faqItems.forEach((item) => {
+      if (item.classList.contains("active")) {
+        const body = item.querySelector(".faq-body");
+        if (body) {
+          body.style.maxHeight = body.scrollHeight + "px";
+        }
+      }
+    });
+  });
 }
 
 // 6. Urgency Countdown Timer (Ends in 2 Hours 14 Minutes, resets on finish)
@@ -50,17 +62,25 @@ function setupCountdownTimer() {
   if (timerElements.length === 0) return;
 
   const storageKey = "skill_library_timer_end";
-  let targetTime = localStorage.getItem(storageKey);
+  let targetTime = null;
 
-  // If no timer exists, or it has expired in the past, set a new one for 2h 14m in the future
+  try {
+    targetTime = localStorage.getItem(storageKey);
+  } catch (e) {
+    targetTime = null;
+  }
+
   const now = new Date().getTime();
   const duration = (2 * 60 + 14) * 60 * 1000; // 2h 14m in milliseconds
 
-  if (!targetTime || parseInt(targetTime) < now) {
+  const parsed = parseInt(targetTime, 10);
+  if (!targetTime || isNaN(parsed) || parsed < now) {
     targetTime = now + duration;
-    localStorage.setItem(storageKey, targetTime);
+    try {
+      localStorage.setItem(storageKey, targetTime.toString());
+    } catch (e) {}
   } else {
-    targetTime = parseInt(targetTime);
+    targetTime = parsed;
   }
 
   let timerInterval = null;
@@ -72,7 +92,9 @@ function setupCountdownTimer() {
     if (diff <= 0) {
       // Reset timer if finished
       targetTime = currentTime + duration;
-      localStorage.setItem(storageKey, targetTime);
+      try {
+        localStorage.setItem(storageKey, targetTime.toString());
+      } catch (e) {}
       diff = duration;
     }
 
@@ -104,7 +126,7 @@ function setupCountdownTimer() {
   // Start immediately
   startTimer();
 
-  // Pause timer when tab is hidden, resume when visible (reduces CPU on mobile)
+  // Pause timer when tab is hidden, resume when visible
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       stopTimer();
@@ -121,6 +143,13 @@ function startPurchaseToasts() {
   const cityEl = document.getElementById("toastCity");
   
   if (!toast || !nameEl || !cityEl) return;
+
+  if (!toast.hasAttribute("role")) {
+    toast.setAttribute("role", "status");
+  }
+  if (!toast.hasAttribute("aria-live")) {
+    toast.setAttribute("aria-live", "polite");
+  }
 
   const buyers = [
     { name: "Rahul", city: "Delhi" },
@@ -140,44 +169,42 @@ function startPurchaseToasts() {
     { name: "Abhishek", city: "Patna" }
   ];
 
+  let toastHideTimer = null;
+
   const showToast = () => {
-    // Don't show toasts when tab is hidden
     if (document.hidden) return;
 
-    // Pick a random buyer
     const buyer = buyers[Math.floor(Math.random() * buyers.length)];
-    
-    // Set content
     nameEl.textContent = buyer.name;
     cityEl.textContent = buyer.city;
 
-    // Show toast
     toast.classList.add("show");
 
-    // Hide toast after 6 seconds
-    setTimeout(() => {
+    if (toastHideTimer) clearTimeout(toastHideTimer);
+    toastHideTimer = setTimeout(() => {
       toast.classList.remove("show");
     }, 6000);
   };
 
-  // Initial delay before first toast, then run periodically
-  setTimeout(showToast, 8000);
-  
-  // Show a toast every 22 to 35 seconds randomly
-  const triggerNext = () => {
+  const scheduleNext = () => {
     const delay = Math.floor(Math.random() * (35000 - 22000)) + 22000;
     setTimeout(() => {
       showToast();
-      triggerNext();
+      scheduleNext();
     }, delay);
   };
 
-  triggerNext();
+  // Initial delay before first toast, then schedule periodic toasts
+  setTimeout(() => {
+    showToast();
+    scheduleNext();
+  }, 8000);
 }
 
 // 8. Dynamic Checkout Redirection Handler
 function goToCheckout(event) {
   if (event) event.preventDefault();
+  const checkoutUrl = "https://superprofile.bio/vp/6a4bfe807b38a6001304753d";
   if (typeof fbq === "function") {
     fbq("track", "InitiateCheckout", {
       content_name: "Skill Library 12000+ eBook Bundle",
@@ -185,5 +212,7 @@ function goToCheckout(event) {
       currency: "INR"
     });
   }
-  window.location.href = "https://superprofile.bio/vp/6a4bfe807b38a6001304753d";
+  setTimeout(() => {
+    window.location.href = checkoutUrl;
+  }, 150);
 }

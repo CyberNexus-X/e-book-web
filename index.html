@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <!-- Google Tag Manager -->
   <script>
   (function(w,d,s,l,i){
@@ -15,7 +16,6 @@
   })(window,document,'script','dataLayer','GTM-5PN7H633');
   </script>
   <!-- End Google Tag Manager -->
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -29,6 +29,7 @@
   <meta name="keywords" content="Skill Library, eBook Bundle, Lifetime Access, Hindi Books, Self Help Books, Business Books, Personal Finance, Habits, Google Drive Library">
   <meta name="author" content="Skill Library">
   
+  <meta property="og:type" content="website">
   <meta property="og:title" content="Skill Library — 12,000+ eBook Bundle, ₹149 One-Time">
   <meta property="og:description" content="One-time payment. Lifetime library. 12,000+ premium eBooks in English and Hindi. Download instantly.">
   <meta property="og:url" content="https://skilllibrary.shop/">
@@ -47,7 +48,7 @@
   
   <!-- Preload critical hero visuals (LCP) -->
   <link rel="preload" as="image" href="./Hindi-Self-Help-book.webp" fetchpriority="high" media="(min-width: 769px)">
-  <link rel="preload" as="image" href="./main image.webp" fetchpriority="high" media="(max-width: 768px)">
+  <link rel="preload" as="image" href="./main%20image.webp" fetchpriority="high" media="(max-width: 768px)">
   
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -64,7 +65,11 @@
           "contactType": "Customer Support",
           "email": "support@skilllibrary.shop"
         },
-        "sameAs": ["https://instagram.com/skill_library.in"]
+        "sameAs": ["https://instagram.com/skill_library.in"],
+        "founder": {
+          "@type": "Person",
+          "name": "Tauqeer Khan"
+        }
       },
       {
         "@type": "WebSite",
@@ -282,9 +287,10 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '1686798912609091');
   fbq('track', 'PageView');
+  fbq('track', 'ViewContent', { content_name: 'Skill Library 12,000+ eBook Bundle', value: 149, currency: 'INR' });
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1686798912609091&ev=PageView&noscript=1"/>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1686798912609091&ev=PageView&noscript=1" alt=""/>
   </noscript>
   <!-- End Meta Pixel Code -->
 </head>
@@ -319,7 +325,7 @@
 
       <div class="header-cta" style="display: flex; gap: 16px; align-items: center;">
         <a href="#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;" aria-label="Unlock Library for ₹149">Unlock Library</a>
-        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMobileMenu">
           <span class="nav-hamburger-bar"></span>
           <span class="nav-hamburger-bar"></span>
           <span class="nav-hamburger-bar"></span>
@@ -358,16 +364,16 @@
           <!-- MOBILE ONLY: Main hero image shown right after heading -->
           <div class="hero-mobile-image">
           <picture>
-            <source srcset="./main image.webp" type="image/webp">
-            <img src="./main image.webp" alt="12,000+ eBooks — अमीरों की किताबें जिन्होंने जिंदगी बदल दी" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async">
+            <source srcset="./main%20image.webp" type="image/webp">
+            <img src="./main%20image.webp" alt="12,000+ eBooks — अमीरों की किताबें जिन्होंने जिंदगी बदल दी" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async">
           </picture>
           </div>
 
           <!-- MOBILE ONLY: CTA immediately after image -->
           <div class="hero-mobile-cta">
-              <button onclick="goToCheckout(event)" class="btn btn-primary btn-gold" aria-label="Unlock Skill Library lifetime access for ₹149">
+              <button onclick="goToCheckout(event)" type="button" class="btn btn-primary btn-gold" aria-label="Unlock Skill Library lifetime access for ₹149">
                Unlock Library — ₹149
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
             </button>
@@ -390,9 +396,9 @@
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
             </a>
-            <a href="#search-demo" class="btn btn-secondary">
+            <a href="#categories" class="btn btn-secondary">
               Search Titles
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
               </svg>
             </a>
@@ -883,7 +889,7 @@
             <div class="review-user">
               <div class="review-avatar">AK</div>
               <div class="review-user-info">
-                <h4>Arjun Kumar</h4>
+                <h3>Arjun Kumar</h3>
                 <span>Verified Buyer • Bangalore</span>
               </div>
             </div>
@@ -898,7 +904,7 @@
             <div class="review-user">
               <div class="review-avatar">SM</div>
               <div class="review-user-info">
-                <h4>Sneha Mehta</h4>
+                <h3>Sneha Mehta</h3>
                 <span>Verified Buyer • Pune</span>
               </div>
             </div>
@@ -913,7 +919,7 @@
             <div class="review-user">
               <div class="review-avatar">VP</div>
               <div class="review-user-info">
-                <h4>Vikram Patel</h4>
+                <h3>Vikram Patel</h3>
                 <span>Verified Buyer • Ahmedabad</span>
               </div>
             </div>
@@ -1029,6 +1035,7 @@
       
       <div class="footer-copyright">
         © 2026 Skill Library. All rights reserved. <a href="mailto:support@skilllibrary.shop">support@skilllibrary.shop</a> · Managed by CyberNexus-X.
+        <span class="footer-owner">Owned &amp; Operated by Tauqeer Khan</span>
       </div>
     </div>
   </footer>
@@ -1040,13 +1047,13 @@
         <span class="label">Lifetime Access</span>
         <span class="value">₹149</span>
       </div>
-        <button onclick="goToCheckout(event)" class="btn btn-primary btn-gold" aria-label="Get lifetime access to Skill Library for ₹149">Get Access</button>
+        <button onclick="goToCheckout(event)" type="button" class="btn btn-primary btn-gold" aria-label="Get lifetime access to Skill Library for ₹149">Get Access</button>
     </div>
   </div>
 
   <!-- Simulated live purchase toast element -->
   <div class="toast-container">
-    <div class="toast" id="purchaseToast">
+    <div class="toast" id="purchaseToast" role="status" aria-live="polite">
       <div class="toast-icon">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="20 6 9 17 4 12"/>

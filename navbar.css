@@ -1,9 +1,12 @@
 /* Shared Navbar Styles */
+body.nav-open {
+  overflow: hidden;
+}
+
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
 }
 .nav-desktop-links {
   display: flex;
@@ -65,7 +68,7 @@
 }
 .nav-mobile-menu {
   position: fixed;
-  top: 0; right: -300px;
+  top: 0; right: -280px;
   width: 280px; height: 100vh;
   background: var(--bg-darker);
   border-left: 1px solid var(--border-color);
@@ -76,9 +79,10 @@
   flex-direction: column;
   gap: 16px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .nav-mobile-menu.active {
-  transform: translateX(-300px);
+  transform: translateX(-280px);
 }
 .nav-mobile-link {
   display: flex; align-items: center; gap: 12px;

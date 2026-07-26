@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <!-- Google Tag Manager -->
   <script>
   (function(w,d,s,l,i){
@@ -15,7 +16,6 @@
   })(window,document,'script','dataLayer','GTM-5PN7H633');
   </script>
   <!-- End Google Tag Manager -->
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -90,7 +90,11 @@
             "contactType": "Customer Support",
             "email": "support@skilllibrary.shop"
           },
-          "sameAs": ["https://instagram.com/skill_library.in"]
+          "sameAs": ["https://instagram.com/skill_library.in"],
+          "founder": {
+            "@type": "Person",
+            "name": "Tauqeer Khan"
+          }
         }
       },
       {
@@ -118,7 +122,7 @@
   fbq('track', 'PageView');
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1686798912609091&ev=PageView&noscript=1"/>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1686798912609091&ev=PageView&noscript=1" alt=""/>
   </noscript>
   <!-- End Meta Pixel Code -->
 </head>
@@ -153,7 +157,7 @@
 
       <div class="header-cta" style="display: flex; gap: 16px; align-items: center;">
         <a href="./index.html#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get the Library</a>
-        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMobileMenu">
           <span class="nav-hamburger-bar"></span>
           <span class="nav-hamburger-bar"></span>
           <span class="nav-hamburger-bar"></span>
@@ -227,7 +231,7 @@
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               Instagram
             </span>
-            <span class="value"><a href="https://instagram.com/skill_library.in" target="_blank" rel="noopener">@skill_library.in</a></span>
+            <span class="value"><a href="https://instagram.com/skill_library.in" target="_blank" rel="noopener noreferrer">@skill_library.in</a></span>
           </div>
 
           <div class="contact-card">
@@ -235,7 +239,7 @@
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               Telegram
             </span>
-            <span class="value"><a href="https://t.me/Skill_library" target="_blank" rel="noopener">@Skill_library</a></span>
+            <span class="value"><a href="https://t.me/Skill_library" target="_blank" rel="noopener noreferrer">@Skill_library</a></span>
           </div>
 
           <div class="contact-card">
@@ -252,6 +256,31 @@
               Response Time
             </span>
             <span class="value">Within 24 hours<span class="sub">Usually much sooner</span></span>
+          </div>
+        </div>
+
+        <h2 id="business-info">Business Information</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <span class="label">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              Business Name
+            </span>
+            <span class="value">Skill Library</span>
+          </div>
+          <div class="contact-card">
+            <span class="label">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Legal Owner
+            </span>
+            <span class="value">Tauqeer Khan</span>
+          </div>
+          <div class="contact-card">
+            <span class="label">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+              Support Email
+            </span>
+            <span class="value"><a href="mailto:support@skilllibrary.shop">support@skilllibrary.shop</a></span>
           </div>
         </div>
 
@@ -315,7 +344,7 @@
       </article>
 
       <div class="legal-back">
-        <a href="index.html" class="btn btn-secondary">← Back to Skill Library</a>
+        <a href="./index.html" class="btn btn-secondary">← Back to Skill Library</a>
       </div>
 
     </div>
@@ -346,6 +375,7 @@
 
       <div class="footer-copyright">
         © 2026 Skill Library. All rights reserved. <a href="mailto:support@skilllibrary.shop">support@skilllibrary.shop</a> · Managed by CyberNexus-X.
+        <span class="footer-owner">Owned &amp; Operated by Tauqeer Khan</span>
       </div>
     </div>
   </footer>

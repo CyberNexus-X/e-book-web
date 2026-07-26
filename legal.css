@@ -459,6 +459,13 @@
   box-shadow: 0 0 0 3px rgba(16,185,129,0.12);
 }
 
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible {
+  outline: 2px solid var(--accent-emerald);
+  outline-offset: 2px;
+}
+
 .form-group select option {
   background: var(--bg-card);
 }
@@ -594,6 +601,12 @@
 }
 
 /* ── Responsive ── */
+@media (max-width: 992px) {
+  .info-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .page-hero {
     padding: 52px 0 40px;
