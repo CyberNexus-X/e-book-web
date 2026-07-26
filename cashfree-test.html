@@ -97,7 +97,7 @@
       try {
         // We will call our secure backend endpoint to create the order
         // This endpoint MUST be implemented on your server (Node, PHP, Vercel, etc.)
-        const response = await fetch('/api/create-cashfree-order.php', {
+        const response = await fetch('/api/create-cashfree-order', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -149,7 +149,7 @@
       btn.textContent = 'Verifying Payment...';
       
       try {
-        const response = await fetch('/api/verify-cashfree-order.php?order_id=' + orderId);
+        const response = await fetch('/api/verify-cashfree-order?order_id=' + orderId);
         const data = await response.json();
         
         console.log("Payment Verification Log:", data);
