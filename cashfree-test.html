@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <title>Cashfree Payment Test</title>
+  <meta name="description" content="This page is only for testing the Cashfree payment gateway.">
+  
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./navbar.css">
+  <link rel="stylesheet" href="./legal.css">
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+  
+  <style>
+    .test-container {
+      max-width: 500px;
+      margin: 120px auto 80px;
+      background: var(--surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .test-container h1 {
+      font-size: 28px;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+    .test-container p {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+    .amount-display {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 30px;
+    }
+    .pay-btn {
+      width: 100%;
+      background: var(--primary);
+      color: var(--bg-color);
+      border: none;
+      padding: 16px 24px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .pay-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+    .pay-btn:disabled {
+      background: var(--text-muted);
+      cursor: not-allowed;
+      transform: none;
+    }
+    #error-message {
+      color: #ff4d4d;
+      margin-top: 20px;
+      font-weight: 500;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header placeholder, could include navbar if needed -->
+  
+  <main class="test-container">
+    <h1>Cashfree Payment Test</h1>
+    <p>This page is only for testing the Cashfree payment gateway.</p>
+    
+    <div class="amount-display">₹2.00</div>
+    
+    <button id="pay-button" class="pay-btn">Pay ₹2</button>
+    <div id="error-message"></div>
+  </main>
+
+  <script>
+    const cashfree = Cashfree({
+      mode: "production" // standard configuration for Cashfree
+    });
+
+    document.getElementById('pay-button').addEventListener('click', async (e) => {
+      const btn = e.target;
+      const errorMsg = document.getElementById('error-message');
+      
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+      errorMsg.style.display = 'none';
+
+      try {
+        // We will call our secure backend endpoint to create the order
+        // This endpoint MUST be implemented on your server (Node, PHP, Vercel, etc.)
+        const response = await fetch('/api/create-cashfree-order.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ amount: 2.00 })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to create order on backend');
+        }
+
+        const data = await response.json();
+        
+        if (data.payment_session_id) {
+          // Redirect to checkout
+          let checkoutOptions = {
+            paymentSessionId: data.payment_session_id,
+            redirectTarget: "_self", // Redirects to Cashfree page, then returns to returnUrl
+          };
+          
+          cashfree.checkout(checkoutOptions);
+        } else {
+          throw new Error('Invalid response from backend');
+        }
+
+      } catch (err) {
+        console.error("Payment setup error:", err);
+        errorMsg.textContent = 'Could not initiate payment. Please try again.';
+        errorMsg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Pay ₹2';
+      }
+    });
+
+    // Check if we just returned from a payment
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderId = urlParams.get('order_id');
+    
+    if (orderId) {
+      // Payment might be complete, check status via our backend
+      verifyPaymentStatus(orderId);
+    }
+
+    async function verifyPaymentStatus(orderId) {
+      const btn = document.getElementById('pay-button');
+      const errorMsg = document.getElementById('error-message');
+      
+      btn.disabled = true;
+      btn.textContent = 'Verifying Payment...';
+      
+      try {
+        const response = await fetch('/api/verify-cashfree-order.php?order_id=' + orderId);
+        const data = await response.json();
+        
+        console.log("Payment Verification Log:", data);
+        
+        if (data.order_status === 'PAID') {
+          // Success redirect
+          window.location.href = 'https://skilllibrary.shop/vault-k3m9p4.html';
+        } else {
+          throw new Error('Payment was not successful or was cancelled.');
+        }
+      } catch (err) {
+        console.error("Verification error:", err);
+        errorMsg.textContent = err.message || 'Payment failed or cancelled.';
+        errorMsg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Pay ₹2';
+        
+        // Remove order_id from URL so it doesn't loop
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }
+  </script>
+</body>
+</html>
