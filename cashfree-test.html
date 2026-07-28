@@ -226,6 +226,38 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .form-label {
+      display: block;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .form-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: var(--font-body);
+      transition: all 0.2s ease;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent-emerald);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .form-input::placeholder {
+      color: #475569;
+    }
+
     @media (max-width: 480px) {
       .payment-card {
         padding: 32px 24px;
@@ -251,6 +283,21 @@
     
     <p class="note">This is a secure test payment to verify the Cashfree integration.</p>
 
+    <form id="checkout-form" class="checkout-form" novalidate onsubmit="return false;">
+      <div class="form-group">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="mobile" class="form-label">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" class="form-input" placeholder="Enter your 10-digit mobile number" required pattern="[0-9]{10}">
+      </div>
+    </form>
+
     <div class="trust-badges">
       <div class="trust-item">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -268,7 +315,7 @@
 
     <button id="pay-btn" class="pay-btn" aria-live="polite">
       <span class="spinner" id="spinner"></span>
-      <span id="btn-text">Pay ₹2</span>
+      <span id="btn-text">Continue to Payment</span>
     </button>
 
     <div id="error-container" class="error-container">
@@ -287,6 +334,12 @@
       const errorText = document.getElementById('error-text');
       const tryAgainBtn = document.getElementById('try-again-btn');
       
+      const form = document.getElementById('checkout-form');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const mobileInput = document.getElementById('mobile');
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxylCE-zdZ0mlLH8g1F-H6Nb9fMNABOXoAqN26OFg570DtNsX41YRrSiI_kle_xgtXw/exec';
+      
       let cashfree;
 
       const initCashfree = () => {
@@ -298,7 +351,13 @@
       const setProcessingState = (isProcessing) => {
         payBtn.disabled = isProcessing;
         spinner.style.display = isProcessing ? 'block' : 'none';
-        btnText.textContent = isProcessing ? 'Processing Payment...' : 'Pay ₹2';
+        btnText.textContent = isProcessing ? 'Processing...' : 'Continue to Payment';
+        
+        // Also disable form inputs while processing
+        nameInput.disabled = isProcessing;
+        emailInput.disabled = isProcessing;
+        mobileInput.disabled = isProcessing;
+        
         if (isProcessing) errorContainer.style.display = 'none';
       };
 
@@ -308,15 +367,69 @@
         setProcessingState(false);
       };
 
-      const handlePayment = async () => {
+      const validateForm = () => {
+        if (!nameInput.value.trim()) throw new Error('Please enter your full name.');
+        if (!emailInput.value.trim() || !/^\S+@\S+\.\S+$/.test(emailInput.value.trim())) throw new Error('Please enter a valid email address.');
+        if (!mobileInput.value.trim() || !/^[0-9]{10}$/.test(mobileInput.value.trim())) throw new Error('Please enter a valid 10-digit mobile number.');
+      };
+
+      const saveLeadToGoogleSheet = async () => {
+        const formData = new URLSearchParams();
+        formData.append('name', nameInput.value.trim());
+        formData.append('email', emailInput.value.trim());
+        formData.append('mobile', mobileInput.value.trim());
+        formData.append('source', 'cashfree-test.html');
+        formData.append('product', 'Cashfree Test Payment');
+        formData.append('paymentStatus', 'Pending');
+
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          body: formData
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to save details. Please try again.');
+        }
+        
+        try {
+          const result = await response.json();
+          if (result.result === 'error') {
+             throw new Error(result.error || 'Failed to save details.');
+          }
+        } catch (e) {
+          // If response isn't valid JSON or we hit a CORS issue but status is ok, we proceed anyway.
+        }
+      };
+
+      const handlePayment = async (e) => {
+        if (e) e.preventDefault();
+        
+        try {
+          validateForm();
+        } catch (validationError) {
+          showError(validationError.message);
+          return;
+        }
+
+        setProcessingState(true);
+        btnText.textContent = 'Saving details...';
+
+        try {
+          await saveLeadToGoogleSheet();
+        } catch (saveError) {
+          console.error("Lead saving error:", saveError);
+          showError("Could not save your details. Please try again.");
+          return;
+        }
+
+        btnText.textContent = 'Initializing Payment...';
+        
         initCashfree();
         
         if (!cashfree) {
           showError("Payment gateway failed to load. Please check your connection.");
           return;
         }
-
-        setProcessingState(true);
 
         try {
           const response = await fetch('/api/create-cashfree-order', {
