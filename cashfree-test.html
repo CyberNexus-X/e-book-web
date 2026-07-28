@@ -374,39 +374,47 @@
       };
 
       const saveLeadToGoogleSheet = async () => {
-        console.log("Sending lead...");
+        console.log("Starting Google Sheet request (via Vercel Backend)");
         
-        const formData = new URLSearchParams();
-        formData.append('name', nameInput.value.trim());
-        formData.append('email', emailInput.value.trim());
-        formData.append('mobile', mobileInput.value.trim());
-        formData.append('source', 'cashfree-test.html');
-        formData.append('product', 'Cashfree Test Payment');
-        formData.append('paymentStatus', 'Pending');
+        const payload = {
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          mobile: mobileInput.value.trim(),
+          source: 'cashfree-test.html',
+          product: 'Cashfree Test Payment',
+          paymentStatus: 'Pending'
+        };
 
-        console.log("Request URL:", GOOGLE_SCRIPT_URL);
-        console.log("Request body:", formData.toString());
+        console.log("Payload:", payload);
 
         try {
-          const response = await fetch(GOOGLE_SCRIPT_URL, {
+          const response = await fetch('/api/save-lead', {
             method: 'POST',
-            body: formData
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
           });
           
-          console.log("Response status:", response.status);
+          console.log("Response:", response);
+          console.log("Response Status:", response.status);
           
-          if (!response.ok) {
-            console.error("HTTP error:", response.status, response.statusText);
-            throw new Error(`Server returned ${response.status} ${response.statusText}`);
-          }
+          // Print headers for debugging as requested
+          const headersObj = {};
+          response.headers.forEach((val, key) => { headersObj[key] = val; });
+          console.log("Response Headers:", headersObj);
           
           const resultText = await response.text();
           console.log("Response Text:", resultText);
           
+          if (!response.ok) {
+            console.error("HTTP error:", response.status, resultText);
+            throw new Error(`Server returned ${response.status}: ${resultText}`);
+          }
+          
           try {
             const result = JSON.parse(resultText);
-            console.log("Response JSON:", result);
-            if (result.result === 'error') {
+            if (result.result === 'error' || result.error) {
                throw new Error(result.error || 'Failed to save details.');
             }
           } catch (jsonParseError) {
