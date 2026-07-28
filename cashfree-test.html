@@ -3,174 +3,382 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Cashfree Payment Test | Skill Library</title>
+  <meta name="description" content="Secure test payment for Cashfree integration.">
+  
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-  <title>Cashfree Payment Test</title>
-  <meta name="description" content="This page is only for testing the Cashfree payment gateway.">
   
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="./navbar.css">
-  <link rel="stylesheet" href="./legal.css">
-  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Preload Cashfree SDK -->
+  <link rel="preload" href="https://sdk.cashfree.com/js/v3/cashfree.js" as="script">
   
   <style>
-    .test-container {
-      max-width: 500px;
-      margin: 120px auto 80px;
-      background: var(--surface);
+    :root {
+      --bg-darker: #07090e;
+      --bg-card: #131b2e;
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-emerald: #10b981;
+      --accent-emerald-hover: #059669;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-darker);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+    }
+    
+    /* Subtle background pattern */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .payment-card {
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 40px 30px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 440px;
+      padding: 48px 32px;
       text-align: center;
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
     }
-    .test-container h1 {
-      font-size: 28px;
-      color: var(--text-main);
-      margin-bottom: 10px;
+    
+    /* Top glow effect */
+    .payment-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-emerald), transparent);
+      box-shadow: 0 0 20px var(--accent-emerald);
     }
-    .test-container p {
+
+    .brand-logo {
+      font-family: var(--font-title);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+    }
+    .brand-logo span:first-child { color: var(--accent-emerald); }
+    .brand-logo span:last-child { color: #f59e0b; }
+
+    .amount {
+      font-family: var(--font-title);
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--accent-emerald);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .note {
       color: var(--text-muted);
-      margin-bottom: 30px;
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 32px;
+      padding: 0 10px;
     }
-    .amount-display {
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 30px;
+
+    .trust-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
     }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .trust-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--accent-emerald);
+    }
+
     .pay-btn {
       width: 100%;
-      background: var(--primary);
-      color: var(--bg-color);
+      background: linear-gradient(135deg, var(--accent-emerald) 0%, var(--accent-emerald-hover) 100%);
+      color: #fff;
       border: none;
-      padding: 16px 24px;
+      padding: 18px 24px;
       font-size: 18px;
-      font-weight: 600;
-      border-radius: 8px;
+      font-family: var(--font-title);
+      font-weight: 700;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
     }
-    .pay-btn:hover {
-      background: var(--primary-hover);
+
+    .pay-btn:hover:not(:disabled) {
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
     }
+    
+    .pay-btn:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
     .pay-btn:disabled {
-      background: var(--text-muted);
+      background: #334155;
+      color: #94a3b8;
       cursor: not-allowed;
-      transform: none;
+      box-shadow: none;
     }
-    #error-message {
-      color: #ff4d4d;
-      margin-top: 20px;
-      font-weight: 500;
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
       display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .error-container {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 12px;
+      display: none;
+      animation: slideUp 0.3s ease;
+    }
+
+    .error-text {
+      color: #fca5a5;
+      font-size: 14px;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .try-again-btn {
+      background: transparent;
+      border: 1px solid #ef4444;
+      color: #ef4444;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .try-again-btn:hover {
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .payment-card {
+        padding: 32px 24px;
+      }
+      .amount {
+        font-size: 48px;
+      }
+      .trust-badges {
+        flex-direction: column;
+        gap: 12px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header placeholder, could include navbar if needed -->
-  
-  <main class="test-container">
-    <h1>Cashfree Payment Test</h1>
-    <p>This page is only for testing the Cashfree payment gateway.</p>
+
+  <main class="payment-card">
+    <div class="brand-logo">
+      <span>Skill</span><span>Library</span>
+    </div>
+
+    <div class="amount">₹2.00</div>
     
-    <div class="amount-display">₹2.00</div>
-    
-    <button id="pay-button" class="pay-btn">Pay ₹2</button>
-    <div id="error-message"></div>
+    <p class="note">This is a secure test payment to verify the Cashfree integration.</p>
+
+    <div class="trust-badges">
+      <div class="trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+        </svg>
+        Secure Payment by Cashfree
+      </div>
+      <div class="trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+        </svg>
+        SSL Secured
+      </div>
+    </div>
+
+    <button id="pay-btn" class="pay-btn" aria-live="polite">
+      <span class="spinner" id="spinner"></span>
+      <span id="btn-text">Pay ₹2</span>
+    </button>
+
+    <div id="error-container" class="error-container">
+      <div id="error-text" class="error-text"></div>
+      <button id="try-again-btn" class="try-again-btn">Try Again</button>
+    </div>
   </main>
 
-  <script>
-    const cashfree = Cashfree({
-      mode: "production" // standard configuration for Cashfree
-    });
-
-    document.getElementById('pay-button').addEventListener('click', async (e) => {
-      const btn = e.target;
-      const errorMsg = document.getElementById('error-message');
+  <script defer src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const payBtn = document.getElementById('pay-btn');
+      const btnText = document.getElementById('btn-text');
+      const spinner = document.getElementById('spinner');
+      const errorContainer = document.getElementById('error-container');
+      const errorText = document.getElementById('error-text');
+      const tryAgainBtn = document.getElementById('try-again-btn');
       
-      btn.disabled = true;
-      btn.textContent = 'Processing...';
-      errorMsg.style.display = 'none';
+      let cashfree;
 
-      try {
-        // We will call our secure backend endpoint to create the order
-        // This endpoint MUST be implemented on your server (Node, PHP, Vercel, etc.)
-        const response = await fetch('/api/create-cashfree-order', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ amount: 2.00 })
-        });
+      const initCashfree = () => {
+        if (typeof Cashfree !== 'undefined' && !cashfree) {
+          cashfree = Cashfree({ mode: "production" });
+        }
+      };
 
-        if (!response.ok) {
-          throw new Error('Failed to create order on backend');
+      const setProcessingState = (isProcessing) => {
+        payBtn.disabled = isProcessing;
+        spinner.style.display = isProcessing ? 'block' : 'none';
+        btnText.textContent = isProcessing ? 'Processing Payment...' : 'Pay ₹2';
+        if (isProcessing) errorContainer.style.display = 'none';
+      };
+
+      const showError = (message) => {
+        errorText.textContent = message;
+        errorContainer.style.display = 'block';
+        setProcessingState(false);
+      };
+
+      const handlePayment = async () => {
+        initCashfree();
+        
+        if (!cashfree) {
+          showError("Payment gateway failed to load. Please check your connection.");
+          return;
         }
 
-        const data = await response.json();
-        
-        if (data.payment_session_id) {
-          // Redirect to checkout
-          let checkoutOptions = {
+        setProcessingState(true);
+
+        try {
+          const response = await fetch('/api/create-cashfree-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ amount: 2.00 })
+          });
+
+          const data = await response.json();
+
+          if (!response.ok || !data.payment_session_id) {
+            throw new Error(data.error || 'Failed to initialize payment.');
+          }
+
+          const checkoutOptions = {
             paymentSessionId: data.payment_session_id,
-            redirectTarget: "_self", // Redirects to Cashfree page, then returns to returnUrl
+            redirectTarget: "_self"
           };
           
           cashfree.checkout(checkoutOptions);
-        } else {
-          throw new Error('Invalid response from backend');
-        }
 
-      } catch (err) {
-        console.error("Payment setup error:", err);
-        errorMsg.textContent = 'Could not initiate payment. Please try again.';
-        errorMsg.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Pay ₹2';
+        } catch (err) {
+          console.error("Payment initiation error:", err);
+          showError(err.message || 'Could not initiate payment. Please try again.');
+        }
+      };
+
+      const verifyPayment = async (orderId) => {
+        setProcessingState(true);
+        btnText.textContent = 'Verifying...';
+
+        try {
+          const response = await fetch(`/api/verify-cashfree-order?order_id=${encodeURIComponent(orderId)}`);
+          const data = await response.json();
+          
+          if (data.order_status === 'PAID') {
+            window.location.href = 'https://skilllibrary.shop/vault-k3m9p4.html';
+          } else {
+            throw new Error('Payment was not successful or was cancelled.');
+          }
+        } catch (err) {
+          console.error("Verification error:", err);
+          showError(err.message || 'Payment verification failed.');
+          // Clean URL so refresh doesn't trigger verification again
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      };
+
+      // Event Listeners
+      payBtn.addEventListener('click', handlePayment);
+      tryAgainBtn.addEventListener('click', () => {
+        errorContainer.style.display = 'none';
+        handlePayment();
+      });
+
+      // Check if returning from payment
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderId = urlParams.get('order_id');
+      if (orderId) {
+        verifyPayment(orderId);
       }
     });
-
-    // Check if we just returned from a payment
-    const urlParams = new URLSearchParams(window.location.search);
-    const orderId = urlParams.get('order_id');
-    
-    if (orderId) {
-      // Payment might be complete, check status via our backend
-      verifyPaymentStatus(orderId);
-    }
-
-    async function verifyPaymentStatus(orderId) {
-      const btn = document.getElementById('pay-button');
-      const errorMsg = document.getElementById('error-message');
-      
-      btn.disabled = true;
-      btn.textContent = 'Verifying Payment...';
-      
-      try {
-        const response = await fetch('/api/verify-cashfree-order?order_id=' + orderId);
-        const data = await response.json();
-        
-        console.log("Payment Verification Log:", data);
-        
-        if (data.order_status === 'PAID') {
-          // Success redirect
-          window.location.href = 'https://skilllibrary.shop/vault-k3m9p4.html';
-        } else {
-          throw new Error('Payment was not successful or was cancelled.');
-        }
-      } catch (err) {
-        console.error("Verification error:", err);
-        errorMsg.textContent = err.message || 'Payment failed or cancelled.';
-        errorMsg.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Pay ₹2';
-        
-        // Remove order_id from URL so it doesn't loop
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }
-    }
   </script>
 </body>
 </html>
