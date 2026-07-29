@@ -19,9 +19,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, error: 'Missing customer details (name, email, mobile).' });
     }
 
-    const orderAmount = parseFloat(amount) || 2.00;
+    const orderAmount = parseFloat(amount) || 1.00;
     const orderId     = 'order_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
-    const returnUrl   = `https://${req.headers.host}/cashfree-test.html?order_id={order_id}`;
+    const returnPath  = req.body.returnPath || 'cashfree-test.html';
+    const returnUrl   = `https://${req.headers.host}/${returnPath}?order_id={order_id}`;
 
     const payload = {
       order_amount:   orderAmount,
