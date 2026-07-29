@@ -327,108 +327,85 @@
   <script defer src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
   <script defer>
     document.addEventListener("DOMContentLoaded", () => {
-      const payBtn = document.getElementById('pay-btn');
-      const btnText = document.getElementById('btn-text');
-      const spinner = document.getElementById('spinner');
+      // ── DOM References ────────────────────────────────────────────────────────
+      const payBtn         = document.getElementById('pay-btn');
+      const btnText        = document.getElementById('btn-text');
+      const spinner        = document.getElementById('spinner');
       const errorContainer = document.getElementById('error-container');
-      const errorText = document.getElementById('error-text');
-      const tryAgainBtn = document.getElementById('try-again-btn');
-      
-      const form = document.getElementById('checkout-form');
-      const nameInput = document.getElementById('name');
-      const emailInput = document.getElementById('email');
-      const mobileInput = document.getElementById('mobile');
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxylCE-zdZ0mlLH8g1F-H6Nb9fMNABOXoAqN26OFg570DtNsX41YRrSiI_kle_xgtXw/exec';
-      
+      const errorText      = document.getElementById('error-text');
+      const tryAgainBtn    = document.getElementById('try-again-btn');
+      const nameInput      = document.getElementById('name');
+      const emailInput     = document.getElementById('email');
+      const mobileInput    = document.getElementById('mobile');
+
       let cashfree;
 
+      // ── Cashfree SDK Init ─────────────────────────────────────────────────────
       const initCashfree = () => {
         if (typeof Cashfree !== 'undefined' && !cashfree) {
           cashfree = Cashfree({ mode: "production" });
         }
       };
 
-      const setProcessingState = (isProcessing) => {
-        payBtn.disabled = isProcessing;
-        spinner.style.display = isProcessing ? 'block' : 'none';
-        btnText.textContent = isProcessing ? 'Processing...' : 'Continue to Payment';
-        
-        // Also disable form inputs while processing
-        nameInput.disabled = isProcessing;
-        emailInput.disabled = isProcessing;
-        mobileInput.disabled = isProcessing;
-        
+      // ── UI State ──────────────────────────────────────────────────────────────
+      const setProcessingState = (isProcessing, label) => {
+        payBtn.disabled              = isProcessing;
+        spinner.style.display        = isProcessing ? 'block' : 'none';
+        btnText.textContent          = label || (isProcessing ? 'Processing...' : 'Continue to Payment');
+        nameInput.disabled           = isProcessing;
+        emailInput.disabled          = isProcessing;
+        mobileInput.disabled         = isProcessing;
         if (isProcessing) errorContainer.style.display = 'none';
       };
 
       const showError = (message) => {
-        errorText.textContent = message;
+        console.error('[Frontend] Error shown to user:', message);
+        errorText.textContent        = message;
         errorContainer.style.display = 'block';
-        setProcessingState(false);
+        setProcessingState(false, 'Continue to Payment');
       };
 
+      // ── Validation ────────────────────────────────────────────────────────────
       const validateForm = () => {
-        if (!nameInput.value.trim()) throw new Error('Please enter your full name.');
-        if (!emailInput.value.trim() || !/^\S+@\S+\.\S+$/.test(emailInput.value.trim())) throw new Error('Please enter a valid email address.');
-        if (!mobileInput.value.trim() || !/^[0-9]{10}$/.test(mobileInput.value.trim())) throw new Error('Please enter a valid 10-digit mobile number.');
+        if (!nameInput.value.trim())
+          throw new Error('Please enter your full name.');
+        if (!emailInput.value.trim() || !/^\S+@\S+\.\S+$/.test(emailInput.value.trim()))
+          throw new Error('Please enter a valid email address.');
+        if (!mobileInput.value.trim() || !/^[0-9]{10}$/.test(mobileInput.value.trim()))
+          throw new Error('Please enter a valid 10-digit mobile number.');
       };
 
-      const saveLeadToGoogleSheet = async () => {
-        console.log("Starting Google Sheet request (via Vercel Backend)");
-        
+      // ── Create Cashfree Order ─────────────────────────────────────────
+      const createOrder = async () => {
         const payload = {
-          name: nameInput.value.trim(),
-          email: emailInput.value.trim(),
-          mobile: mobileInput.value.trim(),
-          source: 'cashfree-test.html',
-          product: 'Cashfree Test Payment',
-          paymentStatus: 'Pending'
+          amount: 2.00,
+          name:   nameInput.value.trim(),
+          email:  emailInput.value.trim(),
+          mobile: mobileInput.value.trim()
         };
+        console.log("Submitting customer", payload);
+        
+        const response = await fetch('/api/create-cashfree-order', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload)
+        });
 
-        console.log("Payload:", payload);
+        const data = await response.json();
 
-        try {
-          const response = await fetch('/api/save-lead', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-          });
-          
-          console.log("Response:", response);
-          console.log("Response Status:", response.status);
-          
-          // Print headers for debugging as requested
-          const headersObj = {};
-          response.headers.forEach((val, key) => { headersObj[key] = val; });
-          console.log("Response Headers:", headersObj);
-          
-          const resultText = await response.text();
-          console.log("Response Text:", resultText);
-          
-          if (!response.ok) {
-            console.error("HTTP error:", response.status, resultText);
-            throw new Error(`Server returned ${response.status}: ${resultText}`);
-          }
-          
-          try {
-            const result = JSON.parse(resultText);
-            if (result.result === 'error' || result.error) {
-               throw new Error(result.error || 'Failed to save details.');
-            }
-          } catch (jsonParseError) {
-             console.warn("Could not parse response as JSON, but request succeeded.", jsonParseError);
-          }
-        } catch (fetchError) {
-          console.error("Fetch error while saving lead:", fetchError);
-          throw fetchError;
+        if (!response.ok || !data.payment_session_id) {
+          throw new Error(data.error || 'Failed to initialize payment. Please try again.');
         }
+
+        console.log('[Frontend] Order Created');
+        return data;
       };
 
+      // ── Main Payment Handler ──────────────────────────────────────────────────
       const handlePayment = async (e) => {
         if (e) e.preventDefault();
-        
+
+        // Validate form
         try {
           validateForm();
         } catch (validationError) {
@@ -436,83 +413,59 @@
           return;
         }
 
-        setProcessingState(true);
-        btnText.textContent = 'Saving details...';
-
-        try {
-          await saveLeadToGoogleSheet();
-        } catch (saveError) {
-          console.error("Lead saving error:", saveError);
-          showError("Could not save your details. Please try again.");
-          return;
-        }
-
-        btnText.textContent = 'Initializing Payment...';
-        
+        // ── Init Cashfree SDK ─────────────────────────────────────────
+        setProcessingState(true, 'Initializing payment...');
         initCashfree();
-        
         if (!cashfree) {
-          showError("Payment gateway failed to load. Please check your connection.");
+          showError('Payment gateway failed to load. Please refresh and try again.');
           return;
         }
 
+        // ── Create Cashfree Order (with real customer data) ───────────
+        setProcessingState(true, 'Opening checkout...');
         try {
-          const response = await fetch('/api/create-cashfree-order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount: 2.00 })
+          const orderData = await createOrder();
+          console.log('[Frontend] Redirecting to Cashfree');
+          cashfree.checkout({
+            paymentSessionId: orderData.payment_session_id,
+            redirectTarget:   '_self'
           });
-
-          const data = await response.json();
-
-          if (!response.ok || !data.payment_session_id) {
-            throw new Error(data.error || 'Failed to initialize payment.');
-          }
-
-          const checkoutOptions = {
-            paymentSessionId: data.payment_session_id,
-            redirectTarget: "_self"
-          };
-          
-          cashfree.checkout(checkoutOptions);
-
-        } catch (err) {
-          console.error("Payment initiation error:", err);
-          showError(err.message || 'Could not initiate payment. Please try again.');
+        } catch (paymentError) {
+          console.error('[Frontend] Payment Failed:', paymentError.message);
+          showError(paymentError.message || 'Could not initiate payment. Please try again.');
         }
       };
 
+      // ── Payment Verification (on return from Cashfree) ────────────────────────
       const verifyPayment = async (orderId) => {
-        setProcessingState(true);
-        btnText.textContent = 'Verifying...';
-
+        setProcessingState(true, 'Verifying payment...');
         try {
           const response = await fetch(`/api/verify-cashfree-order?order_id=${encodeURIComponent(orderId)}`);
           const data = await response.json();
-          
           if (data.order_status === 'PAID') {
+            console.log('[Frontend] Payment Success');
             window.location.href = 'https://skilllibrary.shop/vault-k3m9p4.html';
           } else {
             throw new Error('Payment was not successful or was cancelled.');
           }
         } catch (err) {
-          console.error("Verification error:", err);
+          console.error('[Frontend] Payment Failed:', err.message);
           showError(err.message || 'Payment verification failed.');
-          // Clean URL so refresh doesn't trigger verification again
+          // Remove order_id from URL so refresh doesn't re-trigger verification
           window.history.replaceState({}, document.title, window.location.pathname);
         }
       };
 
-      // Event Listeners
+      // ── Event Listeners ───────────────────────────────────────────────────────
       payBtn.addEventListener('click', handlePayment);
       tryAgainBtn.addEventListener('click', () => {
         errorContainer.style.display = 'none';
         handlePayment();
       });
 
-      // Check if returning from payment
+      // ── Check if returning from Cashfree ──────────────────────────────────────
       const urlParams = new URLSearchParams(window.location.search);
-      const orderId = urlParams.get('order_id');
+      const orderId   = urlParams.get('order_id');
       if (orderId) {
         verifyPayment(orderId);
       }

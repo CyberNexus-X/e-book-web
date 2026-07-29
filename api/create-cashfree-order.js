@@ -1,57 +1,70 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+    return res.status(405).json({ success: false, error: 'Method Not Allowed' });
   }
 
-  // Load from Vercel Environment Variables
-  const appId = process.env.CASHFREE_APP_ID;
+  const appId     = process.env.CASHFREE_APP_ID;
   const secretKey = process.env.CASHFREE_SECRET_KEY;
   const apiVersion = '2023-08-01';
 
   if (!appId || !secretKey) {
-    return res.status(500).json({ error: 'Cashfree API credentials are not configured in Vercel.' });
+    console.error('[create-cashfree-order] Missing Cashfree credentials in environment variables.');
+    return res.status(500).json({ success: false, error: 'Cashfree API credentials not configured.' });
   }
 
   try {
-    const amount = req.body?.amount || 2.00;
-    const orderId = 'order_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
-    const returnUrl = `https://${req.headers.host}/cashfree-test.html?order_id={order_id}`;
+    const { amount, name, email, mobile } = req.body || {};
+
+    if (!name || !email || !mobile) {
+      return res.status(400).json({ success: false, error: 'Missing customer details (name, email, mobile).' });
+    }
+
+    const orderAmount = parseFloat(amount) || 2.00;
+    const orderId     = 'order_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+    const returnUrl   = `https://${req.headers.host}/cashfree-test.html?order_id={order_id}`;
 
     const payload = {
-      order_amount: amount,
+      order_amount:   orderAmount,
       order_currency: 'INR',
-      order_id: orderId,
+      order_id:       orderId,
       customer_details: {
-        customer_id: 'test_customer_' + Date.now(),
-        customer_name: 'Test User',
-        customer_email: 'test@skilllibrary.shop',
-        customer_phone: '9999999999'
+        customer_id:    'cust_' + Date.now(),
+        customer_name:  name,
+        customer_email: email,
+        customer_phone: mobile
       },
       order_meta: {
         return_url: returnUrl
       }
     };
 
+    console.log('[Backend] req.body:', req.body);
+    console.log('[Backend] customer_details:', payload.customer_details);
+    console.log('[Backend] Cashfree Request:', payload);
+
     const response = await fetch('https://api.cashfree.com/pg/orders', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'x-client-id': appId,
+        'Content-Type':    'application/json',
+        'x-client-id':     appId,
         'x-client-secret': secretKey,
-        'x-api-version': apiVersion
+        'x-api-version':   apiVersion
       },
       body: JSON.stringify(payload)
     });
 
     const data = await response.json();
-    
+    console.log('[Backend] Cashfree Response:', data);
+
     if (!response.ok) {
-      return res.status(response.status).json(data);
+      console.error('[create-cashfree-order] Cashfree API error:', response.status, JSON.stringify(data));
+      return res.status(response.status).json({ success: false, error: data.message || 'Cashfree order creation failed' });
     }
-    
+
     return res.status(200).json(data);
+
   } catch (error) {
-    console.error('Error creating order:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    console.error('[create-cashfree-order] Unexpected error:', error.message);
+    return res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 }
