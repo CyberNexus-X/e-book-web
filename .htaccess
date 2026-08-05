@@ -8,34 +8,26 @@
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # Clean URLs
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ebook-bundle/?$ /ebook-bundle.html [L]
+  # Clean URLs & Redirects to new structure
+  RewriteRule ^ebook-bundle/?$ /products/ebook-bundle/ [R=301,L]
+  RewriteRule ^ebook-bundle\.html$ /products/ebook-bundle/ [R=301,L]
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^height-blueprint/?$ /height-blueprint/ [L]
+  RewriteRule ^height-blueprint/?$ /products/height-blueprint/ [R=301,L]
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^about/?$ /about.html [L]
+  RewriteRule ^about/?$ /pages/about/ [R=301,L]
+  RewriteRule ^about\.html$ /pages/about/ [R=301,L]
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^contact/?$ /contact.html [L]
+  RewriteRule ^contact/?$ /pages/contact/ [R=301,L]
+  RewriteRule ^contact\.html$ /pages/contact/ [R=301,L]
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^privacy-policy/?$ /privacy-policy.html [L]
+  RewriteRule ^privacy-policy/?$ /pages/privacy-policy/ [R=301,L]
+  RewriteRule ^privacy-policy\.html$ /pages/privacy-policy/ [R=301,L]
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^terms/?$ /terms.html [L]
+  RewriteRule ^terms/?$ /pages/terms/ [R=301,L]
+  RewriteRule ^terms\.html$ /pages/terms/ [R=301,L]
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^refund-policy/?$ /refund-policy.html [L]
+  RewriteRule ^refund-policy/?$ /pages/refund-policy/ [R=301,L]
+  RewriteRule ^refund-policy\.html$ /pages/refund-policy/ [R=301,L]
 </IfModule>
 
 # --- Security headers ---

@@ -7,45 +7,81 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://skilllibrary.shop/about.html</loc>
+    <loc>https://skilllibrary.shop/pages/about/</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://skilllibrary.shop/terms.html</loc>
+    <loc>https://skilllibrary.shop/pages/terms/</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skilllibrary.shop/refund-policy.html</loc>
+    <loc>https://skilllibrary.shop/pages/refund-policy/</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skilllibrary.shop/privacy-policy.html</loc>
+    <loc>https://skilllibrary.shop/pages/privacy-policy/</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skilllibrary.shop/contact.html</loc>
+    <loc>https://skilllibrary.shop/pages/contact/</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skilllibrary.shop/ebook-bundle.html</loc>
+    <loc>https://skilllibrary.shop/products/ebook-bundle/</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skilllibrary.shop/height-blueprint/</loc>
+    <loc>https://skilllibrary.shop/products/height-blueprint/</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://skilllibrary.shop/products/astrology/</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://skilllibrary.shop/products/astrology/about.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://skilllibrary.shop/products/astrology/contact.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://skilllibrary.shop/products/astrology/terms.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://skilllibrary.shop/products/astrology/refund-policy.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://skilllibrary.shop/products/astrology/privacy-policy.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

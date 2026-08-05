@@ -1091,6 +1091,7 @@ footer {
   padding: 60px 0 40px; /* base: desktop has no sticky bar */
   position: relative;
   z-index: 10;
+  overflow: hidden;
 }
 
 .footer-inner {

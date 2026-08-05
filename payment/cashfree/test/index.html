@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Success Redirect Test | Skill Library</title>
-  <meta name="description" content="Secure test payment for Cashfree integration with success redirect.">
+  <title>Cashfree Payment Test | Skill Library</title>
+  <meta name="description" content="Secure test payment for Cashfree integration.">
   
-  <link rel="icon" href="./favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" href="../../../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -279,9 +279,9 @@
       <span>Skill</span><span>Library</span>
     </div>
 
-    <div class="amount">₹1.00</div>
+    <div class="amount">₹2.00</div>
     
-    <p class="note">This is a secure test payment to verify the Cashfree integration success redirect.</p>
+    <p class="note">This is a secure test payment to verify the Cashfree integration.</p>
 
     <form id="checkout-form" class="checkout-form" novalidate onsubmit="return false;">
       <div class="form-group">
@@ -377,13 +377,11 @@
 
       // ── Create Cashfree Order ─────────────────────────────────────────
       const createOrder = async () => {
-        console.log('[Frontend] Form submitted');
         const payload = {
-          amount: 1.00,
+          amount: 2.00,
           name:   nameInput.value.trim(),
           email:  emailInput.value.trim(),
-          mobile: mobileInput.value.trim(),
-          returnPath: 'cashfree-success-test.html'
+          mobile: mobileInput.value.trim()
         };
         console.log("Submitting customer", payload);
         
@@ -399,7 +397,7 @@
           throw new Error(data.error || 'Failed to initialize payment. Please try again.');
         }
 
-        console.log('[Frontend] Order created');
+        console.log('[Frontend] Order Created');
         return data;
       };
 
@@ -427,13 +425,13 @@
         setProcessingState(true, 'Opening checkout...');
         try {
           const orderData = await createOrder();
-          console.log('[Frontend] Cashfree checkout opened');
+          console.log('[Frontend] Redirecting to Cashfree');
           cashfree.checkout({
             paymentSessionId: orderData.payment_session_id,
             redirectTarget:   '_self'
           });
         } catch (paymentError) {
-          console.error('[Frontend] Payment failed:', paymentError.message);
+          console.error('[Frontend] Payment Failed:', paymentError.message);
           showError(paymentError.message || 'Could not initiate payment. Please try again.');
         }
       };
@@ -445,15 +443,13 @@
           const response = await fetch(`/api/verify-cashfree-order?order_id=${encodeURIComponent(orderId)}`);
           const data = await response.json();
           if (data.order_status === 'PAID') {
-            console.log('[Frontend] Payment success');
-            console.log('[Frontend] Redirect started');
-            window.location.href = 'https://gemini.google.com/?hl=en-IN';
+            console.log('[Frontend] Payment Success');
+            window.location.href = 'https://skilllibrary.shop/vault-k3m9p4.html';
           } else {
-            console.log('[Frontend] Payment failed: Status is not PAID');
             throw new Error('Payment was not successful or was cancelled.');
           }
         } catch (err) {
-          console.error('[Frontend] Payment failed:', err.message);
+          console.error('[Frontend] Payment Failed:', err.message);
           showError(err.message || 'Payment verification failed.');
           // Remove order_id from URL so refresh doesn't re-trigger verification
           window.history.replaceState({}, document.title, window.location.pathname);

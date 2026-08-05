@@ -1,0 +1,14 @@
+.env
+.env.*
+node_modules/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.backup
+*.backup.webp
+*.py
+temp_header.html
+tools/
+logs/
+*.log

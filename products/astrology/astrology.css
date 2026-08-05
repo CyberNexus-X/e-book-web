@@ -1,0 +1,567 @@
+/* products/astrology/astrology.css */
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700;800&display=swap');
+
+:root {
+  /* Brand Colors */
+  --astro-deep-brown: #241812;
+  --astro-warm-brown: #3B2B20;
+  --astro-premium-gold: #B8862E;
+  --astro-warm-gold: #D9AB52;
+  --astro-warm-cream: #F3ECDC;
+  --astro-off-white: #FBF8F1;
+  --astro-deep-teal: #2F4B44;
+  
+  /* Text Colors */
+  --astro-text-dark: #1A0F08;
+  --astro-text-muted: #6B5744;
+  --astro-text-light: #FBF8F1;
+  
+  /* Typography */
+  --font-astro-heading: 'Noto Serif Devanagari', serif;
+  --font-astro-body: 'Hind', sans-serif;
+  
+  /* Shared values */
+  --astro-radius-md: 12px;
+  --astro-radius-lg: 16px;
+  --astro-transition: all 0.3s ease;
+}
+
+/* Base Styles */
+body.astrology-page {
+  background-color: var(--astro-off-white);
+  color: var(--astro-text-dark);
+  font-family: var(--font-astro-body);
+  overflow-x: hidden;
+}
+
+.astrology-page h1, 
+.astrology-page h2, 
+.astrology-page h3, 
+.astrology-page h4 {
+  font-family: var(--font-astro-heading);
+  color: var(--astro-deep-brown);
+  line-height: 1.3;
+}
+
+/* Utilities */
+.astro-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.astro-section {
+  padding: 80px 0;
+}
+
+/* Announcement Bar */
+.astro-announcement {
+  background-color: var(--astro-deep-brown);
+  color: var(--astro-warm-gold);
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Buttons */
+.astro-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-family: var(--font-astro-body);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--astro-transition);
+  border: none;
+}
+
+.astro-btn-primary {
+  background-color: var(--astro-premium-gold);
+  color: var(--astro-deep-brown);
+}
+.astro-btn-primary:hover {
+  background-color: var(--astro-warm-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 171, 82, 0.3);
+}
+
+.astro-btn-secondary {
+  background-color: transparent;
+  color: var(--astro-text-light);
+  border: 1px solid var(--astro-warm-gold);
+}
+.astro-btn-secondary:hover {
+  background-color: rgba(217, 171, 82, 0.1);
+}
+
+.astro-btn-outline {
+  background-color: transparent;
+  color: var(--astro-deep-brown);
+  border: 1px solid var(--astro-premium-gold);
+}
+.astro-btn-outline:hover {
+  background-color: rgba(184, 134, 46, 0.05);
+}
+
+/* Labels */
+.astro-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--astro-premium-gold);
+  margin-bottom: 16px;
+}
+
+.astro-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--astro-warm-cream);
+  color: var(--astro-deep-brown);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(184, 134, 46, 0.3);
+}
+
+/* Hero Section */
+.astro-hero {
+  background-color: var(--astro-deep-brown);
+  color: var(--astro-text-light);
+  padding: 100px 0 80px;
+  overflow: hidden;
+}
+
+.astro-hero-content .astro-badge {
+  margin-bottom: 18px;
+}
+.astro-hero h1 {
+  color: var(--astro-warm-cream);
+  font-size: clamp(32px, 5vw, 56px);
+  margin-bottom: 20px;
+}
+
+.astro-hero p {
+  color: var(--astro-warm-cream);
+  opacity: 0.9;
+  font-size: 18px;
+  max-width: 500px;
+  margin-bottom: 32px;
+}
+
+.astro-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.astro-hero-price {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--astro-warm-gold);
+  margin-bottom: 24px;
+  font-family: var(--font-astro-heading);
+}
+
+.astro-hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.astro-hero-points {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--astro-warm-cream);
+  opacity: 0.8;
+}
+.astro-hero-points span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Hero Visual Stack */
+.astro-hero-visual {
+  position: relative;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.astro-hero-stack {
+  position: relative;
+  width: 250px;
+  height: 353px; /* 1:1.414 ratio */
+}
+.astro-book-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  background-color: var(--astro-warm-brown);
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+.astro-book-cover:nth-child(1) { transform: translate(-40px, 20px) rotate(-10deg) scale(0.85); z-index: 1; opacity: 0.7; }
+.astro-book-cover:nth-child(2) { transform: translate(40px, 15px) rotate(12deg) scale(0.9); z-index: 2; opacity: 0.85; }
+.astro-book-cover:nth-child(3) { transform: translate(-20px, 5px) rotate(-5deg) scale(0.95); z-index: 3; }
+.astro-book-cover:nth-child(4) { transform: translate(10px, -5px) rotate(3deg) scale(1); z-index: 4; }
+
+/* Quick Benefits */
+.astro-benefits {
+  background-color: var(--astro-warm-cream);
+  border-bottom: 1px solid rgba(184, 134, 46, 0.2);
+  padding: 24px 0;
+}
+.astro-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+.astro-benefit-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--astro-deep-brown);
+  font-weight: 600;
+  font-size: 15px;
+}
+.astro-benefit-item svg {
+  color: var(--astro-premium-gold);
+}
+
+/* Sections Intro */
+.astro-section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+.astro-section-header h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 16px;
+}
+.astro-section-header p {
+  color: var(--astro-text-muted);
+  font-size: 16px;
+}
+
+/* Featured Bundle */
+.astro-featured-bundle {
+  background-color: var(--astro-deep-brown);
+  color: var(--astro-text-light);
+  border-radius: var(--astro-radius-lg);
+  padding: 60px;
+  margin: 60px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.astro-featured-bundle::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: radial-gradient(circle at top right, rgba(217, 171, 82, 0.1), transparent 50%);
+  pointer-events: none;
+}
+.astro-featured-bundle h2 {
+  color: var(--astro-warm-cream);
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+.astro-featured-bundle p {
+  color: var(--astro-warm-cream);
+  opacity: 0.8;
+  margin-bottom: 24px;
+}
+.astro-bundle-price {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--astro-warm-gold);
+  font-family: var(--font-astro-heading);
+  margin-bottom: 24px;
+}
+.astro-bundle-includes {
+  list-style: none;
+  margin: 24px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.astro-bundle-includes li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--astro-warm-cream);
+  font-size: 14px;
+}
+
+/* Value Comparison */
+.astro-comparison {
+  background-color: var(--astro-off-white);
+}
+.astro-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.astro-compare-card {
+  background: #fff;
+  border-radius: var(--astro-radius-lg);
+  padding: 40px;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+.astro-compare-card.highlight {
+  background-color: var(--astro-deep-brown);
+  color: var(--astro-text-light);
+  border-color: var(--astro-premium-gold);
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(36, 24, 18, 0.15);
+}
+.astro-compare-card.highlight h3 { color: var(--astro-warm-cream); }
+.astro-compare-price {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 16px 0;
+  font-family: var(--font-astro-heading);
+}
+.astro-compare-card.highlight .astro-compare-price { color: var(--astro-warm-gold); }
+
+/* Product Grid */
+.astro-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.astro-card {
+  background: var(--astro-warm-cream);
+  border-radius: var(--astro-radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--astro-transition);
+  border: 1px solid rgba(184, 134, 46, 0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+.astro-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(36, 24, 18, 0.08);
+}
+.astro-card-image {
+  width: 100%;
+  aspect-ratio: 210 / 297; /* A4 aspect ratio */
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+.astro-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Never crop */
+}
+.astro-card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.astro-card-title {
+  font-size: 18px;
+  margin: 12px 0 8px;
+  font-weight: 600;
+}
+.astro-card-desc {
+  font-size: 13px;
+  color: var(--astro-text-muted);
+  margin-bottom: 16px;
+  flex-grow: 1;
+  line-height: 1.5;
+}
+.astro-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+.astro-card-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--astro-deep-brown);
+}
+.astro-card-btn {
+  background: transparent;
+  color: var(--astro-premium-gold);
+  border: 1px solid var(--astro-premium-gold);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--astro-transition);
+}
+.astro-card:hover .astro-card-btn {
+  background: var(--astro-premium-gold);
+  color: var(--astro-deep-brown);
+}
+
+/* What You'll Learn / Features */
+.astro-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+.astro-feature-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: var(--astro-radius-md);
+  text-align: center;
+  border: 1px solid rgba(184, 134, 46, 0.15);
+}
+.astro-feature-card svg {
+  width: 32px;
+  height: 32px;
+  color: var(--astro-premium-gold);
+  margin-bottom: 16px;
+}
+.astro-feature-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* How It Works */
+.astro-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.astro-step {
+  text-align: center;
+}
+.astro-step-num {
+  font-family: var(--font-astro-heading);
+  font-size: 48px;
+  color: var(--astro-premium-gold);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+/* FAQ */
+.astro-faq {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.astro-faq-item {
+  border-bottom: 1px solid rgba(184, 134, 46, 0.2);
+  padding: 20px 0;
+}
+.astro-faq-q {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--astro-deep-brown);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.astro-faq-a {
+  padding-top: 12px;
+  color: var(--astro-text-muted);
+  display: none;
+}
+.astro-faq-item.active .astro-faq-a {
+  display: block;
+}
+
+/* Final CTA */
+.astro-final-cta {
+  background-color: var(--astro-deep-brown);
+  color: var(--astro-text-light);
+  text-align: center;
+  padding: 100px 24px;
+}
+.astro-final-cta h2 {
+  color: var(--astro-warm-cream);
+  font-size: clamp(32px, 5vw, 48px);
+  margin-bottom: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.astro-final-price {
+  font-size: 56px;
+  font-family: var(--font-astro-heading);
+  color: var(--astro-warm-gold);
+  font-weight: 700;
+  margin: 24px 0 40px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .astro-product-grid { grid-template-columns: repeat(3, 1fr); }
+  .astro-featured-bundle { padding: 40px; gap: 40px; }
+}
+
+@media (max-width: 767px) {
+  .astro-container { padding: 0 16px; }
+  .astro-hero-content .astro-badge { margin-bottom: 16px; }
+  .astro-hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .astro-hero-ctas { justify-content: center; }
+  .astro-hero-points { align-items: center; }
+  .astro-benefits-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .astro-featured-bundle { grid-template-columns: 1fr; text-align: center; padding: 32px 20px; margin: 32px 0; }
+  .astro-compare-grid { grid-template-columns: 1fr; }
+  .astro-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .astro-card { padding: 12px; }
+  .astro-card-title { font-size: 14px; margin: 8px 0 4px; line-height: 1.3; }
+  .astro-card-desc { font-size: 12px; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
+  .astro-card-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .astro-card-price { font-size: 18px; }
+  .astro-card-btn { width: 100%; text-align: center; padding: 8px; font-size: 13px; }
+  .astro-badge { padding: 2px 6px; font-size: 10px; margin-bottom: 8px; }
+  .astro-card-image { margin-bottom: 8px; aspect-ratio: 210/297; }
+  .astro-steps { grid-template-columns: 1fr; gap: 40px; }
+  .astro-bundle-includes { grid-template-columns: 1fr 1fr; text-align: left; gap: 8px; }
+  .astro-bundle-includes li { font-size: 12px; gap: 6px; }
+}
+
+@media (max-width: 480px) {
+  .astro-hero-visual { height: 350px; }
+  .astro-hero-stack { width: 180px; height: 254px; }
+  .astro-hero h1 { font-size: 32px; }
+  .astro-featured-bundle { padding: 32px 20px; }
+  .astro-bundle-price { font-size: 36px; }
+  .astro-card-image { aspect-ratio: 210/297; }
+}

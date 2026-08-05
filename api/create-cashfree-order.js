@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
     const orderAmount = parseFloat(amount) || 1.00;
     const orderId     = 'order_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
-    const returnPath  = req.body.returnPath || 'cashfree-test.html';
+    const returnPath  = req.body.returnPath || '../payment/cashfree/test/';
     const returnUrl   = `https://${req.headers.host}/${returnPath}?order_id={order_id}`;
 
     const payload = {
