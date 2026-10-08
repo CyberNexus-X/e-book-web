@@ -1,0 +1,185 @@
+/* Blog Page Styles */
+
+.blog-section {
+  padding: 80px 0;
+  background-color: var(--bg-darker);
+  min-height: 100vh;
+}
+
+.blog-container {
+  max-width: 600px; /* Keep it relatively narrow to match the wireframe */
+  margin: 0 auto;
+}
+
+.blog-header {
+  margin-bottom: 30px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.breadcrumb a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+  color: var(--accent-emerald);
+}
+
+.breadcrumb .active-crumb {
+  color: var(--text-primary);
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.blog-card {
+  background: var(--bg-card);
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Bold border as seen in the wireframe, softened for dark mode */
+  border-radius: 30px;
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-emerald);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+}
+
+.blog-card-img {
+  width: 100%;
+  height: 180px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  margin-bottom: 24px;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.blog-card-title {
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.blog-card-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Related Articles Section (Internal Linking)
+   ========================================================================== */
+.related-articles {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-color);
+}
+
+.related-articles h2 {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.related-articles h2::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.related-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-emerald);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.12);
+}
+
+.related-card-img {
+  width: 100%;
+  height: 130px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg-darker);
+}
+
+.related-card-body {
+  padding: 14px 16px 18px;
+}
+
+.related-card-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-emerald);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.related-card-title {
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Inline article links inside article content */
+.article-content .inline-link {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(245, 158, 11, 0.4);
+  transition: var(--transition);
+  font-weight: 600;
+}
+
+.article-content .inline-link:hover {
+  color: var(--accent-emerald);
+  border-bottom-color: var(--accent-emerald);
+}
+
+@media (max-width: 600px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+}

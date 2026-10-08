@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  
+  <title>Blog — Skill Library</title>
+  <meta name="description" content="Read the latest articles from Skill Library on books, business, and self-help.">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/navbar.css">
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10M6 10h10M6 14h10"/>
+        </svg>
+        Skill<span>Library</span>
+      </a>
+
+      <nav class="nav-desktop-links" aria-label="Main Navigation">
+        <a href="../../index.html" class="nav-desktop-link">Home</a>
+        <a href="../../products/ebook-bundle/" class="nav-desktop-link">eBook Bundle</a>
+        <a href="../../products/astrology/index.html" class="nav-desktop-link">Astrology</a>
+        <a href="../../products/height-blueprint/index.html" class="nav-desktop-link">Height Blueprint</a>
+        <a href="../../pages/about/" class="nav-desktop-link">About</a>
+        <a href="../../pages/contact/" class="nav-desktop-link">Contact</a>
+        <a href="../../pages/blog/" class="nav-desktop-link active">Blog</a>
+      </nav>
+
+      <div class="header-cta" style="display: flex; gap: 16px; align-items: center;">
+        <a href="../../index.html#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get the Library</a>
+        <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMobileMenu">
+          <span class="nav-hamburger-bar"></span>
+          <span class="nav-hamburger-bar"></span>
+          <span class="nav-hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-mobile-menu" id="navMobileMenu">
+    <a href="../../index.html" class="nav-mobile-link"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+    <a href="../../products/ebook-bundle/" class="nav-mobile-link"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M8 7h8M8 11h8"/></svg>eBook Bundle</a>
+    <a href="../../pages/blog/" class="nav-mobile-link active"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M8 7h8M8 11h8"/></svg>Blog</a>
+    <a href="../../pages/about/" class="nav-mobile-link"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>About</a>
+    <a href="../../pages/contact/" class="nav-mobile-link"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+    <div class="nav-mobile-cta">
+      <a href="../../index.html#pricing" class="btn btn-primary btn-gold">Get eBook Bundle</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="blog-section">
+      <div class="container blog-container">
+        
+        <div class="blog-header">
+           <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../../index.html">HOME</a>
+            <span>/</span>
+            <a href="../../pages/blog/">BLOG</a>
+            <span>/</span>
+            <span class="active-crumb">ARTICLE</span>
+          </nav>
+        </div>
+
+        <div class="blog-list">
+          <!-- Article Card 1 -->
+          <article class="blog-card" onclick="window.location.href='15-best-self-help-books-hindi.html'" style="cursor: pointer;">
+            <div class="blog-card-img" style="background-image: url('../../assets/images/15-best-self-help-books-hindi.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Best Self Help Books in Hindi 2026</h2>
+              <p class="blog-card-desc">Top 15 Must-Read Books for Personal Growth, Money Mindset, and Success.</p>
+            </div>
+          </article>
+
+          <!-- Article Card 2 -->
+          <article class="blog-card" onclick="window.location.href='psychology-of-money-hindi.html'" style="cursor: pointer;">
+            <div class="blog-card-img" style="background-image: url('../../assets/images/psychology-of-money-hindi.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Psychology of Money Summary</h2>
+              <p class="blog-card-desc">The Psychology of Money ke 7 sabse important lessons in Hindi. Complete Detailed Guide.</p>
+            </div>
+          </article>
+
+          <!-- Article Card 3 -->
+          <article class="blog-card" onclick="window.location.href='atomic-habits-hindi.html'" style="cursor: pointer;">
+            <div class="blog-card-img" style="background-image: url('../../assets/images/atomic-habits-hindi.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Atomic Habits Summary</h2>
+              <p class="blog-card-desc">Chhoti Aadaton Se Bade Results Kaise Paayein (James Clear). Complete Guide.</p>
+            </div>
+          </article>
+
+          <!-- Article Card 4 -->
+          <article class="blog-card" onclick="window.location.href='personal-finance-books-india.html'" style="cursor: pointer;">
+            <div class="blog-card-img" style="background-image: url('../../assets/images/personal-finance-books-india.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Best Personal Finance Books</h2>
+              <p class="blog-card-desc">Indians ke liye Best Personal Finance Books (Beginners to Intermediate). Detailed Guide 2026.</p>
+            </div>
+          </article>
+
+          <!-- Article Card 5 -->
+          <article class="blog-card" onclick="window.location.href='rich-dad-poor-dad-hindi.html'" style="cursor: pointer;">
+            <div class="blog-card-img" style="background-image: url('../../assets/images/rich-dad-poor-dad-hindi.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="blog-card-content">
+              <h2 class="blog-card-title">Rich Dad Poor Dad Summary</h2>
+              <p class="blog-card-desc">Asset vs Liability Samjho (Robert Kiyosaki). Complete Detailed Guide 2026.</p>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="glow-bg-footer"></div>
+    <div class="container footer-inner">
+      <a href="../../index.html" class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10M6 10h10M6 14h10"/>
+        </svg>
+        Skill<span>Library</span>
+      </a>
+      <div class="footer-links">
+        <a href="../../index.html">Home</a>
+        <a href="../../products/ebook-bundle/">eBook Bundle</a>
+        <a href="../../pages/blog/">Blog</a>
+        <a href="../../pages/about/">About</a>
+        <a href="../../pages/contact/">Contact</a>
+        <a href="../../pages/privacy-policy/">Privacy Policy</a>
+      </div>
+      <div class="footer-copyright">
+        © 2026 Skill Library. All rights reserved. <a href="mailto:support@skilllibrary.shop">support@skilllibrary.shop</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/navbar.js" defer></script>
+</body>
+</html>

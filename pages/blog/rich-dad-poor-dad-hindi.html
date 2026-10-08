@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+
+  <title>Rich Dad Poor Dad Summary in Hindi – Asset vs Liability | Complete Guide 2026</title>
+  <meta name="description" content="Robert Kiyosaki ki Rich Dad Poor Dad ka complete summary Hindi mein. Assets vs Liabilities, Cashflow Quadrant aur money mindset samjho.">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/navbar.css">
+  <link rel="stylesheet" href="blog.css">
+
+  <style>
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .article-header { margin-bottom: 40px; text-align: center; }
+    .article-title {
+      font-family: var(--font-title);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .article-meta {
+      color: var(--accent-emerald);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 30px;
+    }
+    .article-featured-image {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
+    }
+    .article-content {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+    .article-content h2 {
+      font-family: var(--font-title);
+      font-size: 28px;
+      color: var(--text-primary);
+      margin: 40px 0 20px;
+      font-weight: 700;
+    }
+    .article-content h3 {
+      font-family: var(--font-title);
+      font-size: 22px;
+      color: var(--accent-gold);
+      margin: 25px 0 12px;
+      font-weight: 700;
+    }
+    .article-content p { margin-bottom: 20px; }
+    .article-content ul, .article-content ol {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    .article-content li { margin-bottom: 10px; }
+    .article-content strong { color: var(--text-primary); }
+    blockquote {
+      background: var(--bg-card);
+      border-left: 4px solid var(--accent-gold);
+      padding: 20px 24px;
+      margin: 30px 0;
+      font-style: italic;
+      color: var(--text-primary);
+      border-radius: 0 8px 8px 0;
+      font-size: 18px;
+    }
+    /* --- Comparison Table --- */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0 32px;
+      font-size: 15px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .compare-table th {
+      background: var(--bg-card-hover);
+      color: var(--accent-gold);
+      font-family: var(--font-title);
+      font-weight: 700;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .compare-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+    .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .compare-table td:first-child { color: var(--text-primary); font-weight: 600; }
+    .tag-asset {
+      display: inline-block;
+      background: rgba(16,185,129,0.12);
+      color: var(--accent-emerald);
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .tag-liability {
+      display: inline-block;
+      background: rgba(239,68,68,0.12);
+      color: #f87171;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    /* --- Quadrant Grid --- */
+    .quadrant-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0 32px;
+    }
+    .quadrant-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      transition: var(--transition);
+    }
+    .quadrant-card:hover { border-color: var(--accent-emerald); }
+    .quadrant-card .q-label {
+      font-family: var(--font-title);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+    .quadrant-card .q-title {
+      font-family: var(--font-title);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .quadrant-card .q-desc { font-size: 14px; color: var(--text-muted); }
+    .quadrant-card.goal { border-color: rgba(16,185,129,0.3); }
+    .quadrant-card.goal .q-label { color: var(--accent-emerald); }
+    /* --- CTA --- */
+    .article-cta {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 36px 30px;
+      margin: 40px 0;
+      text-align: center;
+    }
+    .article-cta h4 {
+      font-family: var(--font-title);
+      font-size: 24px;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+    @media (max-width: 600px) {
+      .quadrant-grid { grid-template-columns: 1fr; }
+      .compare-table { font-size: 13px; }
+      .compare-table th, .compare-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10M6 10h10M6 14h10"/>
+        </svg>
+        Skill<span>Library</span>
+      </a>
+      <nav class="nav-desktop-links" aria-label="Main Navigation">
+        <a href="../../index.html" class="nav-desktop-link">Home</a>
+        <a href="../../products/ebook-bundle/" class="nav-desktop-link">eBook Bundle</a>
+        <a href="../../products/astrology/index.html" class="nav-desktop-link">Astrology</a>
+        <a href="../../products/height-blueprint/index.html" class="nav-desktop-link">Height Blueprint</a>
+        <a href="../../pages/about/" class="nav-desktop-link">About</a>
+        <a href="../../pages/contact/" class="nav-desktop-link">Contact</a>
+        <a href="../../pages/blog/" class="nav-desktop-link active">Blog</a>
+      </nav>
+      <div class="header-cta" style="display:flex;gap:16px;align-items:center;">
+        <a href="../../index.html#pricing" class="btn btn-primary" style="padding:10px 20px;font-size:14px;">Get the Library</a>
+        <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMobileMenu">
+          <span class="nav-hamburger-bar"></span>
+          <span class="nav-hamburger-bar"></span>
+          <span class="nav-hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-mobile-menu" id="navMobileMenu">
+    <a href="../../index.html" class="nav-mobile-link">Home</a>
+    <a href="../../products/ebook-bundle/" class="nav-mobile-link">eBook Bundle</a>
+    <a href="../../pages/blog/" class="nav-mobile-link active">Blog</a>
+    <a href="../../pages/about/" class="nav-mobile-link">About</a>
+    <a href="../../pages/contact/" class="nav-mobile-link">Contact</a>
+    <div class="nav-mobile-cta">
+      <a href="../../index.html#pricing" class="btn btn-primary btn-gold">Get eBook Bundle</a>
+    </div>
+  </div>
+
+  <main>
+    <div class="container blog-container" style="max-width:800px;padding-top:40px;">
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:20px;">
+        <a href="../../index.html">HOME</a>
+        <span>/</span>
+        <a href="../../pages/blog/">BLOG</a>
+        <span>/</span>
+        <span class="active-crumb">ARTICLE</span>
+      </nav>
+    </div>
+
+    <article class="article-container">
+      <div class="article-header">
+        <h1 class="article-title">Rich Dad Poor Dad Summary in Hindi – Asset vs Liability Samjho (Robert Kiyosaki)</h1>
+        <div class="article-meta">Complete Detailed Guide 2026</div>
+      </div>
+
+      <img src="../../assets/images/rich-dad-poor-dad-hindi.jpg" alt="Rich Dad Poor Dad Summary in Hindi – Assets vs Liabilities" class="article-featured-image">
+
+      <div class="article-content">
+
+        <p>Robert Kiyosaki ki book <strong>Rich Dad Poor Dad</strong> ne pure duniya ka money mindset change kar diya. India mein bhi yeh book lakhs logon ne padhi hai aur kai logon ki soch permanently badal di hai.</p>
+        <p>Yeh book aapko stock tips ya jaldi ameer banne ka formula nahi deti. Yeh batati hai ki amir log paise ke baare mein kaise sochte hain aur garib/middle-class log kaise sochte hain. Dono ke beech ka farak samajh aate hi aapke decisions change hone shuru ho jate hain.</p>
+        <p>Is complete summary mein maine book ke sabse important concepts ko simple Hindi mein explain kiya hai. Saath mein Indian examples aur practical action steps bhi diye hain.</p>
+
+        <h2>Book ka Short Introduction</h2>
+        <p>Robert Kiyosaki ne apni zindagi ke do "Dad" ki story ke through yeh book likhi:</p>
+        <ul>
+          <li><strong>Poor Dad:</strong> Unke real father — highly educated, government job wale, traditional thinking wale insaan.</li>
+          <li><strong>Rich Dad:</strong> Unke best friend ke father — businessman, jo financial education pe focus karte the.</li>
+        </ul>
+        <p>Dono ki soch mein zameen-aasman ka farak tha. Us farak ko samajhna hi is book ka asal purpose hai.</p>
+
+        <hr style="border:0;height:1px;background:var(--border-color);margin:40px 0;">
+
+        <h2>1. Assets vs Liabilities – Book Ka Sabse Powerful Concept</h2>
+        <p>Yeh is book ka heart hai. Is ek concept ko samajh lene se aapki poori financial thinking badal sakti hai.</p>
+
+        <p><strong>Asset kya hota hai?</strong><br>Woh cheez jo aapki pocket mein paise <em>daalti</em> hai — income generate karti hai.</p>
+        <p><strong>Liability kya hota hai?</strong><br>Woh cheez jo aapki pocket se paise <em>nikaalti</em> hai — expense create karti hai.</p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Cheez</th>
+              <th>Zyadatar Log Samajhte Hain</th>
+              <th>Asliyat (Rich Dad ke hisaab se)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Khud ka ghar</td>
+              <td><span class="tag-asset">Asset</span></td>
+              <td><span class="tag-liability">Liability</span> (EMI + maintenance)</td>
+            </tr>
+            <tr>
+              <td>Car</td>
+              <td>Status symbol</td>
+              <td><span class="tag-liability">Liability</span></td>
+            </tr>
+            <tr>
+              <td>Gold</td>
+              <td><span class="tag-asset">Asset</span></td>
+              <td>Mostly <span class="tag-liability">Liability</span> (agar use nahi ho raha)</td>
+            </tr>
+            <tr>
+              <td>Mutual Funds / Stocks</td>
+              <td>Risky</td>
+              <td><span class="tag-asset">Strong Asset</span></td>
+            </tr>
+            <tr>
+              <td>Fixed Deposit</td>
+              <td>Safe asset</td>
+              <td>Weak <span class="tag-asset">Asset</span> (inflation ke aage)</td>
+            </tr>
+            <tr>
+              <td>Business / Side Income</td>
+              <td>Risky</td>
+              <td><span class="tag-asset">Strong Asset</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>Key Lesson:</strong><br>Garib aur middle-class log liabilities kharidte hain aur unhe assets samajhte hain. Amir log assets kharidte hain jo unke liye paise kamate hain.</p>
+
+        <h2>2. Financial Education School Mein Nahi Milti</h2>
+        <p>Poor Dad kehte the: <em>"Padho, acchi job pakdo, safe raho."</em><br>Rich Dad kehte the: <em>"Financial education lo, assets banao, risk samajho."</em></p>
+        <p>School humein job ke liye taiyar karti hai, paise manage karne ke liye nahi. Isliye kai highly educated log bhi financial problems mein rehte hain. Engineer, doctor, MBA — sab ke paas degree hai lekin koi bhi nahi batata ki EMI kaise manage karo, kab invest shuru karo, ya insurance kaise choose karo.</p>
+        <p><strong>Action Step:</strong><br>Apni financial education khud shuru karo. Books, practical experience aur sahi logon se seekho. Har mahine kam se kam ek finance book padho.</p>
+
+        <h2>3. Job Sirf Ek Tool Hai, Final Destination Nahi</h2>
+        <p>Zyadatar log job ko hi life ka ultimate goal maan lete hain. Rich Dad kehte hain ki job sirf ek stepping stone hai.</p>
+        <p>Job se aap:</p>
+        <ul>
+          <li>Skills seekhte ho</li>
+          <li>Initial capital banate ho</li>
+          <li>Network banate ho</li>
+        </ul>
+        <p>Lekin asal freedom tab milti hai jab aapke assets aapke liye kaam karne lagte hain. Jab aap subah neend se uthne ke baad bhi paise kama rahe ho — tabhi financial freedom hai.</p>
+        <p><strong>Indian Example:</strong><br>Ek banda 15 saal se acchi salary kama raha hai lekin agar kal job chali jaye to 3 mahine baad paise khatam. Doosra banda job ke saath-saath assets bana raha hai — rental income, SIP, side business — isliye uski position bahut strong hai.</p>
+
+        <h2>4. Cashflow Quadrant – 4 Tarike Se Paise Kamaye Jaate Hain</h2>
+        <p>Robert Kiyosaki ne 4 categories batayi hain jisme se har insaan ek ya zyada mein hota hai:</p>
+
+        <div class="quadrant-grid">
+          <div class="quadrant-card">
+            <div class="q-label">E</div>
+            <div class="q-title">Employee (Naukri)</div>
+            <div class="q-desc">Kisi ke liye kaam karte hain. Fixed salary, job security ki chinta. Security dhundhte hain.</div>
+          </div>
+          <div class="quadrant-card">
+            <div class="q-label">S</div>
+            <div class="q-title">Self-Employed (Freelancer)</div>
+            <div class="q-desc">Doctor, Lawyer, Freelancer. Khud ke boss hain lekin agar kaam nahi kiya to income nahi.</div>
+          </div>
+          <div class="quadrant-card goal">
+            <div class="q-label">B</div>
+            <div class="q-title">Business Owner</div>
+            <div class="q-desc">System wala business jo aapke bina bhi chale. Log aur systems unke liye kaam karte hain.</div>
+          </div>
+          <div class="quadrant-card goal">
+            <div class="q-label">I</div>
+            <div class="q-title">Investor</div>
+            <div class="q-desc">Paise unke liye kaam karte hain. Stocks, real estate, business mein invest karte hain.</div>
+          </div>
+        </div>
+
+        <p>Middle-class log mostly <strong>E</strong> aur <strong>S</strong> category mein rehte hain. Amir log <strong>B</strong> aur <strong>I</strong> category mein shift hote hain. Isliye green cards (<strong>B</strong> aur <strong>I</strong>) aapka long-term goal hona chahiye.</p>
+        <p><strong>Goal:</strong> Dheere-dheere E/S se B/I ki taraf move karna. Kal se nahi, ek solid plan ke saath.</p>
+
+        <h2>5. Fear aur Greed – Dono Ko Control Karna Seekho</h2>
+        <p>Log do emotions se controlled rehte hain:</p>
+        <ul>
+          <li><strong>Fear:</strong> "Kya hoga agar loss ho gaya?" — Isliye kuch bhi naya try nahi karte.</li>
+          <li><strong>Greed:</strong> "Jaldi se bahut paise chahiye" — Isliye galat schemes mein paise lagate hain.</li>
+        </ul>
+        <p>Rich Dad kehte hain ki in dono emotions ko recognize karo. Jab market gir raha ho aur fear aa rahi ho, tab bhi bina panic ke dekho. Jab koi scheme "guaranteed 30% return" de rahi ho, tab bhi greed ko rok ke socho. Logic aur education ke hisaab se decisions lo.</p>
+
+        <h2>6. Mind Your Own Business</h2>
+        <p>Yeh line book ki sabse famous lines mein se ek hai. Lekin iska matlab job chhodna nahi hai.</p>
+        <p>Matlab yeh hai:</p>
+        <ul>
+          <li>Apne assets pe focus karo, na ki sirf apni salary pe</li>
+          <li>Dusron ki company (jahaan aap job karte ho) ko apna mat samajho</li>
+          <li>Apna khud ka financial statement banana seekho (Income, Expense, Assets, Liabilities)</li>
+        </ul>
+        <p><strong>Practical Tip:</strong><br>Har mahine apna simple financial statement banao. Ek page pe likho — is mahine kitna income aaya, kitna kharch hua, mere assets kya hain, liabilities kya hain. Dekho aapke assets badh rahe hain ya liabilities.</p>
+
+        <h2>7. Risk Se Mat Daro, Risk Ko Samjho</h2>
+        <p>Poor Dad risk se darte the. Isliye unka mindset tha — government job safe hai, kuch naya mat karo, savings account mein paise rakho.<br>Rich Dad risk ko samajhkar manage karte the. Woh jaante the ki educated risk lena growth ka hissa hai.</p>
+        <p>Bina knowledge ke risk lena — yeh gambling hai.<br>Knowledge ke saath calculated risk lena — yeh investing hai.</p>
+        <p>Isliye pehle seekho, phir invest karo.</p>
+
+        <hr style="border:0;height:1px;background:var(--border-color);margin:40px 0;">
+
+        <h2>Book Ki Sabse Badi Limitations (Balanced View)</h2>
+        <p>Yeh book powerful hai lekin kuch limitations bhi hain jo jaanna zaroori hai:</p>
+        <ul>
+          <li>Book mein practical "kaise karein" kam hai, mindset zyada hai</li>
+          <li>Real estate pe thoda zyada focus hai jo har kisi ke liye possible nahi</li>
+          <li>Kuch concepts oversimplified hain — jaise ghar ko "liability" kehna, India mein hamesha sach nahi</li>
+        </ul>
+        <p>Isliye is book ko padhne ke baad practical finance books (jaise Psychology of Money aur Let's Talk Money) bhi padhni chahiye taaki aap ek complete picture le sako.</p>
+
+        <h2>Rich Dad Poor Dad Ke Baad Kya Padhein?</h2>
+        <ol>
+          <li>The Psychology of Money</li>
+          <li>Let's Talk Money (Monika Halan) — Indian context ke liye</li>
+          <li>Cashflow Quadrant (Rich Dad ka Part 2)</li>
+          <li>The Intelligent Investor (advanced)</li>
+        </ol>
+
+        <div class="article-cta">
+          <h4>Poori Book + Related Finance & Business Books Chahiye?</h4>
+          <p>Rich Dad Poor Dad ek powerful mindset book hai. Lekin sirf ek book se kaam nahi chalta. Aapko Personal Finance, Business, Habits aur Mindset pe quality content chahiye.</p>
+          <p>Agar aap <strong>Rich Dad Poor Dad</strong> ke saath 12,000+ curated eBooks (Business, Personal Finance, Habits, Mindset + best Hindi collections) ek saath chahte ho, to yeh best option hai:</p>
+          <p style="margin: 20px 0 15px;"><strong>Skill Library – 12,000+ eBook Bundle</strong></p>
+          <a href="../../products/ebook-bundle/" class="btn btn-primary btn-gold" style="display:inline-flex;margin-bottom:25px;padding:16px 32px;font-size:18px;">
+            Get eBook Bundle — ₹199
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px;">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <ul style="text-align:left;max-width:360px;margin:15px auto;list-style-type:'✔ ';">
+            <li>Lifetime access on Google Drive</li>
+            <li>Instant delivery to your inbox</li>
+            <li>One-time payment only</li>
+          </ul>
+        </div>
+
+        <h2>Final Words</h2>
+        <blockquote>"The poor and the middle class work for money. The rich have money work for them."</blockquote>
+        <p>Agar aap is concept ko seriously samajh kar apply karna shuru kar dete ho, to aapke financial decisions permanently change ho sakte hain.</p>
+        <p>Aaj se hi apne assets aur liabilities ki list banao. Dekho aap kahaan khade ho aur kahaan jana chahte ho. Phir har mahine ek chhota kadam assets ki taraf zaroor uthao.</p>
+        <p><em>Kaunsa concept aapko sabse zyada powerful laga — Assets vs Liabilities, Cashflow Quadrant, ya Mindset? Batao, main uspe aur deep discussion kar sakta hoon.</em></p>
+
+        <!-- Related Articles -->
+        <div class="related-articles">
+          <h2>📚 Aur Bhi Padhein</h2>
+          <div class="related-grid">
+            <a href="15-best-self-help-books-hindi.html" class="related-card">
+              <div class="related-card-img" style="background-image: url('../../assets/images/15-best-self-help-books-hindi.jpg');"></div>
+              <div class="related-card-body">
+                <span class="related-card-label">Book List</span>
+                <div class="related-card-title">15 Best Self Help Books in Hindi 2026</div>
+              </div>
+            </a>
+            <a href="psychology-of-money-hindi.html" class="related-card">
+              <div class="related-card-img" style="background-image: url('../../assets/images/psychology-of-money-hindi.jpg');"></div>
+              <div class="related-card-body">
+                <span class="related-card-label">Book Summary</span>
+                <div class="related-card-title">Psychology of Money – 7 Sabse Badi Seekhein</div>
+              </div>
+            </a>
+            <a href="atomic-habits-hindi.html" class="related-card">
+              <div class="related-card-img" style="background-image: url('../../assets/images/atomic-habits-hindi.jpg');"></div>
+              <div class="related-card-body">
+                <span class="related-card-label">Book Summary</span>
+                <div class="related-card-title">Atomic Habits – Chhoti Aadaton Se Bade Results</div>
+              </div>
+            </a>
+            <a href="personal-finance-books-india.html" class="related-card">
+              <div class="related-card-img" style="background-image: url('../../assets/images/personal-finance-books-india.jpg');"></div>
+              <div class="related-card-body">
+                <span class="related-card-label">Book List</span>
+                <div class="related-card-title">Best Personal Finance Books for Indians 2026</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="glow-bg-footer"></div>
+    <div class="container footer-inner">
+      <a href="../../index.html" class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10M6 10h10M6 14h10"/>
+        </svg>
+        Skill<span>Library</span>
+      </a>
+      <div class="footer-links">
+        <a href="../../index.html">Home</a>
+        <a href="../../products/ebook-bundle/">eBook Bundle</a>
+        <a href="../../pages/blog/">Blog</a>
+        <a href="../../pages/about/">About</a>
+        <a href="../../pages/contact/">Contact</a>
+      </div>
+      <div class="footer-copyright">
+        © 2026 Skill Library. All rights reserved. <a href="mailto:support@skilllibrary.shop">support@skilllibrary.shop</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/navbar.js" defer></script>
+</body>
+</html>
