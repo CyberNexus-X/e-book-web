@@ -79,7 +79,7 @@
 
         <div class="blog-list">
           <!-- Article Card 1 -->
-          <article class="blog-card" onclick="window.location.href='15-best-self-help-books-hindi.html'" style="cursor: pointer;">
+          <article class="blog-card" data-date="2026-10-10" onclick="window.location.href='15-best-self-help-books-hindi.html'" style="cursor: pointer;">
             <div class="blog-card-img" style="background-image: url('../../assets/images/15-best-self-help-books-hindi.jpg'); background-size: cover; background-position: center;"></div>
             <div class="blog-card-content">
               <span class="blog-card-date" style="font-size: 13px; color: var(--accent-emerald); font-weight: 600; display: block; margin-bottom: 8px;">October 10, 2026</span>
@@ -89,7 +89,7 @@
           </article>
 
           <!-- Article Card 2 -->
-          <article class="blog-card" onclick="window.location.href='psychology-of-money-hindi.html'" style="cursor: pointer;">
+          <article class="blog-card" data-date="2026-10-10" onclick="window.location.href='psychology-of-money-hindi.html'" style="cursor: pointer;">
             <div class="blog-card-img" style="background-image: url('../../assets/images/psychology-of-money-hindi.jpg'); background-size: cover; background-position: center;"></div>
             <div class="blog-card-content">
               <span class="blog-card-date" style="font-size: 13px; color: var(--accent-emerald); font-weight: 600; display: block; margin-bottom: 8px;">October 10, 2026</span>
@@ -99,7 +99,7 @@
           </article>
 
           <!-- Article Card 3 -->
-          <article class="blog-card" onclick="window.location.href='atomic-habits-hindi.html'" style="cursor: pointer;">
+          <article class="blog-card" data-date="2026-10-10" onclick="window.location.href='atomic-habits-hindi.html'" style="cursor: pointer;">
             <div class="blog-card-img" style="background-image: url('../../assets/images/atomic-habits-hindi.jpg'); background-size: cover; background-position: center;"></div>
             <div class="blog-card-content">
               <span class="blog-card-date" style="font-size: 13px; color: var(--accent-emerald); font-weight: 600; display: block; margin-bottom: 8px;">October 10, 2026</span>
@@ -109,7 +109,7 @@
           </article>
 
           <!-- Article Card 4 -->
-          <article class="blog-card" onclick="window.location.href='personal-finance-books-india.html'" style="cursor: pointer;">
+          <article class="blog-card" data-date="2026-10-10" onclick="window.location.href='personal-finance-books-india.html'" style="cursor: pointer;">
             <div class="blog-card-img" style="background-image: url('../../assets/images/personal-finance-books-india.jpg'); background-size: cover; background-position: center;"></div>
             <div class="blog-card-content">
               <span class="blog-card-date" style="font-size: 13px; color: var(--accent-emerald); font-weight: 600; display: block; margin-bottom: 8px;">October 10, 2026</span>
@@ -119,7 +119,7 @@
           </article>
 
           <!-- Article Card 5 -->
-          <article class="blog-card" onclick="window.location.href='rich-dad-poor-dad-hindi.html'" style="cursor: pointer;">
+          <article class="blog-card" data-date="2026-10-10" onclick="window.location.href='rich-dad-poor-dad-hindi.html'" style="cursor: pointer;">
             <div class="blog-card-img" style="background-image: url('../../assets/images/rich-dad-poor-dad-hindi.jpg'); background-size: cover; background-position: center;"></div>
             <div class="blog-card-content">
               <span class="blog-card-date" style="font-size: 13px; color: var(--accent-emerald); font-weight: 600; display: block; margin-bottom: 8px;">October 10, 2026</span>
@@ -159,5 +159,25 @@
   </footer>
 
   <script src="../../assets/js/navbar.js" defer></script>
+  <script>
+    // Automatically sort blog cards by date so the most recent article appears at the top
+    document.addEventListener('DOMContentLoaded', () => {
+      const blogList = document.querySelector('.blog-list');
+      if (!blogList) return;
+
+      const cards = Array.from(blogList.querySelectorAll('.blog-card'));
+      cards.sort((a, b) => {
+        const dateAStr = a.getAttribute('data-date') || a.querySelector('.blog-card-date')?.textContent?.trim() || '';
+        const dateBStr = b.getAttribute('data-date') || b.querySelector('.blog-card-date')?.textContent?.trim() || '';
+        
+        const timeA = Date.parse(dateAStr) || 0;
+        const timeB = Date.parse(dateBStr) || 0;
+        
+        return timeB - timeA; // Descending order (recent first)
+      });
+
+      cards.forEach(card => blogList.appendChild(card));
+    });
+  </script>
 </body>
 </html>
