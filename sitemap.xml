@@ -86,8 +86,20 @@
   </url>
   <url>
     <loc>https://skilllibrary.shop/pages/blog/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://skilllibrary.shop/pages/blog/digital-reading-vs-physical-books.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://skilllibrary.shop/pages/blog/personal-finance-books-ebooks-india-2026.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
