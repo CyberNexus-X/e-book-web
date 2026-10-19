@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /payment/
+Disallow: /vault-*.html
+Disallow: /temp_header.html
 
 Sitemap: https://skilllibrary.shop/sitemap.xml

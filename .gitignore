@@ -12,3 +12,4 @@ temp_header.html
 tools/
 logs/
 *.log
+.agents/
