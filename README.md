@@ -1,189 +1,242 @@
-# 📚 Skill Library — 12,000+ eBook Bundle at ₹149 Lifetime Access
+# 📚 Skill Library — Official Web Platform & Digital Reading Engine
 
 <div align="center">
 
-[![Skill Library](https://img.shields.io/badge/🌐_Live_Website-skilllibrary.shop-4CAF50?style=for-the-badge)](https://skilllibrary.shop/)
-[![Price](https://img.shields.io/badge/💰_Price-₹149_One--Time-gold?style=for-the-badge)](https://skilllibrary.shop/#pricing)
-[![eBooks](https://img.shields.io/badge/📖_eBooks-12%2C000%2B-blue?style=for-the-badge)](https://skilllibrary.shop/#categories)
-[![Rating](https://img.shields.io/badge/⭐_Rating-4.9%2F5_(1480_reviews)-orange?style=for-the-badge)](https://skilllibrary.shop/#reviews)
+![Skill Library Banner](assets/images/main-image.webp)
 
-**The ultimate digital self-education library. One payment. Lifetime access. 12,000+ premium eBooks.**
+[![Live Website](https://img.shields.io/badge/🌐_Live_Website-skilllibrary.shop-00C853?style=for-the-badge&logo=googlechrome&logoColor=white)](https://skilllibrary.shop/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub_Pages-24292e?style=for-the-badge&logo=github&logoColor=white)](https://skilllibrary.shop/)
+[![SEO: 100%](https://img.shields.io/badge/SEO-Optimized_100%25-4CAF50?style=for-the-badge&logo=google&logoColor=white)](https://skilllibrary.shop/sitemap.xml)
+[![eBooks Catalog](https://img.shields.io/badge/📖_Catalog-12%2C000%2B_eBooks-3D5AFE?style=for-the-badge)](https://skilllibrary.shop/products/ebook-bundle/)
+[![Customer Rating](https://img.shields.io/badge/⭐_Rating-4.9%2F5.0-FF9100?style=for-the-badge)](https://skilllibrary.shop/#reviews)
 
-[🚀 Visit Website](https://skilllibrary.shop/) • [📖 Browse Catalog](https://skilllibrary.shop/#categories) • [💬 Contact Us](https://skilllibrary.shop/contact.html)
+**The ultimate digital self-education ecosystem. One-time payment. Lifetime cloud access. 12,000+ premium curated eBooks in Hindi & English.**
+
+[🚀 Explore Live Website](https://skilllibrary.shop/) • [📦 eBook Bundle](https://skilllibrary.shop/products/ebook-bundle/) • [🌟 Astrology Bundle](https://skilllibrary.shop/products/astrology/) • [📰 Official Blog](https://skilllibrary.shop/pages/blog/)
 
 </div>
 
 ---
 
-## 🌟 What is Skill Library?
+## 📖 Table of Contents
+- [About Skill Library](#-about-skill-library)
+- [Key Features](#-key-features)
+- [Product Suites](#-product-suites)
+- [Content Categories (9 Curated Shelves)](#-content-categories-9-curated-shelves)
+- [Publication & Blog Hub](#-publication--blog-hub)
+- [Technical Architecture & SEO Engine](#-technical-architecture--seo-engine)
+- [Repository Structure](#-repository-structure)
+- [Local Development Setup](#-local-development-setup)
+- [Deployment](#-deployment)
+- [Contact & Support](#-contact--support)
+- [License](#-license)
 
-**[Skill Library](https://skilllibrary.shop/)** is India's most affordable premium eBook bundle platform. For a single one-time payment of just **₹149**, you get instant lifetime access to **12,000+ curated eBooks** across 9 hand-picked categories — delivered directly to your email as a secure Google Drive link.
+---
 
-> **No subscription. No monthly fees. No hidden charges. Just knowledge — forever.**
+## 🌟 About Skill Library
 
-Whether you're a student, entrepreneur, investor, or someone on a journey of self-improvement, Skill Library has the books that will reshape your thinking and accelerate your growth.
+**[Skill Library](https://skilllibrary.shop/)** is India's premier digital self-education platform designed to make world-class knowledge accessible and affordable. For an accessible one-time payment, readers receive instant lifetime access to over **12,000+ curated eBooks** across personal finance, business, psychology, self-growth, and classic Hindi literature.
+
+Unlike subscription services that lock content behind recurring monthly fees, Skill Library delivers a permanent, searchable Google Drive library directly to your email address within 2 minutes of purchase.
 
 ---
 
 ## 💥 Key Features
 
 | Feature | Details |
-|--------|---------|
-| 📦 **Total eBooks** | 12,000+ curated titles |
-| 🗂️ **Categories** | 9 expertly curated shelves |
-| 💰 **Price** | ₹149 one-time (no subscription) |
-| ⚡ **Delivery** | Instant Google Drive link (~2 minutes) |
-| 📱 **Compatibility** | Mobile, Tablet, PC, Kindle |
-| 📄 **Format** | PDF & EPUB |
-| ☁️ **Access** | Cloud (online) + Offline Downloads |
-| 🔐 **Checkout** | 256-bit encrypted via Superprofile |
-| 🌐 **Languages** | English + Hindi |
+|---|---|
+| 📚 **Volume** | 12,000+ curated and organized titles |
+| 🗂️ **Catalog Organization** | 9 structured shelves with zero clutter |
+| ⚡ **Fulfillment** | Automated Google Drive access within 2 minutes |
+| 📱 **Cross-Platform Compatibility** | Android, iPhone, iPad, Windows, macOS & Kindle |
+| 📄 **File Formats** | Standard DRM-free PDF & ePub |
+| 🌐 **Bilingual Support** | Rich collections in both English and Hindi |
+| 🔒 **Security & Checkout** | 256-bit SSL encrypted PCI-DSS compliant payment processing |
+| 🚀 **High-Speed CDN** | Zero-dependency vanilla frontend for instant page loads |
 
 ---
 
-## 📚 9 Curated Shelves of Knowledge
+## 🛍️ Product Suites
 
-### SHELF 01 — Business & Sales
-Master the principles of starting, running, and scaling a business. Includes practical sales playbooks, negotiation frameworks, and marketing strategies.
-> *Zero to One · The 10X Rule · Blue Ocean Strategy*
+The platform hosts dedicated, highly optimized landing pages for distinct educational products:
 
-### SHELF 02 — हिंदी बायोग्राफी संग्रह
-महान नेताओं, विचारकों और उद्यमियों की प्रेरणादायक जीवन गाथाएँ — डॉ. कलाम, रतन टाटा, स्टीव जॉब्स।
-> *अग्नि की उड़ान · रतन टाटा - एक प्रेरक व्यक्तित्व · Steve Jobs (Hindi)*
-
-### SHELF 03 — हिंदी बिजनेस संग्रह
-व्यापार, शेयर मार्केट, और वित्तीय स्वतंत्रता की समझ — सरल हिंदी भाषा में।
-> *रिच डैड पुअर डैड · शेयर मार्केट गाइड · चाणक्य नेतृत्व के रहस्य*
-
-### SHELF 04 — हिंदी सेल्फ हेल्प
-आत्मविश्वास, सकारात्मक आदतें और व्यक्तित्व विकास की दुनिया के सर्वश्रेष्ठ पुस्तकें।
-> *आपके अवचेतन मन की शक्ति · बॉडी लैंग्वेज · जीत आपकी*
-
-### SHELF 05 — Leadership & Communication
-Learn to connect with people, lead high-performing teams, build influence, and speak with confidence.
-> *How to Win Friends & Influence People · The 7 Habits · Leadership Secrets of Chanakya*
-
-### SHELF 06 — Mindset & Psychology
-Explore human behavior, emotional intelligence, resilience, and the psychology behind building lasting wealth.
-> *The Psychology of Money · Mindset: New Psychology of Success · Man's Search for Meaning*
-
-### SHELF 07 — Money & Investing
-Demystify markets, stock investing, budget management, and wealth compounding strategies.
-> *The Intelligent Investor · Rich Dad Poor Dad · The Compound Effect*
-
-### SHELF 08 — Philosophy & Spiritual
-Timeless classics on finding purpose, inner calm, mindfulness, and ancient philosophical wisdom.
-> *Ikigai · The Power of Now · Sadhguru: More Than A Life*
-
-### SHELF 09 — Productivity & Habits
-Build bulletproof systems against procrastination, optimize time, and execute deep work without distractions.
-> *Atomic Habits · Deep Work · The 5 AM Club*
+1. **[Mega eBook Bundle (12,000+ Titles)](https://skilllibrary.shop/products/ebook-bundle/)**
+   - Comprehensive library covering Business, Finance, Mindset, AI, Marketing, Coding, and Hindi Literature.
+   - Lifetime cloud access with continuous updates.
+2. **[Vedic Astrology & Jyotish Shastra Bundle](https://skilllibrary.shop/products/astrology/)**
+   - Rare and classical manuscripts including Brihat Parashara Hora Shastra, Lal Kitab, KP System, and Palmistry manuals.
+3. **[Height Blueprint Series](https://skilllibrary.shop/products/height-blueprint/)**
+   - Dedicated physical fitness and posture enhancement guides.
 
 ---
 
-## 🚀 How It Works
+## 📚 Content Categories (9 Curated Shelves)
 
 ```
-1. Visit skilllibrary.shop
-       ↓
-2. Click "Get Instant Access — ₹149"
-       ↓
-3. Complete secure payment (UPI / Card / Netbanking)
-       ↓
-4. Receive Google Drive link in your email (~2 minutes)
-       ↓
-5. Access 12,000+ eBooks — anytime, anywhere, forever! ✅
+SKILL LIBRARY CORE SHELVES
+│
+├── 01. Business, Startups & Sales
+│   └── Frameworks, lean methodology, bootstrapping, B2B sales playbooks
+│
+├── 02. हिंदी बायोग्राफी संग्रह (Biographies in Hindi)
+│   └── Dr. APJ Abdul Kalam, Ratan Tata, Steve Jobs, Indian industrialists
+│
+├── 03. हिंदी बिजनेस व शेयर मार्केट संग्रह
+│   └── Stock market fundamentals, Chanakya Neeti, cashflow management
+│
+├── 04. हिंदी सेल्फ-हेल्प व व्यक्तित्व विकास
+│   └── Subconscious mind, body language, leadership, confidence building
+│
+├── 05. Leadership & High-Performance Communication
+│   └── Influence, team building, executive presence, public speaking
+│
+├── 06. Mindset, Mental Models & Psychology
+│   └── Emotional intelligence, stoicism, behavioural economics, habits
+│
+├── 07. Personal Finance, Money & Investing
+│   └── Compounding, index investing, asset allocation, wealth preservation
+│
+├── 08. Philosophy, Mindfulness & Spirituality
+│   └── Ikigai, ancient Eastern philosophy, mindfulness, inner mastery
+│
+└── 09. Productivity & Deep Work Systems
+    └── Atomic habits, focus protection, digital decluttering, time mastery
 ```
 
 ---
 
-## ⭐ What Our Readers Say
+## 📰 Publication & Blog Hub
 
-> *"I was highly skeptical about the collection because of the price. But the layout is extremely organized. I found three specific books on Ratan Tata and investing that I was planning to buy separately anyway."*
-> — **Arjun Kumar**, Verified Buyer · Bangalore ⭐⭐⭐⭐⭐
+The platform features an active publication hub at **[`/pages/blog/`](https://skilllibrary.shop/pages/blog/)** delivering authoritative, search-optimized reading roadmaps and chapter summaries:
 
-> *"Having the books stored directly on Google Drive makes a huge difference. Just search any topic and start reading on my daily metro commute. Excellent Hindi self-help collection!"*
-> — **Sneha Mehta**, Verified Buyer · Pune ⭐⭐⭐⭐⭐
-
-> *"Absolutely massive value. The download link landed in my inbox 1 minute after paying with UPI. It has everything from Zero to One to classic philosophies. Highly recommended!"*
-> — **Vikram Patel**, Verified Buyer · Ahmedabad ⭐⭐⭐⭐⭐
-
----
-
-## 🛠️ Tech Stack
-
-This project is built with pure, hand-crafted frontend technologies for maximum performance:
-
-| Layer | Technology |
-|-------|-----------|
-| **Markup** | Semantic HTML5 |
-| **Styling** | Vanilla CSS3 (custom design system) |
-| **Scripting** | Vanilla JavaScript (ES6+) |
-| **Fonts** | Google Fonts — Inter & Outfit |
-| **Hosting** | GitHub Pages + Custom Domain |
-| **SEO** | Schema.org JSON-LD, Open Graph, Twitter Cards |
-| **Performance** | WebP images, lazy loading, preload hints |
+- **[Best Business Books for Indian Entrepreneurs (2026 Guide)](https://skilllibrary.shop/pages/blog/best-business-books-hindi-english-2026.html)** — 90-day structured roadmap for founders and solopreneurs.
+- **[15 Best Self Help Books in Hindi (2026 Edition)](https://skilllibrary.shop/pages/blog/15-best-self-help-books-hindi.html)** — Comprehensive Hindi reading list.
+- **[The Psychology of Money Summary in Hindi](https://skilllibrary.shop/pages/blog/psychology-of-money-hindi.html)** — 7 critical wealth behavior lessons.
+- **[Atomic Habits Summary in Hindi](https://skilllibrary.shop/pages/blog/atomic-habits-hindi.html)** — System-driven micro-habit framework.
+- **[Rich Dad Poor Dad Summary in Hindi](https://skilllibrary.shop/pages/blog/rich-dad-poor-dad-hindi.html)** — Asset vs. liability breakdown.
+- **[Best Astrology Books PDF & Jyotish Shastra Guide](https://skilllibrary.shop/pages/blog/astrology-books-pdf.html)** — KP System, AstroKarak, and Vedic texts.
+- **[Best Personal Finance Books & eBooks India (2026)](https://skilllibrary.shop/pages/blog/personal-finance-books-ebooks-india-2026.html)** — Wealth creation handbook.
+- **[Digital Reading vs Physical Books](https://skilllibrary.shop/pages/blog/digital-reading-vs-physical-books.html)** — Cognitive retention and learning analysis.
 
 ---
 
-## 📁 Project Structure
+## ⚡ Technical Architecture & SEO Engine
+
+Skill Library is engineered for maximum speed, accessibility, and search engine discoverability without heavy framework overhead:
+
+### 🎯 SEO & Structured Data (JSON-LD)
+- **Schema Graphs**: Every page and article features valid Schema.org graphs combining `Organization`, `WebPage`, `BreadcrumbList`, `Product`, `BlogPosting`, and `FAQPage`.
+- **Rich Results Ready**: Built-in FAQ schemas enable expandable accordion previews directly in Google Search Engine Results Pages (SERPs).
+- **Clean Canonicalization**: Clean root-relative paths prevent crawl traps, duplicate content flags, and URL parameter dilution.
+- **Bilingual Hreflang**: Explicit `en-IN` and `hi-IN` language alternates targeting Indian search queries.
+
+### ⚡ Performance & Core Web Vitals
+- **Zero Heavy Frameworks**: Pure HTML5, modern CSS3 variables, and lightweight ES6 JavaScript.
+- **Optimized Assets**: Next-gen WebP image formats, responsive picture elements, and preconnected Google Fonts (`Inter` & `Outfit`).
+- **PWA Ready**: Web app manifest and multi-resolution favicon definitions.
+
+---
+
+## 📁 Repository Structure
 
 ```
 e-book-web/
-├── index.html               # Main landing page
-├── about.html               # About Skill Library
-├── contact.html             # Contact page
-├── privacy-policy.html      # Privacy policy
-├── refund-policy.html       # Refund & cancellation policy
-├── terms.html               # Terms & conditions
-├── styles.css               # Main stylesheet (design system)
-├── legal.css                # Legal pages stylesheet
-├── script.js                # Interactive JS (FAQ, countdown, checkout)
-├── sitemap.xml              # XML sitemap for SEO
-├── robots.txt               # Crawler directives
-├── .htaccess                # Apache server config
-├── site.webmanifest         # PWA manifest
-├── favicon.ico              # Browser favicon
-├── favicon-32x32.png        # High-res favicon
-└── *.webp                   # Optimized book cover images
+├── index.html                   # High-converting homepage & catalog showcase
+├── sitemap.xml                  # Dynamic XML sitemap for Google Search Console
+├── robots.txt                   # Search crawler directives
+├── site.webmanifest             # Progressive Web App (PWA) manifest
+├── CNAME                        # Custom domain mapping (skilllibrary.shop)
+├── LICENSE                      # MIT Open Source License
+├── README.md                    # Project documentation
+│
+├── assets/                      # Shared static assets
+│   ├── css/
+│   │   ├── styles.css           # Core design system (dark theme & components)
+│   │   ├── navbar.css           # Responsive navigation bar & mobile drawer
+│   │   └── legal.css            # Typography for compliance & policy pages
+│   ├── js/
+│   │   └── navbar.js            # Mobile navigation drawer controller
+│   └── images/                  # Optimized WebP & JPG cover visuals
+│
+├── pages/                       # Informational & editorial pages
+│   ├── about/index.html         # Brand mission & founder story
+│   ├── contact/index.html       # Customer support desk & contact forms
+│   ├── privacy-policy/index.html# User data & privacy protection terms
+│   ├── terms/index.html         # Purchase & service agreement
+│   ├── refund-policy/index.html # Digital product fulfillment & refund rules
+│   └── blog/                    # Content marketing & publication engine
+│       ├── index.html           # Publication hub & category filter
+│       ├── blog.css             # Article typography & reading layout
+│       └── *.html               # Long-form guides & book summaries
+│
+└── products/                    # Dedicated conversion funnels
+    ├── ebook-bundle/index.html  # Flagship 12,000+ eBook bundle sales page
+    ├── astrology/index.html     # Dedicated Vedic Astrology bundle sales page
+    └── height-blueprint/index.html # Fitness blueprint sales page
 ```
 
 ---
 
-## 🔗 Quick Links
+## 💻 Local Development Setup
 
-| Page | URL |
-|------|-----|
-| 🏠 **Home** | [skilllibrary.shop](https://skilllibrary.shop/) |
-| 📖 **Browse Catalog** | [skilllibrary.shop/#categories](https://skilllibrary.shop/#categories) |
-| 💰 **Pricing** | [skilllibrary.shop/#pricing](https://skilllibrary.shop/#pricing) |
-| ❓ **FAQ** | [skilllibrary.shop/#faq](https://skilllibrary.shop/#faq) |
-| ℹ️ **About** | [skilllibrary.shop/about.html](https://skilllibrary.shop/about.html) |
-| 📩 **Contact** | [skilllibrary.shop/contact.html](https://skilllibrary.shop/contact.html) |
-| 📜 **Privacy Policy** | [skilllibrary.shop/privacy-policy.html](https://skilllibrary.shop/privacy-policy.html) |
-| 💼 **Terms** | [skilllibrary.shop/terms.html](https://skilllibrary.shop/terms.html) |
-| 🔄 **Refund Policy** | [skilllibrary.shop/refund-policy.html](https://skilllibrary.shop/refund-policy.html) |
+To preview or develop on the repository locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/CyberNexus-X/e-book-web.git
+   cd e-book-web
+   ```
+
+2. **Launch a local development server:**
+   - Using Python:
+     ```bash
+     python -m http.server 8000
+     ```
+   - Using Node.js / `npx`:
+     ```bash
+     npx serve .
+     ```
+   - Using VS Code:
+     Right-click `index.html` and click **"Open with Live Server"**.
+
+3. **Open in browser:**
+   ```
+   http://localhost:8000
+   ```
 
 ---
 
-## 📣 Connect With Us
+## 🚀 Deployment
 
-- 🌐 Website: [skilllibrary.shop](https://skilllibrary.shop/)
-- 📸 Instagram: [@skill_library.in](https://instagram.com/skill_library.in)
-- 📧 Email: [support@skilllibrary.shop](mailto:support@skilllibrary.shop)
+The repository is continuously deployed to **GitHub Pages** with automated custom domain mapping via `CNAME` pointing to:
+
+```
+https://skilllibrary.shop/
+```
+
+Every push to the `main` branch automatically triggers GitHub Pages build and updates the live production site within ~60 seconds.
+
+---
+
+## 📩 Contact & Support
+
+- 🌐 **Website**: [skilllibrary.shop](https://skilllibrary.shop/)
+- 📧 **Customer Support**: [support@skilllibrary.shop](mailto:support@skilllibrary.shop)
+- 📸 **Instagram**: [@skilllib.in](https://www.instagram.com/skilllib.in/)
+- 👤 **Founder & Maintainer**: Tauqeer Khan
 
 ---
 
 ## 📜 License
 
-This project's source code is open for reference. The eBook content is proprietary and sold exclusively through [Skill Library](https://skilllibrary.shop/).
-
----
+This project's code and structural layout are licensed under the [MIT License](LICENSE).  
+The eBook intellectual property and bundled literature are proprietary to their respective authors and publishers.
 
 <div align="center">
 
-**Made with ❤️ in India**
+**Crafted with ❤️ in India · Dedicated to Continuous Learning**
 
-[⬆ Back to Top](#-skill-library--12000-ebook-bundle-at-₹149-lifetime-access)
+[⬆ Return to Top](#-skill-library--official-web-platform--digital-reading-engine)
 
 </div>
