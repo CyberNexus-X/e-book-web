@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../../favicon.ico" sizes="any">
+<title>Day 15 — Mini project + recap | Python Seekho | Skill Library</title>
+<meta name="description" content="Day 15: Mini project + recap — code, output aur poori detail ke saath. Python Learning Series, Skill Library.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://skilllibrary.shop/products/python/day-15/">
+<style>
+body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.6}
+a{color:#00ff9c} .wrap{max-width:900px;margin:0 auto;padding:24px 18px 40px}
+.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem} .nav a{text-decoration:none}
+h1{font-size:2rem;line-height:1.25} h2{color:#00ff9c;margin-top:28px} h3{margin:0 0 6px}
+.hero{background:#121a16;border:1px solid #243028;border-radius:12px;padding:22px}
+.kick{color:#8a9a94;letter-spacing:2px;font-family:monospace;font-size:.85rem;text-transform:uppercase}
+pre{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:16px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.6;color:#a7f3d0;white-space:pre-wrap;word-wrap:break-word}
+pre.out{color:#f2f2f2} .card{background:#ffffff;color:#0f172a;border-radius:12px;padding:18px;margin:16px 0}
+.card h2{color:#0f172a} .card p,.card li{color:#334155}
+.mist{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px;color:#7f1d1d}
+.task{border:1.5px solid #00ff9c;border-radius:12px;padding:16px}
+table{width:100%;border-collapse:collapse} td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
+td.rn{color:#8a9a94;font-family:monospace;width:70px} td.rt{color:#00ff9c;width:140px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px} .pn a{text-decoration:none}
+footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center} footer a{margin:0 8px}
+</style></head><body><div class="wrap">
+<nav class="nav"><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a></nav>
+<div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 15 / 30</p>
+<h1>Day 15 — Mini project + recap</h1><p>Phase 1 ka mini project: Calculator (function + dict se operations) aur Number Guessing Game (while loop + condition). Yahi Day 1–14 ka recap hai.</p><p>Phase: Beginner · Reels: 71/450 – 75/450</p></div>
+<h2>Code</h2><pre>def calc(a, op, b):
+    if op == &quot;/&quot; and b == 0:
+        return &quot;0 se divide nahi&quot;
+    ops = {&quot;+&quot;: lambda: a + b, &quot;-&quot;: lambda: a - b, &quot;*&quot;: lambda: a * b, &quot;/&quot;: lambda: a / b}
+    return ops[op]() if op in ops else &quot;Invalid op&quot;
+
+print(calc(8, &quot;*&quot;, 5))
+print(calc(8, &quot;/&quot;, 0))
+print(calc(10, &quot;+&quot;, 5))
+secret = 7
+guesses = [3, 9, 7]
+for guess in guesses:
+    if guess == secret:
+        print(&quot;Sahi!&quot;)
+        break
+    print(&quot;Zyada&quot; if guess &gt; secret else &quot;Kam&quot;)</pre>
+<h2>Output</h2><pre class='out'>40
+0 se divide nahi
+15
+Kam
+Zyada
+Sahi!</pre>
+<div class="card"><h2>Code ki poori detail</h2><ul><li>calc() — a, op, b leta hai: do numbers aur ek operator.</li><li>op == &quot;/&quot; and b == 0 — divide-by-zero ko pehle hi rok diya, warna crash hota.</li><li>ops dict — operator ko uske kaam se jodta hai; lambda chhota function hai.</li><li>ops[op]() — dict se sahi kaam chun kar chalata hai, galat operator par &#x27;Invalid op&#x27; milta hai.</li><li>Guessing game — har guess ko secret se compare karta hai; sahi milte hi break se loop ruk jaata hai.</li><li>Beginner ki top 3 galtiyan: = vs ==, input() ko int na karna, galat indentation.</li></ul></div>
+<div class="mist"><strong>Common mistake:</strong> Calculator me zero se divide karna, = aur == me confusion, aur input() ko bina int() ke use karna — ye teen galtiyan sabse zyada hoti hain.</div>
+<div class="task" style="margin-top:16px"><strong>Khud try karo:</strong> Phase 1 challenge: calculator me -, / aur % bhi jodo, aur guessing game me tries ginne ka counter lagao.</div>
+<h2>Is din ki 5 reels (Excel se)</h2><table><tr><td class='rn'>71/450</td><td class='rt'>Concept</td><td>Phase 1 recap</td></tr><tr><td class='rn'>72/450</td><td class='rt'>Live demo</td><td>Calculator project</td></tr><tr><td class='rn'>73/450</td><td class='rt'>Common mistake</td><td>Beginner ki top 3 galtiyan</td></tr><tr><td class='rn'>74/450</td><td class='rt'>Quiz</td><td>Quiz: Phase 1 challenge</td></tr><tr><td class='rn'>75/450</td><td class='rt'>Interview / real life</td><td>Number guessing game</td></tr></table>
+
+<div class="pn"><a href='/products/python/day-14/'>← Day 14</a><a href='/products/python/day-16/'>Day 16 →</a></div>
+<footer><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a><p>© Skill Library — skilllibrary.shop</p></footer>
+</div></body></html>

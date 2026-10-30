@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../../favicon.ico" sizes="any">
+<title>Day 28 — Modules | Python Seekho | Skill Library</title>
+<meta name="description" content="Day 28: Modules — code, output aur poori detail ke saath. Python Learning Series, Skill Library.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://skilllibrary.shop/products/python/day-28/">
+<style>
+body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.6}
+a{color:#00ff9c} .wrap{max-width:900px;margin:0 auto;padding:24px 18px 40px}
+.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem} .nav a{text-decoration:none}
+h1{font-size:2rem;line-height:1.25} h2{color:#00ff9c;margin-top:28px} h3{margin:0 0 6px}
+.hero{background:#121a16;border:1px solid #243028;border-radius:12px;padding:22px}
+.kick{color:#8a9a94;letter-spacing:2px;font-family:monospace;font-size:.85rem;text-transform:uppercase}
+pre{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:16px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.6;color:#a7f3d0;white-space:pre-wrap;word-wrap:break-word}
+pre.out{color:#f2f2f2} .card{background:#ffffff;color:#0f172a;border-radius:12px;padding:18px;margin:16px 0}
+.card h2{color:#0f172a} .card p,.card li{color:#334155}
+.mist{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px;color:#7f1d1d}
+.task{border:1.5px solid #00ff9c;border-radius:12px;padding:16px}
+table{width:100%;border-collapse:collapse} td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
+td.rn{color:#8a9a94;font-family:monospace;width:70px} td.rt{color:#00ff9c;width:140px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px} .pn a{text-decoration:none}
+footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center} footer a{margin:0 8px}
+</style></head><body><div class="wrap">
+<nav class="nav"><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a></nav>
+<div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 28 / 30</p>
+<h1>Day 28 — Modules</h1><p>Modules dusri files ka code hote hain: import math, random se unke functions milte hain. Apni file ka naam kabhi random.py ya math.py mat rakho, warna asli module chhup jaata hai.</p><p>Phase: Intermediate · Reels: 136/450 – 140/450</p></div>
+<h2>Code</h2><pre>import math, random
+print(math.pi &gt; 3, math.sqrt(16))
+random.seed(0)
+dice = random.randint(1, 6)
+print(dice)
+otp = &quot;&quot;.join(random.choices(&quot;0123456789&quot;, k=6))
+print(len(otp))
+print(otp)
+if __name__ == &quot;__main__&quot;:
+    print(&quot;Direct run pe hi&quot;)</pre>
+<h2>Output</h2><pre class='out'>True 4.0
+4
+6
+742547
+Direct run pe hi</pre>
+<div class="card"><h2>Code ki poori detail</h2><ul><li>import math — math module ke functions (pi, sqrt) mil jaate hain.</li><li>random.randint(1, 6) — 1 se 6 tak ka random number (dice) deta hai.</li><li>random.seed(0) — is example me output ko repeatable banata hai, taaki har baar wahi dice/OTP pattern samajh aaye (asli program me seed mat lagao).</li><li>random.choices(..., k=6) — 6 random digits lekar OTP jaisa string banata hai.</li><li>if __name__ == &quot;__main__&quot; — ye block sirf tab chalta hai jab file seedha chalayi jaaye, import karne par nahi.</li></ul></div>
+<div class="mist"><strong>Common mistake:</strong> Apni file ka naam random.py / math.py mat rakho — Python tumhari file ko asli module samajh lega aur asli module chhup jayega.</div>
+<div class="task" style="margin-top:16px"><strong>Khud try karo:</strong> Dice roller banao (randint se) aur OTP generator banao (choices se).</div>
+<h2>Is din ki 5 reels (Excel se)</h2><table><tr><td class='rn'>136/450</td><td class='rt'>Concept</td><td>import kaise kaam karta</td></tr><tr><td class='rn'>137/450</td><td class='rt'>Live demo</td><td>random aur math demo</td></tr><tr><td class='rn'>138/450</td><td class='rt'>Common mistake</td><td>File ka naam random.py mat rakho</td></tr><tr><td class='rn'>139/450</td><td class='rt'>Quiz</td><td>Quiz: dice roller</td></tr><tr><td class='rn'>140/450</td><td class='rt'>Interview / real life</td><td>Real life: OTP generator</td></tr></table>
+
+<div class="pn"><a href='/products/python/day-27/'>← Day 27</a><a href='/products/python/day-29/'>Day 29 →</a></div>
+<footer><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a><p>© Skill Library — skilllibrary.shop</p></footer>
+</div></body></html>

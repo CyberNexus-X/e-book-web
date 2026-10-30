@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../../favicon.ico" sizes="any">
+<title>Day 14 — Functions | Python Seekho | Skill Library</title>
+<meta name="description" content="Day 14: Functions — code, output aur poori detail ke saath. Python Learning Series, Skill Library.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://skilllibrary.shop/products/python/day-14/">
+<style>
+body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.6}
+a{color:#00ff9c} .wrap{max-width:900px;margin:0 auto;padding:24px 18px 40px}
+.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem} .nav a{text-decoration:none}
+h1{font-size:2rem;line-height:1.25} h2{color:#00ff9c;margin-top:28px} h3{margin:0 0 6px}
+.hero{background:#121a16;border:1px solid #243028;border-radius:12px;padding:22px}
+.kick{color:#8a9a94;letter-spacing:2px;font-family:monospace;font-size:.85rem;text-transform:uppercase}
+pre{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:16px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.6;color:#a7f3d0;white-space:pre-wrap;word-wrap:break-word}
+pre.out{color:#f2f2f2} .card{background:#ffffff;color:#0f172a;border-radius:12px;padding:18px;margin:16px 0}
+.card h2{color:#0f172a} .card p,.card li{color:#334155}
+.mist{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px;color:#7f1d1d}
+.task{border:1.5px solid #00ff9c;border-radius:12px;padding:16px}
+table{width:100%;border-collapse:collapse} td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
+td.rn{color:#8a9a94;font-family:monospace;width:70px} td.rt{color:#00ff9c;width:140px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px} .pn a{text-decoration:none}
+footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center} footer a{margin:0 8px}
+</style></head><body><div class="wrap">
+<nav class="nav"><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a></nav>
+<div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 14 / 30</p>
+<h1>Day 14 — Functions</h1><p>Function code ka dobara use hone wala hissa hota hai. def se function banta hai, parameters input hote hain, return value wapas deta hai. print sirf dikhata hai, return nahi karta.</p><p>Phase: Beginner · Reels: 66/450 – 70/450</p></div>
+<h2>Code</h2><pre>def square(n):
+    &quot;&quot;&quot;n ka square return karo&quot;&quot;&quot;
+    return n * n
+
+def greet(name):
+    print(&quot;Hi&quot;, name)
+
+print(square(4))
+print(square(5))
+result = greet(&quot;Arhan&quot;)
+print(result)</pre>
+<h2>Output</h2><pre class='out'>16
+25
+Hi Arhan
+None</pre>
+<div class="card"><h2>Code ki poori detail</h2><ul><li>def square(n): — square naam ka function banaya, n parameter hai.</li><li>return n * n — answer wapas deta hai, isliye print(square(4)) = 16 dikhata hai.</li><li>greet() sirf print karta hai, kuch return nahi karta, isliye result = None hota hai.</li><li>Docstring (&quot;&quot;&quot;...&quot;&quot;&quot;) — function ke baare me chhota note hota hai, code par asar nahi daalta.</li><li>Function kyun? Code reuse (DRY), test karna easy aur naam se samajh aana.</li></ul></div>
+<div class="mist"><strong>Common mistake:</strong> print ≠ return: print screen par dikhata hai, return value aage ke code ko deta hai. Dono ko ek mat samjho.</div>
+<div class="task" style="margin-top:16px"><strong>Khud try karo:</strong> Ek square function banao aur ek aisa function jo naam lekar &#x27;Hi, naam&#x27; return kare (print nahi).</div>
+<h2>Is din ki 5 reels (Excel se)</h2><table><tr><td class='rn'>66/450</td><td class='rt'>Concept</td><td>def se function banao</td></tr><tr><td class='rn'>67/450</td><td class='rt'>Live demo</td><td>Parameters aur return</td></tr><tr><td class='rn'>68/450</td><td class='rt'>Common mistake</td><td>print vs return</td></tr><tr><td class='rn'>69/450</td><td class='rt'>Quiz</td><td>Quiz: square function</td></tr><tr><td class='rn'>70/450</td><td class='rt'>Interview / real life</td><td>Interview: function kyun zaroori</td></tr></table>
+
+<div class="pn"><a href='/products/python/day-13/'>← Day 13</a><a href='/products/python/day-15/'>Day 15 →</a></div>
+<footer><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a><p>© Skill Library — skilllibrary.shop</p></footer>
+</div></body></html>

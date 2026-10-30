@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../../favicon.ico" sizes="any">
+<title>Day 17 — Dictionary basics | Python Seekho | Skill Library</title>
+<meta name="description" content="Day 17: Dictionary basics — code, output aur poori detail ke saath. Python Learning Series, Skill Library.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://skilllibrary.shop/products/python/day-17/">
+<style>
+body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.6}
+a{color:#00ff9c} .wrap{max-width:900px;margin:0 auto;padding:24px 18px 40px}
+.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem} .nav a{text-decoration:none}
+h1{font-size:2rem;line-height:1.25} h2{color:#00ff9c;margin-top:28px} h3{margin:0 0 6px}
+.hero{background:#121a16;border:1px solid #243028;border-radius:12px;padding:22px}
+.kick{color:#8a9a94;letter-spacing:2px;font-family:monospace;font-size:.85rem;text-transform:uppercase}
+pre{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:16px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.6;color:#a7f3d0;white-space:pre-wrap;word-wrap:break-word}
+pre.out{color:#f2f2f2} .card{background:#ffffff;color:#0f172a;border-radius:12px;padding:18px;margin:16px 0}
+.card h2{color:#0f172a} .card p,.card li{color:#334155}
+.mist{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px;color:#7f1d1d}
+.task{border:1.5px solid #00ff9c;border-radius:12px;padding:16px}
+table{width:100%;border-collapse:collapse} td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
+td.rn{color:#8a9a94;font-family:monospace;width:70px} td.rt{color:#00ff9c;width:140px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px} .pn a{text-decoration:none}
+footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center} footer a{margin:0 8px}
+</style></head><body><div class="wrap">
+<nav class="nav"><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a></nav>
+<div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 17 / 30</p>
+<h1>Day 17 — Dictionary basics</h1><p>Dictionary key-value pairs rakhta hai: key se value milti hai. .get() se missing key par error nahi aata, balki default value milti hai.</p><p>Phase: Intermediate · Reels: 81/450 – 85/450</p></div>
+<h2>Code</h2><pre>marks = {&quot;Arhan&quot;: 92, &quot;Riya&quot;: 85}
+print(marks[&quot;Arhan&quot;])
+print(marks.get(&quot;Aman&quot;, 0))
+marks.update({&quot;Riya&quot;: 88})
+print(marks)
+for name, m in marks.items():
+    print(name, m)
+print(list(marks))</pre>
+<h2>Output</h2><pre class='out'>92
+0
+{&#x27;Arhan&#x27;: 92, &#x27;Riya&#x27;: 88}
+Arhan 92
+Riya 88
+[&#x27;Arhan&#x27;, &#x27;Riya&#x27;]</pre>
+<div class="card"><h2>Code ki poori detail</h2><ul><li>marks = {...} — curly brackets me dict banta hai, key: value ke jode me.</li><li>marks[&quot;Arhan&quot;] = 92 — key se value milti hai.</li><li>marks.get(&quot;Aman&quot;, 0) = 0 — key na mile to KeyError ki jagah default (0) milta hai.</li><li>update() — nayi key jodta ya purani ki value badalta hai.</li><li>.items() — key aur value dono ek saath loop me deta hai; list(marks) sirf keys deta hai.</li></ul></div>
+<div class="mist"><strong>Common mistake:</strong> Missing key ko seedha marks[&quot;Aman&quot;] se maangne par KeyError aata hai. Safe tareeka .get() hai.</div>
+<div class="task" style="margin-top:16px"><strong>Khud try karo:</strong> Student marks dict banao aur ek phonebook dict banao (naam → number).</div>
+<h2>Is din ki 5 reels (Excel se)</h2><table><tr><td class='rn'>81/450</td><td class='rt'>Concept</td><td>Key-value pairs</td></tr><tr><td class='rn'>82/450</td><td class='rt'>Live demo</td><td>Dict banao aur access karo</td></tr><tr><td class='rn'>83/450</td><td class='rt'>Common mistake</td><td>KeyError se bacho</td></tr><tr><td class='rn'>84/450</td><td class='rt'>Quiz</td><td>Quiz: student marks dict</td></tr><tr><td class='rn'>85/450</td><td class='rt'>Interview / real life</td><td>Real life: phonebook</td></tr></table>
+
+<div class="pn"><a href='/products/python/day-16/'>← Day 16</a><a href='/products/python/day-18/'>Day 18 →</a></div>
+<footer><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a><p>© Skill Library — skilllibrary.shop</p></footer>
+</div></body></html>
