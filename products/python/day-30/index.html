@@ -43,7 +43,7 @@ footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a
 
     def deposit(self, amt):
         if amt &lt;= 0:
-            raise ValueError(&quot;amt &gt; 0 chahiye&quot;)
+            raise ValueError(&quot;Amount must be &gt; 0&quot;)
         self._balance += amt
 
     @property

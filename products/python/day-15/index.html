@@ -36,7 +36,7 @@ footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a
 <h2>What You Will Learn</h2><ul><li>calc(a, op, b) takes two numbers and an operator and returns the result.</li><li>Division by zero is checked first, so the program returns a message instead of crashing.</li><li>A dictionary maps each operator to its job, using a small lambda function for each.</li><li>ops[op]() picks the right operation from the dictionary and runs it; an unknown operator gives &#x27;Invalid op&#x27;.</li><li>The guessing game compares each guess with the secret and breaks out of the loop on a correct guess.</li><li>Top 3 beginner mistakes: = vs ==, forgetting int() on input(), and wrong indentation.</li></ul>
 <h2>Code</h2><pre>def calc(a, op, b):
     if op == &quot;/&quot; and b == 0:
-        return &quot;0 se divide nahi&quot;
+        return &quot;Cannot divide by zero&quot;
     ops = {&quot;+&quot;: lambda: a + b, &quot;-&quot;: lambda: a - b, &quot;*&quot;: lambda: a * b, &quot;/&quot;: lambda: a / b}
     return ops[op]() if op in ops else &quot;Invalid op&quot;
 
@@ -51,7 +51,7 @@ for guess in guesses:
         break
     print(&quot;Too high&quot; if guess &gt; secret else &quot;Too low&quot;)</pre>
 <h2>Output</h2><pre class='out'>40
-0 se divide nahi
+Cannot divide by zero
 15
 Too low
 Too high

@@ -43,12 +43,12 @@ otp = &quot;&quot;.join(random.choices(&quot;0123456789&quot;, k=6))
 print(len(otp))
 print(otp)
 if __name__ == &quot;__main__&quot;:
-    print(&quot;Direct run pe hi&quot;)</pre>
+    print(&quot;Only on direct run&quot;)</pre>
 <h2>Output</h2><pre class='out'>True 4.0
 4
 6
 742547
-Direct run pe hi</pre>
+Only on direct run</pre>
 <h2>Code Explained, Line by Line</h2><ol><li>import math gives you functions like pi and sqrt.</li><li>random.randint(1, 6) gives a random number from 1 to 6, like a dice roll.</li><li>random.seed(0) in the example makes the output repeatable so the dice and OTP pattern can be followed. Do not seed in a real program.</li><li>random.choices(..., k=6) picks 6 random digits to build an OTP-like string.</li><li>if __name__ == &quot;__main__&quot; runs only when the file is run directly, not when it is imported.</li></ol>
 <div class="mist"><strong>Common Mistake:</strong> Never name your file random.py or math.py: Python will treat your file as the real module and the real module will be hidden.</div>
 <h2>Real-Life Use</h2><p>Dice games, OTP generators and shuffling all use the random module.</p>

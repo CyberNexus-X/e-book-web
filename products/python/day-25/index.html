@@ -39,7 +39,7 @@ footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a
 
 def set_age(age):
     if age &lt; 0:
-        raise AgeError(&quot;Age negative nahi&quot;)
+        raise AgeError(&quot;Age cannot be negative&quot;)
     return age
 
 try:
@@ -47,7 +47,7 @@ try:
 except AgeError as e:
     print(e)
 print(set_age(21))</pre>
-<h2>Output</h2><pre class='out'>Age negative nahi
+<h2>Output</h2><pre class='out'>Age cannot be negative
 21</pre>
 <h2>Code Explained, Line by Line</h2><ol><li>class AgeError(Exception) creates a custom exception by inheriting from Exception.</li><li>raise AgeError(...) throws the error yourself when the age is negative.</li><li>except AgeError as e catches only this error, not other errors.</li><li>To keep the original error, write raise X from e.</li><li>A custom exception&#x27;s name itself explains what went wrong, which makes debugging easier.</li></ol>
 <div class="mist"><strong>Common Mistake:</strong> Hiding an error with except: pass is wrong: it makes debugging much harder because the failure disappears silently.</div>

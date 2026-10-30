@@ -37,7 +37,7 @@ footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a
 <h2>Code</h2><pre>try:
     x = int(&quot;abc&quot;)
 except ValueError as e:
-    print(&quot;Galat input:&quot;, e)
+    print(&quot;Invalid input:&quot;, e)
 else:
     print(&quot;No error&quot;)
 finally:
@@ -46,10 +46,10 @@ finally:
 try:
     print(10 / 0)
 except ZeroDivisionError:
-    print(&quot;Zero se divide nahi&quot;)</pre>
-<h2>Output</h2><pre class='out'>Galat input: invalid literal for int() with base 10: &#x27;abc&#x27;
+    print(&quot;Cannot divide by zero&quot;)</pre>
+<h2>Output</h2><pre class='out'>Invalid input: invalid literal for int() with base 10: &#x27;abc&#x27;
 Hamesha chalega
-Zero se divide nahi</pre>
+Cannot divide by zero</pre>
 <h2>Code Explained, Line by Line</h2><ol><li>The try block holds code that might raise an error.</li><li>except ValueError as e catches only ValueError, and e holds the error message.</li><li>else runs only when the try block finished without an error.</li><li>finally runs whether an error happened or not, which is ideal for cleanup.</li><li>ZeroDivisionError is raised when dividing by zero, and it can be caught separately.</li></ol>
 <div class="mist"><strong>Common Mistake:</strong> Never write a bare except: or except Exception: pass. It hides bugs and you will not know where the error came from.</div>
 <h2>Real-Life Use</h2><p>Forms, file reading and network calls use try/except so one bad input does not crash the app.</p>
