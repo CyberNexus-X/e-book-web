@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../../../favicon.ico" sizes="any">
-<title>Day 8 — if-else | Python Seekho | Skill Library</title>
-<meta name="description" content="Day 8: if-else — code, output aur poori detail ke saath. Python Learning Series, Skill Library.">
+<title>Day 8: if-else — Python in 30 Days | Skill Library</title>
+<meta name="description" content="Day 8: if-else explained with code, real output, line-by-line detail, common mistakes and interactive MCQs. Python Learning Series by Skill Library.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://skilllibrary.shop/products/python/day-8/">
-<style>
-body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.6}
-a{color:#00ff9c} .wrap{max-width:900px;margin:0 auto;padding:24px 18px 40px}
-.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem} .nav a{text-decoration:none}
-h1{font-size:2rem;line-height:1.25} h2{color:#00ff9c;margin-top:28px} h3{margin:0 0 6px}
+<meta property="og:title" content="Day 8: if-else | Skill Library">
+<meta property="og:description" content="Day 8 teaches if-else decisions. If the condition is True the if block runs, otherwise the else block runs. Blocks are recognised by 4-space indentation.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What do you learn on Day 8 of the Python series?", "acceptedAnswer": {"@type": "Answer", "text": "Day 8 teaches if-else decisions. If the condition is True the if block runs, otherwise the else block runs. Blocks are recognised by 4-space indentation."}}, {"@type": "Question", "name": "What is the common mistake on Day 8?", "acceptedAnswer": {"@type": "Answer", "text": "Wrong indentation raises IndentationError. Also note the difference: multiple if statements all run their checks, while an elif chain stops at the first True condition."}}, {"@type": "Question", "name": "Where is Day 8 used in real life?", "acceptedAnswer": {"@type": "Answer", "text": "Pass/fail results, login checks and discount rules are all if-else logic."}}]}</script>
+<style>body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.7}
+a{color:#00ff9c}.wrap{max-width:900px;margin:0 auto;padding:24px 18px 44px}
+.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem}.nav a{text-decoration:none}
+.kick{color:#8a9a94;letter-spacing:2px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;text-transform:uppercase}
 .hero{background:#121a16;border:1px solid #243028;border-radius:12px;padding:22px}
-.kick{color:#8a9a94;letter-spacing:2px;font-family:monospace;font-size:.85rem;text-transform:uppercase}
+h1{font-size:2rem;line-height:1.3}h1 .gr{color:#00ff9c}h2{color:#00ff9c;margin-top:30px}h3{margin:0 0 6px}
+.answer{border:1.5px solid #00ff9c;border-radius:12px;padding:16px;background:#0f1f17}
 pre{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:16px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.6;color:#a7f3d0;white-space:pre-wrap;word-wrap:break-word}
-pre.out{color:#f2f2f2} .card{background:#ffffff;color:#0f172a;border-radius:12px;padding:18px;margin:16px 0}
-.card h2{color:#0f172a} .card p,.card li{color:#334155}
-.mist{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px;color:#7f1d1d}
+pre.out{color:#f2f2f2}.card{background:#121a16;border:1px solid #243028;border-radius:12px;padding:18px;margin:16px 0}
+.mist{background:#1f0f0f;border:1px solid #7f1d1d;border-radius:12px;padding:16px}.mist strong{color:#ff5a5a}
 .task{border:1.5px solid #00ff9c;border-radius:12px;padding:16px}
-table{width:100%;border-collapse:collapse} td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
-td.rn{color:#8a9a94;font-family:monospace;width:70px} td.rt{color:#00ff9c;width:140px}
-.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px} .pn a{text-decoration:none}
-footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center} footer a{margin:0 8px}
-</style></head><body><div class="wrap">
+.mcq{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px;margin:14px 0}
+.mcq label{display:block;margin:7px 0;cursor:pointer}.mcq input{margin-right:8px}
+button{background:#00ff9c;color:#04120a;border:0;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;margin-top:8px}
+button:hover{filter:brightness(1.1)}.fb{font-weight:700;min-height:1.4em}
+table{width:100%;border-collapse:collapse}td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
+td.rn{color:#8a9a94;font-family:monospace;width:70px}td.rt{color:#00ff9c;width:150px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px}.pn a{text-decoration:none}
+footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center}footer a{margin:0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}.gcard{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px}.gcard a{text-decoration:none}.gcard h3{color:#f2f2f2}.gcard p{color:#cbd5e1}</style></head><body><div class="wrap">
 <nav class="nav"><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a></nav>
 <div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 8 / 30</p>
-<h1>Day 8 — if-else</h1><p>if-else se program faisla leta hai. Condition True ho to if wala block chalta hai, warna else wala. Block ko 4 spaces ki indentation se pehchana jaata hai.</p><p>Phase: Beginner · Reels: 36/450 – 40/450</p></div>
+<h1>Day 8: <span class="gr">if-else</span></h1><p>Day 8 teaches if-else decisions. If the condition is True the if block runs, otherwise the else block runs. Blocks are recognised by 4-space indentation.</p><p>Phase: Beginner · Reels: 36/450 – 40/450</p></div>
+<h2>Quick Answer</h2><div class="answer"><p>Day 8 teaches if-else decisions. If the condition is True the if block runs, otherwise the else block runs. Blocks are recognised by 4-space indentation.</p></div>
+<h2>What You Will Learn</h2><ul><li>A condition is an expression that is True or False, like marks &gt;= 33.</li><li>elif means &#x27;otherwise, if&#x27;: the first True condition in the chain wins and the rest are skipped.</li><li>else runs only when no condition above it was True.</li><li>Blocks must be indented, usually by 4 spaces. Wrong indentation raises an IndentationError.</li><li>&quot;Pass&quot; if marks &gt;= 33 else &quot;Fail&quot; is a one-line if-else, called a ternary expression.</li></ul>
 <h2>Code</h2><pre>marks = 72
 if marks &gt;= 90:
     grade = &quot;A&quot;
@@ -38,11 +46,24 @@ status = &quot;Pass&quot; if marks &gt;= 33 else &quot;Fail&quot;
 print(status)</pre>
 <h2>Output</h2><pre class='out'>B
 Pass</pre>
-<div class="card"><h2>Code ki poori detail</h2><ul><li>marks &gt;= 90 — condition hai, iska answer True ya False hota hai.</li><li>elif ka matlab &#x27;warna agar&#x27; hai — pehla True milte hi chain ruk jaati hai.</li><li>else tab chalta hai jab upar ki koi condition True na ho.</li><li>Block ke andar ki lines 4 spaces andar (indented) honi chahiye, warna IndentationError aayega.</li><li>&quot;Pass&quot; if marks &gt;= 33 else &quot;Fail&quot; — ek line wala if-else hai, isko ternary kehte hain.</li></ul></div>
-<div class="mist"><strong>Common mistake:</strong> Indentation galat ho to IndentationError aata hai. Multiple if sab check hote hain, elif chain me sirf ek chalta hai — farak samajhna zaroori hai.</div>
-<div class="task" style="margin-top:16px"><strong>Khud try karo:</strong> Ek program likho jo number bada hai ya chhota, ye bataaye, aur login check (username/password) ka logic banao.</div>
-<h2>Is din ki 5 reels (Excel se)</h2><table><tr><td class='rn'>36/450</td><td class='rt'>Concept</td><td>if-else ka logic</td></tr><tr><td class='rn'>37/450</td><td class='rt'>Live demo</td><td>Pass ya fail program</td></tr><tr><td class='rn'>38/450</td><td class='rt'>Common mistake</td><td>Indentation error</td></tr><tr><td class='rn'>39/450</td><td class='rt'>Quiz</td><td>Quiz: bada number batao</td></tr><tr><td class='rn'>40/450</td><td class='rt'>Interview / real life</td><td>Real life: login check</td></tr></table>
+<h2>Code Explained, Line by Line</h2><ol><li>A condition is an expression that is True or False, like marks &gt;= 33.</li><li>elif means &#x27;otherwise, if&#x27;: the first True condition in the chain wins and the rest are skipped.</li><li>else runs only when no condition above it was True.</li><li>Blocks must be indented, usually by 4 spaces. Wrong indentation raises an IndentationError.</li><li>&quot;Pass&quot; if marks &gt;= 33 else &quot;Fail&quot; is a one-line if-else, called a ternary expression.</li></ol>
+<div class="mist"><strong>Common Mistake:</strong> Wrong indentation raises IndentationError. Also note the difference: multiple if statements all run their checks, while an elif chain stops at the first True condition.</div>
+<h2>Real-Life Use</h2><p>Pass/fail results, login checks and discount rules are all if-else logic.</p>
+<div class="task" style="margin-top:16px"><strong>Practice Task:</strong> Write a program that prints whether a number is big or small, and a login check using username and password.</div>
+<h2>Test Yourself — MCQs</h2><p>Select (tick) an option, then tap <strong>Check answer</strong> to see instantly whether your answer is right or wrong, with an explanation. You can change your answer and check again.</p>
+<div class="mcq" id="mcq-d8q1" data-day="8" data-correct="1" data-expl="20 is less than 33, so the condition is False and the else value &quot;Fail&quot; is used.">
+<p><strong>Q1.</strong> marks = 20. What does &quot;Pass&quot; if marks &gt;= 33 else &quot;Fail&quot; give?</p><label><input type='radio' name='d8q1' value='0'> A. &quot;Pass&quot;</label><label><input type='radio' name='d8q1' value='1'> B. &quot;Fail&quot;</label><label><input type='radio' name='d8q1' value='2'> C. Error</label><label><input type='radio' name='d8q1' value='3'> D. None</label>
+<button onclick="checkMCQ('d8q1')">Check answer</button><p class="fb" id="fb-d8q1"></p></div><div class="mcq" id="mcq-d8q2" data-day="8" data-correct="1" data-expl="Python reads blocks by indentation, so inconsistent indentation is an error.">
+<p><strong>Q2.</strong> What causes an IndentationError?</p><label><input type='radio' name='d8q2' value='0'> A. A wrong variable name</label><label><input type='radio' name='d8q2' value='1'> B. A block with wrong indentation</label><label><input type='radio' name='d8q2' value='2'> C. A missing print</label><label><input type='radio' name='d8q2' value='3'> D. A long string</label>
+<button onclick="checkMCQ('d8q2')">Check answer</button><p class="fb" id="fb-d8q2"></p></div><div class="mcq" id="mcq-d8q3" data-day="8" data-correct="1" data-expl="The chain stops at the first True condition; later conditions are not checked.">
+<p><strong>Q3.</strong> In an elif chain, how many blocks run?</p><label><input type='radio' name='d8q3' value='0'> A. All of them</label><label><input type='radio' name='d8q3' value='1'> B. Only the first True one</label><label><input type='radio' name='d8q3' value='2'> C. Only the last one</label><label><input type='radio' name='d8q3' value='3'> D. None</label>
+<button onclick="checkMCQ('d8q3')">Check answer</button><p class="fb" id="fb-d8q3"></p></div>
+<button onclick="scoreDay(8)">Check my score</button><p class="fb" id="score-8"></p>
+<h2>Today's 5 Reels (from the 90-Day Plan Excel)</h2><table><tr><td class='rn'>36/450</td><td class='rt'>Concept</td><td>if-else ka logic</td></tr><tr><td class='rn'>37/450</td><td class='rt'>Live demo</td><td>Pass ya fail program</td></tr><tr><td class='rn'>38/450</td><td class='rt'>Common mistake</td><td>Indentation error</td></tr><tr><td class='rn'>39/450</td><td class='rt'>Quiz</td><td>Quiz: bada number batao</td></tr><tr><td class='rn'>40/450</td><td class='rt'>Interview / real life</td><td>Real life: login check</td></tr></table>
 
 <div class="pn"><a href='/products/python/day-7/'>← Day 7</a><a href='/products/python/day-9/'>Day 9 →</a></div>
 <footer><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a><p>© Skill Library — skilllibrary.shop</p></footer>
-</div></body></html>
+</div><script>
+function checkMCQ(name){var box=document.getElementById('mcq-'+name);var sel=document.querySelector('input[name="'+name+'"]:checked');var fb=document.getElementById('fb-'+name);if(!sel){fb.textContent='Please select an option first.';fb.style.color='#fbbf24';return;}if(parseInt(sel.value,10)===parseInt(box.dataset.correct,10)){fb.textContent='Correct! '+box.dataset.expl;fb.style.color='#00ff9c';}else{fb.textContent='Wrong. Try again. '+box.dataset.expl;fb.style.color='#ff5a5a';}}
+function scoreDay(d){var boxes=document.querySelectorAll('[data-day="'+d+'"]');var total=boxes.length,correct=0,answered=0;boxes.forEach(function(b){var sel=document.querySelector('input[name="'+b.id.replace('mcq-','')+'"]:checked');if(sel){answered++;if(parseInt(sel.value,10)===parseInt(b.dataset.correct,10))correct++;}});var el=document.getElementById('score-'+d);el.textContent='Your score: '+correct+' out of '+total+' (answered '+answered+'). Wrong answers? Read the explanation above and try again.';el.style.color='#00ff9c';}
+</script></body></html>

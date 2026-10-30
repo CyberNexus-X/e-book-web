@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../../../favicon.ico" sizes="any">
-<title>Day 27 — with statement aur CSV | Python Seekho | Skill Library</title>
-<meta name="description" content="Day 27: with statement aur CSV — code, output aur poori detail ke saath. Python Learning Series, Skill Library.">
+<title>Day 27: with Statement and CSV — Python in 30 Days | Skill Library</title>
+<meta name="description" content="Day 27: with Statement and CSV explained with code, real output, line-by-line detail, common mistakes and interactive MCQs. Python Learning Series by Skill Library.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://skilllibrary.shop/products/python/day-27/">
-<style>
-body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.6}
-a{color:#00ff9c} .wrap{max-width:900px;margin:0 auto;padding:24px 18px 40px}
-.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem} .nav a{text-decoration:none}
-h1{font-size:2rem;line-height:1.25} h2{color:#00ff9c;margin-top:28px} h3{margin:0 0 6px}
+<meta property="og:title" content="Day 27: with Statement and CSV | Skill Library">
+<meta property="og:description" content="Day 27 teaches the with statement and CSV files. with is a context manager: __enter__ sets things up and __exit__ cleans up, even on error. For CSV, use the csv module with newline=&quot;&quot;.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What do you learn on Day 27 of the Python series?", "acceptedAnswer": {"@type": "Answer", "text": "Day 27 teaches the with statement and CSV files. with is a context manager: __enter__ sets things up and __exit__ cleans up, even on error. For CSV, use the csv module with newline=\"\"."}}, {"@type": "Question", "name": "What is the common mistake on Day 27?", "acceptedAnswer": {"@type": "Answer", "text": "Forgetting close() after open() can leave data unsaved or the file locked. Always use with."}}, {"@type": "Question", "name": "Where is Day 27 used in real life?", "acceptedAnswer": {"@type": "Answer", "text": "Spreadsheets, reports and exported data are CSV files in almost every business."}}]}</script>
+<style>body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.7}
+a{color:#00ff9c}.wrap{max-width:900px;margin:0 auto;padding:24px 18px 44px}
+.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem}.nav a{text-decoration:none}
+.kick{color:#8a9a94;letter-spacing:2px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;text-transform:uppercase}
 .hero{background:#121a16;border:1px solid #243028;border-radius:12px;padding:22px}
-.kick{color:#8a9a94;letter-spacing:2px;font-family:monospace;font-size:.85rem;text-transform:uppercase}
+h1{font-size:2rem;line-height:1.3}h1 .gr{color:#00ff9c}h2{color:#00ff9c;margin-top:30px}h3{margin:0 0 6px}
+.answer{border:1.5px solid #00ff9c;border-radius:12px;padding:16px;background:#0f1f17}
 pre{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:16px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.6;color:#a7f3d0;white-space:pre-wrap;word-wrap:break-word}
-pre.out{color:#f2f2f2} .card{background:#ffffff;color:#0f172a;border-radius:12px;padding:18px;margin:16px 0}
-.card h2{color:#0f172a} .card p,.card li{color:#334155}
-.mist{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px;color:#7f1d1d}
+pre.out{color:#f2f2f2}.card{background:#121a16;border:1px solid #243028;border-radius:12px;padding:18px;margin:16px 0}
+.mist{background:#1f0f0f;border:1px solid #7f1d1d;border-radius:12px;padding:16px}.mist strong{color:#ff5a5a}
 .task{border:1.5px solid #00ff9c;border-radius:12px;padding:16px}
-table{width:100%;border-collapse:collapse} td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
-td.rn{color:#8a9a94;font-family:monospace;width:70px} td.rt{color:#00ff9c;width:140px}
-.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px} .pn a{text-decoration:none}
-footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center} footer a{margin:0 8px}
-</style></head><body><div class="wrap">
+.mcq{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px;margin:14px 0}
+.mcq label{display:block;margin:7px 0;cursor:pointer}.mcq input{margin-right:8px}
+button{background:#00ff9c;color:#04120a;border:0;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;margin-top:8px}
+button:hover{filter:brightness(1.1)}.fb{font-weight:700;min-height:1.4em}
+table{width:100%;border-collapse:collapse}td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
+td.rn{color:#8a9a94;font-family:monospace;width:70px}td.rt{color:#00ff9c;width:150px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px}.pn a{text-decoration:none}
+footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center}footer a{margin:0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}.gcard{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px}.gcard a{text-decoration:none}.gcard h3{color:#f2f2f2}.gcard p{color:#cbd5e1}</style></head><body><div class="wrap">
 <nav class="nav"><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a></nav>
 <div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 27 / 30</p>
-<h1>Day 27 — with statement aur CSV</h1><p>with statement context manager hai: __enter__ setup karta hai, __exit__ cleanup karta hai (error aaye tab bhi). CSV ke liye csv module use karo, newline=&quot;&quot; ke saath.</p><p>Phase: Intermediate · Reels: 131/450 – 135/450</p></div>
+<h1>Day 27: <span class="gr">with Statement and CSV</span></h1><p>Day 27 teaches the with statement and CSV files. with is a context manager: __enter__ sets things up and __exit__ cleans up, even on error. For CSV, use the csv module with newline=&quot;&quot;.</p><p>Phase: Intermediate · Reels: 131/450 – 135/450</p></div>
+<h2>Quick Answer</h2><div class="answer"><p>Day 27 teaches the with statement and CSV files. with is a context manager: __enter__ sets things up and __exit__ cleans up, even on error. For CSV, use the csv module with newline=&quot;&quot;.</p></div>
+<h2>What You Will Learn</h2><ul><li>csv.writer writes rows in CSV format.</li><li>newline=&quot;&quot; is required when opening CSV files, or extra blank lines appear.</li><li>csv.DictReader turns each row into a dict, so values are read by column name (r[&quot;amt&quot;]).</li><li>sum(...) totals all amounts: in the example the total is 35.</li><li>with closes the file or buffer itself, so forgetting close() is no longer a risk.</li></ul>
 <h2>Code</h2><pre>import csv, io
 buf = io.StringIO()
 rows = [[&quot;item&quot;, &quot;amt&quot;], [&quot;chai&quot;, 20], [&quot;samosa&quot;, 15]]
@@ -42,11 +50,24 @@ print(buf.getvalue())</pre>
 item,amt
 chai,20
 samosa,15</pre>
-<div class="card"><h2>Code ki poori detail</h2><ul><li>csv.writer — rows ko CSV format me likhta hai.</li><li>newline=&quot;&quot; — CSV file kholte waqt zaroori hai, warna extra khali lines aa jaati hain.</li><li>csv.DictReader — har row ko dict banata hai, column naam se value milti hai (r[&quot;amt&quot;]).</li><li>sum(...) — saare amounts ka total nikalta hai, yahan 35 hai.</li><li>with — file/buffer ko khud band karta hai, isliye close() bhoolne ka dar nahi.</li></ul></div>
-<div class="mist"><strong>Common mistake:</strong> open() ke baad close() bhoolna data save nahi hone ya file lock ka kaaran banta hai. Hamesha with use karo.</div>
-<div class="task" style="margin-top:16px"><strong>Khud try karo:</strong> CSV se total nikalo: items aur amounts ki CSV banao, phir DictReader se total jodo.</div>
-<h2>Is din ki 5 reels (Excel se)</h2><table><tr><td class='rn'>131/450</td><td class='rt'>Concept</td><td>with open kyun</td></tr><tr><td class='rn'>132/450</td><td class='rt'>Live demo</td><td>CSV read/write demo</td></tr><tr><td class='rn'>133/450</td><td class='rt'>Common mistake</td><td>File close bhoolna</td></tr><tr><td class='rn'>134/450</td><td class='rt'>Quiz</td><td>Quiz: CSV se total</td></tr><tr><td class='rn'>135/450</td><td class='rt'>Interview / real life</td><td>Interview: context manager</td></tr></table>
+<h2>Code Explained, Line by Line</h2><ol><li>csv.writer writes rows in CSV format.</li><li>newline=&quot;&quot; is required when opening CSV files, or extra blank lines appear.</li><li>csv.DictReader turns each row into a dict, so values are read by column name (r[&quot;amt&quot;]).</li><li>sum(...) totals all amounts: in the example the total is 35.</li><li>with closes the file or buffer itself, so forgetting close() is no longer a risk.</li></ol>
+<div class="mist"><strong>Common Mistake:</strong> Forgetting close() after open() can leave data unsaved or the file locked. Always use with.</div>
+<h2>Real-Life Use</h2><p>Spreadsheets, reports and exported data are CSV files in almost every business.</p>
+<div class="task" style="margin-top:16px"><strong>Practice Task:</strong> Build a CSV of items and amounts, then use DictReader to find the total.</div>
+<h2>Test Yourself — MCQs</h2><p>Select (tick) an option, then tap <strong>Check answer</strong> to see instantly whether your answer is right or wrong, with an explanation. You can change your answer and check again.</p>
+<div class="mcq" id="mcq-d27q1" data-day="27" data-correct="2" data-expl="20 + 15 equals 35.">
+<p><strong>Q1.</strong> What is the total of amounts 20 and 15 in the example?</p><label><input type='radio' name='d27q1' value='0'> A. 20</label><label><input type='radio' name='d27q1' value='1'> B. 15</label><label><input type='radio' name='d27q1' value='2'> C. 35</label><label><input type='radio' name='d27q1' value='3'> D. 5</label>
+<button onclick="checkMCQ('d27q1')">Check answer</button><p class="fb" id="fb-d27q1"></p></div><div class="mcq" id="mcq-d27q2" data-day="27" data-correct="1" data-expl="Without newline=&quot;&quot;, the csv module writes extra blank lines on some systems.">
+<p><strong>Q2.</strong> Why open CSV files with newline=&quot;&quot;?</p><label><input type='radio' name='d27q2' value='0'> A. To make them faster</label><label><input type='radio' name='d27q2' value='1'> B. To avoid extra blank lines</label><label><input type='radio' name='d27q2' value='2'> C. To sort rows</label><label><input type='radio' name='d27q2' value='3'> D. It is optional</label>
+<button onclick="checkMCQ('d27q2')">Check answer</button><p class="fb" id="fb-d27q2"></p></div><div class="mcq" id="mcq-d27q3" data-day="27" data-correct="1" data-expl="DictReader maps each row to a dict keyed by the header names.">
+<p><strong>Q3.</strong> What does csv.DictReader give per row?</p><label><input type='radio' name='d27q3' value='0'> A. A list</label><label><input type='radio' name='d27q3' value='1'> B. A dict by column name</label><label><input type='radio' name='d27q3' value='2'> C. A string</label><label><input type='radio' name='d27q3' value='3'> D. A tuple</label>
+<button onclick="checkMCQ('d27q3')">Check answer</button><p class="fb" id="fb-d27q3"></p></div>
+<button onclick="scoreDay(27)">Check my score</button><p class="fb" id="score-27"></p>
+<h2>Today's 5 Reels (from the 90-Day Plan Excel)</h2><table><tr><td class='rn'>131/450</td><td class='rt'>Concept</td><td>with open kyun</td></tr><tr><td class='rn'>132/450</td><td class='rt'>Live demo</td><td>CSV read/write demo</td></tr><tr><td class='rn'>133/450</td><td class='rt'>Common mistake</td><td>File close bhoolna</td></tr><tr><td class='rn'>134/450</td><td class='rt'>Quiz</td><td>Quiz: CSV se total</td></tr><tr><td class='rn'>135/450</td><td class='rt'>Interview / real life</td><td>Interview: context manager</td></tr></table>
 
 <div class="pn"><a href='/products/python/day-26/'>← Day 26</a><a href='/products/python/day-28/'>Day 28 →</a></div>
 <footer><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a><p>© Skill Library — skilllibrary.shop</p></footer>
-</div></body></html>
+</div><script>
+function checkMCQ(name){var box=document.getElementById('mcq-'+name);var sel=document.querySelector('input[name="'+name+'"]:checked');var fb=document.getElementById('fb-'+name);if(!sel){fb.textContent='Please select an option first.';fb.style.color='#fbbf24';return;}if(parseInt(sel.value,10)===parseInt(box.dataset.correct,10)){fb.textContent='Correct! '+box.dataset.expl;fb.style.color='#00ff9c';}else{fb.textContent='Wrong. Try again. '+box.dataset.expl;fb.style.color='#ff5a5a';}}
+function scoreDay(d){var boxes=document.querySelectorAll('[data-day="'+d+'"]');var total=boxes.length,correct=0,answered=0;boxes.forEach(function(b){var sel=document.querySelector('input[name="'+b.id.replace('mcq-','')+'"]:checked');if(sel){answered++;if(parseInt(sel.value,10)===parseInt(b.dataset.correct,10))correct++;}});var el=document.getElementById('score-'+d);el.textContent='Your score: '+correct+' out of '+total+' (answered '+answered+'). Wrong answers? Read the explanation above and try again.';el.style.color='#00ff9c';}
+</script></body></html>

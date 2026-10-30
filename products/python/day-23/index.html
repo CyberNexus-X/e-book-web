@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../../../favicon.ico" sizes="any">
-<title>Day 23 — Scope aur recursion | Python Seekho | Skill Library</title>
-<meta name="description" content="Day 23: Scope aur recursion — code, output aur poori detail ke saath. Python Learning Series, Skill Library.">
+<title>Day 23: Scope and Recursion — Python in 30 Days | Skill Library</title>
+<meta name="description" content="Day 23: Scope and Recursion explained with code, real output, line-by-line detail, common mistakes and interactive MCQs. Python Learning Series by Skill Library.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://skilllibrary.shop/products/python/day-23/">
-<style>
-body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.6}
-a{color:#00ff9c} .wrap{max-width:900px;margin:0 auto;padding:24px 18px 40px}
-.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem} .nav a{text-decoration:none}
-h1{font-size:2rem;line-height:1.25} h2{color:#00ff9c;margin-top:28px} h3{margin:0 0 6px}
+<meta property="og:title" content="Day 23: Scope and Recursion | Skill Library">
+<meta property="og:description" content="Day 23 teaches scope and recursion. Scope decides where a variable is visible: local inside a function, global outside it. Recursion is when a function calls itself, and it always needs a base case, or it raises RecursionError.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What do you learn on Day 23 of the Python series?", "acceptedAnswer": {"@type": "Answer", "text": "Day 23 teaches scope and recursion. Scope decides where a variable is visible: local inside a function, global outside it. Recursion is when a function calls itself, and it always needs a base case, or it raises RecursionError."}}, {"@type": "Question", "name": "What is the common mistake on Day 23?", "acceptedAnswer": {"@type": "Answer", "text": "Forgetting the base case causes RecursionError (stack overflow). Always write the stopping condition first."}}, {"@type": "Question", "name": "Where is Day 23 used in real life?", "acceptedAnswer": {"@type": "Answer", "text": "File trees, JSON data and algorithms like binary search use recursion."}}]}</script>
+<style>body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.7}
+a{color:#00ff9c}.wrap{max-width:900px;margin:0 auto;padding:24px 18px 44px}
+.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem}.nav a{text-decoration:none}
+.kick{color:#8a9a94;letter-spacing:2px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;text-transform:uppercase}
 .hero{background:#121a16;border:1px solid #243028;border-radius:12px;padding:22px}
-.kick{color:#8a9a94;letter-spacing:2px;font-family:monospace;font-size:.85rem;text-transform:uppercase}
+h1{font-size:2rem;line-height:1.3}h1 .gr{color:#00ff9c}h2{color:#00ff9c;margin-top:30px}h3{margin:0 0 6px}
+.answer{border:1.5px solid #00ff9c;border-radius:12px;padding:16px;background:#0f1f17}
 pre{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:16px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.6;color:#a7f3d0;white-space:pre-wrap;word-wrap:break-word}
-pre.out{color:#f2f2f2} .card{background:#ffffff;color:#0f172a;border-radius:12px;padding:18px;margin:16px 0}
-.card h2{color:#0f172a} .card p,.card li{color:#334155}
-.mist{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px;color:#7f1d1d}
+pre.out{color:#f2f2f2}.card{background:#121a16;border:1px solid #243028;border-radius:12px;padding:18px;margin:16px 0}
+.mist{background:#1f0f0f;border:1px solid #7f1d1d;border-radius:12px;padding:16px}.mist strong{color:#ff5a5a}
 .task{border:1.5px solid #00ff9c;border-radius:12px;padding:16px}
-table{width:100%;border-collapse:collapse} td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
-td.rn{color:#8a9a94;font-family:monospace;width:70px} td.rt{color:#00ff9c;width:140px}
-.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px} .pn a{text-decoration:none}
-footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center} footer a{margin:0 8px}
-</style></head><body><div class="wrap">
+.mcq{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px;margin:14px 0}
+.mcq label{display:block;margin:7px 0;cursor:pointer}.mcq input{margin-right:8px}
+button{background:#00ff9c;color:#04120a;border:0;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;margin-top:8px}
+button:hover{filter:brightness(1.1)}.fb{font-weight:700;min-height:1.4em}
+table{width:100%;border-collapse:collapse}td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
+td.rn{color:#8a9a94;font-family:monospace;width:70px}td.rt{color:#00ff9c;width:150px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px}.pn a{text-decoration:none}
+footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center}footer a{margin:0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}.gcard{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px}.gcard a{text-decoration:none}.gcard h3{color:#f2f2f2}.gcard p{color:#cbd5e1}</style></head><body><div class="wrap">
 <nav class="nav"><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a></nav>
 <div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 23 / 30</p>
-<h1>Day 23 — Scope aur recursion</h1><p>Scope batata hai ki variable kahan se dikhta hai: local (function ke andar) vs global (bahar). Recursion me function khud ko call karta hai — base case bhoolna RecursionError deta hai.</p><p>Phase: Intermediate · Reels: 111/450 – 115/450</p></div>
+<h1>Day 23: <span class="gr">Scope and Recursion</span></h1><p>Day 23 teaches scope and recursion. Scope decides where a variable is visible: local inside a function, global outside it. Recursion is when a function calls itself, and it always needs a base case, or it raises RecursionError.</p><p>Phase: Intermediate · Reels: 111/450 – 115/450</p></div>
+<h2>Quick Answer</h2><div class="answer"><p>Day 23 teaches scope and recursion. Scope decides where a variable is visible: local inside a function, global outside it. Recursion is when a function calls itself, and it always needs a base case, or it raises RecursionError.</p></div>
+<h2>What You Will Learn</h2><ul><li>global count is needed inside a function to change a global variable; without it you get UnboundLocalError.</li><li>fact(n) has base case n &lt;= 1, where it stops. Without a base case recursion never ends.</li><li>fact(5) = 5 * 4 * 3 * 2 * 1 = 120.</li><li>@lru_cache remembers past answers (memoization), which makes fib fast.</li><li>Recursion suits tree-like and nested problems; for simple repetition a loop is enough.</li></ul>
 <h2>Code</h2><pre>count = 0
 
 def inc():
@@ -54,11 +62,24 @@ print(fib(10))</pre>
 <h2>Output</h2><pre class='out'>1
 120
 55</pre>
-<div class="card"><h2>Code ki poori detail</h2><ul><li>global count — function ke andar bahar wale variable ko badalne ke liye global likhna padta hai, warna UnboundLocalError aata hai.</li><li>fact(n) — base case n &lt;= 1 hai, jahan rukna hai. Uske bina recursion kabhi nahi rukega.</li><li>fact(5) = 5 * 4 * 3 * 2 * 1 = 120.</li><li>@lru_cache — purane answers yaad rakhta hai (memoization), isliye fib fast chalta hai.</li><li>Recursion tree/nested problems ke liye achha hai, simple loop wale kaam ke liye loop hi kaafi hai.</li></ul></div>
-<div class="mist"><strong>Common mistake:</strong> Base case bhoolna RecursionError (stack overflow) deta hai. Har recursion me pehle rukne ki condition likho.</div>
-<div class="task" style="margin-top:16px"><strong>Khud try karo:</strong> Fibonacci likho (recursion se) aur factorial ka base case samjho.</div>
-<h2>Is din ki 5 reels (Excel se)</h2><table><tr><td class='rn'>111/450</td><td class='rt'>Concept</td><td>Local vs global</td></tr><tr><td class='rn'>112/450</td><td class='rt'>Live demo</td><td>Recursion se factorial</td></tr><tr><td class='rn'>113/450</td><td class='rt'>Common mistake</td><td>Base case bhoolna</td></tr><tr><td class='rn'>114/450</td><td class='rt'>Quiz</td><td>Quiz: fibonacci</td></tr><tr><td class='rn'>115/450</td><td class='rt'>Interview / real life</td><td>Interview: recursion vs loop</td></tr></table>
+<h2>Code Explained, Line by Line</h2><ol><li>global count is needed inside a function to change a global variable; without it you get UnboundLocalError.</li><li>fact(n) has base case n &lt;= 1, where it stops. Without a base case recursion never ends.</li><li>fact(5) = 5 * 4 * 3 * 2 * 1 = 120.</li><li>@lru_cache remembers past answers (memoization), which makes fib fast.</li><li>Recursion suits tree-like and nested problems; for simple repetition a loop is enough.</li></ol>
+<div class="mist"><strong>Common Mistake:</strong> Forgetting the base case causes RecursionError (stack overflow). Always write the stopping condition first.</div>
+<h2>Real-Life Use</h2><p>File trees, JSON data and algorithms like binary search use recursion.</p>
+<div class="task" style="margin-top:16px"><strong>Practice Task:</strong> Write fibonacci with recursion and explain the base case of factorial.</div>
+<h2>Test Yourself — MCQs</h2><p>Select (tick) an option, then tap <strong>Check answer</strong> to see instantly whether your answer is right or wrong, with an explanation. You can change your answer and check again.</p>
+<div class="mcq" id="mcq-d23q1" data-day="23" data-correct="1" data-expl="5 * 4 * 3 * 2 * 1 equals 120.">
+<p><strong>Q1.</strong> What is fact(5)?</p><label><input type='radio' name='d23q1' value='0'> A. 25</label><label><input type='radio' name='d23q1' value='1'> B. 120</label><label><input type='radio' name='d23q1' value='2'> C. 60</label><label><input type='radio' name='d23q1' value='3'> D. 720</label>
+<button onclick="checkMCQ('d23q1')">Check answer</button><p class="fb" id="fb-d23q1"></p></div><div class="mcq" id="mcq-d23q2" data-day="23" data-correct="1" data-expl="Without a stopping condition, the function calls itself forever until the stack overflows.">
+<p><strong>Q2.</strong> What happens without a base case in recursion?</p><label><input type='radio' name='d23q2' value='0'> A. It runs once</label><label><input type='radio' name='d23q2' value='1'> B. RecursionError</label><label><input type='radio' name='d23q2' value='2'> C. It returns 0</label><label><input type='radio' name='d23q2' value='3'> D. Nothing</label>
+<button onclick="checkMCQ('d23q2')">Check answer</button><p class="fb" id="fb-d23q2"></p></div><div class="mcq" id="mcq-d23q3" data-day="23" data-correct="1" data-expl="lru_cache memoizes results, so repeated calls reuse past answers.">
+<p><strong>Q3.</strong> What does @lru_cache do?</p><label><input type='radio' name='d23q3' value='0'> A. Deletes results</label><label><input type='radio' name='d23q3' value='1'> B. Remembers past results</label><label><input type='radio' name='d23q3' value='2'> C. Sorts results</label><label><input type='radio' name='d23q3' value='3'> D. Prints results</label>
+<button onclick="checkMCQ('d23q3')">Check answer</button><p class="fb" id="fb-d23q3"></p></div>
+<button onclick="scoreDay(23)">Check my score</button><p class="fb" id="score-23"></p>
+<h2>Today's 5 Reels (from the 90-Day Plan Excel)</h2><table><tr><td class='rn'>111/450</td><td class='rt'>Concept</td><td>Local vs global</td></tr><tr><td class='rn'>112/450</td><td class='rt'>Live demo</td><td>Recursion se factorial</td></tr><tr><td class='rn'>113/450</td><td class='rt'>Common mistake</td><td>Base case bhoolna</td></tr><tr><td class='rn'>114/450</td><td class='rt'>Quiz</td><td>Quiz: fibonacci</td></tr><tr><td class='rn'>115/450</td><td class='rt'>Interview / real life</td><td>Interview: recursion vs loop</td></tr></table>
 
 <div class="pn"><a href='/products/python/day-22/'>← Day 22</a><a href='/products/python/day-24/'>Day 24 →</a></div>
 <footer><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a><p>© Skill Library — skilllibrary.shop</p></footer>
-</div></body></html>
+</div><script>
+function checkMCQ(name){var box=document.getElementById('mcq-'+name);var sel=document.querySelector('input[name="'+name+'"]:checked');var fb=document.getElementById('fb-'+name);if(!sel){fb.textContent='Please select an option first.';fb.style.color='#fbbf24';return;}if(parseInt(sel.value,10)===parseInt(box.dataset.correct,10)){fb.textContent='Correct! '+box.dataset.expl;fb.style.color='#00ff9c';}else{fb.textContent='Wrong. Try again. '+box.dataset.expl;fb.style.color='#ff5a5a';}}
+function scoreDay(d){var boxes=document.querySelectorAll('[data-day="'+d+'"]');var total=boxes.length,correct=0,answered=0;boxes.forEach(function(b){var sel=document.querySelector('input[name="'+b.id.replace('mcq-','')+'"]:checked');if(sel){answered++;if(parseInt(sel.value,10)===parseInt(b.dataset.correct,10))correct++;}});var el=document.getElementById('score-'+d);el.textContent='Your score: '+correct+' out of '+total+' (answered '+answered+'). Wrong answers? Read the explanation above and try again.';el.style.color='#00ff9c';}
+</script></body></html>
