@@ -36,7 +36,7 @@ footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a
 <h2>What You Will Learn</h2><ul><li>csv.writer writes rows in CSV format.</li><li>newline=&quot;&quot; is required when opening CSV files, or extra blank lines appear.</li><li>csv.DictReader turns each row into a dict, so values are read by column name (r[&quot;amt&quot;]).</li><li>sum(...) totals all amounts: in the example the total is 35.</li><li>with closes the file or buffer itself, so forgetting close() is no longer a risk.</li></ul>
 <h2>Code</h2><pre>import csv, io
 buf = io.StringIO()
-rows = [[&quot;item&quot;, &quot;amt&quot;], [&quot;chai&quot;, 20], [&quot;samosa&quot;, 15]]
+rows = [[&quot;item&quot;, &quot;amt&quot;], [&quot;tea&quot;, 20], [&quot;coffee&quot;, 15]]
 with io.StringIO() as out:
     pass
 writer = csv.writer(buf)
@@ -48,8 +48,8 @@ print(total)
 print(buf.getvalue())</pre>
 <h2>Output</h2><pre class='out'>35
 item,amt
-chai,20
-samosa,15</pre>
+tea,20
+coffee,15</pre>
 <h2>Code Explained, Line by Line</h2><ol><li>csv.writer writes rows in CSV format.</li><li>newline=&quot;&quot; is required when opening CSV files, or extra blank lines appear.</li><li>csv.DictReader turns each row into a dict, so values are read by column name (r[&quot;amt&quot;]).</li><li>sum(...) totals all amounts: in the example the total is 35.</li><li>with closes the file or buffer itself, so forgetting close() is no longer a risk.</li></ol>
 <div class="mist"><strong>Common Mistake:</strong> Forgetting close() after open() can leave data unsaved or the file locked. Always use with.</div>
 <h2>Real-Life Use</h2><p>Spreadsheets, reports and exported data are CSV files in almost every business.</p>

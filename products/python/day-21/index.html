@@ -33,8 +33,8 @@ footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a
 <div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 21 / 30</p>
 <h1>Day 21: <span class="gr">Function Arguments</span></h1><p>Day 21 covers function arguments: default values, *args for extra positional arguments (collected as a tuple) and **kwargs for extra keyword arguments (collected as a dict). Never use a mutable default like bag=[], because it is shared across calls.</p><p>Phase: Intermediate · Reels: 101/450 – 105/450</p></div>
 <h2>Quick Answer</h2><div class="answer"><p>Day 21 covers function arguments: default values, *args for extra positional arguments (collected as a tuple) and **kwargs for extra keyword arguments (collected as a dict). Never use a mutable default like bag=[], because it is shared across calls.</p></div>
-<h2>What You Will Learn</h2><ul><li>msg = &quot;Namaste&quot; is a default argument: it is used when no value is given.</li><li>*args collects extra positional arguments into a tuple.</li><li>**kwargs collects extra keyword arguments into a dict.</li><li>The bag = None pattern is the safe way: create a fresh list inside the function.</li><li>With bag = None, add(&quot;a&quot;) and add(&quot;b&quot;) return separate lists, not one shared list.</li></ul>
-<h2>Code</h2><pre>def greet(name, msg=&quot;Namaste&quot;):
+<h2>What You Will Learn</h2><ul><li>msg = &quot;Hello&quot; is a default argument: it is used when no value is given.</li><li>*args collects extra positional arguments into a tuple.</li><li>**kwargs collects extra keyword arguments into a dict.</li><li>The bag = None pattern is the safe way: create a fresh list inside the function.</li><li>With bag = None, add(&quot;a&quot;) and add(&quot;b&quot;) return separate lists, not one shared list.</li></ul>
+<h2>Code</h2><pre>def greet(name, msg=&quot;Hello&quot;):
     return f&quot;{msg}, {name}&quot;
 
 def total(*args, **kwargs):
@@ -42,7 +42,7 @@ def total(*args, **kwargs):
     return sum(args)
 
 print(greet(&quot;Arhan&quot;))
-print(greet(&quot;Arhan&quot;, &quot;Hello&quot;))
+print(greet(&quot;Arhan&quot;, &quot;Hi&quot;))
 print(total(1, 2, 3, tax=5))
 
 def add(item, bag=None):
@@ -53,13 +53,13 @@ def add(item, bag=None):
 
 print(add(&quot;a&quot;))
 print(add(&quot;b&quot;))</pre>
-<h2>Output</h2><pre class='out'>Namaste, Arhan
-Hello, Arhan
+<h2>Output</h2><pre class='out'>Hello, Arhan
+Hi, Arhan
 (1, 2, 3) {&#x27;tax&#x27;: 5}
 6
 [&#x27;a&#x27;]
 [&#x27;b&#x27;]</pre>
-<h2>Code Explained, Line by Line</h2><ol><li>msg = &quot;Namaste&quot; is a default argument: it is used when no value is given.</li><li>*args collects extra positional arguments into a tuple.</li><li>**kwargs collects extra keyword arguments into a dict.</li><li>The bag = None pattern is the safe way: create a fresh list inside the function.</li><li>With bag = None, add(&quot;a&quot;) and add(&quot;b&quot;) return separate lists, not one shared list.</li></ol>
+<h2>Code Explained, Line by Line</h2><ol><li>msg = &quot;Hello&quot; is a default argument: it is used when no value is given.</li><li>*args collects extra positional arguments into a tuple.</li><li>**kwargs collects extra keyword arguments into a dict.</li><li>The bag = None pattern is the safe way: create a fresh list inside the function.</li><li>With bag = None, add(&quot;a&quot;) and add(&quot;b&quot;) return separate lists, not one shared list.</li></ol>
 <div class="mist"><strong>Common Mistake:</strong> Never write def f(x, bag=[]):. That list is created once and shared across every call. Use None as the default and create the list inside.</div>
 <h2>Real-Life Use</h2><p>Logging, APIs and flexible utilities use *args and **kwargs to accept any number of arguments.</p>
 <div class="task" style="margin-top:16px"><strong>Practice Task:</strong> Write a function that returns the sum of any number of numbers, using *args.</div>

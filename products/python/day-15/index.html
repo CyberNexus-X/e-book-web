@@ -47,15 +47,15 @@ secret = 7
 guesses = [3, 9, 7]
 for guess in guesses:
     if guess == secret:
-        print(&quot;Sahi!&quot;)
+        print(&quot;Correct!&quot;)
         break
-    print(&quot;Zyada&quot; if guess &gt; secret else &quot;Kam&quot;)</pre>
+    print(&quot;Too high&quot; if guess &gt; secret else &quot;Too low&quot;)</pre>
 <h2>Output</h2><pre class='out'>40
 0 se divide nahi
 15
-Kam
-Zyada
-Sahi!</pre>
+Too low
+Too high
+Correct!</pre>
 <h2>Code Explained, Line by Line</h2><ol><li>calc(a, op, b) takes two numbers and an operator and returns the result.</li><li>Division by zero is checked first, so the program returns a message instead of crashing.</li><li>A dictionary maps each operator to its job, using a small lambda function for each.</li><li>ops[op]() picks the right operation from the dictionary and runs it; an unknown operator gives &#x27;Invalid op&#x27;.</li><li>The guessing game compares each guess with the secret and breaks out of the loop on a correct guess.</li><li>Top 3 beginner mistakes: = vs ==, forgetting int() on input(), and wrong indentation.</li></ol>
 <div class="mist"><strong>Common Mistake:</strong> The three most common beginner errors are dividing by zero, confusing = with ==, and using input() without int().</div>
 <h2>Real-Life Use</h2><p>Calculators and guessing games combine everything from Phase 1: variables, conditions, loops, lists and functions.</p>

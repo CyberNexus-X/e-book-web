@@ -37,16 +37,16 @@ footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a
 <h2>Code</h2><pre>nums = [10, 20, 30]
 print(nums[0], nums[-1])
 print(len(nums))
-shopping = [&quot;doodh&quot;, &quot;bread&quot;, &quot;anda&quot;]
+shopping = [&quot;milk&quot;, &quot;bread&quot;, &quot;eggs&quot;]
 for item in shopping:
     print(&quot;-&quot;, item)
 print(shopping[1:])</pre>
 <h2>Output</h2><pre class='out'>10 30
 3
-- doodh
+- milk
 - bread
-- anda
-[&#x27;bread&#x27;, &#x27;anda&#x27;]</pre>
+- eggs
+[&#x27;bread&#x27;, &#x27;eggs&#x27;]</pre>
 <h2>Code Explained, Line by Line</h2><ol><li>nums = [10, 20, 30] creates a list inside square brackets.</li><li>nums[0] is 10 (first) and nums[-1] is 30 (last). Negative indexes count backwards.</li><li>len(nums) is 3: it counts how many items are in the list.</li><li>for item in shopping runs once for every item in the list.</li><li>shopping[1:] is slicing: it returns items from index 1 to the end.</li></ol>
 <div class="mist"><strong>Common Mistake:</strong> Asking for an index outside the list raises IndexError. A 3-item list has indexes 0, 1 and 2, so nums[3] is invalid.</div>
 <h2>Real-Life Use</h2><p>Shopping carts, playlists and to-do lists are all lists in real programs.</p>

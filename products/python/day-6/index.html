@@ -33,23 +33,23 @@ footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a
 <div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 6 / 30</p>
 <h1>Day 6: <span class="gr">String Methods</span></h1><p>Day 6 covers string methods like strip(), upper(), title(), split() and replace(). Strings are immutable, so every method returns a new string instead of changing the original.</p><p>Phase: Beginner · Reels: 26/450 – 30/450</p></div>
 <h2>Quick Answer</h2><div class="answer"><p>Day 6 covers string methods like strip(), upper(), title(), split() and replace(). Strings are immutable, so every method returns a new string instead of changing the original.</p></div>
-<h2>What You Will Learn</h2><ul><li>s.strip() removes spaces from both ends of a string.</li><li>.title() capitalises the first letter of every word. .upper() makes the whole string capital.</li><li>.split(&quot;,&quot;) breaks text at commas and returns a list of parts.</li><li>&quot;-&quot;.join([&quot;a&quot;, &quot;b&quot;]) joins list items with - between them, giving &quot;a-b&quot;.</li><li>.replace(&quot;c&quot;, &quot;C&quot;) returns a new string with the letter replaced.</li></ul>
+<h2>What You Will Learn</h2><ul><li>s.strip() removes spaces from both ends of a string.</li><li>.title() capitalises the first letter of every word. .upper() makes the whole string capital.</li><li>.split(&quot;,&quot;) breaks text at commas and returns a list of parts.</li><li>&quot;-&quot;.join([&quot;a&quot;, &quot;b&quot;]) joins list items with - between them, giving &quot;a-b&quot;.</li><li>.replace(&quot;t&quot;, &quot;T&quot;) returns a new string with the letter replaced.</li></ul>
 <h2>Code</h2><pre>s = &quot; arhan KHAN &quot;
 print(s.strip())
 print(s.strip().title())
 print(s.upper().strip())
 print(&quot;a,b,c&quot;.split(&quot;,&quot;))
 print(&quot;-&quot;.join([&quot;a&quot;, &quot;b&quot;]))
-print(&quot;chai&quot;.replace(&quot;c&quot;, &quot;C&quot;))
+print(&quot;tea&quot;.replace(&quot;t&quot;, &quot;T&quot;))
 print(&quot; Arhan_Dev &quot;.strip().lower())</pre>
 <h2>Output</h2><pre class='out'>arhan KHAN
 Arhan Khan
 ARHAN KHAN
 [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
 a-b
-Chai
+Tea
 arhan_dev</pre>
-<h2>Code Explained, Line by Line</h2><ol><li>s.strip() removes spaces from both ends of a string.</li><li>.title() capitalises the first letter of every word. .upper() makes the whole string capital.</li><li>.split(&quot;,&quot;) breaks text at commas and returns a list of parts.</li><li>&quot;-&quot;.join([&quot;a&quot;, &quot;b&quot;]) joins list items with - between them, giving &quot;a-b&quot;.</li><li>.replace(&quot;c&quot;, &quot;C&quot;) returns a new string with the letter replaced.</li></ol>
+<h2>Code Explained, Line by Line</h2><ol><li>s.strip() removes spaces from both ends of a string.</li><li>.title() capitalises the first letter of every word. .upper() makes the whole string capital.</li><li>.split(&quot;,&quot;) breaks text at commas and returns a list of parts.</li><li>&quot;-&quot;.join([&quot;a&quot;, &quot;b&quot;]) joins list items with - between them, giving &quot;a-b&quot;.</li><li>.replace(&quot;t&quot;, &quot;T&quot;) returns a new string with the letter replaced.</li></ol>
 <div class="mist"><strong>Common Mistake:</strong> Calling s.upper() alone does not change s, because strings are immutable. You must write s = s.upper(). Trying s[0] = &quot;A&quot; raises a TypeError.</div>
 <h2>Real-Life Use</h2><p>Cleaning usernames, emails and form input uses strip(), lower() and title() in almost every app.</p>
 <div class="task" style="margin-top:16px"><strong>Practice Task:</strong> Take your name with extra spaces, strip it, then capitalise it with title().</div>
