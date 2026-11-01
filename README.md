@@ -68,6 +68,8 @@ The platform hosts dedicated, highly optimized landing pages for distinct educat
    - Rare and classical manuscripts including Brihat Parashara Hora Shastra, Lal Kitab, KP System, and Palmistry manuals.
 3. **[Height Blueprint Series](https://skilllibrary.shop/products/height-blueprint/)**
    - Dedicated physical fitness and posture enhancement guides.
+4. **[30-Day Free Python Challenge](https://skilllibrary.shop/products/python/)**
+   - Interactive zero-to-hero SaaS learning platform for beginners with daily 5-7 MCQs, progress tracker, and free certificate.
 
 ---
 

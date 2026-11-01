@@ -1,0 +1,1443 @@
+/* ==========================================================================
+   Skill Library - 30-Day Python Zero to Hero SaaS Learning Platform CSS
+   ========================================================================== */
+
+:root {
+  --py-bg: #07090e;
+  --py-surface: #0d121f;
+  --py-card: #131b2e;
+  --py-card-hover: #1c2742;
+  --py-border: rgba(255, 255, 255, 0.08);
+  --py-border-active: rgba(16, 185, 129, 0.4);
+  
+  --py-emerald: #10b981;
+  --py-emerald-glow: rgba(16, 185, 129, 0.2);
+  --py-gold: #f59e0b;
+  --py-blue: #38bdf8;
+  --py-red: #ef4444;
+  --py-purple: #a855f7;
+  
+  --py-text-main: #f8fafc;
+  --py-text-muted: #94a3b8;
+  --py-text-dim: #64748b;
+  
+  --py-code-bg: #090d16;
+  --py-font-code: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace;
+  --py-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --py-font-heading: 'Outfit', 'Inter', sans-serif;
+  
+  --sidebar-width: 320px;
+  --header-height: 68px;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.py-app-body {
+  background-color: var(--py-bg);
+  color: var(--py-text-main);
+  font-family: var(--py-font-sans);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- Top SaaS Header ---------------- */
+.py-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: rgba(13, 18, 31, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--py-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.py-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--py-text-main);
+}
+
+.py-brand-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #38bdf8 0%, #10b981 100%);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 19px;
+  color: #fff;
+  box-shadow: 0 4px 16px var(--py-emerald-glow);
+}
+
+.py-brand-text h1 {
+  font-family: var(--py-font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.py-brand-text span {
+  font-size: 11px;
+  color: var(--py-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+
+.py-topbar-center {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.py-progress-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--py-card);
+  padding: 6px 14px;
+  border-radius: 40px;
+  border: 1px solid var(--py-border);
+}
+
+.py-progress-text {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--py-text-muted);
+}
+
+.py-progress-text strong {
+  color: var(--py-emerald);
+}
+
+.py-bar-container {
+  width: 120px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.py-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #10b981, #38bdf8);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+.py-streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--py-gold);
+  padding: 6px 12px;
+  border-radius: 40px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.py-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.py-btn-nav {
+  background: var(--py-card);
+  color: var(--py-text-main);
+  border: 1px solid var(--py-border);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.py-btn-nav:hover {
+  background: var(--py-card-hover);
+  border-color: var(--py-border-active);
+}
+
+.py-btn-cert {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 14px var(--py-emerald-glow);
+}
+
+.py-btn-cert:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+}
+
+.py-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--py-text-main);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* ---------------- Main App Workspace ---------------- */
+.py-app-layout {
+  display: flex;
+  flex: 1;
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* ---------------- Left Sidebar (Days Directory) ---------------- */
+.py-sidebar {
+  width: var(--sidebar-width);
+  background: var(--py-surface);
+  border-right: 1px solid var(--py-border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.py-sidebar-header {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--py-border);
+}
+
+.py-search-box {
+  position: relative;
+  width: 100%;
+}
+
+.py-search-box input {
+  width: 100%;
+  background: var(--py-card);
+  border: 1px solid var(--py-border);
+  padding: 9px 12px 9px 34px;
+  border-radius: var(--radius-md);
+  color: var(--py-text-main);
+  font-size: 13px;
+  outline: none;
+  transition: var(--transition);
+}
+
+.py-search-box input:focus {
+  border-color: var(--py-emerald);
+  box-shadow: 0 0 0 2px var(--py-emerald-glow);
+}
+
+.py-search-icon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--py-text-dim);
+  font-size: 14px;
+}
+
+.py-sidebar-content {
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.py-week-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.py-week-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--py-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  padding: 0 10px 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.py-day-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--py-text-muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.py-day-item:hover {
+  background: var(--py-card);
+  color: var(--py-text-main);
+}
+
+.py-day-item.active {
+  background: var(--py-card-hover);
+  color: #fff;
+  border-color: var(--py-emerald);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.12);
+}
+
+.py-day-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.py-day-num {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--py-text-muted);
+  flex-shrink: 0;
+}
+
+.py-day-item.active .py-day-num {
+  background: var(--py-emerald);
+  color: #07090e;
+}
+
+.py-day-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.py-day-status {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.py-status-done {
+  color: var(--py-emerald);
+}
+
+.py-status-locked {
+  color: var(--py-text-dim);
+}
+
+/* ---------------- Main Stage / Lesson View ---------------- */
+.py-main-content {
+  flex: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 36px 40px 120px;
+  width: 100%;
+}
+
+.py-lesson-card {
+  background: var(--py-surface);
+  border: 1px solid var(--py-border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.py-lesson-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.py-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.py-badge-day {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--py-blue);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.py-badge-time {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--py-text-muted);
+}
+
+.py-badge-free {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--py-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.py-lesson-title {
+  font-family: var(--py-font-heading);
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.py-lesson-subtitle {
+  font-size: 16px;
+  color: var(--py-text-muted);
+  margin-bottom: 24px;
+}
+
+/* Lesson Body Typography & Markdown styling */
+.py-article-body {
+  font-size: 15.5px;
+  color: #cbd5e1;
+  line-height: 1.75;
+}
+
+.py-article-body h2 {
+  font-family: var(--py-font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--py-text-main);
+  margin: 32px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.py-article-body h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 22px 0 10px;
+}
+
+.py-article-body p {
+  margin-bottom: 16px;
+}
+
+.py-article-body ul, .py-article-body ol {
+  margin: 0 0 18px 22px;
+}
+
+.py-article-body li {
+  margin-bottom: 8px;
+}
+
+.py-article-body strong {
+  color: #fff;
+}
+
+/* Callout Alert Boxes */
+.py-callout {
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 4px solid var(--py-emerald);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 24px 0;
+}
+
+.py-callout-warning {
+  background: rgba(245, 158, 11, 0.08);
+  border-left-color: var(--py-gold);
+}
+
+.py-callout-title {
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--py-text-main);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Code Snippet Box */
+.py-code-block {
+  background: var(--py-code-bg);
+  border: 1px solid var(--py-border);
+  border-radius: var(--radius-md);
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.py-code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--py-border);
+  font-size: 12px;
+  color: var(--py-text-dim);
+  font-family: var(--py-font-code);
+}
+
+.py-copy-btn {
+  background: transparent;
+  border: 1px solid var(--py-border);
+  color: var(--py-text-muted);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.py-copy-btn:hover {
+  background: var(--py-card);
+  color: var(--py-text-main);
+  border-color: var(--py-emerald);
+}
+
+.py-code-content {
+  padding: 16px;
+  overflow-x: auto;
+  font-family: var(--py-font-code);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #38bdf8;
+}
+
+.py-code-content pre {
+  margin: 0;
+}
+
+.py-terminal-output {
+  background: #020408;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  padding: 12px 16px;
+  font-family: var(--py-font-code);
+  font-size: 12.5px;
+  color: #a7f3d0;
+}
+
+.py-terminal-label {
+  color: var(--py-text-dim);
+  font-size: 11px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+/* ---------------- Interactive Quiz Engine (5-7 MCQs) ---------------- */
+.py-quiz-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--py-border);
+}
+
+.py-quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.py-quiz-heading {
+  font-family: var(--py-font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.py-quiz-badge {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: var(--py-purple);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.py-quiz-score-meter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--py-gold);
+}
+
+.py-mcq-card {
+  background: var(--py-card);
+  border: 1px solid var(--py-border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+
+.py-mcq-question {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--py-text-main);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.py-mcq-qnum {
+  color: var(--py-emerald);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.py-mcq-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.py-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--py-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  color: #cbd5e1;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.py-option-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.py-option-key {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Correct & Wrong states */
+.py-option-btn.correct {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border-color: var(--py-emerald) !important;
+  color: #10b981 !important;
+  font-weight: 600;
+}
+
+.py-option-btn.correct .py-option-key {
+  background: var(--py-emerald);
+  color: #07090e;
+}
+
+.py-option-btn.wrong {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border-color: var(--py-red) !important;
+  color: #ef4444 !important;
+}
+
+.py-option-btn.wrong .py-option-key {
+  background: var(--py-red);
+  color: #fff;
+}
+
+.py-option-btn:disabled {
+  cursor: default;
+}
+
+.py-mcq-explanation {
+  display: none;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 13.5px;
+  color: var(--py-text-muted);
+  border-left: 3px solid var(--py-blue);
+  line-height: 1.5;
+}
+
+.py-mcq-explanation.show {
+  display: block;
+}
+
+/* ---------------- Bottom Action Bar ---------------- */
+.py-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--py-border);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.py-btn-action {
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--py-border);
+  background: var(--py-card);
+  color: var(--py-text-main);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.py-btn-action:hover:not(:disabled) {
+  background: var(--py-card-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.py-btn-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.py-btn-complete {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 18px var(--py-emerald-glow);
+}
+
+.py-btn-complete:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+}
+
+/* ---------------- Certificate & Completion Modal ---------------- */
+.py-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.py-modal-backdrop.active {
+  display: flex;
+}
+
+.py-modal-box {
+  background: var(--py-surface);
+  border: 1px solid var(--py-border);
+  border-radius: var(--radius-lg);
+  max-width: 580px;
+  width: 100%;
+  padding: 36px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.py-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--py-text-dim);
+  cursor: pointer;
+}
+
+.py-cert-card {
+  border: 2px solid var(--py-gold);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, rgba(13, 18, 31, 0.8) 100%);
+  margin: 20px 0;
+  text-align: center;
+}
+
+.py-cert-title {
+  font-family: var(--py-font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--py-gold);
+  margin-bottom: 8px;
+}
+
+/* ================================================================
+   RESPONSIVE & MOBILE-FRIENDLY DESIGN SYSTEM
+   ================================================================ */
+
+/* ---- Mobile-only progress strip ---- */
+.py-mobile-progress {
+  display: none;
+  background: var(--py-card);
+  border: 1px solid var(--py-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.py-mobile-progress-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--py-text-muted);
+}
+
+@media (max-width: 900px) {
+  .py-mobile-progress {
+    display: block;
+  }
+}
+
+/* ---- Sidebar Overlay (dims main content when sidebar is open) ---- */
+.py-sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 85;
+}
+
+.py-sidebar-overlay.active {
+  display: block;
+}
+
+/* ---- Tablet: <= 1100px ---- */
+@media (max-width: 1100px) {
+  :root {
+    --sidebar-width: 280px;
+  }
+
+  .py-main-content {
+    padding: 28px 24px 100px;
+  }
+
+  .py-lesson-card {
+    padding: 28px 22px;
+  }
+
+  .py-topbar-actions .py-btn-nav span:last-child {
+    display: none;
+  }
+}
+
+/* ---- Mobile landscape & small tablets: <= 900px ---- */
+@media (max-width: 900px) {
+  :root {
+    --header-height: 56px;
+    --sidebar-width: 300px;
+  }
+
+  /* Sidebar → Off-canvas drawer */
+  .py-sidebar {
+    position: fixed;
+    left: 0;
+    top: var(--header-height);
+    bottom: 0;
+    z-index: 90;
+    width: var(--sidebar-width);
+    transform: translateX(-100%);
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .py-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .py-menu-toggle {
+    display: block;
+  }
+
+  /* Topbar */
+  .py-topbar {
+    padding: 0 14px;
+    gap: 8px;
+  }
+
+  .py-topbar-center {
+    display: none;
+  }
+
+  .py-topbar-actions {
+    gap: 8px;
+  }
+
+  .py-topbar-actions .py-btn-nav {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .py-btn-cert span {
+    font-size: 12px;
+  }
+
+  /* Brand */
+  .py-brand-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  .py-brand-text h1 {
+    font-size: 14px;
+  }
+
+  .py-brand-text span {
+    font-size: 10px;
+  }
+
+  /* Main content */
+  .py-main-content {
+    padding: 20px 14px 80px;
+    max-width: 100%;
+  }
+
+  .py-lesson-card {
+    padding: 22px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .py-lesson-title {
+    font-size: 22px;
+    letter-spacing: -0.3px;
+  }
+
+  .py-lesson-subtitle {
+    font-size: 14px;
+  }
+
+  /* Article body */
+  .py-article-body {
+    font-size: 14.5px;
+  }
+
+  .py-article-body h2 {
+    font-size: 19px;
+    margin: 24px 0 10px;
+  }
+
+  .py-article-body h3 {
+    font-size: 16px;
+  }
+
+  /* Code blocks */
+  .py-code-content {
+    font-size: 12.5px;
+    padding: 12px;
+  }
+
+  .py-terminal-output {
+    font-size: 11.5px;
+    padding: 10px 12px;
+  }
+
+  .py-code-header {
+    padding: 6px 12px;
+  }
+
+  /* MCQ cards */
+  .py-mcq-card {
+    padding: 16px 14px;
+    margin-bottom: 14px;
+  }
+
+  .py-mcq-question {
+    font-size: 14px;
+  }
+
+  .py-option-btn {
+    padding: 10px 12px;
+    font-size: 13px;
+    gap: 10px;
+  }
+
+  .py-option-key {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+  .py-mcq-explanation {
+    font-size: 12.5px;
+    padding: 10px 12px;
+  }
+
+  /* Quiz section */
+  .py-quiz-heading {
+    font-size: 20px;
+  }
+
+  .py-quiz-badge {
+    font-size: 11px;
+    padding: 3px 9px;
+  }
+
+  /* Action bar */
+  .py-action-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .py-btn-action {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  /* Callout boxes */
+  .py-callout {
+    padding: 14px 16px;
+  }
+
+  /* Lesson meta badges */
+  .py-lesson-meta {
+    gap: 6px;
+  }
+
+  .py-badge {
+    font-size: 10.5px;
+    padding: 2px 8px;
+  }
+
+  /* Certificate modal */
+  .py-modal-box {
+    padding: 24px 18px;
+    margin: 12px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .py-cert-card {
+    padding: 18px 14px;
+  }
+}
+
+/* ---- Small phones: <= 480px ---- */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 50px;
+    --sidebar-width: 85vw;
+  }
+
+  /* Topbar */
+  .py-topbar {
+    padding: 0 10px;
+  }
+
+  .py-brand {
+    gap: 8px;
+  }
+
+  .py-brand-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .py-brand-text h1 {
+    font-size: 13px;
+  }
+
+  .py-brand-text span {
+    display: none;
+  }
+
+  .py-topbar-actions {
+    gap: 4px;
+  }
+
+  .py-topbar-actions .py-btn-nav {
+    padding: 5px 8px;
+    font-size: 11px;
+    border-radius: 4px;
+  }
+
+  /* Main content */
+  .py-main-content {
+    padding: 14px 10px 70px;
+  }
+
+  .py-lesson-card {
+    padding: 16px 12px;
+    border-radius: 10px;
+  }
+
+  .py-lesson-title {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .py-lesson-subtitle {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .py-article-body {
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+
+  .py-article-body h2 {
+    font-size: 17px;
+    margin: 20px 0 8px;
+  }
+
+  .py-article-body h3 {
+    font-size: 15px;
+    margin: 16px 0 8px;
+  }
+
+  .py-article-body ul, .py-article-body ol {
+    margin-left: 16px;
+  }
+
+  .py-article-body li {
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  /* Code blocks — full width, horizontal scroll */
+  .py-code-block {
+    border-radius: 8px;
+    margin: 14px -2px;
+  }
+
+  .py-code-content {
+    font-size: 11.5px;
+    padding: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .py-code-content pre {
+    white-space: pre;
+    word-break: normal;
+    overflow-x: auto;
+  }
+
+  .py-terminal-output {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  .py-code-header {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .py-copy-btn {
+    font-size: 10px;
+    padding: 3px 7px;
+  }
+
+  /* Callouts */
+  .py-callout {
+    padding: 12px 14px;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+
+  .py-callout-title {
+    font-size: 13px;
+  }
+
+  /* MCQs */
+  .py-quiz-section {
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+
+  .py-quiz-header {
+    margin-bottom: 16px;
+  }
+
+  .py-quiz-heading {
+    font-size: 17px;
+    gap: 6px;
+  }
+
+  .py-mcq-card {
+    padding: 14px 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+  }
+
+  .py-mcq-question {
+    font-size: 13px;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .py-mcq-qnum {
+    font-size: 12px;
+  }
+
+  .py-mcq-options {
+    gap: 8px;
+  }
+
+  .py-option-btn {
+    padding: 10px;
+    font-size: 12.5px;
+    gap: 8px;
+    border-radius: 8px;
+  }
+
+  .py-option-key {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .py-mcq-explanation {
+    font-size: 12px;
+    padding: 8px 10px;
+    margin-top: 10px;
+  }
+
+  /* Action bar */
+  .py-action-bar {
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+
+  .py-btn-action {
+    font-size: 12.5px;
+    padding: 10px 14px;
+    border-radius: 8px;
+  }
+
+  /* Lesson meta */
+  .py-lesson-meta {
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .py-badge {
+    font-size: 9.5px;
+    padding: 2px 6px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Reel grid pills */
+  #pyReelGrid .py-badge {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+
+  /* Sidebar */
+  .py-sidebar-header {
+    padding: 12px 14px 10px;
+  }
+
+  .py-search-box input {
+    font-size: 12px;
+    padding: 8px 10px 8px 30px;
+  }
+
+  .py-sidebar-content {
+    padding: 12px 8px;
+  }
+
+  .py-day-item {
+    font-size: 12.5px;
+    padding: 8px 10px;
+  }
+
+  .py-day-num {
+    font-size: 10.5px;
+    padding: 2px 5px;
+  }
+
+  .py-week-title {
+    font-size: 10.5px;
+    padding: 0 8px 4px;
+  }
+
+  /* Certificate modal */
+  .py-modal-box {
+    padding: 20px 14px;
+    border-radius: 12px;
+  }
+
+  .py-cert-title {
+    font-size: 17px;
+  }
+
+  .py-cert-card {
+    padding: 14px 10px;
+  }
+
+  #pyCertStudentName {
+    font-size: 20px !important;
+  }
+}
+
+/* ---- Landscape phones ---- */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root {
+    --header-height: 44px;
+  }
+
+  .py-topbar {
+    padding: 0 12px;
+  }
+
+  .py-brand-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
+  }
+
+  .py-main-content {
+    padding: 12px 16px 60px;
+  }
+
+  .py-lesson-card {
+    padding: 16px;
+  }
+
+  .py-sidebar {
+    width: 260px;
+  }
+
+  .py-modal-box {
+    max-height: 95vh;
+  }
+}
+
+/* ---- Print styles for certificate ---- */
+@media print {
+  body.py-app-body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .py-topbar,
+  .py-sidebar,
+  .py-sidebar-overlay,
+  .py-quiz-section,
+  .py-action-bar,
+  .py-modal-close,
+  .py-btn-action {
+    display: none !important;
+  }
+
+  .py-modal-backdrop.active {
+    position: static;
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .py-modal-box {
+    box-shadow: none;
+    border: none;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .py-cert-card {
+    border: 3px solid #c7a300;
+    color: #000;
+  }
+
+  #pyCertStudentName {
+    color: #b8860b !important;
+  }
+}
+
+/* ---- Safe area (notch phones) ---- */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .py-action-bar {
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+
+  .py-topbar {
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+/* ---- Touch-friendly improvements ---- */
+@media (hover: none) and (pointer: coarse) {
+  .py-option-btn {
+    min-height: 44px;
+  }
+
+  .py-day-item {
+    min-height: 44px;
+  }
+
+  .py-btn-action {
+    min-height: 44px;
+  }
+
+  .py-copy-btn {
+    min-height: 32px;
+    min-width: 48px;
+  }
+
+  .py-btn-nav {
+    min-height: 36px;
+  }
+}
