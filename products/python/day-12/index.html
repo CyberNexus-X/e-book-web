@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PMQWN92200"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PMQWN92200');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 12: Lists Basics — Python in 30 Days | Skill Library</title>
+<meta name="description" content="Day 12: Lists Basics explained with code, real output, line-by-line detail, common mistakes and interactive MCQs. Python Learning Series by Skill Library.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://skilllibrary.shop/products/python/day-12/">
+<meta property="og:title" content="Day 12: Lists Basics | Skill Library">
+<meta property="og:description" content="Day 12 teaches lists. A list holds many values in one place. Indexing starts at 0, and negative indexing counts from the end: -1 is the last item.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What do you learn on Day 12 of the Python series?", "acceptedAnswer": {"@type": "Answer", "text": "Day 12 teaches lists. A list holds many values in one place. Indexing starts at 0, and negative indexing counts from the end: -1 is the last item."}}, {"@type": "Question", "name": "What is the common mistake on Day 12?", "acceptedAnswer": {"@type": "Answer", "text": "Asking for an index outside the list raises IndexError. A 3-item list has indexes 0, 1 and 2, so nums[3] is invalid."}}, {"@type": "Question", "name": "Where is Day 12 used in real life?", "acceptedAnswer": {"@type": "Answer", "text": "Shopping carts, playlists and to-do lists are all lists in real programs."}}]}</script>
+<style>body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.7}
+a{color:#00ff9c}.wrap{max-width:900px;margin:0 auto;padding:24px 18px 44px}
+.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem}.nav a{text-decoration:none}
+.kick{color:#8a9a94;letter-spacing:2px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;text-transform:uppercase}
+.hero{background:#121a16;border:1px solid #243028;border-radius:12px;padding:22px}
+h1{font-size:2rem;line-height:1.3}h1 .gr{color:#00ff9c}h2{color:#00ff9c;margin-top:30px}h3{margin:0 0 6px}
+.answer{border:1.5px solid #00ff9c;border-radius:12px;padding:16px;background:#0f1f17}
+pre{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:16px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.6;color:#a7f3d0;white-space:pre-wrap;word-wrap:break-word}
+pre.out{color:#f2f2f2}.card{background:#121a16;border:1px solid #243028;border-radius:12px;padding:18px;margin:16px 0}
+.mist{background:#1f0f0f;border:1px solid #7f1d1d;border-radius:12px;padding:16px}.mist strong{color:#ff5a5a}
+.task{border:1.5px solid #00ff9c;border-radius:12px;padding:16px}
+.mcq{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px;margin:14px 0}
+.mcq label{display:block;margin:7px 0;cursor:pointer}.mcq input{margin-right:8px}
+button{background:#00ff9c;color:#04120a;border:0;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;margin-top:8px}
+button:hover{filter:brightness(1.1)}.fb{font-weight:700;min-height:1.4em}
+table{width:100%;border-collapse:collapse}td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
+td.rn{color:#8a9a94;font-family:monospace;width:70px}td.rt{color:#00ff9c;width:150px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px}.pn a{text-decoration:none}
+footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center}footer a{margin:0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}.gcard{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px}.gcard a{text-decoration:none}.gcard h3{color:#f2f2f2}.gcard p{color:#cbd5e1}</style></head><body><div class="wrap">
+<nav class="nav"><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a></nav>
+<div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 12 / 30</p>
+<h1>Day 12: <span class="gr">Lists Basics</span></h1><p>Day 12 teaches lists. A list holds many values in one place. Indexing starts at 0, and negative indexing counts from the end: -1 is the last item.</p><p>Phase: Beginner · Reels: 56/450 – 60/450</p></div>
+<h2>Quick Answer</h2><div class="answer"><p>Day 12 teaches lists. A list holds many values in one place. Indexing starts at 0, and negative indexing counts from the end: -1 is the last item.</p></div>
+<h2>What You Will Learn</h2><ul><li>nums = [10, 20, 30] creates a list inside square brackets.</li><li>nums[0] is 10 (first) and nums[-1] is 30 (last). Negative indexes count backwards.</li><li>len(nums) is 3: it counts how many items are in the list.</li><li>for item in shopping runs once for every item in the list.</li><li>shopping[1:] is slicing: it returns items from index 1 to the end.</li></ul>
+<h2>Code</h2><pre>nums = [10, 20, 30]
+print(nums[0], nums[-1])
+print(len(nums))
+shopping = [&quot;milk&quot;, &quot;bread&quot;, &quot;eggs&quot;]
+for item in shopping:
+    print(&quot;-&quot;, item)
+print(shopping[1:])</pre>
+<h2>Output</h2><pre class='out'>10 30
+3
+- milk
+- bread
+- eggs
+[&#x27;bread&#x27;, &#x27;eggs&#x27;]</pre>
+<h2>Code Explained, Line by Line</h2><ol><li>nums = [10, 20, 30] creates a list inside square brackets.</li><li>nums[0] is 10 (first) and nums[-1] is 30 (last). Negative indexes count backwards.</li><li>len(nums) is 3: it counts how many items are in the list.</li><li>for item in shopping runs once for every item in the list.</li><li>shopping[1:] is slicing: it returns items from index 1 to the end.</li></ol>
+<div class="mist"><strong>Common Mistake:</strong> Asking for an index outside the list raises IndexError. A 3-item list has indexes 0, 1 and 2, so nums[3] is invalid.</div>
+<h2>Real-Life Use</h2><p>Shopping carts, playlists and to-do lists are all lists in real programs.</p>
+<div class="task" style="margin-top:16px"><strong>Practice Task:</strong> Make your own shopping list and print its last item using a negative index.</div>
+<h2>Test Yourself — MCQs</h2><p>Select (tick) an option, then tap <strong>Check answer</strong> to see instantly whether your answer is right or wrong, with an explanation. You can change your answer and check again.</p>
+<div class="mcq" id="mcq-d12q1" data-day="12" data-correct="2" data-expl="-1 is the last item, which is 30.">
+<p><strong>Q1.</strong> In nums = [10, 20, 30], what is nums[-1]?</p><label><input type='radio' name='d12q1' value='0'> A. 10</label><label><input type='radio' name='d12q1' value='1'> B. 20</label><label><input type='radio' name='d12q1' value='2'> C. 30</label><label><input type='radio' name='d12q1' value='3'> D. Error</label>
+<button onclick="checkMCQ('d12q1')">Check answer</button><p class="fb" id="fb-d12q1"></p></div><div class="mcq" id="mcq-d12q2" data-day="12" data-correct="1" data-expl="len counts items: there are 3.">
+<p><strong>Q2.</strong> What is len([10, 20, 30])?</p><label><input type='radio' name='d12q2' value='0'> A. 2</label><label><input type='radio' name='d12q2' value='1'> B. 3</label><label><input type='radio' name='d12q2' value='2'> C. 4</label><label><input type='radio' name='d12q2' value='3'> D. 30</label>
+<button onclick="checkMCQ('d12q2')">Check answer</button><p class="fb" id="fb-d12q2"></p></div><div class="mcq" id="mcq-d12q3" data-day="12" data-correct="2" data-expl="Valid indexes are 0, 1, 2. Index 3 is outside the list.">
+<p><strong>Q3.</strong> What does nums[3] give for a 3-item list?</p><label><input type='radio' name='d12q3' value='0'> A. The last item</label><label><input type='radio' name='d12q3' value='1'> B. None</label><label><input type='radio' name='d12q3' value='2'> C. IndexError</label><label><input type='radio' name='d12q3' value='3'> D. 0</label>
+<button onclick="checkMCQ('d12q3')">Check answer</button><p class="fb" id="fb-d12q3"></p></div>
+<button onclick="scoreDay(12)">Check my score</button><p class="fb" id="score-12"></p>
+<h2>Today's 5 Reels (from the 90-Day Plan Excel)</h2><table><tr><td class='rn'>56/450</td><td class='rt'>Concept</td><td>List kya hai</td></tr><tr><td class='rn'>57/450</td><td class='rt'>Live demo</td><td>Indexing aur negative index</td></tr><tr><td class='rn'>58/450</td><td class='rt'>Common mistake</td><td>IndexError kyun aata</td></tr><tr><td class='rn'>59/450</td><td class='rt'>Quiz</td><td>Quiz: list ka last item</td></tr><tr><td class='rn'>60/450</td><td class='rt'>Interview / real life</td><td>Real life: shopping list</td></tr></table>
+
+<div class="pn"><a href='/products/python/day-11/'>← Day 11</a><a href='/products/python/day-13/'>Day 13 →</a></div>
+<footer><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a><p>© Skill Library — skilllibrary.shop</p></footer>
+</div><script>
+function checkMCQ(name){var box=document.getElementById('mcq-'+name);var sel=document.querySelector('input[name="'+name+'"]:checked');var fb=document.getElementById('fb-'+name);if(!sel){fb.textContent='Please select an option first.';fb.style.color='#fbbf24';return;}if(parseInt(sel.value,10)===parseInt(box.dataset.correct,10)){fb.textContent='Correct! '+box.dataset.expl;fb.style.color='#00ff9c';}else{fb.textContent='Wrong. Try again. '+box.dataset.expl;fb.style.color='#ff5a5a';}}
+function scoreDay(d){var boxes=document.querySelectorAll('[data-day="'+d+'"]');var total=boxes.length,correct=0,answered=0;boxes.forEach(function(b){var sel=document.querySelector('input[name="'+b.id.replace('mcq-','')+'"]:checked');if(sel){answered++;if(parseInt(sel.value,10)===parseInt(b.dataset.correct,10))correct++;}});var el=document.getElementById('score-'+d);el.textContent='Your score: '+correct+' out of '+total+' (answered '+answered+'). Wrong answers? Read the explanation above and try again.';el.style.color='#00ff9c';}
+</script></body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PMQWN92200"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PMQWN92200');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 22: lambda, map, filter — Python in 30 Days | Skill Library</title>
+<meta name="description" content="Day 22: lambda, map, filter explained with code, real output, line-by-line detail, common mistakes and interactive MCQs. Python Learning Series by Skill Library.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://skilllibrary.shop/products/python/day-22/">
+<meta property="og:title" content="Day 22: lambda, map, filter | Skill Library">
+<meta property="og:description" content="Day 22 teaches lambda, map and filter. lambda is a small one-line function without a name, map() runs a function on every item, and filter() keeps only items that pass a condition.">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What do you learn on Day 22 of the Python series?", "acceptedAnswer": {"@type": "Answer", "text": "Day 22 teaches lambda, map and filter. lambda is a small one-line function without a name, map() runs a function on every item, and filter() keeps only items that pass a condition."}}, {"@type": "Question", "name": "What is the common mistake on Day 22?", "acceptedAnswer": {"@type": "Answer", "text": "Do not overuse lambda. For longer logic, write a named function with def so the code stays readable."}}, {"@type": "Question", "name": "Where is Day 22 used in real life?", "acceptedAnswer": {"@type": "Answer", "text": "Discounts, data cleaning and sorting by a custom rule use map, filter and key functions."}}]}</script>
+<style>body{background:#0a0e0c;color:#f2f2f2;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;line-height:1.7}
+a{color:#00ff9c}.wrap{max-width:900px;margin:0 auto;padding:24px 18px 44px}
+.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem}.nav a{text-decoration:none}
+.kick{color:#8a9a94;letter-spacing:2px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;text-transform:uppercase}
+.hero{background:#121a16;border:1px solid #243028;border-radius:12px;padding:22px}
+h1{font-size:2rem;line-height:1.3}h1 .gr{color:#00ff9c}h2{color:#00ff9c;margin-top:30px}h3{margin:0 0 6px}
+.answer{border:1.5px solid #00ff9c;border-radius:12px;padding:16px;background:#0f1f17}
+pre{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:16px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.6;color:#a7f3d0;white-space:pre-wrap;word-wrap:break-word}
+pre.out{color:#f2f2f2}.card{background:#121a16;border:1px solid #243028;border-radius:12px;padding:18px;margin:16px 0}
+.mist{background:#1f0f0f;border:1px solid #7f1d1d;border-radius:12px;padding:16px}.mist strong{color:#ff5a5a}
+.task{border:1.5px solid #00ff9c;border-radius:12px;padding:16px}
+.mcq{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px;margin:14px 0}
+.mcq label{display:block;margin:7px 0;cursor:pointer}.mcq input{margin-right:8px}
+button{background:#00ff9c;color:#04120a;border:0;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;margin-top:8px}
+button:hover{filter:brightness(1.1)}.fb{font-weight:700;min-height:1.4em}
+table{width:100%;border-collapse:collapse}td{padding:6px;border-bottom:1px solid #243028;vertical-align:top}
+td.rn{color:#8a9a94;font-family:monospace;width:70px}td.rt{color:#00ff9c;width:150px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:28px}.pn a{text-decoration:none}
+footer{border-top:1px solid #243028;margin-top:32px;padding-top:16px;color:#8a9a94;text-align:center}footer a{margin:0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}.gcard{background:#121a16;border:1px solid #243028;border-radius:12px;padding:16px}.gcard a{text-decoration:none}.gcard h3{color:#f2f2f2}.gcard p{color:#cbd5e1}</style></head><body><div class="wrap">
+<nav class="nav"><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a></nav>
+<div class="hero"><p class="kick">Python Learning Series · @onlysamarrr · Day 22 / 30</p>
+<h1>Day 22: <span class="gr">lambda, map, filter</span></h1><p>Day 22 teaches lambda, map and filter. lambda is a small one-line function without a name, map() runs a function on every item, and filter() keeps only items that pass a condition.</p><p>Phase: Intermediate · Reels: 106/450 – 110/450</p></div>
+<h2>Quick Answer</h2><div class="answer"><p>Day 22 teaches lambda, map and filter. lambda is a small one-line function without a name, map() runs a function on every item, and filter() keeps only items that pass a condition.</p></div>
+<h2>What You Will Learn</h2><ul><li>lambda x: x * 2 is a small anonymous function: x is the input, x * 2 is the output.</li><li>map(lambda p: p * 0.9, prices) applies a 10% discount to every price.</li><li>filter(lambda n: n % 2 == 0, ...) keeps only even numbers.</li><li>sorted(names, key=len) sorts names by their length, using len as the key function.</li><li>If a function needs a name or is long, use def instead of lambda: do not overuse lambda.</li></ul>
+<h2>Code</h2><pre>double = lambda x: x * 2
+print(double(5))
+prices = [100, 250, 400]
+off = list(map(lambda p: p * 0.9, prices))
+print(off)
+ev = list(filter(lambda n: n % 2 == 0, range(7)))
+print(ev)
+names = [&quot;Al&quot;, &quot;Riya&quot;, &quot;Arhan&quot;]
+print(sorted(names, key=len))</pre>
+<h2>Output</h2><pre class='out'>10
+[90.0, 225.0, 360.0]
+[0, 2, 4, 6]
+[&#x27;Al&#x27;, &#x27;Riya&#x27;, &#x27;Arhan&#x27;]</pre>
+<h2>Code Explained, Line by Line</h2><ol><li>lambda x: x * 2 is a small anonymous function: x is the input, x * 2 is the output.</li><li>map(lambda p: p * 0.9, prices) applies a 10% discount to every price.</li><li>filter(lambda n: n % 2 == 0, ...) keeps only even numbers.</li><li>sorted(names, key=len) sorts names by their length, using len as the key function.</li><li>If a function needs a name or is long, use def instead of lambda: do not overuse lambda.</li></ol>
+<div class="mist"><strong>Common Mistake:</strong> Do not overuse lambda. For longer logic, write a named function with def so the code stays readable.</div>
+<h2>Real-Life Use</h2><p>Discounts, data cleaning and sorting by a custom rule use map, filter and key functions.</p>
+<div class="task" style="margin-top:16px"><strong>Practice Task:</strong> Apply a discount to prices with map, and filter out even numbers.</div>
+<h2>Test Yourself — MCQs</h2><p>Select (tick) an option, then tap <strong>Check answer</strong> to see instantly whether your answer is right or wrong, with an explanation. You can change your answer and check again.</p>
+<div class="mcq" id="mcq-d22q1" data-day="22" data-correct="1" data-expl="lambda creates a small function without a name.">
+<p><strong>Q1.</strong> What is lambda x: x * 2?</p><label><input type='radio' name='d22q1' value='0'> A. A named function</label><label><input type='radio' name='d22q1' value='1'> B. A small anonymous function</label><label><input type='radio' name='d22q1' value='2'> C. A loop</label><label><input type='radio' name='d22q1' value='3'> D. A class</label>
+<button onclick="checkMCQ('d22q1')">Check answer</button><p class="fb" id="fb-d22q1"></p></div><div class="mcq" id="mcq-d22q2" data-day="22" data-correct="1" data-expl="map applies the given function to each item and returns the results.">
+<p><strong>Q2.</strong> What does map() do?</p><label><input type='radio' name='d22q2' value='0'> A. Filters items</label><label><input type='radio' name='d22q2' value='1'> B. Runs a function on every item</label><label><input type='radio' name='d22q2' value='2'> C. Sorts items</label><label><input type='radio' name='d22q2' value='3'> D. Deletes items</label>
+<button onclick="checkMCQ('d22q2')">Check answer</button><p class="fb" id="fb-d22q2"></p></div><div class="mcq" id="mcq-d22q3" data-day="22" data-correct="1" data-expl="filter keeps items for which the function returns True.">
+<p><strong>Q3.</strong> What does filter() keep?</p><label><input type='radio' name='d22q3' value='0'> A. All items</label><label><input type='radio' name='d22q3' value='1'> B. Only items that pass the condition</label><label><input type='radio' name='d22q3' value='2'> C. Only numbers</label><label><input type='radio' name='d22q3' value='3'> D. Only the first item</label>
+<button onclick="checkMCQ('d22q3')">Check answer</button><p class="fb" id="fb-d22q3"></p></div>
+<button onclick="scoreDay(22)">Check my score</button><p class="fb" id="score-22"></p>
+<h2>Today's 5 Reels (from the 90-Day Plan Excel)</h2><table><tr><td class='rn'>106/450</td><td class='rt'>Concept</td><td>lambda function</td></tr><tr><td class='rn'>107/450</td><td class='rt'>Live demo</td><td>map aur filter demo</td></tr><tr><td class='rn'>108/450</td><td class='rt'>Common mistake</td><td>lambda ko overuse mat karo</td></tr><tr><td class='rn'>109/450</td><td class='rt'>Quiz</td><td>Quiz: even numbers filter</td></tr><tr><td class='rn'>110/450</td><td class='rt'>Interview / real life</td><td>Real life: prices pe discount</td></tr></table>
+
+<div class="pn"><a href='/products/python/day-21/'>← Day 21</a><a href='/products/python/day-23/'>Day 23 →</a></div>
+<footer><a href="/">Home</a><a href="/products/python/">Python Section</a><a href="/products/ebook-bundle/">eBook Bundle</a><a href="/pages/blog/">Blog</a><p>© Skill Library — skilllibrary.shop</p></footer>
+</div><script>
+function checkMCQ(name){var box=document.getElementById('mcq-'+name);var sel=document.querySelector('input[name="'+name+'"]:checked');var fb=document.getElementById('fb-'+name);if(!sel){fb.textContent='Please select an option first.';fb.style.color='#fbbf24';return;}if(parseInt(sel.value,10)===parseInt(box.dataset.correct,10)){fb.textContent='Correct! '+box.dataset.expl;fb.style.color='#00ff9c';}else{fb.textContent='Wrong. Try again. '+box.dataset.expl;fb.style.color='#ff5a5a';}}
+function scoreDay(d){var boxes=document.querySelectorAll('[data-day="'+d+'"]');var total=boxes.length,correct=0,answered=0;boxes.forEach(function(b){var sel=document.querySelector('input[name="'+b.id.replace('mcq-','')+'"]:checked');if(sel){answered++;if(parseInt(sel.value,10)===parseInt(b.dataset.correct,10))correct++;}});var el=document.getElementById('score-'+d);el.textContent='Your score: '+correct+' out of '+total+' (answered '+answered+'). Wrong answers? Read the explanation above and try again.';el.style.color='#00ff9c';}
+</script></body></html>
