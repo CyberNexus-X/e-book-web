@@ -89,7 +89,9 @@ body.py-app-body {
   box-shadow: 0 4px 16px var(--py-emerald-glow);
 }
 
-.py-brand-text h1 {
+.py-brand-text h1,
+.py-brand-title {
+  display: block;
   font-family: var(--py-font-heading);
   font-size: 16px;
   font-weight: 700;
@@ -938,7 +940,8 @@ body.py-app-body {
     border-radius: var(--radius-sm);
   }
 
-  .py-brand-text h1 {
+  .py-brand-text h1,
+  .py-brand-title {
     font-size: 14px;
   }
 
@@ -1095,7 +1098,8 @@ body.py-app-body {
     font-size: 14px;
   }
 
-  .py-brand-text h1 {
+  .py-brand-text h1,
+  .py-brand-title {
     font-size: 13px;
   }
 

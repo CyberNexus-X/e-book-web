@@ -174,7 +174,7 @@
       <a href="https://skilllibrary.shop/" class="py-brand">
         <div class="py-brand-icon">🐍</div>
         <div class="py-brand-text">
-          <h1>Python 30 Days</h1>
+          <span class="py-brand-title">Python 30 Days</span>
           <span>Skill Library • Free SaaS</span>
         </div>
       </a>
@@ -253,16 +253,114 @@
               🇮🇳 Hindi + English
             </span>
           </div>
-          <h1 class="py-lesson-title" id="pyLessonTitle">Introduction to Python & First Program</h1>
-          <p class="py-lesson-subtitle" id="pyLessonSubtitle">Python kya hai, features, aur aapka pehla 'Hello World' code</p>
+          <h1 class="py-lesson-title" id="pyLessonTitle">Day 1: Pehla program</h1>
+          <p class="py-lesson-subtitle" id="pyLessonSubtitle">Beginner Phase • Reel Curriculum by Skill Library</p>
           
           <!-- 5 Reels Breakdown Bar -->
-          <div id="pyReelGrid" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px;"></div>
+          <div id="pyReelGrid" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px;">
+            <span class="py-badge" style="background: rgba(16, 185, 129, 0.12); color: var(--py-emerald); border: 1px solid rgba(16, 185, 129, 0.3);">💡 Concept: print() se pehli line</span>
+            <span class="py-badge" style="background: rgba(56, 189, 248, 0.12); color: var(--py-blue); border: 1px solid rgba(56, 189, 248, 0.3);">💻 Demo: Strings aur quotes (' vs " vs ''')</span>
+            <span class="py-badge" style="background: rgba(245, 158, 11, 0.12); color: var(--py-gold); border: 1px solid rgba(245, 158, 11, 0.3);">⚠️ Mistake: Variables spelling aur variable par quotes lagana</span>
+            <span class="py-badge" style="background: rgba(168, 85, 247, 0.12); color: var(--py-purple); border: 1px solid rgba(168, 85, 247, 0.3);">💼 Interview/Life: Quiz: naam + language print</span>
+            <span class="py-badge" style="background: rgba(239, 68, 68, 0.12); color: var(--py-red); border: 1px solid rgba(239, 68, 68, 0.3);">✍️ Quiz: Comments (#)</span>
+          </div>
         </header>
 
         <!-- Main Body Content -->
         <div class="py-article-body" id="pyArticleBody">
-          <!-- Dynamically populated from PYTHON_COURSE in python-curriculum.js -->
+<h2>🚀 Day 1: Pehla Python Program - print() aur Strings</h2>
+<p>Python ki shaandar duniya me aapka swagat hai! Aaj aap apne programming safar ki pehli seedhi chadhne ja rahe hain. Kisi bhi nayi language ko seekhte waqt sabse pehla milestone hota hai screen par apna pehla message display karna, aur Python me yeh kaam behad aasan aur intuitive hai.</p>
+
+<h3>1. 💡 Concept: print() se pehli line</h3>
+<p>Python ko 1991 me Guido van Rossum ne banaya tha, aur unka sabse bada maqsad yeh tha ki code padhna aur likhna English ki tarah bilkul aasan ho. Doosri languages jaise C ya Java me ek simple line print karne ke liye 5 se 7 lines ka boilerplate code likhna padta hai, lekin Python me sirf ek line kaafi hoti hai: <code>print("Hello World!")</code>.</p>
+
+<p><strong>Analogy:</strong> Socho Python interpreter ek obedient robot dost hai jo aapke diye gaye instructions ko line by line follow karta hai. Jab aap use bolte ho <code>print()</code>, toh aap asal me robot ko keh rahe ho: <em>"Bhai, parentheses ke andar jo kuch bhi likha hai, use screen par laakar dikha do!"</em></p>
+
+<p>Ab samajhte hain ki <code>print()</code> function kaise kaam karta hai aur iske core elements kya hain:</p>
+<ul>
+  <li><strong>Function Name:</strong> <code>print</code> ek built-in function hai jo Python me pehle se bana-banaya milta hai. Python case-sensitive hai, isliye yeh hamesha lowercase me hi likha jana chahiye.</li>
+  <li><strong>Parentheses <code>()</code>:</strong> Function ke aage round brackets lagte hain. Iske andar hum jo data bhejte hain, use technical terms me <strong>arguments</strong> kaha jata hai.</li>
+  <li><strong>Quotes ka Rule:</strong> Jab hum computer ko koi text (text string) print karne ko kehte hain, toh use quotes me pack karna zaroori hota hai taaki Python ko pata chale ki yeh plain text hai, koi command ya variable nahi.</li>
+  <li><strong>Single vs Double Quotes:</strong> Python me <code>'Hello'</code> aur <code>"Hello"</code> me koi farak nahi hai. Dono bilkul barabar kaam karte hain. Double quotes tab bohot useful hote hain jab text ke andar apostrophe ho, jaise <code>"It's a great day"</code>.</li>
+  <li><strong>Triple Quotes (<code>'''</code> ya <code>"""</code>):</strong> Agar aapko multiple lines ka paragraph ya formatted art print karna hai bina baar baar <code>print()</code> likhe, toh triple quotes ka use kiya jata hai.</li>
+  <li><strong>sep aur end parameters:</strong> <code>print()</code> ke paas do hidden superpowers hain. <code>sep</code> batata hai ki multiple items ke beech kya aayega (default space hai), aur <code>end</code> batata hai ki line ke aakhri me kya aayega (default newline <code>
+</code> hai).</li>
+</ul>
+
+<p>Programming me <strong>Comments</strong> ek bohot zaroori tool hain. Jab aap kisi line ke shuru me <code>#</code> symbol lagate hain, toh Python interpreter us line ko bilkul ignore kar deta hai. Yeh comments hamare khud ke samajhne ke liye aur team members ko code explain karne ke liye likhe jaate hain.</p>
+
+<h3>2. 💻 Live Demo: Strings, Quotes aur Formatting</h3>
+<p>Neeche diye gaye code ko dhyaan se dekhein aur dekhein ki quotes aur parameters kaise behave karte hain:</p>
+
+<div class="py-code-block">
+  <div class="py-code-header"><span>day1_quotes_demo.py</span><button class="py-copy-btn" onclick="copyCode(this)">Copy</button></div>
+  <div class="py-code-content"><pre># Single quotes aur Double quotes dono perfectly valid hain:
+print('Namaste Doston!')
+print("Python seekhna behad aasan hai.")
+
+# Handling quotes inside strings:
+print("Python developer ne kaha: 'Keep coding daily!'")
+print('It's a wonderful journey to master programming.')
+
+# Multiple items print karna with sep parameter:
+print("Python", "JavaScript", "C++", sep=" | ")
+
+# end parameter ka magic (agli line me jaane ke bajaye same line me continue):
+print("Loading Python modules...", end=" ")
+print("Done!")</pre></div>
+  <div class="py-terminal-output"><div class="py-terminal-label">Output</div>Namaste Doston!<br>Python seekhna behad aasan hai.<br>Python developer ne kaha: 'Keep coding daily!'<br>It's a wonderful journey to master programming.<br>Python | JavaScript | C++<br>Loading Python modules... Done!</div>
+</div>
+
+<p>Ab dekhte hain triple quotes aur comments ka practical istemaal ek professional banner create karne ke liye:</p>
+
+<div class="py-code-block">
+  <div class="py-code-header"><span>day1_banner_demo.py</span><button class="py-copy-btn" onclick="copyCode(this)">Copy</button></div>
+  <div class="py-code-content"><pre># ==========================================
+# Script: Day 1 Welcome Dashboard
+# Developer: Python Learner
+# Purpose: Multi-line strings & clean structure
+# ==========================================
+
+print("""
+========================================
+   PYTHON 30-DAY BOOTCAMP: DAY 1
+========================================
+Target: Master the Core Fundamentals
+Status: In Progress 🚀
+Rule: Code every day without skipping!
+========================================
+""")
+
+# Variables ko introduce karte hain (bina quotes ke print karna):
+user_name = "Rahul Sharma"
+day_number = 1
+
+print("Welcome", user_name, "to Day", day_number, "of Python Mastery!")</pre></div>
+  <div class="py-terminal-output"><div class="py-terminal-label">Output</div>========================================<br>   PYTHON 30-DAY BOOTCAMP: DAY 1<br>========================================<br>Target: Master the Core Fundamentals<br>Status: In Progress 🚀<br>Rule: Code every day without skipping!<br>========================================<br><br>Welcome Rahul Sharma to Day 1 of Python Mastery!</div>
+</div>
+
+<div class="py-callout py-callout-warning">
+  <div class="py-callout-title">⚠️ 3. Common Mistake: Variable par quotes lagana aur Case-sensitivity</div>
+  <p>Beginners aksar variable ki value print karte waqt variable ke naam par quotes laga dete hain, ya Python ke lowercase functions ko Capital letter se likh dete hain.</p>
+  <p><strong>Galti 1: Variable name par quotes lagana:</strong><br>
+  ❌ <strong>Wrong:</strong><br>
+  <code>my_name = "Aman"</code><br>
+  <code>print("my_name")  # Output aayega: my_name (literal text!)</code><br>
+  ✅ <strong>Correct:</strong><br>
+  <code>my_name = "Aman"</code><br>
+  <code>print(my_name)    # Output aayega: Aman (variable ki stored value!)</code></p>
+  <p><strong>Galti 2: Case sensitivity bhool jana:</strong><br>
+  ❌ <code>Print("Hello")</code> ya <code>PRINT("Hello")</code> &rarr; <code>NameError: name 'Print' is not defined</code>.<br>
+  ✅ <code>print("Hello")</code> &rarr; Python me keywords aur built-in functions case-sensitive hote hain, small letters me likhein!</p>
+</div>
+
+<div class="py-callout">
+  <div class="py-callout-title">💼 4. Real Life / Interview: First Code Quiz</div>
+  <p><strong>Real Life Scenario:</strong> Production backend applications me <code>print()</code> statements debugging, log verification, aur server start hone par diagnostics print karne ke liye sabse pehla tool hote hain. Jab server run hota hai, console par banner print karke bataya jata hai ki API live hai ya database connected hai.</p>
+  <p><strong>Interview Question:</strong> <em>"What does the print() function actually return in Python?"</em><br>
+  <strong>Answer:</strong> Python me <code>print()</code> function screen par text display karta hai, lekin iska return value hamesha <code>None</code> hota hai. Agar aap <code>x = print("Hi")</code> likhenge, toh screen par "Hi" print hoga aur variable <code>x</code> ke andar <code>None</code> store hoga.</p>
+  <p><strong>Mini Practice Task:</strong> Ek aisi Python script likhiye jo aapka naam, aapka target domain (e.g. Data Science, Web Dev, ya AI), aur aapka target package ek stylish box ke format me print kare.</p>
+</div>
         </div>
 
         <!-- Interactive Quiz Section (5-7 MCQs per day) -->
@@ -282,7 +380,141 @@
           </p>
 
           <div id="pyQuizQuestions">
-            <!-- Dynamically populated MCQs -->
+            <div class="py-mcq-card">
+              <div class="py-mcq-question">
+                <span class="py-mcq-qnum">Q1.</span>
+                <span>Python me console par text display karne ke liye kaunsa built-in function use hota hai?</span>
+              </div>
+              <div class="py-mcq-options">
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 0, 0, 2)">
+                  <span class="py-option-key">A</span>
+                  <span class="py-option-text">echo()</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 0, 1, 2)">
+                  <span class="py-option-key">B</span>
+                  <span class="py-option-text">console.log()</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 0, 2, 2)">
+                  <span class="py-option-key">C</span>
+                  <span class="py-option-text">print()</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 0, 3, 2)">
+                  <span class="py-option-key">D</span>
+                  <span class="py-option-text">printf()</span>
+                </button>
+              </div>
+              <div class="py-mcq-explanation">
+                <strong>💡 Explanation:</strong> Python me screen par text ya values print karne ke liye standard built-in function print() hai.
+              </div>
+            </div>
+            <div class="py-mcq-card">
+              <div class="py-mcq-question">
+                <span class="py-mcq-qnum">Q2.</span>
+                <span>Agar x = 'Kaif' ho, toh print('x') ka output kya hoga?</span>
+              </div>
+              <div class="py-mcq-options">
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 1, 0, 1)">
+                  <span class="py-option-key">A</span>
+                  <span class="py-option-text">Kaif</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 1, 1, 1)">
+                  <span class="py-option-key">B</span>
+                  <span class="py-option-text">x</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 1, 2, 1)">
+                  <span class="py-option-key">C</span>
+                  <span class="py-option-text">NameError</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 1, 3, 1)">
+                  <span class="py-option-key">D</span>
+                  <span class="py-option-text">SyntaxError</span>
+                </button>
+              </div>
+              <div class="py-mcq-explanation">
+                <strong>💡 Explanation:</strong> Quotes lagane par Python use string literal maanta hai, isliye variable ki value nahi balki literal letter 'x' print hoga.
+              </div>
+            </div>
+            <div class="py-mcq-card">
+              <div class="py-mcq-question">
+                <span class="py-mcq-qnum">Q3.</span>
+                <span>Python me single-line comment lagane ke liye kis symbol ka upayog kiya jata hai?</span>
+              </div>
+              <div class="py-mcq-options">
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 2, 0, 2)">
+                  <span class="py-option-key">A</span>
+                  <span class="py-option-text">//</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 2, 1, 2)">
+                  <span class="py-option-key">B</span>
+                  <span class="py-option-text">/*</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 2, 2, 2)">
+                  <span class="py-option-key">C</span>
+                  <span class="py-option-text">#</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 2, 3, 2)">
+                  <span class="py-option-key">D</span>
+                  <span class="py-option-text">--</span>
+                </button>
+              </div>
+              <div class="py-mcq-explanation">
+                <strong>💡 Explanation:</strong> # symbol se shuru hone wali line ko Python interpreter comment maankar ignore kar deta hai.
+              </div>
+            </div>
+            <div class="py-mcq-card">
+              <div class="py-mcq-question">
+                <span class="py-mcq-qnum">Q4.</span>
+                <span>print('Apple', 'Banana', sep='-') likhne par output kya aayega?</span>
+              </div>
+              <div class="py-mcq-options">
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 3, 0, 1)">
+                  <span class="py-option-key">A</span>
+                  <span class="py-option-text">Apple Banana</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 3, 1, 1)">
+                  <span class="py-option-key">B</span>
+                  <span class="py-option-text">Apple-Banana</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 3, 2, 1)">
+                  <span class="py-option-key">C</span>
+                  <span class="py-option-text">Apple - Banana</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 3, 3, 1)">
+                  <span class="py-option-key">D</span>
+                  <span class="py-option-text">AppleBanana-</span>
+                </button>
+              </div>
+              <div class="py-mcq-explanation">
+                <strong>💡 Explanation:</strong> sep parameter batata hai ki multiple values ke beech kaunsa separator character use hoga. Yahan '-' use hua hai.
+              </div>
+            </div>
+            <div class="py-mcq-card">
+              <div class="py-mcq-question">
+                <span class="py-mcq-qnum">Q5.</span>
+                <span>Print('Hello Python') likhne par interpreter kya response dega?</span>
+              </div>
+              <div class="py-mcq-options">
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 4, 0, 2)">
+                  <span class="py-option-key">A</span>
+                  <span class="py-option-text">Hello Python print hoga</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 4, 1, 2)">
+                  <span class="py-option-key">B</span>
+                  <span class="py-option-text">SyntaxError aayega</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 4, 2, 2)">
+                  <span class="py-option-key">C</span>
+                  <span class="py-option-text">NameError: name 'Print' is not defined</span>
+                </button>
+                <button class="py-option-btn" onclick="handleAnswerMCQ(1, 4, 3, 2)">
+                  <span class="py-option-key">D</span>
+                  <span class="py-option-text">Warning aayegi</span>
+                </button>
+              </div>
+              <div class="py-mcq-explanation">
+                <strong>💡 Explanation:</strong> Python case-sensitive language hai. Built-in function ka naam lowercase 'print' hai, 'Print' naam ka koi function defined nahi hai.
+              </div>
+            </div>
           </div>
         </section>
 
